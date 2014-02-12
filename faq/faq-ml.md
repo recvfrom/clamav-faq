@@ -8,19 +8,19 @@ This is the official FAQ. For additional FAQs please visit our [GitHub repositor
 
 * Where can I ask questions about using ClamAV?
 
->Subscribe to our "clamav-users":ml mailing-list.
+>Subscribe to our [clamav-users](http://lists.clamav.net/cgi-bin/mailman/listinfo/clamav-users) mailing-list.
 
 * I want to take part to the development of ClamAV. Where can I get more info?
 
->Subscribe to the "clamav-devel":ml mailing-list.
+>Subscribe to the [clamav-devel](http://lists.clamav.net/cgi-bin/mailman/listinfo/clamav-devel) mailing-list.
 
 * The mailing-lists generate too many messages per day. I can't handle them. What shall I do?
 
->There are two possible solutions: 	- Go to the "mailing-list":ml mailman interface, click on __Unsubscribe or edit options__, and turn _digest mode_ on 	- access the mailing-lists using a "news reader":ml
+>There are two possible solutions: 	- Go to the [mailing-list](http://lists.clamav.net/cgi-bin/mailman/listinfo) mailman interface, click on __Unsubscribe or edit options__, and turn _digest mode_ on 	- access the mailing-lists using a "news reader"
 
 * I sent a message to one of ClamAV's mailing-lists, but the mail was rejected/held for approval. Why?
 
->Only subscribers are allowed to post to the mailing-list. This is done to avoid spammers. Please check that your outgoing messages start with a line like the following: <code>Return-Path: me@mydomain.com</code> where me@mydomain.com is the mail account which you used to subscribe to the mailing-list. You can subscribe multiple times, with different mail addresses, and  disable mail delivery. You will be able to post to the mailing-lists by putting any of those addresses in <code>Return-Path</code>.
+>Only subscribers are allowed to post to the mailing-list. This is done to avoid spammers. Please check that your outgoing messages start with a line like the following: <code>Return-Path: me@mydomain.com</code> where <code>me@mydomain.com</code> is the mail account which you used to subscribe to the mailing-list. You can subscribe multiple times, with different mail addresses, and  disable mail delivery. You will be able to post to the mailing-lists by putting any of those addresses in <code>Return-Path</code>.
 
 * I read the mailing-list from the Gmane news gateway. Can I post to the mailing-list?
 
@@ -32,4 +32,4 @@ This is the official FAQ. For additional FAQs please visit our [GitHub repositor
 
 * How do I disable mail delivery from the mailing-list I'm subscribed to?
 
->Suppose you are subscribed to clamav-users. Go to http://lists.clamav.net/mailman/listinfo/clamav-users and enter your mail address at the bottom of the page. Click on __Unsubscribe or edit options__. At the next page enter your password and press _Log in_. Under _Your clamav-users Subscription Options_ choose _Disabled_ opposite _Mail delivery_ and press _Submit My Changes_ at the bottom of the page.
+>Suppose you are subscribed to clamav-users. Go to http://lists.clamav.net/cgi-bin/mailman/listinfo/clamav-users and enter your mail address at the bottom of the page. Click on __Unsubscribe or edit options__. At the next page enter your password and press _Log in_. Under _Your clamav-users Subscription Options_ choose _Disabled_ opposite _Mail delivery_ and press _Submit My Changes_ at the bottom of the page.
