@@ -21,11 +21,11 @@ This solution is really simple to implement but it's only effective if your clie
 Configure a local webserver on one of your machines (say machine1.mylan) and let freshclam download the _*.cvd_ files from http://database.clamav.net to the webserver’s _DocumentRoot_.
 
 Add the following line to freshclam.conf on machine1.mylan.
-<pre>ScriptedUpdates off</pre>
+<pre>ScriptedUpdates no</pre>
 
 First the database will be downloaded to the local webserver and then the other clients on the network will update their copy of the database from it. For this to work you have to change _freshclam.conf_ on each client so that it reads.
 <pre>DatabaseMirror machine1.mylan
-ScriptedUpdates off</pre>
+ScriptedUpdates no</pre>
 
 ## 3. Serve CVD and CDIFF files from a local web server ##
 
