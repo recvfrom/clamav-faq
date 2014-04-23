@@ -6,7 +6,7 @@ This is the official ClamAV FAQ repository. To checkout all the files:
 
 ### Manual ###
 
-[Manual - PDF](http://github.com/vrtadmint/clamav-faq/blob/master/manual/clamdoc.pdf)
+[Manual - PDF](http://github.com/vrtadmin/clamav-faq/blob/master/manual/clamdoc.pdf)
 
 ### FAQ Pages ###
 
