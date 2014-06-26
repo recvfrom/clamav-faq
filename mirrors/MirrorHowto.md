@@ -1,19 +1,14 @@
-# Introduction
+# Mirrors
 
-## This doc
+## How to Become a Mirror
+
+To prevent the spread of worms it is essential to check for updates frequently. ClamAV users often configure freshclam with a check interval of 30 minutes. With an exponentially growing number of ClamAV users, the servers hosting the virus database files get easily overloaded. For this reason we must continuously add more mirrors to our pool.
 
 The latest version of this document is always available at [MirrorHowTo](https://github.com/vrtadmin/clamav-faq/blob/master/mirrors/MirrorHowto.md). Before going any further, please check that you are reading the latest version.
 
 Japanese sysadmins can find a translated version of this doc at http://www.orange.co.jp/~masaki/clamav/mirror-howto-jp.html (not necessarily up to date)
 
-## The need for mirrors
-
-To prevent the spread of worms it is essential to check for updates frequently. ClamAV users often configure freshclam with a check interval of 30 minutes. With an exponentially growing number of ClamAV users, the servers hosting the virus database files get easily overloaded. For this reason we must continuously add more mirrors to our pool.
-
-# Becoming a Mirror #
-
-
-## Requirements
+#### Requirements
 
 We need fast reliable mirrors. Servers eligible to become mirrors have to meet the following requirements:
 
@@ -27,19 +22,17 @@ We also appreciate (but do not require) having shell access to the server hostin
 
 The virusdb team will use the account only to update the virus database.
 
-## Public Mirror vs Private Mirror
+#### Public Mirror vs Private Mirror
 
 If you cannot make your mirror available to all ClamAV users, and you would like to serve the CVD update to your network from a local cache, you should read CvdPrivateMirror
 
-## How to
+# Instructions for Becoming a Mirror
 
-Here is a step-by-step guide to become a mirror
-
-### Request a rsync account
+### 1. Request a rsync account
 
 Before starting the setup, [contact the mirror maintainers](mailto:rsteinme@cisco.com,jesler@cisco.com) to verify that there is a need for another mirror in your country.
 
-### Configure your web server
+### 2. Configure your web server
 
 Set up a virtual host for http://database.clamav.net, http://db.*.clamav.net and http://clamav.your-domain.tld. Note there is an asterisk in the second hostname. A literal asterisk. Do not replace it with your country code. If you are using name based virtual hosts, you can check whether the mirror setup is correct or not, with the following commands (replace 1.2.3.4 with the actual ip address of your web server):
 <pre>echo Success &gt;~clamavdb/public_html/local_test
@@ -89,7 +82,7 @@ If you are using lighttpd:
 
 If you cannot create wildcard vhosts, you must use IP based virtual hosts! Please note that an http redirect (e.g. RedirectPermanent) is not enough! freshclam can't handle redirects yet.
 
-### Create a system account
+### 3. Create a system account
 
 Create an account with login "clamavdb" and give it write access to the virtual host's DocumentRoot.
 
@@ -106,7 +99,7 @@ The only command which can be executed by the owner of the corresponding ssh pri
 
 If you would like to grant us shell access, use authorized_keys_shell instead.
 
-### Download scripts and config. files
+### 4. Download scripts and config. files
 
 Download the following files:
 
@@ -156,26 +149,24 @@ chown clamavdb ~/clamavdb/etc
 
 The clam-clientsync requires the "lockfile" program, which is part of the procmail package. Before going any further, please check that "lockfile" is available.
 
-### Submit the mirror details
+### 5. Submit the mirror details
 
 Send an email with the server's details to mirror-admin -at- clamav.net following this template:
-<pre>
-   * clamav.foo.com
-   * ip address: 1.2.3.4
-   * country: Poland
-   * admin: John Doe &lt;john.doe@foo.com&gt;
+<pre>clamav.foo.com  
+ip address: 1.2.3.4  
+country: Poland 
+admin: John Doe &lt;john.doe@foo.com&gt;
 </pre>
 Our monitoring system will send e-mail notifications to the email address specified under "admin".
 
 If you would to receive notifications at a different address (e.g. alerts@foo.com), please use the following template:
-<pre>
-   * clamav.foo.com
-   * ip address: 1.2.3.4
-   * country: Poland
-   * admin: John Doe &lt;john.doe@foo.com&gt; || &lt;alerts@foo.com&gt;
+<pre>clamav.foo.com
+ip address: 1.2.3.4
+country: Poland
+admin: John Doe &lt;john.doe@foo.com&gt; || &lt;alerts@foo.com&gt;
 </pre>
 
-### Modify configuration file
+### 6. Modify configuration file
 
 Edit ~clamavdb/etc/clam-clientsync.conf . If your DocumentRoot is /home/users/clamavdb/public_html, your login is foo and your password guessme, then your clam-clientsync.conf will look like this:
 <pre>TO=/home/users/clamavdb/public_html
@@ -185,7 +176,7 @@ MODULE="clamavdb"
 EXCLUDE="--exclude local_*"
 </pre>
 
-### Update Firewall
+### 7. Update Firewall
 
 Reconfigure your packet filter to allow incoming connections on port 22/tcp and outgoing connections to ports 873/tcp and 873/udp.
 
@@ -203,25 +194,25 @@ Please note that we do NOT support mirrors running ssh on a non standard port. I
 
 Here is an example for a Linux box running ssh on port 2222 and without any firewall blocking packets on port 22:
 <pre>
-   * iptables -t nat -I PREROUTING -s 194.109.142.194 -m tcp -p tcp --dport 22 -j REDIRECT --to-port 2222
-   * iptables -t nat -I PREROUTING -s 64.18.103.6 -m tcp -p tcp --dport 22 -j REDIRECT --to-port 2222
-   * iptables -t nat -I PREROUTING -s 78.46.32.131 -m tcp -p tcp --dport 22 -j REDIRECT --to-port 2222
-   * iptables -t nat -I PREROUTING -s 128.177.8.249 -m tcp -p tcp --dport 22 -j REDIRECT --to-port 2222
-   * iptables -t nat -I PREROUTING -s 198.148.79.65 -m tcp -p tcp --dport 22 -j REDIRECT --to-port 2222
+iptables -t nat -I PREROUTING -s 194.109.142.194 -m tcp -p tcp --dport 22 -j REDIRECT --to-port 2222
+iptables -t nat -I PREROUTING -s 64.18.103.6 -m tcp -p tcp --dport 22 -j REDIRECT --to-port 2222
+iptables -t nat -I PREROUTING -s 78.46.32.131 -m tcp -p tcp --dport 22 -j REDIRECT --to-port 2222
+iptables -t nat -I PREROUTING -s 128.177.8.249 -m tcp -p tcp --dport 22 -j REDIRECT --to-port 2222
+iptables -t nat -I PREROUTING -s 198.148.79.65 -m tcp -p tcp --dport 22 -j REDIRECT --to-port 2222
 </pre>
 YMMV.
 
 Make sure to save these rules so that they are executed everytime you reboot the system
 
-### Protect your mirror from abusers
+### 8. Protect your mirror from abusers
 
 You should check out the [MirrorsCoordination](https://github.com/vrtadmin/clamav-faq/blob/master/mirrors/MirrorsCoordination.md) page for information about protecting your mirror from abusers. If your mirror has strict bandwidth/resources you will find some useful hints on that page.
 
-### Add your logo
+### 9. Add your logo
 
 You are welcome to put your company logo on the mirror home page. Just copy it to the DocumentRoot and rename it to "local_logo.png". The index.html is unique for every mirror. Please note that any file in the DocumentRoot whose name doesn't match "local_*" will be deleted at every mirror sync.
 
-### Subscribe to the mirrors mailing lists
+### 10. Subscribe to the mirrors mailing lists
 
 Subscribe to clamav-mirrors at lists.clamav.net: [http://lists.clamav.net/mailman/listinfo/clamav-mirrors](http://lists.clamav.net/mailman/listinfo/clamav-mirrors)
 
@@ -229,7 +220,7 @@ Subscribe requests have to be approved. We will approve your subscription reques
 
 When everything is done, your server's IP address will be added either to your country's dns record (db.XY.clamav.net) or one of the round robin record and your company will be listed on our mirrors list page.
 
-## Statistics
+### 11. Statistics
 
 Although it's not required, we really appreciate if you can make access statistics of your mirror available to us. They should be available at http://your-mirror-host-name/local_stats/ and they must be protected with login and password. You should use the same login and password you are using in your ~clamavdb/etc/clam-clientsync.conf file.
 
@@ -255,8 +246,8 @@ The %O format provided by mod_logio will log the actual number of bytes sent ove
 
 Scheduled downtimes should be announced on the clamav-mirrors mailing-list in advance.
 
-   * IP address changes should be notified in advance too.</p>
-   * Changes in the ssh host public key of the mirror host should be announced on the clamav-mirrors mailing-list.</p>
+   * IP address changes should be notified in advance too.
+   * Changes in the ssh host public key of the mirror host should be announced on the clamav-mirrors mailing-list.
    * It is essential to be able to contact the sysadmin responsible for the mirror server and get a quick response. Whenever a problem with a mirror occurs we need to immediately find out its cause and act consequently.
 
 ## Mirror status
@@ -275,7 +266,7 @@ Please note that this page doesn't reflect how often the database is propagated 
 
 The virusdb team, aka [Sourcefire VRT](http://www.clamav.net/about/team) take care of reviewing virus signatures, checking for new viruses in the wild and committing changes to the virus database file.
 
-The updates are released quite often (usually a few times per day). If you want to be notified whenever the virus database is updated subscribe to [clamav-virusdb at lists.clamav.net](http://lists.clamav.net/mailman/listinfo/clamav-virusdb) =.=
+The updates are released quite often (usually a few times per day). If you want to be notified whenever the virus database is updated subscribe to [clamav-virusdb at lists.clamav.net](http://lists.clamav.net/mailman/listinfo/clamav-virusdb).
 
 Every time the virusdb team updates the database, an email with all the details about the update is automatically posted to this mailing-list.
 
