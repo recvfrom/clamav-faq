@@ -1,10 +1,8 @@
-# FAQ - CCTTS #
+# ClamAV Community Threat Tracking System #
 
 ## Official FAQ ##
 
-This is the official FAQ. For additional FAQs please visit our [GitHub repository](https://github.com/vrtadmin/clamav-faq) . You are encouraged to contribute to them.
-
-* What is it?
+* What is the CCTTS?
 
 >The ClamAV Community Threat Tracking System sends summary data to our server about the malware detected on your system. Freshclam usually sends the data when you update your signatures. You can also use freshclam’s --submit-stats option to submit statistics without updating the signature database.
 
@@ -23,13 +21,13 @@ This is the official FAQ. For additional FAQs please visit our [GitHub repositor
 
 * How can I see statistics regarding the malware detected by my own ClamAV installation?
 
->Get an HostID (see following FAQs) for each of your ClamAV installations and add the directive "DetectionStatsHostID XXXX" (where XXXX is your HostID) to your freshclam.conf. You will be able to view the data submitted by your ClamAV installation anytime by logging on [http://www.stats.clamav.net](http://www.stats.clamav.net).
+>Get a HostID (see following FAQs) for each of your ClamAV installations and add the directive "DetectionStatsHostID XXXX" (where XXXX is your HostID) to your freshclam.conf. You will be able to view the data submitted by your ClamAV installation anytime by logging on [http://www.stats.clamav.net](http://www.stats.clamav.net).
 
-* What is an HostID?
+* What is a HostID?
 
->An HostID is a unique identifier which helps us tracking data submissions from individual ClamAV installations. 
+>A HostID is a unique identifier which helps us tracking data submissions from individual ClamAV installations. 
 
-* How do I get an HostID?
+* How do I get a HostID?
 
 >You can get your own HostID by logging on [http://www.stats.clamav.net](http://www.stats.clamav.net) and clicking on "Add new host"
 
