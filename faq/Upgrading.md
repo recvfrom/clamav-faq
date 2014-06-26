@@ -1,27 +1,28 @@
 # Upgrading ClamAV #
 
-## If you installed from packages ##
+# Upgrade Instructions #
 
-Find new packages and install them. See ClamPackages
+## Packages ##
 
+If you installed from packages, find new packages and install them. See ClamPackages.
 If there are no new packages, you have three options:
 
 * Wait
 * Build Clam Package
 * Install From Source
 
-## If you installed from sources ##
+## Sources ##
 
-Uninstall the old version
+If you installed from sources, first uninstall the old version:
 
-* `./configure`
-* `sudo make uninstall`
+`./configure`
+`sudo make uninstall`
 
 Compile and install the new one: see [Installing ClamAV]
 
-__Note:__ Depending on your installation method, you might want to backup configuration (located in _/usr/local/etc_ by default) and signature database (located in _/usr/local/share/clamav_ by default). Don't forget to restore backups before starting up updated ClamAV.
-
-__Note:__ Backup your database signature (located in _/usr/local/share/clamav_ by default) before upgrading to newer ClamAV version. Restore the backed up database signature before running the updated version. This is to avoid getting the _/usr/local/share/clamav not locked_ error message when doing _freshclam_.
+#### Note: ####
+* Depending on your installation method, you might want to backup configuration (located in _/usr/local/etc_ by default) and signature database (located in _/usr/local/share/clamav_ by default). Don't forget to restore backups before starting up updated ClamAV.
+* Backup your database signature (located in _/usr/local/share/clamav_ by default) before upgrading to newer ClamAV version. Restore the backed up database signature before running the updated version. This is to avoid getting the _/usr/local/share/clamav not locked_ error message when doing _freshclam_.
 
 ## Webmin and yum ##
 
