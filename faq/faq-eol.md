@@ -1,10 +1,4 @@
-# FAQ - EOL #
-
-## Official FAQ ##
-
-This is the official FAQ. For additional FAQs please visit our [GitHub repository](https://github.com/vrtadmin/clamav-faq) . You are encouraged to contribute to them.
-
-## End of Life Policy (EOL) ##
+# End of Life Policy (EOL) 
 
 The naming convention for ClamAV releases uses three numbers (X.Y.Z) where the first two (X.Y) identify a major release and the last one (Z) a minor release.
 
