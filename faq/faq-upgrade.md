@@ -1,10 +1,4 @@
-# FAQ - Upgrading #
-
-## Official FAQ ##
-
-This is the official FAQ. For additional FAQs please visit our [GitHub repository](https://github.com/vrtadmin/clamav-faq) . You are encouraged to contribute to them.
-
-### Upgrading ClamAV
+# Upgrading FAQ 
 
 * How do I upgrade ClamAV?
 
