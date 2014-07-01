@@ -1,14 +1,15 @@
-# FAQ - Troubleshooting #
-
-## Official FAQ ##
-
-This is the official FAQ. For additional FAQs please visit our [GitHub repository](https://github.com/vrtadmin/clamav-faq) . You are encouraged to contribute to them.
-
->The virus database is usually updated many times per week. Check out "http:	//lurker.clamav.net/list/clamav-virusdb.html":http://lurker.clamav.net/list/clamav-virusdb.html to see our response times to new threats. The virusdb team tries to keep up with the latest worm  in the wild. When a new worm spreads out, often it is  less than one hour before we release a database update. You can contribute to make the virusdb updating process  more efficient by submitting samples of viruses  via our "web interface":submit.
+# Troubleshooting FAQ #
 
 * How many times per hour shall I run freshclam?
 
->If you are running ClamAV 0.7x please **upgrade NOW**. If you are running ClamAV 0.8x or later, you can check for database update as often as 4 times per hour provided that you have the following options in freshclam.conf: _DNSDatabaseInfo current.cvd.clamav.net_ _DatabaseMirror db.XY.clamav.net_ _DatabaseMirror database.clamav.net_ Replace XY with your "country code":iana.  If you don't have that option, then you must stick with 1 check per hour.
+>If you are running ClamAV 0.7x please __upgrade now__.  
+>
+>If you are running ClamAV 0.8x or later, you can check for database update as often as 4 times per hour provided that you have the following options in freshclam.conf:   
+> __DNSDatabaseInfo__  
+> __current.cvd.clamav.net__   
+> __DatabaseMirror db.XY.clamav.net__   
+> __DatabaseMirror database.clamav.net__  
+> _Replace XY with your "country code":iana.  If you don't have that option, then you must stick with 1 check per hour._
 
 * I tried to submit a sample through the web interface, but it said the sample is already recognized by ClamAV. My clamscan tells me it's not. I have already updated my database and ClamAV engine, what's wrong with my setup?
 
@@ -58,21 +59,7 @@ First the database will be downloaded to the local webserver and then the other 
 
 * I can't resolve current.cvd.clamav.net! Is there a problem with your/my DNS servers?
 
->current.cvd.clamav.net has got only a TXT record, not a type A record! Try this command: <code>$ host -t txt current.cvd.clamav.net</code>. Please note that some not RFC compliant DNS servers (namely the one shipped with the Alcatel (now Thomson) SpeedTouch 510 modem) can't resolve TXT record. If that's the case, please recompile ClamAV with the flag <code>--enable-dns-fix</code> .
+>current.cvd.clamav.net has got only a TXT record, not a type A record! Try this command: `$ host -t txt current.cvd.clamav.net`. Please note that some not RFC compliant DNS servers (namely the one shipped with the Alcatel (now Thomson) SpeedTouch 510 modem) can't resolve TXT record. If that's the case, please recompile ClamAV with the flag `--enable-dns-fix` .
 
 Last update: Apr 7, 2009
-[lang_xx]<p style="color:red;font-size:x-small">We do our best to keep the localized version of this website up to date, however that is not always possible. Please refer to the English version for the latest information.</p>[/lang_xx]
-[lang_it]<p style="color:red;font-size:x-small">Facciamo il nostro meglio per mantenere aggiornate le versioni localizzate di questo sito ma, nonostante i nostri sforzi, alle volte ciò non è sempre possibile. È necessario fare riferimento alle pagine in inglese per avere le informazioni più aggiornate.</p>[/lang_it]
-[lang_ja]<p style="color:red;font-size:x-small"> ※我々は日本語翻訳版を最新に保つよう最大限の努力をしています。しかし、必ずしも常に最新であるとは限りません。英語版のページで最新の情報を確認してください。</p>[/lang_ja]
-[lang_de]<p style="color:red;font-size:x-small">Wir geben unser Bestes um die Übersetzungen dieser Webseite stets aktuell zu halten, leider ist das nicht immer möglich. Bitte beziehe Dich für die neusten Informationen immer auf die Englische Version.</p>[/lang_de]
-[lang_es]<p style="color:red;font-size:x-small">Intentamos disponer actualizada la versión traducida de este sitio web, sin embargo no siempre es posible. Por favor recurra a la versión en Inglés para la última información</p>[/lang_es]
-[lang_tc]<p style="color:red;font-size:x-small">此語言版本未能提供有關內容，謹此致歉。</p>[/lang_tc]
-[lang_sc]<p style="color:red;font-size:x-small">我们会尽量保持更新此网站的本地化版本。如有延误，请参阅英文版，以便获取最新信息。</p>[/lang_sc]
-[lang_fr]<p style="color:red;font-size:x-small">Nous faisons de notre mieux pour tenir la version localisée de ce site à jour, mais ce n'est cependant pas toujours possible. Veuillez vous réferer à la version anglaise pour les toutes dernières informations</p>[/lang_fr]
-[lang_pl]Robimy co w naszej mocy, by przetłumaczona wersja tej strony była jak najświeższa, ale nie zawsze jest to możliwe. Odwiedź angielską wersję, by uzyskać najnowsze informacje.</p>[/lang_pl]
-[lang_ru]<p style="color:red;font-size:x-small">Мы делаем всё зависящее от нас, чтобы сохранять актуальной локализованную версию этого веб-сайта, однако это не всегда возможно. Пожалуйста, смотрите последнюю информацию в английской версии.</p>[/lang_ru]
-[lang_hu]<p style="color:red;font-size:x-small">Azon fáradozunk, hogy ez a weblap a lehető legfrissebb legyen, ám ez szinte lehetetlen. Kérjük, az angol felületen keresse a legújabb információkat!</p>[/lang_hu]
-[lang_pt]<p style="color:red;font-size:x-small">Fazêmos o melhor para manter uma versão traduzida do nosso sítio actualizada, no entanto isso nem sempre é possível. Por favor consulte a versão em Inglês para obtêr a versão mais actualizada.</p>[/lang_pt]
-[lang_nl]<p style="color:red;font-size:x-small">We doen ons best om de gelocaliseerde versie van deze website up to date te houden. Dat is echter niet altijd mogelijk. Bekijk alstublieft de Engelse versie voor de recentste informatie.</p>[/lang_nl]
-[lang_ro]<p style="color:red;font-size:x-small">Încercăm să menținem actualizată traducerea pentru acest sit web, dar acest lucru nu este întotdeauna posibil. Te rugăm să consulți versiunea în Engleză pentru ultimele informații apărute.</p>[/lang_ro]
 

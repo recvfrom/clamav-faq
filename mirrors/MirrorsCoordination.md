@@ -1,4 +1,4 @@
-# Official mirror howto
+# Mirror Coordination
 
 ## Bandwidth limit
 
@@ -15,14 +15,14 @@ Here is an example config that will do the following:
 
 ### Apache ###
 
-<pre><IfModule mod_bw>
+<pre>&lt;IfModule mod_bw&gt;
   BandWidthModule On
   ForceBandWidthModule On
   LargeFileLimit .cvd 1 40000
   LargeFileLimit .cdiff 1 400000
   MaxConnection all 50
   MinBandwidth all 20000
-</IfModule>
+&lt;/IfModule&gt;
 </pre>
 
 _Note_ You can also use mod_cband to limit the download-speed.
@@ -39,10 +39,10 @@ Add the module to your apache-config by manually adding it to _/etc/apache2/http
 </pre>
 Edit the config for the vhost and add
 
-<pre><IfModule mod_cband.c>
+<pre>&lt;IfModule mod_cband.c&gt;
   CBandSpeed 20kb/s 100 300
   CBandRemoteSpeed 20kb/s 100 300
-</IfModule></pre>
+&lt;/IfModule&gt;</pre>
 
 This limits the download speed to 20kb/s, allows 100 requests/second and a maximum of 300 connections.
 
@@ -57,18 +57,18 @@ Done. Now restart apache.
 
 If you would like a scoreboard, set something like.
 
-<pre><IfModule mod_cband.c>
+<pre>&lt;IfModule mod_cband.c&gt;
   CBandSpeed 20kb/s 100 300
   CBandRemoteSpeed 20kb/s 100 300
-  <Location /cband-status>
+  &lt;Location /cband-status&gt;
     SetHandler cband-status
-  </Location>
-</IfModule></pre>
+  &lt;/Location&gt;
+&lt;/IfModule&gt;</pre>
 
 Create the directory for CBandScoreboard and make it writeable by the apache-user.
 
 <pre>
-  $ chown wwwrun.www /srv/www/scoreboard/
+ $ chown wwwrun.www /srv/www/scoreboard/
 </pre>
 
 The status page can be found on _http://your-domain/cband-status_.
@@ -96,27 +96,23 @@ $HTTP["url"] =~ "\.cdiff$" {
 <pre>
 location / {
   root /home/clamavdb/public_html;
-
   location ~ \.cvd$ {
       limit_rate 40k;
   }
-
   location ~ \.cdiff$ {
       limit_rate 400k;
   }
 }
-
 </pre>
 
 #### A customer example for Nginx ####
 
-<pre>
-limit_conn_zone $server_port zone=cvds:1m;
-limit_conn_zone $server_port zone=cdiffs:1m;
-limit_conn_log_level info;
+<pre>limit_conn_zone $server_port zone=cvds:1m;  
+limit_conn_zone $server_port zone=cdiffs:1m;  
+limit_conn_log_level info;  
 
 server {
-       server_name database.clamav.net ~^db\..*\.clamav\.net clamav.<hostname>.org;
+       server_name database.clamav.net ~^db\..*\.clamav\.net clamav.&lt;hostname&gt;.org;
        listen 80;
 
        access_log /var/log/nginx/clamav.log;
@@ -201,31 +197,30 @@ You will need to include local_blacklist_lighttpd into main.conf, like this.
     include "/path/local_blacklist_lighttpd"
 </pre>
 
+# Additional tweaks
 
-## Additional tweaks ##
 
-
-### Manually blackList old versions of ClamAV ###
+### Manually blackList old versions of ClamAV
 
 We kindly ask our mirrors to support as many old versions of ClamAV as possible. However we understand that this can eat a lot of resources and not every mirror can afford it. Hereby we provide some config. examples for various web servers.
 
 
-### Apache HTTP Server ###
+#### Apache HTTP Server 
 
 <pre>SetEnvIfNoCase User-Agent "^clamav/0.6" bad_clamav 
 SetEnvIfNoCase User-Agent "^clamav/devel-2008" bad_clamav
 SetEnvIfNoCase User-Agent "^ClamWin/0.6" bad_clamav
 </pre>
 
-<pre><Location "/">
+<pre>&lt;Location "/"&gt;
   Order allow,deny
   Allow from all
   Deny from env=bad_clamav
-</Location>
+&lt;/Location&gt;
 </pre>
 
 
-### Lighttpd ###
+#### Lighttpd
 
 <pre>$HTTP["useragent"] =~ "^clam(av|Win)\/(0.[67]|.*devel).*$" {
   url.access-deny = ( "" )
@@ -233,7 +228,7 @@ SetEnvIfNoCase User-Agent "^ClamWin/0.6" bad_clamav
 </pre>
 
 
-### Nginx ###
+#### Nginx 
 
 <pre>if ( $http_user_agent ~* "^clam(av|win)\/(0\.[67]|devel-200[0-8]|devel-0\.[0-8]).*$" ) {
   return 404;
@@ -241,7 +236,7 @@ SetEnvIfNoCase User-Agent "^ClamWin/0.6" bad_clamav
 </pre>
 
 
-## Block outdated clients
+### Block outdated clients
 
 Due to numerous connects of outdated clients (&gt; 300,000 / day), we add single IP temporarily to the firewall.
 
@@ -253,14 +248,14 @@ Requirements.
    * Kernel with recent-support
 
 
-## Configure Apache HTTP-Server ##
+### Configure Apache HTTP-Server 
 
 
 The Access Log of apache must send to syslog-ng:
 
 <pre>$ mknod /var/log/apache/access.log p</pre>
 
-### Apache HTTP Server (httpd.conf or vhost.conf) ###
+### Apache HTTP Server (httpd.conf or vhost.conf) 
 
 The logformat and the accesslog must be defined like.
 
@@ -269,15 +264,15 @@ The logformat and the accesslog must be defined like.
 
 As long as the log file runs only through the pipe, no entries are stored. The configuration used here evaluates merely the log file. To receive an Access Log as a file, you must extend either syslog-ng by a destination or the apache-config by a CustomLog.
 
-## Configure syslog-ng ##
+### Configure syslog-ng 
 
 <pre>source s_apache_access { <br /> pipe("/var/log/apache2/access.log"); <br /> };<br /><br />destination d_clamav-403 { <br /> file("/proc/net/xt_recent/clamav-403"<br /> template("+${APACHE.SRC-IP}\n")); <br /> };<br /><br />filter f_clamav_403 { <br /> message('clamav.net') <br /> and message(' 403 '); <br /> };<br /><br />parser p_apache_src_ip { <br /> csv-parser(columns("APACHE.SRC-IP")<br /> delimiters(': ') <br /> flags(escape-none,greedy) <br /> template("${MSGHDR}") ); <br /> };<br /><br />log { <br /> source(s_apache_access);<br /> filter(f_clamav_403);<br /> parser(p_apache_src_ip);<br /> destination(d_clamav-403); <br /> };</pre>
 
-## Iptables ##
+### Iptables 
 
 <pre>iptables -A INPUT -p tcp --dport 80 -m recent --rcheck --name clamav-403 --seconds 3600 --hitcount 5 -j DROP</pre>
 
-## how it works ##
+### how it works 
 
 Syslog-ng filters apache messages with the contents clamav.net and 403. As destination /proc/net/xt_recent/clamav-403 is defined. The template adds the IP to the firewall. With reach from "hitcount" the IP is blocked "seconds".
 
