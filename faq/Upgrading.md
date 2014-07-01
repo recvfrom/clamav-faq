@@ -1,7 +1,5 @@
 # How To Upgrade ClamAV 
 
-# Upgrade Instructions #
-
 ### ClamAV from Packages 
 
 If you installed from packages, find new packages and install them. See ClamPackages.
