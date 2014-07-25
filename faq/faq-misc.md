@@ -1,10 +1,4 @@
-# FAQ - Miscellany #
-
-## Official FAQ ##
-
-This is the official FAQ. For additional FAQs please visit our [GitHub repository](https://github.com/vrtadmin/clamav-faq) . You are encouraged to contribute to them.
-
-## Miscellaneous ##
+# Miscellaneous FAQ #
 
 * Can phishing be considered one kind of spam? ClamAV should not detect it as some kind of malware.
 
@@ -40,7 +34,11 @@ This is the official FAQ. For additional FAQs please visit our [GitHub repositor
 
 * What is PUA? I get a lot of false positives named PUA.*
 
->With the release of ClamAV 0.91.2 we introduce the option to scan for Potentially Unwanted Applications. The PUA database contains detection for applications that are not malicious by itself but can be used in a malicious or unwanted context. As an example: A tool to retrieve passwords from a system can be useful as long as the person who uses it, is authorized to do so. However, the same tool can be used to steal passwords from a system. To make use of the PUA database you can use the --detect-pua switch for clamscan or enable it in the config file for clamd (add: DetectPUA yes). At this point we DON'T recommend using it in production environments, because the detection may be too agressive and lead to false positives. In one of the next releases we will provide additional features for fine-tuning allowing better adjustments to different setups. NOTE: A detection as PUA does NOT tell if a application is good or bad. All it says is, that a file MAYBE unwanted or MAYBE could compromise your system security and it MAYBE a good idea to check it twice.
+>With the release of ClamAV 0.91.2 we introduce the option to scan for Potentially Unwanted Applications.   
+>
+>The PUA database contains detection for applications that are not malicious by itself but can be used in a malicious or unwanted context. As an example: A tool to retrieve passwords from a system can be useful as long as the person who uses it, is authorized to do so. However, the same tool can be used to steal passwords from a system. To make use of the PUA database you can use the __--detect-pua switch__ for clamscan or enable it in the config file for clamd (add: DetectPUA yes). 
+>
+>At this point we DO NOT recommend using it in production environments, because the detection may be too agressive and lead to false positives. In one of the next releases we will provide additional features for fine-tuning allowing better adjustments to different setups. NOTE: A detection as PUA does NOT tell if a application is good or bad. All it says is, that a file MAYBE unwanted or MAYBE could compromise your system security and it MAYBE a good idea to check it twice.
 
 * Can ClamAV disinfect files?
 

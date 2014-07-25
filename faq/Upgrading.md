@@ -1,29 +1,28 @@
-# Upgrading ClamAV #
+# How To Upgrade ClamAV 
 
-## If you installed from packages ##
+### ClamAV from Packages 
 
-Find new packages and install them. See ClamPackages
-
+If you installed from packages, find new packages and install them. See ClamPackages.
 If there are no new packages, you have three options:
 
 * Wait
 * Build Clam Package
 * Install From Source
 
-## If you installed from sources ##
+### ClamAV from Sources
 
-Uninstall the old version
+If you installed from sources, first uninstall the old version:
 
-* `./configure`
-* `sudo make uninstall`
+`./configure`
+`sudo make uninstall`
 
 Compile and install the new one: see [Installing ClamAV]
 
-__Note:__ Depending on your installation method, you might want to backup configuration (located in _/usr/local/etc_ by default) and signature database (located in _/usr/local/share/clamav_ by default). Don't forget to restore backups before starting up updated ClamAV.
+Depending on your installation method, you might want to backup configuration (located in _/usr/local/etc_ by default) and signature database (located in _/usr/local/share/clamav_ by default). Don't forget to restore backups before starting up updated ClamAV.  
 
-__Note:__ Backup your database signature (located in _/usr/local/share/clamav_ by default) before upgrading to newer ClamAV version. Restore the backed up database signature before running the updated version. This is to avoid getting the _/usr/local/share/clamav not locked_ error message when doing _freshclam_.
+Backup your database signature (located in _/usr/local/share/clamav_ by default) before upgrading to newer ClamAV version. Restore the backed up database signature before running the updated version. This is to avoid getting the _/usr/local/share/clamav not locked_ error message when doing _freshclam_.
 
-## Webmin and yum ##
+### Webmin and yum
 
 If you obtained a server from a competent hosting provider they probably already installed clamav using yum and the extras repository. To obtain a new version:
 
