@@ -10,7 +10,7 @@
 
 >Either your dns servers are not working or you are blocking port 53/tcp. You should manually check that you can resolve hostnames with: $ host database.clamav.net. If it doesn't work, check your dns settings in /etc/resolv.conf. If it works, check that you can receive dns answers longer than 512 bytes, e.g. check that your firewall is not blocking packets which originate from port 53/tcp. An easy way to find it out is: $ dig @ns1.clamav.net db.us.big.clamav.net
 
-* ERROR: getfile: daily-*.cdiff not found on remote server
+* ERROR: getfile: daily-\*.cdiff not found on remote server
 
 >For some reason, the mirror didn't fetch the cdiff file. Freshclam can recover from this situation by trying the next mirror.
 
@@ -44,15 +44,15 @@
 
 >The functionality level of the database determines which scanner engine version is required to use all of its signatures. If you don't upgrade immediately you will still be able to download the latest CVD updates but the engine won't be able to use ALL of them.
 
-* Ignoring mirror <IP> (has connected too many times with an outdated version)
-	* Certain users are experiencing database update issues due to the failed Authenticode database push. 
-	* You can validate that you're having this particular issue by a number of ways: 
-	* Check the hash of your daily.cvd. You are affected if the hash matches the following:
-	* MD5: 89dedb45609e59b0244fb5202ab6fa56
-	* SHA1: 9947ec90e60499ab7c3331670d5b26b4eaac76e4
-	* Check your freshclam log file for repeated errors that look like:
-	* Ignoring mirror xxx.xxx.xxx.xxx (has connected too many times with an outdated version)
-	* Check the version number and the functional level of the daily.cvd by using sigtool:
-	* sigtool --info daily.cvd will show a version number of 16681 and a functionality level of 73
+* Ignoring mirror  &lt;IP&gt; (has connected too many times with an outdated version). 
 
-	* If you are expereincing the problem, please do the following:  Stop the freshclam daemon if it's running, delete both mirrors.dat and daily.cvd, then restart the freshclam daemon. Freshclam will then download a new daily.cvd and will be up-to-date.
+>Certain users are experiencing database update issues due to the failed Authenticode database push. You can validate that you're having this particular issue by a number of ways:
+>1. Check the hash of your daily.cvd. You are affected if the hash matches the following:
+>2. MD5: 89dedb45609e59b0244fb5202ab6fa56
+>3. SHA1: 9947ec90e60499ab7c3331670d5b26b4eaac76e4
+>4. Check your freshclam log file for repeated errors that look like:
+>5. Ignoring mirror xxx.xxx.xxx.xxx (has connected too many times with an outdated version)
+>6. Check the version number and the functional level of the daily.cvd by using sigtool:
+>7. sigtool --info daily.cvd will show a version number of 16681 and a functionality level of 73  
+>
+>If you are experiencing the problem, please do the following:  Stop the freshclam daemon if it's running, delete both mirrors.dat and daily.cvd, then restart the freshclam daemon. Freshclam will then download a new daily.cvd and will be up-to-date.

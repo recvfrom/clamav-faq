@@ -15,8 +15,8 @@
 * I upgraded to the latest stable version but I still get the message _Your ClamAV installation is OUTDATED_, why?
 
 >Make sure there is really only one version of ClamAV installed on your system: 
-   `$ whereis freshclam 
-   $ whereis clamscan`
+   `$ whereis freshclam` 
+   `$ whereis clamscan`
 
 >Also make sure that you haven't got old libraries (`libclamav.so*`) lying around your filesystem. You can verify it using: `$ ldd $(which freshclam)`
 
@@ -58,7 +58,7 @@
 [precompiled packages]: http://www.clamav.net/lang/en/download/packages/
 [Sourcefire VRT key]: http://labs.snort.org/contact.html
 [source download page]: http://www.clamav.net/lang/en/download/sources/
-[gcc's bugzilla]: http://gcc.gnu.org/bugzilla/show_bug.cgi?id=26763
+[gcc's bugzilla]: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=26763
 [relevant article]: http://kerneltrap.org/Linux/Compiler_Optimization_Bugs_and_World_Domination
 [our bugzilla]: https://bugzilla.clamav.net/show_bug.cgi?id=613 
 [official binaries available]: http://llvm.org/releases/download.html#2.2

@@ -26,9 +26,9 @@ Backup your database signature (located in _/usr/local/share/clamav_ by default)
 
 If you obtained a server from a competent hosting provider they probably already installed clamav using yum and the extras repository. To obtain a new version:
 
-`yum list clamav
+`yum list clamav`
 
-yum update clamav` (if everything updated properly, run freshclam)
+`yum update clamav` (if everything updated properly, run freshclam)
 
 [Installing ClamAV]: https://github.com/vrtadmin/clamav-faq/blob/master/faq/Installing.md
 
