@@ -42,12 +42,9 @@
 * I'm running ClamAV on a lot of clients on my local network. Can I serve the cvd files from a local server so that each client doesn't have to download them from your servers?
 
 >Sure, there are two possible solutions.
-
->>If you want to take advantage of incremental updates, install a proxy server and then configure your freshclam clients to use it (watch for the HTTPProxyServer parameter in man freshclam.conf). 
-
->>The second possible solution is to configure a local webserver on one of your machines (say machine1.mylan) and let freshclam download the *.cvd files from http://database.clamav.net to the webserver's DocumentRoot. Finally, change freshclam.conf on your clients so that it reads: 
- __DatabaseMirror machine1.mylan__ 
-First the database will be downloaded to the local webserver and then the other clients on the network will update their copy of the database from it. For this to work, you have to add __ScriptedUpdates off__ on all of your machines!
+>
+> 1. If you want to take advantage of incremental updates, install a proxy server and then configure your freshclam clients to use it (watch for the HTTPProxyServer parameter in man freshclam.conf). 
+>2. The second possible solution is to configure a local webserver on one of your machines (say machine1.mylan) and let freshclam download the \*.cvd files from http://database.clamav.net to the webserver's DocumentRoot. Finally, change freshclam.conf on your clients so that it reads:   `DatabaseMirror machine1.mylan`. First the database will be downloaded to the local webserver and then the other clients on the network will update their copy of the database from it. For this to work, you have to add `ScriptedUpdates off` on all of your machines!
 
 * I can't wait for you to update the database! I need to use the new signature NOW!
 
