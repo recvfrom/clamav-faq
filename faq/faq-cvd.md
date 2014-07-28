@@ -64,7 +64,7 @@ If you can't, it means your network is broken. You'll be still able to download 
 >
 >If you want to take advantage of incremental updates, install a proxy server and then configure your freshclam clients to use it (watch for the HTTPProxyServer parameter in man freshclam.conf). 
 >
->The second possible solution is to configure a local webserver on one of your machines (say machine1.mylan) and let freshclam download the *.cvd files from http://database.clamav.net to the webserver's DocumentRoot. Add this line to freshclam.conf on machine1.mylan: `ScriptedUpdates off`.   
+>The second possible solution is to configure a local webserver on one of your machines (say machine1.mylan) and let freshclam download the \*.cvd files from http://database.clamav.net to the webserver's DocumentRoot. Add this line to freshclam.conf on machine1.mylan: `ScriptedUpdates off`.   
 >First the database will be downloaded to the local webserver and then the other clients on the network will update their copy of the database from it.
 >
 > For this to work you have to change freshclam.conf on your clients so that it reads:  

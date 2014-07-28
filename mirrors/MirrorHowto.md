@@ -34,7 +34,7 @@ Before starting the setup, [contact the mirror maintainers](mailto:rsteinme@cisc
 
 ### 2. Configure your web server
 
-Set up a virtual host for http://database.clamav.net, http://db.*.clamav.net and http://clamav.your-domain.tld. Note there is an asterisk in the second hostname. A literal asterisk. Do not replace it with your country code. If you are using name based virtual hosts, you can check whether the mirror setup is correct or not, with the following commands (replace 1.2.3.4 with the actual ip address of your web server):
+Set up a virtual host for http://database.clamav.net, http://db.\*.clamav.net and http://clamav.your-domain.tld. Note there is an asterisk in the second hostname. A literal asterisk. Do not replace it with your country code. If you are using name based virtual hosts, you can check whether the mirror setup is correct or not, with the following commands (replace 1.2.3.4 with the actual ip address of your web server):
 <pre>echo Success &gt;~clamavdb/public_html/local_test
 chmod 644 ~clamavdb/public_html/local_test
 wget -O - --header="Host: db.test.clamav.net" 1.2.3.4/local_test
@@ -91,9 +91,11 @@ You may want to disable password authentication for this account and change the 
 The "clamavdb" user's shell must be /bin/sh or /bin/bash . Otherwise the user won't be able to run the command associated with the ssh public key.
 
 Take a look at the content of "authorized_keys_noshell":
-<pre>no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty,command="bash ~/bin/clam-clientsync rsync1.clamav.net &" ssh-rsa xxxxxxxxxxxxxxxxxxxxxxxxx clamavdb@morgana
+
+```
+no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty,command="bash ~/bin/clam-clientsync rsync1.clamav.net &" ssh-rsa xxxxxxxxxxxxxxxxxxxxxxxxx clamavdb@morgana  
 no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty,command="bash ~/bin/clam-clientsync rsync2.clamav.net &" ssh-rsa xxxxxxxxxxxxxxxxxxxxxxxxx clamavdb@morgana
-</pre>
+```
 
 The only command which can be executed by the owner of the corresponding ssh private key is ~/bin/clam-clientsync. We will only be able to trigger the execution of that script and nothing else!
 
@@ -210,7 +212,7 @@ You should check out the [MirrorsCoordination](https://github.com/vrtadmin/clama
 
 ### 9. Add your logo
 
-You are welcome to put your company logo on the mirror home page. Just copy it to the DocumentRoot and rename it to "local_logo.png". The index.html is unique for every mirror. Please note that any file in the DocumentRoot whose name doesn't match "local_*" will be deleted at every mirror sync.
+You are welcome to put your company logo on the mirror home page. Just copy it to the DocumentRoot and rename it to "local_logo.png". The index.html is unique for every mirror. Please note that any file in the DocumentRoot whose name doesn't match "local\_\*" will be deleted at every mirror sync.
 
 ### 10. Subscribe to the mirrors mailing lists
 

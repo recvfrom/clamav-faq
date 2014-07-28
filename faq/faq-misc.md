@@ -32,7 +32,7 @@
 
 >Whenever a file exceeds ArchiveMaxCompressionRatio (see clamd.conf man page), it's considered a logic bomb and marked as Oversized.zip . Try increasing your ArchiveMaxCompressionRatio setting.
 
-* What is PUA? I get a lot of false positives named PUA.*
+* What is PUA? I get a lot of false positives named PUA.
 
 >With the release of ClamAV 0.91.2 we introduce the option to scan for Potentially Unwanted Applications.   
 >
