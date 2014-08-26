@@ -73,49 +73,9 @@ You don't necessarily need all packages. Please read ClamOverview carefully to u
 
 ### RedHat and Fedora ###
 
-#### Packages for Fedora 9 ####
+#### Packages for Fedora ####
 
-http://matrix.senecac.on.ca/~mpaivaneto/clamav-0.94-1.fc9.i386.rpm
-http://matrix.senecac.on.ca/~mpaivaneto/clamav-0.94-1.fc9.src.rpm
-
-* rpm -ivh http://matrix.senecac.on.ca/~mpaivaneto/clamav-0.94-1.fc9.i386.rpm
-
-For more information contact me at mpaivaneto@learn.senecac.on.ca
-
-Packages that you'll need to download.
-
-* clamav-db-0.xx.rpm
-* clamav-devel-0.xx.rpm
-* clamav-0.xx.rpm
-* clamd-0.xx.rpm
-
-Fresh Installation
-
-* rpm -Uvh clamav-db-0.xx.rpm
-* rpm -Uvh clamav-devel-0.xx.rpm
-* rpm -Uvh clamav-0.xx.rpm
-* rpm -Uvh clamd-0.xx.rpm
-
-Upgrading clamav engine from rpms
-
-* rpm -Uvh clamav-db-0.xx.rpm clamav-devel-0.xx.rpm clamav-0.xx.rpm clamd-0.xx.rpm
-
-_Note_ *Richard Vinke* reports The file "clamd-0.xx.rpm" is not available for fedora5. I am using "rpm -Uvh" without this file. I needed the following post-install actions.
-
-* Change the ownership of the directory _/var/lib/clamav_ to the user as stated in the configuration file.
-* Rename the _/etc/clamd.conf.rpmsave_ to _/etc/clamd.conf_.
-
-You must upgrade the rpms at the same time, otherwise it will result in dependencies of the previous installation
-
-#### Updates Particular to Fedora 6 ####
-
-As Richard Mentions, "The file "clamd-0.xx.rpm" is not available..." you should grab _clamav-server-0.XX.rpm_ and install that in its place.
-
-Sources:
-
->[RPM Packages for Fedora/Redhat]
->
->[RPM Packages for CentOS]
+`yum install clamav clamav-update`
 
 ### Mandriva ###
 
