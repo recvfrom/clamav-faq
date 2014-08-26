@@ -154,33 +154,6 @@ Use the ports Luke.
 
 There are a number of package maintainers for ClamAV on Solaris. The installation method differs for each.
 
-#### Solaris 9 & Solaris 10 Packages from Citrus IT ####
-
-Download the package file from http://clamav.citrus-it.net/.
-
-It will be a single bzip2-compressed package datastream file with a filename of the form ClamAV-<version>.bz2 or ClamAV-s10-<version>.bz2
-
-Uncompress the file
-
->  # bzip2 -d ClamAV-s10-<version>.bz2
-
-Install the package (the example output is for the Solaris 10 package)
-
->  # pkgadd -d ClamAV-s10-<version>
-<pre>
-The following packages are available:
-  1  ClamAV     ClamAV 0.92
-                (sparc) 0.92
-
-Select package(s) you wish to process (or 'all' to process
-all packages). (default: all) [?,??,q]: 1
-
-Processing package instance <ClamAV> from </tmp/ClamAV-s10-0.92>
-
-ClamAV 0.92(sparc) 0.92
-Citrus IT Limited
-
-
 **********************************************************************
 
 Would you like to download the latest virus pattern definitions during
