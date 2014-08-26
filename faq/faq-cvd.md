@@ -60,7 +60,7 @@ If you can't, it means your network is broken. You'll be still able to download 
 
 * I'm running ClamAV on a lot of clients on my local network. Can I serve the cvd files from a local server so that each client doesn't have to download them from your servers?
 
->Sure, you can find more details on our wiki at __"http://wiki.clamav.net/Main/CvdPrivateMirror":http://wiki.clamav.net/Main/CvdPrivateMirror__
+>Sure, you can find more details on our wiki at [https://github.com/vrtadmin/clamav-faq/blob/master/mirrors/CvdPrivateMirror.md](https://github.com/vrtadmin/clamav-faq/blob/master/mirrors/CvdPrivateMirror.md) 
 >
 >If you want to take advantage of incremental updates, install a proxy server and then configure your freshclam clients to use it (watch for the HTTPProxyServer parameter in man freshclam.conf). 
 >
@@ -73,7 +73,7 @@ If you can't, it means your network is broken. You'll be still able to download 
 
 * I can't wait for you to update the database! I need to use the new signature NOW!
 
->No problem, save your own signatures in a text file with the appropriate extension (see "signatures.pdf":/doc/latest/signatures.pdf for more information). Put it in the same dir where the .cvd files are located. ClamAV will load it after the official .cvd files. You need not to sign the .db file.
+>No problem, save your own signatures in a text file with the appropriate extension. Put it in the same dir where the .cvd files are located. ClamAV will load it after the official .cvd files. You need not to sign the .db file.
 
 * Can I download the virusdb manually?
 

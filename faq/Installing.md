@@ -311,7 +311,7 @@ and then the daemons can be started with
 
 For assistance with this package, please email clamav@citrus-it.net
 in the first instance. For general assistance with ClamAV, see
-http://www.clamav.net/ & http://wiki.clamav.net/
+http://www.clamav.net/ 
 
 **********************************************************************
 Installation of <ClamAV> was successful.
@@ -486,9 +486,6 @@ This process provides for you:
 
 
 [my blog]: http://miltonpaiva.wordpress.com/
-[RPM Packages for Fedora/Redhat]: http://crash.fce.vutbr.cz/crash-hat/4/clamav/
-[RPM Packages for CentOS]: http://crash.fce.vutbr.cz/crash-hat/centos/5/clamav/
 [OpenCSW]: http://www.opencsw.org
 [OpenVMS project site]: http://clamav.dyndns.org/clamav
 [for OpenVMS]: http://www.openvms.org/
-[clamav.citrus-it.net]: http://clamav.citrus-it.net/

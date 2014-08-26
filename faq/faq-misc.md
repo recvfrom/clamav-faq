@@ -10,7 +10,7 @@
 
 * My legitimate emails from yourdomain.tld are detected as Phishing.Heuristics.Email.SpoofedDomain
 
->Please [submit a sample](http://www.clamav.net/lang/en/sendvirus/), marking it as a false positive, phishing. If it's really a false positive, we will add a whitelist entry for it.
+>Please [submit a sample](http://www.clamav.net/malware-sample), marking it as a false positive, phishing. If it's really a false positive, we will add a whitelist entry for it.
 
 * Can I convert the new database format to the old one? 
 
@@ -47,19 +47,6 @@
 * When using clamscan, is there a way to know which message within an mbox is infected?
 
 >There are two solutions: Run <code>clamscan --debug</code>, look for _Deal with email number xxx_ Alternatively you can convert the mbox to Maildir  format, run clamscan on it and then convert it back to mbox format. There are many tools available which can convert to and from Maildir format: formail, mbox2maildir and maildir2mbox
-
-* I'm running ClamAV + amavisd-new and get the following error in my mail log _amavis: Clam Antivirus-clamd FAILED - unknown status:/var/lib/amavis/amavis-20060917T120205-21416/parts: lstat() failed. ERROR\n
-amavis: WARN: all primary virus scanners failed, considering backups_ . What's wrong?
-
->Please refer to "Wiki":http://wiki.clamav.net/Main/AmavisdNew.
-
-* I'm running Qmail + Qmail-Scanner + ClamAV and get the following error in my mail logs: _clamdscan: corrupt or unknown clamd scanner error or memory/resource/perms problem_. What's wrong with it?
-
->Please refer to "Wiki":http://wiki.clamav.net/Main/QmailScanner.
-
-* How do I use ClamAV with p3scan?
-
->Please refer to "Wiki":http://wiki.clamav.net/Main/P3Scan.
 
 * What platforms does it support ?
 

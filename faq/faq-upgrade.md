@@ -22,7 +22,7 @@
 
 * What does _Malformed hexstring: This ClamAV version has reached End of Life_ mean?
 
->Please refer to: [eol-clamav-094]
+>Please refer to: [eol-clamav-096]
 
 * How do I verify the integrity of ClamAV sources?
 
@@ -51,13 +51,13 @@
 
 
 [Upgrade Instructions]: https://github.com/vrtadmin/clamav-faq/blob/master/faq/Upgrading.md
-[eol-clamav-094]: http://www.clamav.net/eol-clamav-094
+[eol-clamav-096]: http://blog.clamav.net/2014/07/clamav-096-engine-end-of-life.html 
 [GnuPG]:http://www.gnupg.org/
 [sources]: http://sourceforge.net/projects/clamav/files/
 [Wiki]: https://github.com/vrtadmin/clamav-faq/blob/master/faq/Upgrading.md
-[precompiled packages]: http://www.clamav.net/lang/en/download/packages/
+[precompiled packages]: http://www.clamav.net/download.html 
 [Sourcefire VRT key]: http://labs.snort.org/contact.html
-[source download page]: http://www.clamav.net/lang/en/download/sources/
+[source download page]: http://www.clamav.net/download.html 
 [gcc's bugzilla]: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=26763
 [relevant article]: http://kerneltrap.org/Linux/Compiler_Optimization_Bugs_and_World_Domination
 [our bugzilla]: https://bugzilla.clamav.net/show_bug.cgi?id=613 
