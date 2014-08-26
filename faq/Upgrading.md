@@ -24,7 +24,7 @@ Backup your database signature (located in _/usr/local/share/clamav_ by default)
 
 ### Webmin and yum
 
-If you obtained a server from a competent hosting provider they probably already installed clamav using yum and the extras repository. To obtain a new version:
+To obtain a new version:
 
 `yum list clamav`
 
