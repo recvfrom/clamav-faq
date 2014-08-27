@@ -6,8 +6,6 @@ To prevent the spread of worms it is essential to check for updates frequently. 
 
 The latest version of this document is always available at [MirrorHowTo](https://github.com/vrtadmin/clamav-faq/blob/master/mirrors/MirrorHowto.md). Before going any further, please check that you are reading the latest version.
 
-Japanese sysadmins can find a translated version of this doc at http://www.orange.co.jp/~masaki/clamav/mirror-howto-jp.html (not necessarily up to date)
-
 #### Requirements
 
 We need fast reliable mirrors. Servers eligible to become mirrors have to meet the following requirements:
