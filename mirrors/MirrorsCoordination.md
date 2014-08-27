@@ -4,7 +4,7 @@
 
 You are encouraged to put some bandwidth limit on your ClamAV mirror vhost.
 
-Many mirror sysadmins running the [Apache HTTP Server](http//httpd.apache.org/) find the [Bandwidth Mod](http://bwmod.sourceforge.net/) useful for this purpose. 
+Many mirror sysadmins running the [Apache HTTP Server](http://httpd.apache.org/) find the [Bandwidth Mod](http://bwmod.sourceforge.net/) useful for this purpose. 
 
 Here is an example config that will do the following:
 
@@ -26,7 +26,7 @@ Here is an example config that will do the following:
 </pre>
 
 _Note_ You can also use mod_cband to limit the download-speed.
-The Source is available at http://cband.linux.pl/download/ or http://sourceforge.net/projects/cband/
+The Source is available at [http://sourceforge.net/projects/cband/](http://sourceforge.net/projects/cband/)
 Just run
 <pre>./configure
 make

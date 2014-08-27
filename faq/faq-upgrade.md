@@ -2,7 +2,7 @@
 
 ### ClamAV from Packages
 
-If you installed from packages, find new packages and install them. See ClamPackages.
+If you installed from a package, we suggest you find the approve package from your distro provider and install that. The ClamAV team does not maintain individual packages for every distribution build.
 If there are no new packages, you have three options:
 
 * Wait
@@ -36,7 +36,7 @@ The _functionality level_ of the database determines which scanner engine versio
 
 * What does _Your ClamAV installation is OUTDATED_ mean?
 
-You'll get this message whenever a new version of ClamAV is released.  In order to detect all the latest viruses, it's not enough to keep your database up to date. You also need to run the latest version of the scanner. You can download the [sources] of the latest release from our website. Upgrade instructions are on the [Wiki]. If you are afraid to break something while upgrading, use  the [precompiled packages] for your operating system/distribution.  Remember: running the latest stable release also improves stability.
+You'll get this message whenever a new version of ClamAV is released.  In order to detect all the latest viruses, it's not enough to keep your database up to date. You also need to run the latest version of the scanner. You can download the [sources] of the latest release from our website. If you are afraid to break something while upgrading, use  the [precompiled packages] for your operating system/distribution.  Remember: running the latest stable release also improves stability.
 
 * I upgraded to the latest stable version but I still get the message _Your ClamAV installation is OUTDATED_, why?
 
@@ -80,7 +80,7 @@ Our configure scripts will detect if your compiler is affected by this bug and r
 [GnuPG]:http://www.gnupg.org/
 [sources]: http://sourceforge.net/projects/clamav/files/
 [Wiki]: https://github.com/vrtadmin/clamav-faq/blob/master/faq/Upgrading.md
-[precompiled packages]: http://www.clamav.net/download.html 
+[precompiled packages]: http://www.clamav.net/download.html#otherversions 
 [Sourcefire VRT key]: http://labs.snort.org/contact.html
 [source download page]: http://www.clamav.net/download.html 
 [gcc's bugzilla]: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=26763

@@ -30,7 +30,7 @@ If you cannot make your mirror available to all ClamAV users, and you would like
 
 ### 1. Request a rsync account
 
-Before starting the setup, [contact the mirror maintainers](mailto:rsteinme@cisco.com,jesler@cisco.com) to verify that there is a need for another mirror in your country.
+Before starting the setup, [contact the mirror maintainers](http://lists.clamav.net/cgi-bin/mailman/listinfo/clamav-mirrors) by sigining up on the Mirrors mailing list to verify that there is a need for another mirror in your country.
 
 ### 2. Configure your web server
 
