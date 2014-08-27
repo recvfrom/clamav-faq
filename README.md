@@ -30,8 +30,6 @@ This is the official ClamAV FAQ repository. To checkout all the files:
 
 [FAQ - EOL](https://github.com/vrtadmin/clamav-faq/blob/master/faq/faq-eol.md)
 
-[FAQ - Contributors](https://github.com/vrtadmin/clamav-faq/blob/master/faq/faq-contributors.md)
-
 [FAQ - PUA - Potentially Unwanted Application](https://github.com/vrtadmin/clamav-faq/blob/master/faq/faq-pua.md)
 
 ### Mirror How-To ###
