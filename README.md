@@ -10,6 +10,8 @@ This is the official ClamAV FAQ repository. To checkout all the files:
 
 ### FAQ Pages ###
 
+[FAQ - Installation](https://github.com/vrtadmin/clamav-faq/blob/master/faq/Installation.md)
+
 [FAQ - CVD](https://github.com/vrtadmin/clamav-faq/blob/master/faq/faq-cvd.md)
 
 [FAQ - CCTTS](https://github.com/vrtadmin/clamav-faq/blob/master/faq/faq-cctts.md)
