@@ -73,49 +73,9 @@ You don't necessarily need all packages. Please read ClamOverview carefully to u
 
 ### RedHat and Fedora ###
 
-#### Packages for Fedora 9 ####
+#### Packages for Fedora ####
 
-http://matrix.senecac.on.ca/~mpaivaneto/clamav-0.94-1.fc9.i386.rpm
-http://matrix.senecac.on.ca/~mpaivaneto/clamav-0.94-1.fc9.src.rpm
-
-* rpm -ivh http://matrix.senecac.on.ca/~mpaivaneto/clamav-0.94-1.fc9.i386.rpm
-
-For more information contact me at mpaivaneto@learn.senecac.on.ca
-
-Packages that you'll need to download.
-
-* clamav-db-0.xx.rpm
-* clamav-devel-0.xx.rpm
-* clamav-0.xx.rpm
-* clamd-0.xx.rpm
-
-Fresh Installation
-
-* rpm -Uvh clamav-db-0.xx.rpm
-* rpm -Uvh clamav-devel-0.xx.rpm
-* rpm -Uvh clamav-0.xx.rpm
-* rpm -Uvh clamd-0.xx.rpm
-
-Upgrading clamav engine from rpms
-
-* rpm -Uvh clamav-db-0.xx.rpm clamav-devel-0.xx.rpm clamav-0.xx.rpm clamd-0.xx.rpm
-
-_Note_ *Richard Vinke* reports The file "clamd-0.xx.rpm" is not available for fedora5. I am using "rpm -Uvh" without this file. I needed the following post-install actions.
-
-* Change the ownership of the directory _/var/lib/clamav_ to the user as stated in the configuration file.
-* Rename the _/etc/clamd.conf.rpmsave_ to _/etc/clamd.conf_.
-
-You must upgrade the rpms at the same time, otherwise it will result in dependencies of the previous installation
-
-#### Updates Particular to Fedora 6 ####
-
-As Richard Mentions, "The file "clamd-0.xx.rpm" is not available..." you should grab _clamav-server-0.XX.rpm_ and install that in its place.
-
-Sources:
-
->[RPM Packages for Fedora/Redhat]
->
->[RPM Packages for CentOS]
+`yum install clamav clamav-update`
 
 ### Mandriva ###
 
@@ -151,6 +111,164 @@ Another way to install the downloaded file is via rpm.
 Use the ports Luke.
 
 ### Solaris ###
+
+There are a number of package maintainers for ClamAV on Solaris. The installation method differs for each.
+
+Would you like to download the latest virus pattern definitions during installation ?  (This requires that you have a direct connection to the Internet. If you are behind a proxy server then skip this step.)
+  
+    
+    Update virus patterns? (y/n): y
+    
+     ## Processing package information.
+     ## Processing system information.
+     ## Verifying package dependencies.
+     ## Verifying disk space requirements.
+     ## Checking for conflicts with packages already installed.
+     ## Checking for setuid/setgid programs.
+    
+    This package contains scripts which will be executed with super-user
+    permission during the process of installing this package.
+    
+    Do you want to continue with the installation of <ClamAV> [y,n,?] y
+    
+    Installing ClamAV 0.92 as <ClamAV>
+    
+     ## Executing preinstall script.
+    Creating group clamav...
+    Creating user clamav...
+     ## Installing part 1 of 1.
+    /lib/svc/method/clamav
+    /opt/ClamAV/bin/clamav-config
+    /opt/ClamAV/bin/clamconf
+    /opt/ClamAV/bin/clamdscan
+    /opt/ClamAV/bin/clamscan
+    /opt/ClamAV/bin/freshclam
+    /opt/ClamAV/bin/sigtool
+    /opt/ClamAV/etc/clamd.conf
+    /opt/ClamAV/etc/freshclam.conf
+    /opt/ClamAV/etc/freshclam.conf.install
+    /opt/ClamAV/include/clamav.h
+    /opt/ClamAV/lib/libclamav.a
+    /opt/ClamAV/lib/libclamav.la
+    /opt/ClamAV/lib/libclamav.so <symbolic link>
+    /opt/ClamAV/lib/libclamav.so.3 <symbolic link>
+    /opt/ClamAV/lib/libclamav.so.3.0.3
+    /opt/ClamAV/lib/libclamunrar.a
+    /opt/ClamAV/lib/libclamunrar.la
+    /opt/ClamAV/lib/libclamunrar.so <symbolic link>
+    /opt/ClamAV/lib/libclamunrar.so.3 <symbolic link>
+    /opt/ClamAV/lib/libclamunrar.so.3.0.3
+    /opt/ClamAV/lib/libclamunrar_iface.a
+    /opt/ClamAV/lib/libclamunrar_iface.la
+    /opt/ClamAV/lib/libclamunrar_iface.so <symbolic link>
+    /opt/ClamAV/lib/libclamunrar_iface.so.3 <symbolic link>
+    /opt/ClamAV/lib/libclamunrar_iface.so.3.0.3
+    /opt/ClamAV/lib/pkgconfig/libclamav.pc
+    /opt/ClamAV/sbin/clamav-milter
+    /opt/ClamAV/sbin/clamd
+    /opt/ClamAV/share/clamav/daily.inc/COPYING
+    /opt/ClamAV/share/clamav/daily.inc/daily.cfg
+    /opt/ClamAV/share/clamav/daily.inc/daily.db
+    /opt/ClamAV/share/clamav/daily.inc/daily.fp
+    /opt/ClamAV/share/clamav/daily.inc/daily.hdb
+    /opt/ClamAV/share/clamav/daily.inc/daily.hdu
+    /opt/ClamAV/share/clamav/daily.inc/daily.info
+    /opt/ClamAV/share/clamav/daily.inc/daily.mdb
+    /opt/ClamAV/share/clamav/daily.inc/daily.mdu
+    /opt/ClamAV/share/clamav/daily.inc/daily.ndb
+    /opt/ClamAV/share/clamav/daily.inc/daily.ndu
+    /opt/ClamAV/share/clamav/daily.inc/daily.pdb
+    /opt/ClamAV/share/clamav/daily.inc/daily.wdb
+    /opt/ClamAV/share/clamav/daily.inc/daily.zmd
+    /opt/ClamAV/share/clamav/main.cvd
+    /opt/ClamAV/share/clamav/mirrors.dat
+    /opt/ClamAV/share/man/man1/clamconf.1
+    /opt/ClamAV/share/man/man1/clamdscan.1
+    /opt/ClamAV/share/man/man1/clamscan.1
+    /opt/ClamAV/share/man/man1/freshclam.1
+    /opt/ClamAV/share/man/man1/sigtool.1
+    /opt/ClamAV/share/man/man5/clamd.conf.5
+    /opt/ClamAV/share/man/man5/freshclam.conf.5
+    /opt/ClamAV/share/man/man8/clamav-milter.8
+    /opt/ClamAV/share/man/man8/clamd.8
+    /var/svc/manifest/network/clamav.xml
+    
+    [ verifying class <none> ]
+    
+#### Executing postinstall script:
+    
+    svccfg: Taking "initial" snapshot for svc:/network/clamav:default.
+    svccfg: Taking "last-import" snapshot for svc:/network/clamav:default.
+    svccfg: Refreshed svc:/network/clamav:default.
+    svccfg: Refreshed svc:/milestone/multi-user:default.
+    svccfg: Successful import.
+    
+     *** Downloading latest virus pattern definitions.
+    
+    Current working dir is /opt/ClamAV/share/clamav
+    Max retries == 3
+    ClamAV update process started at Sun Dec 30 20:03:53 2007
+    Querying current.cvd.clamav.net
+    TTL: 300
+    Software version from DNS: 0.92
+    main.cvd version from DNS: 45
+    main.cvd is up to date (version: 45, sigs: 169676, f-level: 21, builder: sven)
+    daily.cvd version from DNS: 5297
+    Retrieving http://database.clamav.net/daily.cvd
+    Trying to download http://database.clamav.net/daily.cvd (IP: 193.19.98.136)
+    Downloading daily.cvd [100%]
+    Removing incremental directory daily.inc
+    Removing backup directory ./clamav-a1b9834acd3a8a1360172186199f917d
+    daily.inc updated (version: 5297, sigs: 14304, f-level: 21, builder: ccordes)
+    Database updated (183980 signatures) from database.clamav.net (IP: 193.19.98.136)
+    
+
+####Installation is complete.
+    
+    You should now review the following configuration files and customise
+    them for your environment.
+    
+     /opt/ClamAV/etc/clamd.conf
+     /opt/ClamAV/etc/freshclam.conf
+    
+    and then the daemons can be started with
+    
+    svcadm enable clamav
+    
+    
+    For assistance with this package, please email clamav@citrus-it.net
+    in the first instance. For general assistance with ClamAV, see
+    http://www.clamav.net/ 
+    
+    Installation of <ClamAV> was successful.
+    
+  
+
+####Verify that the ClamAV service has been installed into the SMF database (Solaris 10 only)
+  
+     # svcs clamav
+    STATE          STIME    FMRI
+    disabled       20:06:24 svc:/network/clamav:default
+    Test the command line scanner
+    
+     # /opt/ClamAV/bin/clamscan /tmp/ClamAV-s10-0.92 
+    /tmp/ClamAV-s10-0.92: OK
+    
+    ----------- SCAN SUMMARY -----------
+    Known viruses: 183980
+    Engine version: 0.92
+    Scanned directories: 0
+    Scanned files: 1
+    Infected files: 0
+    Data scanned: 19.48 MB
+    Time: 13.060 sec (0 m 13 s)
+    Configure the daemon scanner and updater
+    
+
+Edit the two configuration files in _/opt/ClamAV/etc_ to suit your installation then start the ClamAV services.    
+>  # svcadm enable clamav
+
+Instructions courtesy of Andy Fiddaman - 30 Dec 2007
 
 #### Solaris packages from [OpenCSW] ####
 
@@ -297,4 +415,4 @@ This process provides for you:
 [my blog]: http://miltonpaiva.wordpress.com/
 [OpenCSW]: http://www.opencsw.org
 [OpenVMS project site]: http://clamav.dyndns.org/clamav
-[for OpenVMS]: http://www.openvms.org/
+[for OpenVMS]: http://www.openvms.org/    
