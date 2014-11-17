@@ -57,13 +57,16 @@ sub getTXT {
 
 sub getLocalVersion {
   my $file=shift @_;
+  my $version = -1;
   my $cmd="sigtool -i $clamdb/$file.cvd";
   open P, "$cmd |" || die("Can't run $cmd : $!");
   while (<P>) {
     next unless /Version: (\d+)/;
-    return $1;
+    $version = $1;
+    last;
   }
-  return -1;
+  close P;
+  return $version;
 }
 
 sub updateFile {
