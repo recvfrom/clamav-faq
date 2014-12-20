@@ -83,7 +83,7 @@ You don't necessarily need all packages. Please read ClamOverview carefully to u
 
 ### Gentoo ###
 
-Nobody uses Gentoo.
+`emerge clamav`
 
 ### SuSE ###
 
