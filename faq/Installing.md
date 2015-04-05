@@ -72,9 +72,9 @@ On CentOS:
 # yum install -y clamav
 ```
 
-On [Community Enterprise Operating System (CentOS)] the clamav package requires the [Extra Packages for Enterprise Linux (EPEL) repository](https://fedoraproject.org/wiki/EPEL).
+On [Community Enterprise Operating System (CentOS)](http://centos.org/) the clamav package requires the [Extra Packages for Enterprise Linux (EPEL) repository](https://fedoraproject.org/wiki/EPEL).
 
-> On [RedHat Enterprise Linux (RHEL)](http://www.redhat.com/en/technologies/linux-platforms/enterprise-linux) the EPEL release package has to be installed either manually or through RHN.
+On [RedHat Enterprise Linux (RHEL)](http://www.redhat.com/en/technologies/linux-platforms/enterprise-linux) the EPEL release package has to be installed either manually or through RHN.
 
 ### Fedora <a id="fedora"></a> ###
 
@@ -94,7 +94,7 @@ On [Community Enterprise Operating System (CentOS)] the clamav package requires 
 # emerge clamav
 ```
 
-See [Portage]:https://packages.gentoo.org/package/app-antivirus/clamav.
+See package entry on [Portage](https://packages.gentoo.org/package/app-antivirus/clamav).
 
 ### openSUSE <a id="opensuse"></a> ###
 
