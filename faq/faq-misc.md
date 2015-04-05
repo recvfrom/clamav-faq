@@ -10,7 +10,7 @@
 
 * My legitimate emails from yourdomain.tld are detected as Phishing.Heuristics.Email.SpoofedDomain
 
->Please [submit a sample](http://www.clamav.net/malware-sample), marking it as a false positive, phishing. If it's really a false positive, we will add a whitelist entry for it.
+>Please [submit a sample](http://www.clamav.net/report/report-malware.html), marking it as a false positive, phishing. If it's really a false positive, we will add a whitelist entry for it.
 
 * Can I convert the new database format to the old one? 
 

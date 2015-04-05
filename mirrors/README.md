@@ -2,7 +2,7 @@
 
 ## This doc
 
-The latest version of this document is always available at [MirrorHowTo](https://github.com/vrtadmin/clamav-faq/blob/master/mirrors/MirrorHowto.md). Before going any further, please check that you are reading the latest version.
+The latest version of this document is always available at [MirrorHowTo](MirrorHowto.md). Before going any further, please check that you are reading the latest version.
 
 Japanese sysadmins can find a translated version of this doc at http://www.orange.co.jp/~masaki/clamav/mirror-howto-jp.html (not necessarily up to date)
 
@@ -110,19 +110,19 @@ If you would like to grant us shell access, use authorized_keys_shell instead.
 
 Download the following files:
 
-  * [authorized_keys_noshell.sig](https://github.com/vrtadmin/clamav-faq/blob/master/mirrors/files/authorized_keys_noshell.sig.txt)
+  * [authorized_keys_noshell.sig](files/authorized_keys_noshell.sig.txt)
 
-  * [authorized_keys_noshell](https://github.com/vrtadmin/clamav-faq/blob/master/mirrors/files/authorized_keys_noshell.txt)
+  * [authorized_keys_noshell](files/authorized_keys_noshell.txt)
 
-  * [authorized_keys_shell.sig](https://github.com/vrtadmin/clamav-faq/blob/master/mirrors/files/authorized_keys_shell.sig.txt)
+  * [authorized_keys_shell.sig](files/authorized_keys_shell.sig.txt)
 
-  * [authorized_keys_shell](https://github.com/vrtadmin/clamav-faq/blob/master/mirrors/files/authorized_keys_shell.txt)
+  * [authorized_keys_shell](files/authorized_keys_shell.txt)
 
-  * [clam-clientsync.conf](https://github.com/vrtadmin/clamav-faq/blob/master/mirrors/files/clam-clientsync.conf.txt)
+  * [clam-clientsync.conf](files/clam-clientsync.conf.txt)
 
-  * [clam-clientsync](https://github.com/vrtadmin/clamav-faq/blob/master/mirrors/files/clam-clientsync.txt)
+  * [clam-clientsync](files/clam-clientsync.txt)
 
-from [github mirror files](https://github.com/vrtadmin/clamav-faq/blob/master/mirrors/files/).
+from [github mirror files](files/).
 
 Verify the signature using:
 <pre>$ gpg --verify authorized_keys_noshell.sig authorized_keys_noshell

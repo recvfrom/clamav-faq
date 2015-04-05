@@ -79,12 +79,12 @@ Our configure scripts will detect if your compiler is affected by this bug and r
 [eol-clamav-096]: http://blog.clamav.net/2014/07/clamav-096-engine-end-of-life.html 
 [GnuPG]:http://www.gnupg.org/
 [sources]: http://sourceforge.net/projects/clamav/files/
-[Wiki]: https://github.com/vrtadmin/clamav-faq/blob/master/faq/Upgrading.md
+[Wiki](Upgrading.md)
 [precompiled packages]: http://www.clamav.net/download.html#otherversions 
 [Sourcefire VRT key]: http://labs.snort.org/contact.html
 [source download page]: http://www.clamav.net/download.html 
 [gcc's bugzilla]: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=26763
-[relevant article]: http://kerneltrap.org/Linux/Compiler_Optimization_Bugs_and_World_Domination
+[gcc's Options That Control Optimization]: https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html
 [our bugzilla]: https://bugzilla.clamav.net/show_bug.cgi?id=613 
 [official binaries available]: http://llvm.org/releases/download.html#2.2
-[Installing ClamAV]: https://github.com/vrtadmin/clamav-faq/blob/master/faq/Installing.md
+[Installing ClamAV]: ../faq/Installing.md
