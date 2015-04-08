@@ -16,6 +16,7 @@ We need fast reliable mirrors. Servers eligible to become mirrors have to meet t
    * sshd listening on port 22 (see [Update Firewall](#update-firewall) for an alternative solution)
    * All the tools and protocols required for our push-mirroring system: rsync, ssh, bash, lockfile. See below for the details.
    * The mirror has to be available to all ClamAV users. We DO NOT support private mirrors!
+
 We also appreciate (but do not require) having shell access to the server hosting the mirror. FTP access is not accepted.
 
 The virusdb team will use the account only to update the virus database.
@@ -262,7 +263,7 @@ Please note that this page doesn't reflect how often the database is propagated 
 
 ## Who is responsible for the virus database
 
-The virusdb team, aka [Sourcefire VRT](http://www.clamav.net/about/team) take care of reviewing virus signatures, checking for new viruses in the wild and committing changes to the virus database file.
+The virusdb team, aka [Talos](http://www.clamav.net/about.html#credits) take care of reviewing virus signatures, checking for new viruses in the wild and committing changes to the virus database file.
 
 The updates are released quite often (usually a few times per day). If you want to be notified whenever the virus database is updated subscribe to [clamav-virusdb at lists.clamav.net](http://lists.clamav.net/mailman/listinfo/clamav-virusdb).
 
@@ -270,7 +271,7 @@ Every time the virusdb team updates the database, an email with all the details 
 
 ## Virus submission
 
-Whenever you find a new virus which is not detected by ClamAV you should send it to the virusdb team by filling the form at http://www.clamav.net/sendvirus.
+Whenever you find a new virus which is not detected by ClamAV you should send it to the virusdb team by filling the form at http://www.clamav.net/report/report-malware.html.
 
 They will review your submission and update the database so that the whole ClamAV user community can take benefit from it. Never send virus samples to ClamAV mailing-lists or developers addresses.
 
@@ -281,14 +282,13 @@ Our users are encouraged to add the following directives to their freshclam.conf
    * DatabaseMirror db.XY.clamav.net
    * DatabaseMirror db.local.clamav.net
 
-where XY stands for the country the server lives in a full list is available at http://www.iana.org/cctld/cctld-whois.htm. Each db.XY.clamav.net DNS record points to the mirrors available in the corresponding country. For a complete list of the mirrors available in each country visit http://www.clamav.net/mirrors.html.
+where XY stands for the country the server lives in a full list is available at http://www.iana.org/cctld/cctld-whois.htm. Each db.XY.clamav.net DNS record points to the mirrors available in the corresponding country. For a complete list of the mirrors available in each country visit http://www.clamav.net/doc/mirrors-how-to.html.
 
 If freshclam can't connect to db.XY.clamav.net, it will fallback on db.local.clamav.net, which attempts to redirect the user to the closest pool of mirrors by looking up its ip source address in the [GeoIP database](http://www.maxmind.com/app/geoip_country). See:
 
    * http://www.iana.org/assignments/ipv4-address-space
-   * http://ip-to-country.webhosting.info/
    * http://ftp.apnic.net/stats/apnic/
-   * http://www.ripe.net/db/erx/erx-ip/
+   * https://www.ripe.net/lir-services/resource-management/erx
 
 We are aware that looking up the IP source address is not an accurate method to find the user location from a network topology point of view. However we believe it is a good approximation.
 

@@ -2,16 +2,16 @@
 
 ## Installing from source ##
 
-* Check [Requirements](#Requirements)
+* Check [Requirements](#requirements)
 * Uninstall any old version, see UninstallClamAV (Note: this isn't essential, but removes sources of problems).
 * wget the source gzip file, see WhichVersion
 * untar the source to an appropriate location. Note that most modern versions of tar will automatically ungzip for you.
 * ensure you have a user clamav and group clamav.
->* If you're using a different group/user you must specify that using the _--with-user_ and/or _--with-group_ option when you run configure
+  * If you're using a different group/user you must specify that using the _--with-user_ and/or _--with-group_ option when you run configure
 * Configure the build:
->* for clamav-milter support _./configure --enable-milter_
->* to support new features _./configure --enable-experimental_
->* otherwise _./configure_
+  * for clamav-milter support _./configure --enable-milter_
+  * to support new features _./configure --enable-experimental_
+  * otherwise _./configure_
 * run _make_
 * if you did not uninstall the previous version, stop any running services.
 * as root, run "make install" to install the binaries
@@ -19,17 +19,21 @@
 * restart any relevant services.
 * Run freshclam manually, to ensure your AV definitions are up to date.
 
-### Requirements ###
+
+### Requirements <a id="requirements" class="anchor">&nbsp;</a>###
+
+Mandatory:
 
 * C compiler
 * zlib library
+
 >__Note:__ you must compile with a shared library, use:
 >_make clean ; ./configure -s_ __before__ _make_ when building zlib
 
-Optional
-: GMP: for digital signatures
-: cURL: for mail follow url
+Optional:
 
+* GMP: for digital signatures
+* cURL: for mail follow url
 
 ## Installing From Packages ##
 
@@ -41,76 +45,69 @@ You don't necessarily need all packages. Please read ClamOverview carefully to u
 
 ## Operating System Specific Information ##
 
-* [Debian](#Debian)
-* [RedHat and Fedora](#RedHat)
-* [Mandriva](#Mandriva)
-* [Gentoo](#Gentoo)
-* [SuSE](#SuSE)
-* [FreeBSD, OpenBSD, NetBSD](#FreeBSD)
-* [Solaris](#Solaris)
-* [Slackware](#Slackware)
-* [Windows](#Windows)
-* [CentOS](#CentOS)
-* [OpenVMS](#OpenVMS)
+* [Debian](#debian)
+* [RHEL/CentOS](#rhel)
+* [Fedora](#fedora)
+* [Mandriva](#mandriva)
+* [Gentoo](#gentoo)
+* [openSUSE](#opensuse)
+* [FreeBSD, OpenBSD, NetBSD](#bsd)
+* [Solaris](#solaris)
+* [Slackware](#slackware)
+* [Windows](#windows)
+* [OpenVMS](#openvms)
 
-### Debian ###
+### Debian <a id="debian" class="anchor">&nbsp;</a> ###
 
-* apt-get update
-* apt-get install clamav
+```
+# apt-get update
+# apt-get install clamav
+```
 
-#### Available packages ####
+### RHEL/CentOS <a id="rhel" class="anchor">&nbsp;</a> ###
 
-* _clamav-getfiles_ - Update script for clamav
-* _clamav_ - antivirus scanner for Unix
-* _clamav-base_ - base package for clamav, an anti-virus utility for Unix
-* _clamav-daemon_ - antivirus scanner daemon
-* _clamav-data_ - clamav data files
-* _clamav-docs_ - documentation package for clamav, an anti-virus utility for Unix
-* _clamav-freshclam_ - downloads clamav virus databases from the Internet
-* _clamav-milter_ - antivirus scanner for sendmail
-* _clamav-testfiles_ - use these files to test that your Antivirus program works
-* _clamav-dbg_ - debug symbols for clamav
+On CentOS:
 
-### RedHat and Fedora ###
+```
+# yum install -y epel-release
+# yum install -y clamav
+```
 
-#### Packages for Fedora ####
+On [Community Enterprise Operating System (CentOS)](http://centos.org/) the clamav package requires the [Extra Packages for Enterprise Linux (EPEL) repository](https://fedoraproject.org/wiki/EPEL).
 
-`yum install clamav clamav-update`
+On [RedHat Enterprise Linux (RHEL)](http://www.redhat.com/en/technologies/linux-platforms/enterprise-linux) the EPEL release package has to be installed either manually or through RHN.
 
-### Mandriva ###
+### Fedora <a id="fedora" class="anchor">&nbsp;</a> ###
 
-* urpmi clamav
+```
+# yum install -y clamav clamav-update
+```
 
-### Gentoo ###
+### Mandriva <a id="mandriva" class="anchor">&nbsp;</a> ###
 
-`emerge clamav`
+```
+# urpmi clamav clamd
+```
 
-### SuSE ###
+### Gentoo <a id="gentoo" class="anchor">&nbsp;</a> ###
 
-For newbies, the easiest way to install ClamAV is to find an RPM for SuSE. Look in _ftp://ftp.suse.com/pub/projects/clamav/_. Go one level down to see if there is a newer version. On the next level choose your SuSE Version and Processor-Type e.g., 9.3-i386 for SuSE 9.3 on a i386 compatible system. The program file requires about 1 MB, and the database file requires about 8 MB. The program file is the most important. When you run _freshclam_ later, it may update the database without needing to do this database ftp. But if _freshclam_ fails, come back and get this database RPM and install it like the other.
+```
+# emerge clamav
+```
 
-If you use the generic source/compile download (not SuSE RPM) it will, by default, put the programs and documentation in places that SuSE does not expect. Then it is hard to determine which files you're really running from, especially for a newbie to SuSE.
+See package entry on [Portage](https://packages.gentoo.org/package/app-antivirus/clamav).
 
-* Use ftp or wget to download the rpm file to a folder on your PC.
-* Click on the icon representing the file. This should start a window with some information tabs. Review them if you wish.
-* Click on the "Install with YaST" button.
-* The installer may demand the SuSE installation DVD, or installation CD #4 (for older SuSE installations). Go ahead and humor the installer. It will pretend to install the older version, but the new one will actually be installed.
-* Open a _konsole_ or _gnome-terminal_ terminal/shell window.
-* Run _/bin/su_ and then enter the root password. (I always do this out of habit. I get fewer gripes from the system that way.)
-* Enter _freshclam_. (It should update the database from the latest version. Be sure the modem/LAN is on and internet connected. If this doesn't work, go back to #1 and use ftp to download the database.)
-* Change directory to "/" by entering _cd /_.
-* Enter _clamscan -i -r --detect-broken_ (This will scan every file on the system. It may take a while if you've got a lot of files. It will report only the problems found.)
-* For more information, enter _man clamscan_ or _man freshclam_. Other interesting files are _/etc/clamd.conf_ and _/etc/freshclam.conf_. You can run _find top_dir -name "clam*" -ls_ to find other files that may be of interest.
+### openSUSE <a id="opensuse" class="anchor">&nbsp;</a> ###
 
-Another way to install the downloaded file is via rpm.
+```
+# zypper install -y clamav
+```
 
-* _rpm -Uvh clamav-version-0.1.platform.rpm_ to upgrade (update) the installation.
-
-### FreeBSD, OpenBSD, NetBSD ###
+### FreeBSD, OpenBSD, NetBSD <a id="bsd" class="anchor">&nbsp;</a> ###
 
 Use the ports Luke.
 
-### Solaris ###
+### Solaris <a id="solaris" class="anchor">&nbsp;</a> ###
 
 There are a number of package maintainers for ClamAV on Solaris. The installation method differs for each.
 
@@ -223,7 +220,7 @@ Would you like to download the latest virus pattern definitions during installat
     Database updated (183980 signatures) from database.clamav.net (IP: 193.19.98.136)
     
 
-####Installation is complete.
+#### Installation is complete.
     
     You should now review the following configuration files and customise
     them for your environment.
@@ -241,12 +238,11 @@ Would you like to download the latest virus pattern definitions during installat
     http://www.clamav.net/ 
     
     Installation of <ClamAV> was successful.
-    
   
 
 ####Verify that the ClamAV service has been installed into the SMF database (Solaris 10 only)
   
-     # svcs clamav
+    # svcs clamav
     STATE          STIME    FMRI
     disabled       20:06:24 svc:/network/clamav:default
     Test the command line scanner
@@ -266,6 +262,7 @@ Would you like to download the latest virus pattern definitions during installat
     
 
 Edit the two configuration files in _/opt/ClamAV/etc_ to suit your installation then start the ClamAV services.    
+
 >  # svcadm enable clamav
 
 Instructions courtesy of Andy Fiddaman - 30 Dec 2007
@@ -278,8 +275,7 @@ OpenCSW is a community software project for Solaris 8+ on both Sparc and x86. It
 
 More info on [OpenCSW]
 
-
-### Slackware ###
+### Slackware <a id="slackware" class="anchor">&nbsp;</a> ###
 
 Linuxpackages.net provides third-party precompiled packages for Slackware. You can find them with this search query on that site.
 
@@ -310,7 +306,7 @@ This script can be used to build a ClamAV package for Slackware 10.0 or higher w
 
 …substituting, of course, the appropriate ClamAV version for ‘1.23.4’. Note: there is no need to be root to use this build script; it will ask for your root password after building the binaries and just before creating the package (and if you have fakeroot installed, even that isn't necessary).
 
-### Windows ###
+### Windows <a id="windows" class="anchor">&nbsp;</a> ###
 
 #### First update Windows ####
 
@@ -329,63 +325,7 @@ clamAV.msi - base package for clamav, an anti-virus utility for Windows
 
 Microsoft .net version 2.0 is required starting with ClamAV 0.92.1
 
-### CentOS ###
-
-To install on CentOS using yum
-
-* create the file: _/etc/yum.repos.d/dag.repo_
-
->[dag]
->
->name=Dag RPM Repository for Red Hat Enterprise Linux
->
->baseurl=http://apt.sw.be/redhat/el$releasever/en/$basearch/dag/
->
->gpgcheck=1
->
->gpgkey=http://dag.wieers.com/packages/RPM-GPG-KEY.dag.txt
->
->enabled=1
-
-* Then do: _# yum install clamd.i386_
-
-* Restart the clamd service: _# /etc/rc.d/init.d/clamd restart_
-
-Instructions courtesy of Kieran Egan - 07 Apr 2008
-
-I just did: _# yum update clamd_ ...and it all went wrong.
-
-The problem was it installed the new binaries in a different location, so now I had two versions (see http://www.clamav.org/support/faq/)
-
-Doing: _# whereis clamscan_ and _# whereis freshclam_ showed the problem. The solution was the following set of commands run as root. Cut and paste into a shell script or type in manually.
-
-* rename the old binaries
-
->mv /usr/local/bin/clamscan /usr/local/bin/clamscan.old
->
->mv /usr/local/bin/freshclam /usr/local/bin/freshclam.old
->
->mv /usr/local/bin/clamdscan /usr/local/bin/clamdscan.old
-
-* Create links to the new ones in /usr/local/bin
-
->ln -s /usr/bin/clamscan /usr/local/bin/clamscan
->
->ln -s /usr/bin/freshclam /usr/local/bin/freshclam
->
->ln -s /usr/bin/clamdscan /usr/local/bin/clamdscan
-
-* There was a fourth new clam binary - _/usr/bin/clamconf_
-
->ln -s /usr/bin/clamconf /usr/local/bin/clamconf
-
-* Update virus database and go
-
->freshclam
-
-Instructions courtesy of  Kieran Egan - 09 May 2008
-
-### OpenVMS ###
+### OpenVMS <a id="openvms" class="anchor">&nbsp;</a> ###
 
 The ClamAV [for OpenVMS] port is mantained by Alexey Chupahin, Mibok Ltd
 
@@ -408,8 +348,6 @@ This process provides for you:
 * clamdscan 
 * clamconf 
 * scripts, allow you to start clamd and freshclam in daemon mode
-
--- AlexeyChupahin - 13 Dec 2008
 
 
 [my blog]: http://miltonpaiva.wordpress.com/
