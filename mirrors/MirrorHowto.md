@@ -4,7 +4,7 @@
 
 To prevent the spread of worms it is essential to check for updates frequently. ClamAV users often configure freshclam with a check interval of 30 minutes. With an exponentially growing number of ClamAV users, the servers hosting the virus database files get easily overloaded. For this reason we must continuously add more mirrors to our pool.
 
-The latest version of this document is always available at [MirrorHowTo](MirrorHowto.md). Before going any further, please check that you are reading the latest version.
+The latest version of this document is always available at [MirrorHowTo](https://github.com/vrtadmin/clamav-faq/blob/master/mirrors/MirrorHowto.md). Before going any further, please check that you are reading the latest version.
 
 #### Requirements
 
@@ -104,19 +104,19 @@ If you would like to grant us shell access, use authorized_keys_shell instead.
 
 Download the following files:
 
-  * [authorized_keys_noshell.sig](files/authorized_keys_noshell.sig.txt)
+  * [authorized_keys_noshell.sig](https://github.com/vrtadmin/clamav-faq/blob/master/mirrors/files/authorized_keys_noshell.sig.txt)
 
-  * [authorized_keys_noshell](files/authorized_keys_noshell.txt)
+  * [authorized_keys_noshell](https://github.com/vrtadmin/clamav-faq/blob/master/mirrors/files/authorized_keys_noshell.txt)
 
-  * [authorized_keys_shell.sig](files/authorized_keys_shell.sig.txt)
+  * [authorized_keys_shell.sig](https://github.com/vrtadmin/clamav-faq/blob/master/mirrors/files/authorized_keys_shell.sig.txt)
 
-  * [authorized_keys_shell](files/authorized_keys_shell.txt)
+  * [authorized_keys_shell](https://github.com/vrtadmin/clamav-faq/blob/master/mirrors/files/authorized_keys_shell.txt)
 
-  * [clam-clientsync.conf](files/clam-clientsync.conf.txt)
+  * [clam-clientsync.conf](https://github.com/vrtadmin/clamav-faq/blob/master/mirrors/files/clam-clientsync.conf.txt)
 
-  * [clam-clientsync](files/clam-clientsync.txt)
+  * [clam-clientsync](https://github.com/vrtadmin/clamav-faq/blob/master/mirrors/files/clam-clientsync.txt)
 
-from [github mirror files](files/).
+from [github mirror files](https://github.com/vrtadmin/clamav-faq/blob/master/mirrors/files/).
 
 Verify the signature using:
 <pre>$ gpg --verify authorized_keys_noshell.sig authorized_keys_noshell
@@ -205,7 +205,7 @@ Make sure to save these rules so that they are executed everytime you reboot the
 
 ### 8. Protect your mirror from abusers
 
-You should check out the [MirrorsCoordination](MirrorsCoordination.md) page for information about protecting your mirror from abusers. If your mirror has strict bandwidth/resources you will find some useful hints on that page.
+You should check out the [MirrorsCoordination](https://github.com/vrtadmin/clamav-faq/blob/master/mirrors/MirrorsCoordination.md) page for information about protecting your mirror from abusers. If your mirror has strict bandwidth/resources you will find some useful hints on that page.
 
 ### 9. Add your logo
 
@@ -263,7 +263,7 @@ Please note that this page doesn't reflect how often the database is propagated 
 
 ## Who is responsible for the virus database
 
-The virusdb team, aka [Sourcefire VRT](http://www.clamav.net/about.html#credits) take care of reviewing virus signatures, checking for new viruses in the wild and committing changes to the virus database file.
+The virusdb team, aka [Talos](http://www.clamav.net/about.html#credits) take care of reviewing virus signatures, checking for new viruses in the wild and committing changes to the virus database file.
 
 The updates are released quite often (usually a few times per day). If you want to be notified whenever the virus database is updated subscribe to [clamav-virusdb at lists.clamav.net](http://lists.clamav.net/mailman/listinfo/clamav-virusdb).
 
