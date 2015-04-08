@@ -1,23 +1,25 @@
-*ClamWin* is based off the ClamAV engine. One problem remains: scans are really slow. This is not because of the engine itself. Many AVs, including the big time commerical ones, with full scan features and 0 limits are slow. When a hard drive gets bigger, the longer a scan will take. What is the easiest solution? This is a documentation for adapting Clam scans to a much more faster rate. While this article is intended to be for ClamWin, these features can also be used in ClamAV.
+# How to Speed Up ClamWin #
+
+*ClamWin* is based off the ClamAV engine. One problem remains: scans are really slow. This is not because of the engine itself. Many AVs, including the big time commercial ones, with full scan features and 0 limits are slow. When a hard drive gets bigger, the longer a scan will take. What is the easiest solution? This is a documentation for adapting Clam scans to a much more faster rate. While this article is intended to be for ClamWin, these features can also be used in ClamAV.
 
 
-Phase 1: File extenstions. 
+Phase 1: File extensions. 
 
-ClamAV, by default, will scan all extenstions. This is what a full time scanning operation does, however, a quick scan option is different and does not need to go through all that. The term "quick" is the key. Below is a list of extenstions only needed to be scanned during a quick time operation and should tackle around 80% - 90% of malware across the web.
+ClamAV, by default, will scan all extensions. This is what a full time scanning operation does, however, a quick scan option is different and does not need to go through all that. The term "quick" is the key. Below is a list of extensions only needed to be scanned during a quick time operation and should tackle around 80% - 90% of malware across the web.
 
-Extenstions to be scanned during a quick scan operation:
+Extensions to be scanned during a quick scan operation:
 
 `.exe` - The main source of malware comes from .exe files. This is prime to any real-time protection capabilities.
 
-`.dll` - While .dll files cannot be accessed without a supplement from a .exe file, many malware writters have adapted .dll files to be able to work with other malware related techniques from other malware writters. For a pre-caution, it is best to delete these files along with the .exe files.
+`.dll` - While .dll files cannot be accessed without a supplement from a .exe file, many malware writers have adapted .dll files to be able to work with other malware related techniques from other malware writers. For a pre-caution, it is best to delete these files along with the .exe files.
 
-`.src` - You may ask why this extenstion is on here. These files are used commonly throughout instant messagers, like Steam and Skype. These files are most commonly used to take control of accounts and steal personal information and credit card information.
+`.src` - You may ask why this extension is on here. These files are used commonly throughout instant messengers, like Steam and Skype. These files are most commonly used to take control of accounts and steal personal information and credit card information.
 
 `.sys` - Yes it is strange, however, malware are making fake system files and hiding them in system directories to infect operating system directories.
 
-`.msi` - This is a more techincal installation, similar to .exe extenstion and malware writters have been using this as an alternative to .exe extenstions.
+`.msi` - This is a more technical installation, similar to .exe extension and malware writers have been using this as an alternative to .exe extenstions.
 
-That is all. These 5 extenstions are all that is needed to perform a quick scan operation.
+That is all. These 5 extensions are all that is needed to perform a quick scan operation.
 
 
 Phase 2 - File sizes.
