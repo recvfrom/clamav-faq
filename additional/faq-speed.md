@@ -43,4 +43,21 @@ System32 - This is the second most targeted area on Windows systems. Here, malwa
 
 SystemWOW64 - This directory is similar to System32, however this is only for 64-bit systems. 64-bit malware target this directory instead of system32 and can take control of 64-bit systems.
 
+
+Phase 4 - Archive scanning (optional)
+
+Archives are commonly used across torrent sites, emails, and file transfers. While, if any malware is inside a archive, it cannot harm a user untill the user decides to open the archive. Of course, a user will not know if a archive contains malware, untill it is already too late. Here is a collection of muli platform archive extensions that are the most popular:
+
+.zip - The most popular archive format are zip archives. You are more likely not to see this on Linux systems, but thesee are used commonly on Mac and Windows systems.
+
+.rar - rar files are really common on torrent sites. They are fast archives and the most common archive extension used for malware.
+
+.7z - 7-zip is another popular archive format that is used on Linux, Mac, and Windows systems.
+
+.cab - .cab is mostly used on Windows systems and belongs in the catagory, commonly used by malware writers.
+
+.jar - .jar is a archive written is Java. Most malware researchers know Java is not the best when it comes to security. At the sametime, .jar archives are used to spread malware, as well.
+
 That is all. With these operations, this should make Clam scans up to 20x faster. While ClamAV was only meant to be for Linux systems, 95% of their signatures are for Windows malware. While not everything on here can apply to ClamAV, such as the directory paths, which will vary on Linux and Mac systems, however, ClamAV can still use the file size limits and extenstions to benefit the Clam engine. Over 2 million people use the Clam engine, such as ClamAV, ClamTK, ClamXav, ClamWin, Clam Sentinel, GPM Clam, and amiti. I wish the best of luck to ClamAV and the rest of the Clam family. Many people depend on you.
+
+- Written by Alex Boehm, moderator of ClamWin
