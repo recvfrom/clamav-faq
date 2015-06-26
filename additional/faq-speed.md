@@ -58,6 +58,6 @@ Archives are commonly used across torrent sites, emails, and file transfers. Whi
 
 .jar - .jar is a archive written is Java. Most malware researchers know Java is not the best when it comes to security. At the sametime, .jar archives are used to spread malware, as well.
 
-That is all. With these operations, this should make Clam scans up to 20x faster. While ClamAV was only meant to be for Linux systems, 95% of their signatures are for Windows malware. While not everything on here can apply to ClamAV, such as the directory paths, which will vary on Linux and Mac systems, however, ClamAV can still use the file size limits and extenstions to benefit the Clam engine. Over 2 million people use the Clam engine, such as ClamAV, ClamTK, ClamXav, ClamWin, Clam Sentinel, GPM Clam, and amiti. I wish the best of luck to ClamAV and the rest of the Clam family. Many people depend on you.
+That is all. With these operations, this should make Clam scans up to 20x faster. While ClamAV was only meant to be for Linux systems, 95% of their signatures are for Windows malware. While not everything on here can apply to ClamAV, such as the directory paths, which will vary on Linux and Mac systems, however, ClamAV can still use the file size limits and extenstions to benefit the Clam engine. Over 10 million people use the Clam engine, such as ClamAV, ClamTK, ClamXav, ClamWin, Clam Sentinel, GPM Clam, and amiti. 
 
 - Written by Alex Boehm, moderator of ClamWin
