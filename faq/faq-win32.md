@@ -2,7 +2,7 @@
 
 * Why is ClamAV for Windows called Immunet now?
 
-Immunet is now combines the power of ClamAV and our FireAMP products into one.
+Immunet now combines the power of ClamAV and our FireAMP products into one.
 
 * With the acquisition of Immunet by Sourcefire are both teams working together now or are they separate?
 
