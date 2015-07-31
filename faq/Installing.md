@@ -269,7 +269,7 @@ Instructions courtesy of Andy Fiddaman - 30 Dec 2007
 
 #### Solaris packages from [OpenCSW] ####
 
-OpenCSW is a community software project for Solaris 8+ on both Sparc and x86. It packages more than 2000 popular open source titles and they can all easily be installed with dependency handling via _pkgutil_ which is modeled after Debians _apt-get_.
+OpenCSW is a community software project for Solaris 8+ on both Sparc and x86. It packages more than 2000 popular open source titles and they can all easily be installed with dependency handling via _pkgutil_ which is modeled after Debian's _apt-get_.
 
 >  # pkgutil -i clamav
 
@@ -327,7 +327,7 @@ Microsoft .net version 2.0 is required starting with ClamAV 0.92.1
 
 ### OpenVMS <a id="openvms" class="anchor">&nbsp;</a> ###
 
-The ClamAV [for OpenVMS] port is mantained by Alexey Chupahin, Mibok Ltd
+The ClamAV [for OpenVMS] port is maintained by Alexey Chupahin, Mibok Ltd
 
 Please visit Clamav [OpenVMS project site]
 
