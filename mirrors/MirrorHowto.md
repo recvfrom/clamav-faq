@@ -187,6 +187,7 @@ You can furtherly restrict access to these ports by only allowing connections fr
    * 78.46.32.131
    * 128.177.8.249
    * 198.148.79.65
+   * 172.110.204.69
 
 Any changes to this IP address list will be announced on the clamav-mirrors mailing-list.
 
@@ -198,6 +199,7 @@ iptables -t nat -I PREROUTING -s 64.18.103.6 -m tcp -p tcp --dport 22 -j REDIREC
 iptables -t nat -I PREROUTING -s 78.46.32.131 -m tcp -p tcp --dport 22 -j REDIRECT --to-port 2222
 iptables -t nat -I PREROUTING -s 128.177.8.249 -m tcp -p tcp --dport 22 -j REDIRECT --to-port 2222
 iptables -t nat -I PREROUTING -s 198.148.79.65 -m tcp -p tcp --dport 22 -j REDIRECT --to-port 2222
+iptables -t nat -I PREROUTING -s 172.110.204.69 -m tcp -p tcp --dport 22 -j REDIRECT --to-port 2222
 </pre>
 YMMV.
 
