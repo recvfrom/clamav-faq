@@ -18,8 +18,8 @@ To prevent the spread of worms it is essential to check for updates frequently. 
 We need fast reliable mirrors. Servers eligible to become mirrors have to meet the following requirements:
 
    * At least a 100Mbit/s link to the Internet. Traffic is bursty, that's why we request such a large pipe
-   * Unlimited traffic (between 500GB and 750GB/month as of 2010)
-   * At least 150MB of web space
+   * Unlimited traffic (from 500GB to 2TB/month as of 2015, expect more if you're in US clamav dns zone - up to 8TB/month)
+   * At least 200MB of web space
    * sshd listening on port 22 (see [Update Firewall](#update-firewall) for an alternative solution)
    * All the tools and protocols required for our push-mirroring system: rsync, ssh, bash, lockfile. See below for the details.
    * The mirror has to be available to all ClamAV users. We DO NOT support private mirrors!
