@@ -33,7 +33,6 @@ Mandatory:
 Optional:
 
 * GMP: for digital signatures
-* cURL: for mail follow url
 
 ## Installing From Packages ##
 
