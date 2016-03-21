@@ -271,7 +271,7 @@ Every time the virusdb team updates the database, an email with all the details 
 
 ## Virus submission
 
-Whenever you find a new virus which is not detected by ClamAV you should send it to the virusdb team by filling the form at http://www.clamav.net/report/report-malware.html.
+Whenever you find a new virus which is not detected by ClamAV you should send it to the virusdb team by filling the form at [http://www.clamav.net/reports/malware](http://www.clamav.net/reports/malware).
 
 They will review your submission and update the database so that the whole ClamAV user community can take benefit from it. Never send virus samples to ClamAV mailing-lists or developers addresses.
 
@@ -282,7 +282,7 @@ Our users are encouraged to add the following directives to their freshclam.conf
    * DatabaseMirror db.XY.clamav.net
    * DatabaseMirror db.local.clamav.net
 
-where XY stands for the country the server lives in a full list is available at http://www.iana.org/cctld/cctld-whois.htm. Each db.XY.clamav.net DNS record points to the mirrors available in the corresponding country. For a complete list of the mirrors available in each country visit http://www.clamav.net/doc/mirrors-how-to.html.
+where XY stands for the country the server lives in a full list is available at http://www.iana.org/cctld/cctld-whois.htm. Each db.XY.clamav.net DNS record points to the mirrors available in the corresponding country. 
 
 If freshclam can't connect to db.XY.clamav.net, it will fallback on db.local.clamav.net, which attempts to redirect the user to the closest pool of mirrors by looking up its ip source address in the [GeoIP database](http://www.maxmind.com/app/geoip_country). See:
 
