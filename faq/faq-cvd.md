@@ -10,7 +10,7 @@ The 4th field of the first line should be less than 3 &lowast; 3600 behind the o
 
 * How often is the virus database updated?
 
-The virus database is usually updated many times per week. Sign up for our [VirusDB mailing list] to see our response times to new threats. The virusdb team tries to keep up with the latest worm  in the wild. When a new worm spreads out, often it is  less than one hour before we release a database update. You can contribute to make the virusdb updating process  more efficient by submitting samples of viruses  via our "web interface":submit.
+The virus database is usually updated many times per week. Sign up for our [VirusDB mailing list] to see our response times to new threats. The virusdb team tries to keep up with the latest threats in the wild.  You can contribute to make the virusdb updating process  more efficient by submitting samples of viruses via our "[Contact]" page on ClamAV.net.
 
 * How many times per hour shall I run freshclam?
 
@@ -89,3 +89,4 @@ Please note that some not RFC compliant DNS servers (namely the one shipped with
 [VirusDB mailing list]: http://lists.clamav.net/cgi-bin/mailman/listinfo/clamav-virusdb
 [country code]: http://www.iana.org/domains/root/db
 [Mirror page]: http://www.clamav.net/doc/mirrors-private.html
+[Contact]: http://www.clamav.net/contact
