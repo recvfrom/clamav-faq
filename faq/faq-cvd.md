@@ -73,7 +73,7 @@ First the database will be downloaded to the local webserver and then the other 
 
 * I can't wait for you to update the database! I need to use the new signature NOW!
 
-No problem, save your own signatures in a text file with the appropriate extension. Put it in the same dir where the .cvd files are located. ClamAV will load it after the official .cvd files. You need not to sign the .db file.
+No problem, save your own signatures in a text file with the appropriate extension. Put it in the same dir where the .cvd files are located. ClamAV will load it after the official .cvd files. You need not to sign the .db file .
 
 * Can I download the virusdb manually?
 
