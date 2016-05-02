@@ -2,7 +2,7 @@
 
 * What does _WARNING: DNS record is older than 3 hours_ mean?
 
-freshclam attempts to detect potential problems with DNS caches and  switches to the old mode if something looks suspicious. If this message appears seldomly, you can safely ignore it. If you get the error everytime you run freshclam, check your system clock. If it is set correctly, check your dns settings. If those didn't help, try putting this at the top of your cronjob:  
+freshclam attempts to detect potential problems with DNS caches and  switches to the old mode if something looks suspicious. If this message appears seldomly, you can safely ignore it. If you get the error everytime you run freshclam, check your system clock. If it is set correctly, check your dns settings.  If those didn't help, try putting this at the top of your cronjob:  
 
  `host -t txt current.cvd.clamav.net; perl -e 'printf "%d\n", time;' `
 
