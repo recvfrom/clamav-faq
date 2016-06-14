@@ -11,4 +11,4 @@ We only release security fixes for the latest minor release (or major release, i
 
 **Disclaimer**: if this policy has to change due to a compatibility problem that prohibits the use of new detection technology, or impacts the stability of ClamAV infrastructure, we will announce the end of life for those versions four months before they become unsupported.
 
-Currently, every version from ClamAV .96 and down, including all minor versions, are unsupported.
+Currently, every version from ClamAV .97 and down, including all minor versions, are unsupported.
