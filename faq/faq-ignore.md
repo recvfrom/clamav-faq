@@ -1,4 +1,4 @@
- # How do I ignore/whitelist a ClamAV signature?
+# How do I ignore/whitelist a ClamAV signature?
 
 * Creating a ignore/whitelist file
 >Change Directory into the location where your ClamAV databases are stored.  Create a file called "whitelist.ign2", for example, like this:
