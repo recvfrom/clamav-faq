@@ -32,6 +32,8 @@ This is the official ClamAV FAQ repository. To checkout all the files:
 
 [FAQ - PUA - Potentially Unwanted Application](faq/faq-pua.md)
 
+[FAQ - Ignore](faq/faq-ignore.md)
+
 ### Mirror How-To ###
 
 [Mirror How-To](mirrors/MirrorHowto.md)
