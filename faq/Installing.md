@@ -55,6 +55,7 @@ You don't necessarily need all packages. Please read ClamOverview carefully to u
 * [Slackware](#slackware)
 * [Windows](#windows)
 * [OpenVMS](#openvms)
+* [OSX](#OSX)
 
 ### Debian <a id="debian" class="anchor">&nbsp;</a> ###
 
@@ -279,6 +280,13 @@ More info on [OpenCSW]
 Linuxpackages.net provides third-party precompiled packages for Slackware. You can find them with this search query on that site.
 
 Martijn Dekker provides packages there that provide complete and semi-automatic integration with ClamAV's stock Sendmail package.
+
+### OSX <a id="osx" class="anchor">&nbsp;</a> ###
+
+Various Installation Guides for OSX can be found on the Internet, two that we have seen are:
+http://www.gctv.ne.jp/~yokota/clamav/
+https://gist.github.com/zhurui1008/4fdc875e557014c3a34e
+
 
 #### How to use ####
 
