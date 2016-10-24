@@ -55,7 +55,7 @@ You don't necessarily need all packages. Please read ClamOverview carefully to u
 * [Slackware](#slackware)
 * [Windows](#windows)
 * [OpenVMS](#openvms)
-* [OSX](#OSX)
+* [OSX](#osx)
 
 ### Debian <a id="debian" class="anchor">&nbsp;</a> ###
 
