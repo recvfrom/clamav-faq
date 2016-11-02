@@ -263,10 +263,6 @@ Every mirror is continuously monitored to ensure that every ClamAV user gets the
 
 Every three hours we upload a file called timestamp on every mirror. Every hour we choose a random mirror and check that timestamp is fresh. If the file is one day old or unavailable, the mirror if marked as "old" and the ClamAV team receive a warning. If the situation persists for two days, the mirror is temporarily removed from the list.
 
-You can view the current status of every ClamAV database mirror at http://www.clamav.net/mirrors.html.
-
-Please note that this page doesn't reflect how often the database is propagated to mirrors. It just shows the trend of mirrors availability.
-
 # About CVDs and freshclam
 
 ## Who is responsible for the virus database
