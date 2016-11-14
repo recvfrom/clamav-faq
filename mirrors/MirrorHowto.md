@@ -122,7 +122,7 @@ Verify the signature using:
 <pre>$ gpg --verify authorized_keys_noshell.sig authorized_keys_noshell
 $ gpg --verify authorized_keys_shell.sig authorized_keys_shell</pre>
 
-The VRT PGP public key is available on [the Talos website](http://www.talosintelligence.com/contact/). It can eventually be verified by telephone. Contact us by email first.
+The VRT PGP public key is available on the [Talos website](http://www.talosintelligence.com/contact/). It can eventually be verified by telephone. Contact us by email first.
 
 If you don't want to give us shell access, copy authorized_keys_noshell to ~/clamavdb/.ssh/authorized_keys:
 <pre>$ cp authorized_keys_noshell ~/.ssh/authorized_keys
