@@ -27,9 +27,9 @@ If you cannot make your mirror available to all ClamAV users, and you would like
 
 # Instructions for Becoming a Mirror
 
-### 1. Request a rsync account
+### 1. Notify us of your intention to provide a mirror
 
-Before starting the setup, [contact the mirror maintainers](http://lists.clamav.net/cgi-bin/mailman/listinfo/clamav-mirrors) by sigining up on the Mirrors mailing list to verify that there is a need for another mirror in your country.
+Before starting the setup, [contact the mirror maintainers](http://lists.clamav.net/cgi-bin/mailman/listinfo/clamav-mirrors) by signing up on the Mirrors mailing list to verify that there is a need for another mirror in your country.
 
 ### 2. Configure your web server
 
@@ -122,7 +122,7 @@ Verify the signature using:
 <pre>$ gpg --verify authorized_keys_noshell.sig authorized_keys_noshell
 $ gpg --verify authorized_keys_shell.sig authorized_keys_shell</pre>
 
-The VRT PGP public key is available on [the VRT Labs website](https://labs.snort.org/contact.html) and on most keyservers like this one http://pgp.mit.edu:11371/pks/lookup?search=Sourcefire+VRT&op=index. It can eventually be verified by telephone. Contact us by email first.
+The VRT PGP public key is available on [the Talos website](http://www.talosintelligence.com/contact/). It can eventually be verified by telephone. Contact us by email first.
 
 If you don't want to give us shell access, copy authorized_keys_noshell to ~/clamavdb/.ssh/authorized_keys:
 <pre>$ cp authorized_keys_noshell ~/.ssh/authorized_keys
@@ -158,14 +158,8 @@ ip address: 1.2.3.4
 country: Poland 
 admin: John Doe &lt;john.doe@foo.com&gt;
 </pre>
-Our monitoring system will send e-mail notifications to the email address specified under "admin".
 
-If you would to receive notifications at a different address (e.g. alerts@foo.com), please use the following template:
-<pre>clamav.foo.com
-ip address: 1.2.3.4
-country: Poland
-admin: John Doe &lt;john.doe@foo.com&gt; || &lt;alerts@foo.com&gt;
-</pre>
+The admin contact is purely for our informational need.  The ClamAV Mirrors list is how we will send notifications to all mirror admins.  Please see Step 10.
 
 ### 6. Modify configuration file
 
@@ -217,7 +211,7 @@ Subscribe to clamav-mirrors at lists.clamav.net: [http://lists.clamav.net/mailma
 
 Subscribe requests have to be approved. We will approve your subscription request only after reviewing your server's info.
 
-When everything is done, your server's IP address will be added either to your country's dns record (db.XY.clamav.net) or one of the round robin record and your company will be listed on our mirrors list page.
+When everything is done, your server's IP address will be added either to your country's dns record (db.XY.clamav.net) or one of the round robin record.
 
 ### 11. Statistics
 
@@ -254,8 +248,6 @@ Scheduled downtimes should be announced on the clamav-mirrors mailing-list in ad
 Every mirror is continuously monitored to ensure that every ClamAV user gets the latest virus database.
 
 Every three hours we upload a file called timestamp on every mirror. Every hour we choose a random mirror and check that timestamp is fresh. If the file is one day old or unavailable, the mirror if marked as "old" and the ClamAV team receive a warning. If the situation persists for two days, the mirror is temporarily removed from the list.
-
-You can view the current status of every ClamAV database mirror at http://www.clamav.net/mirrors.html.
 
 Please note that this page doesn't reflect how often the database is propagated to mirrors. It just shows the trend of mirrors availability.
 
