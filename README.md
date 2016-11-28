@@ -12,6 +12,8 @@ This is the official ClamAV FAQ repository. To checkout all the files:
 
 [FAQ - Overview](faq/faq-overview.md)
 
+[FAQ - Which Version of ClamAV should I use](faq/faq-whichversion.md)
+
 [FAQ - Installation](faq/Installing.md)
 
 [FAQ - CVD](faq/faq-cvd.md)
