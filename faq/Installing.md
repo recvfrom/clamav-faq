@@ -300,9 +300,9 @@ To activate Sendmail integration, after installing the package, copy the ‘/usr
 
 Then start ClamAV and restart Sendmail:
 
-``  # /etc/rc.d/rc.clamav start ``
+>  # /etc/rc.d/rc.clamav start
 
-``  # /etc/rc.d/rc.sendmail restart ``
+>  # /etc/rc.d/rc.sendmail restart
 
 #### Building your own ####
 
