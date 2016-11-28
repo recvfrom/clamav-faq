@@ -40,7 +40,7 @@ Installing your distribution's packages is the easiest route. It will make also 
 
 ### Understand which packages you need ###
 
-You don't necessarily need all packages. Please read ClamOverview carefully to understand which ones you need.
+You don't necessarily need all packages. Please read [ClamOverview](https://github.com/vrtadmin/clamav-faq/blob/master/faq/faq-overview.md) carefully to understand which ones you need.
 
 ## Operating System Specific Information ##
 
