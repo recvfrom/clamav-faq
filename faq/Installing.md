@@ -57,8 +57,8 @@ You don't necessarily need all packages. Please read [ClamOverview](https://gith
 ### Debian <a id="debian" class="anchor">&nbsp;</a> ###
 
 ```
-# apt-get update
-# apt-get install clamav
+* # apt-get update
+* # apt-get install clamav
 ```
 
 ### RHEL/CentOS <a id="rhel" class="anchor">&nbsp;</a> ###
@@ -66,8 +66,8 @@ You don't necessarily need all packages. Please read [ClamOverview](https://gith
 On CentOS:
 
 ```
-# yum install -y epel-release
-# yum install -y clamav
+* # yum install -y epel-release
+* # yum install -y clamav
 ```
 
 On [Community Enterprise Operating System (CentOS)](http://centos.org/) the clamav package requires the [Extra Packages for Enterprise Linux (EPEL) repository](https://fedoraproject.org/wiki/EPEL).
