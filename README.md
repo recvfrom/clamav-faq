@@ -10,6 +10,8 @@ This is the official ClamAV FAQ repository. To checkout all the files:
 
 ### FAQ Pages ###
 
+[FAQ - Overview](faq/faq-overview.md)
+
 [FAQ - Installation](faq/Installing.md)
 
 [FAQ - CVD](faq/faq-cvd.md)
