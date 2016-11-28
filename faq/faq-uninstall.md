@@ -19,5 +19,5 @@
 Make sure that you haven’t got old libraries (_libclamav.so_) lying around your filesystem. You can verify it using: _$ ldd `which freshclam`_
 Also make sure there is really only one version of ClamAV installed on your system:
 
-_$ whereis freshclam_
-_$ whereis clamscan_
+* _$ whereis freshclam_
+* _$ whereis clamscan_
