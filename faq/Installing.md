@@ -58,6 +58,7 @@ You don't necessarily need all packages. Please read [ClamOverview](https://gith
 
 
 `` # apt-get update ``
+
 `` # apt-get install clamav ``
 
 ### RHEL/CentOS <a id="rhel" class="anchor">&nbsp;</a> ###
@@ -66,6 +67,7 @@ On CentOS:
 
 
 `` # yum install -y epel-release ``
+
 `` # yum install -y clamav ``
 
 
