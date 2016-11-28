@@ -36,6 +36,8 @@ This is the official ClamAV FAQ repository. To checkout all the files:
 
 [FAQ - Ignore](faq/faq-ignore.md)
 
+[FAQ - Uninstall](faq/faq-uninstall.md)
+
 ### Mirror How-To ###
 
 [Mirror How-To](mirrors/MirrorHowto.md)
