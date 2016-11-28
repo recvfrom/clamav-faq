@@ -3,8 +3,8 @@
 ## Installing from source ##
 
 * Check [Requirements](#requirements)
-* Uninstall any old version, see UninstallClamAV (Note: this isn't essential, but removes sources of problems).
-* wget the source gzip file, see WhichVersion
+* Uninstall any old version, see [UninstallClamAV](https://github.com/vrtadmin/clamav-faq/blob/master/faq/faq-uninstall.md) (Note: this isn't essential, but removes sources of problems).
+* wget the source gzip file, see [Which Version](https://github.com/vrtadmin/clamav-faq/blob/master/faq/faq-whichversion.md)
 * untar the source to an appropriate location. Note that most modern versions of tar will automatically ungzip for you.
 * ensure you have a user clamav and group clamav.
   * If you're using a different group/user you must specify that using the _--with-user_ and/or _--with-group_ option when you run configure
