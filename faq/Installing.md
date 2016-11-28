@@ -30,9 +30,6 @@ Mandatory:
 >__Note:__ you must compile with a shared library, use:
 >_make clean ; ./configure -s_ __before__ _make_ when building zlib
 
-Optional:
-
-* GMP: for digital signatures
 
 ## Installing From Packages ##
 
