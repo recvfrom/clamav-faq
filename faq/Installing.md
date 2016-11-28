@@ -107,9 +107,11 @@ Use the ports Luke.
 
 ### Solaris <a id="solaris" class="anchor">&nbsp;</a> ###
 
-There are a number of package maintainers for ClamAV on Solaris. The installation method differs for each.
+Multiple groups have packaged ClamAV for Solaris. The installation method differs for each.
 
-Would you like to download the latest virus pattern definitions during installation ?  (This requires that you have a direct connection to the Internet. If you are behind a proxy server then skip this step.)
+### Would you like to download the latest virus pattern definitions during installation?  
+
+(This requires that you have a direct connection to the Internet. If you are behind a proxy server then skip this step.)
   
     
     Update virus patterns? (y/n): y
@@ -282,8 +284,8 @@ Martijn Dekker provides packages there that provide complete and semi-automatic 
 ### OSX <a id="osx" class="anchor">&nbsp;</a> ###
 
 Various Installation Guides for OSX can be found on the Internet, two that we have seen are:
-http://www.gctv.ne.jp/~yokota/clamav/
-https://gist.github.com/zhurui1008/4fdc875e557014c3a34e
+* http://www.gctv.ne.jp/~yokota/clamav/
+* https://gist.github.com/zhurui1008/4fdc875e557014c3a34e
 
 
 #### How to use ####
@@ -298,8 +300,9 @@ To activate Sendmail integration, after installing the package, copy the ‘/usr
 
 Then start ClamAV and restart Sendmail:
 
->  # /etc/rc.d/rc.clamav start 
->  # /etc/rc.d/rc.sendmail restart
+``  # /etc/rc.d/rc.clamav start ``
+
+``  # /etc/rc.d/rc.sendmail restart ``
 
 #### Building your own ####
 
