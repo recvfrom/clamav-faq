@@ -125,6 +125,7 @@ Martijn Dekker provides packages there that provide complete and semi-automatic 
 ### OSX <a id="osx" class="anchor">&nbsp;</a> ###
 
 Various Installation Guides for OSX can be found on the Internet, two that we have seen are:
+
 * [Building ClamAV on Mac OS X and macOS]
 * [Get ClamAV running on Mac OS X (using Homebrew)]
 
