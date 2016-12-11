@@ -118,8 +118,6 @@ More info on [OpenCSW]
 
 ### Slackware <a id="slackware" class="anchor">&nbsp;</a> ###
 
-Linuxpackages.net provides third-party precompiled packages for Slackware. You can find them with this search query on that site.
-
 Martijn Dekker provides packages there that provide complete and semi-automatic integration with ClamAV's stock Sendmail package.
 
 ### OSX <a id="osx" class="anchor">&nbsp;</a> ###
