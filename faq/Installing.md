@@ -199,16 +199,16 @@ This process provides for you:
 * scripts, allow you to start clamd and freshclam in daemon mode
 
 
-[my blog]: http://miltonpaiva.wordpress.com/
-[OpenCSW]: http://www.opencsw.org
+[my blog]: https://miltonpaiva.wordpress.com/
+[OpenCSW]: https://www.opencsw.org
 [OpenVMS project site]: http://clamav.dyndns.org/clamav
 [for OpenVMS]: http://www.openvms.org/    
 [UninstallClamAV]: https://github.com/vrtadmin/clamav-faq/blob/master/faq/faq-uninstall.md
 [Which Version]: https://github.com/vrtadmin/clamav-faq/blob/master/faq/faq-whichversion.md
 [ClamOverview]: https://github.com/vrtadmin/clamav-faq/blob/master/faq/faq-overview.md
-[Community Enterprise Operating System (CentOS)]: http://centos.org/
+[Community Enterprise Operating System (CentOS)]: https://centos.org/
 [Extra Packages for Enterprise Linux (EPEL) repository]: https://fedoraproject.org/wiki/EPEL
-[RedHat Enterprise Linux (RHEL)]: http://www.redhat.com/en/technologies/linux-platforms/enterprise-linux
+[RedHat Enterprise Linux (RHEL)]: https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux
 [Portage]: https://packages.gentoo.org/package/app-antivirus/clamav
 [Building ClamAV on Mac OS X and macOS]: http://www.gctv.ne.jp/~yokota/clamav/
 [Get ClamAV running on Mac OS X (using Homebrew)]: https://gist.github.com/zhurui1008/4fdc875e557014c3a34e
