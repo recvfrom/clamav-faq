@@ -125,8 +125,8 @@ Martijn Dekker provides packages there that provide complete and semi-automatic 
 ### OSX <a id="osx" class="anchor">&nbsp;</a> ###
 
 Various Installation Guides for OSX can be found on the Internet, two that we have seen are:
-* http://www.gctv.ne.jp/~yokota/clamav/
-* https://gist.github.com/zhurui1008/4fdc875e557014c3a34e
+* [Building ClamAV on Mac OS X and macOS]
+* [Get ClamAV running on Mac OS X (using Homebrew)]
 
 
 #### How to use ####
@@ -210,3 +210,5 @@ This process provides for you:
 [Extra Packages for Enterprise Linux (EPEL) repository]: https://fedoraproject.org/wiki/EPEL
 [RedHat Enterprise Linux (RHEL)]: http://www.redhat.com/en/technologies/linux-platforms/enterprise-linux
 [Portage]: https://packages.gentoo.org/package/app-antivirus/clamav
+[Building ClamAV on Mac OS X and macOS]: http://www.gctv.ne.jp/~yokota/clamav/
+[Get ClamAV running on Mac OS X (using Homebrew)]: https://gist.github.com/zhurui1008/4fdc875e557014c3a34e
