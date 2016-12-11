@@ -199,7 +199,6 @@ This process provides for you:
 * scripts, allow you to start clamd and freshclam in daemon mode
 
 
-[my blog]: https://miltonpaiva.wordpress.com/
 [OpenCSW]: https://www.opencsw.org
 [OpenVMS project site]: http://clamav.dyndns.org/clamav
 [for OpenVMS]: http://www.openvms.org/    
