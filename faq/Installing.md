@@ -3,8 +3,8 @@
 ## Installing from source ##
 
 * Check [Requirements](#requirements)
-* Uninstall any old version, see [UninstallClamAV](https://github.com/vrtadmin/clamav-faq/blob/master/faq/faq-uninstall.md) (Note: this isn't essential, but removes sources of problems).
-* wget the source gzip file, see [Which Version](https://github.com/vrtadmin/clamav-faq/blob/master/faq/faq-whichversion.md)
+* Uninstall any old version, see [UninstallClamAV] (Note: this isn't essential, but removes sources of problems).
+* wget the source gzip file, see [Which Version].
 * untar the source to an appropriate location. Note that most modern versions of tar will automatically ungzip for you.
 * ensure you have a user clamav and group clamav.
   * If you're using a different group/user you must specify that using the _--with-user_ and/or _--with-group_ option when you run configure
@@ -37,7 +37,7 @@ Installing your distribution's packages is the easiest route. It will make also 
 
 ### Understand which packages you need ###
 
-You don't necessarily need all packages. Please read [ClamOverview](https://github.com/vrtadmin/clamav-faq/blob/master/faq/faq-overview.md) carefully to understand which ones you need.
+You don't necessarily need all packages. Please read [ClamOverview] carefully to understand which ones you need.
 
 ## Operating System Specific Information ##
 
@@ -71,9 +71,9 @@ On CentOS:
 `` # yum install -y clamav ``
 
 
-On [Community Enterprise Operating System (CentOS)](http://centos.org/) the clamav package requires the [Extra Packages for Enterprise Linux (EPEL) repository](https://fedoraproject.org/wiki/EPEL).
+On [Community Enterprise Operating System (CentOS)] the clamav package requires the [Extra Packages for Enterprise Linux (EPEL) repository].
 
-On [RedHat Enterprise Linux (RHEL)](http://www.redhat.com/en/technologies/linux-platforms/enterprise-linux) the EPEL release package has to be installed either manually or through RHN.
+On [RedHat Enterprise Linux (RHEL)] the EPEL release package has to be installed either manually or through RHN.
 
 ### Fedora <a id="fedora" class="anchor">&nbsp;</a> ###
 
@@ -93,7 +93,7 @@ On [RedHat Enterprise Linux (RHEL)](http://www.redhat.com/en/technologies/linux-
 # emerge clamav
 ```
 
-See package entry on [Portage](https://packages.gentoo.org/package/app-antivirus/clamav).
+See package entry on [Portage].
 
 ### openSUSE <a id="opensuse" class="anchor">&nbsp;</a> ###
 
@@ -125,8 +125,9 @@ Martijn Dekker provides packages there that provide complete and semi-automatic 
 ### OSX <a id="osx" class="anchor">&nbsp;</a> ###
 
 Various Installation Guides for OSX can be found on the Internet, two that we have seen are:
-* http://www.gctv.ne.jp/~yokota/clamav/
-* https://gist.github.com/zhurui1008/4fdc875e557014c3a34e
+
+* [Building ClamAV on Mac OS X and macOS]
+* [Get ClamAV running on Mac OS X (using Homebrew)]
 
 
 #### How to use ####
@@ -199,7 +200,15 @@ This process provides for you:
 * scripts, allow you to start clamd and freshclam in daemon mode
 
 
-[my blog]: http://miltonpaiva.wordpress.com/
-[OpenCSW]: http://www.opencsw.org
+[OpenCSW]: https://www.opencsw.org
 [OpenVMS project site]: http://clamav.dyndns.org/clamav
 [for OpenVMS]: http://www.openvms.org/    
+[UninstallClamAV]: https://github.com/vrtadmin/clamav-faq/blob/master/faq/faq-uninstall.md
+[Which Version]: https://github.com/vrtadmin/clamav-faq/blob/master/faq/faq-whichversion.md
+[ClamOverview]: https://github.com/vrtadmin/clamav-faq/blob/master/faq/faq-overview.md
+[Community Enterprise Operating System (CentOS)]: https://centos.org/
+[Extra Packages for Enterprise Linux (EPEL) repository]: https://fedoraproject.org/wiki/EPEL
+[RedHat Enterprise Linux (RHEL)]: https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux
+[Portage]: https://packages.gentoo.org/package/app-antivirus/clamav
+[Building ClamAV on Mac OS X and macOS]: http://www.gctv.ne.jp/~yokota/clamav/
+[Get ClamAV running on Mac OS X (using Homebrew)]: https://gist.github.com/zhurui1008/4fdc875e557014c3a34e
