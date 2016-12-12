@@ -203,8 +203,8 @@ This process provides for you:
 [OpenCSW]: https://www.opencsw.org
 [OpenVMS project site]: http://clamav.dyndns.org/clamav
 [for OpenVMS]: http://www.openvms.org/    
-[UninstallClamAV]: https://github.com/vrtadmin/clamav-faq/blob/master/faq/faq-uninstall.md
-[Which Version]: https://github.com/vrtadmin/clamav-faq/blob/master/faq/faq-whichversion.md
+[UninstallClamAV]: https://www.clamav.net/documents/uninstalling-clamav
+[Which Version]: https://www.clamav.net/documents/which-version-of-clamav-should-i-use
 [ClamOverview]: https://github.com/vrtadmin/clamav-faq/blob/master/faq/faq-overview.md
 [Community Enterprise Operating System (CentOS)]: https://centos.org/
 [Extra Packages for Enterprise Linux (EPEL) repository]: https://fedoraproject.org/wiki/EPEL
