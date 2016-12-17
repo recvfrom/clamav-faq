@@ -17,7 +17,7 @@ Extensions to be scanned during a quick scan operation:
 
 `.sys` - Yes it is strange, however, malware are making fake system files and hiding them in system directories to infect operating system directories.
 
-`.msi` - This is a more technical installation, similar to .exe extension and malware writers have been using this as an alternative to .exe extenstions.
+`.msi` - This is a more technical installation, similar to .exe extension and malware writers have been using this as an alternative to .exe extensions.
 
 That is all. These 5 extensions are all that is needed to perform a quick scan operation.
 
@@ -46,7 +46,7 @@ SystemWOW64 - This directory is similar to System32, however this is only for 64
 
 Phase 4 - Archive scanning (optional)
 
-Archives are commonly used across torrent sites, emails, and file transfers. While, if any malware is inside a archive, it cannot harm a user untill the user decides to open the archive. Of course, a user will not know if a archive contains malware, untill it is already too late. Here is a collection of muli platform archive extensions that are the most popular:
+Archives are commonly used across torrent sites, emails, and file transfers. While, if any malware is inside a archive, it cannot harm a user until the user decides to open the archive. Of course, a user will not know if a archive contains malware, until it is already too late. Here is a collection of muli platform archive extensions that are the most popular:
 
 .zip - The most popular archive format are zip archives. You are more likely not to see this on Linux systems, but thesee are used commonly on Mac and Windows systems.
 
@@ -58,6 +58,6 @@ Archives are commonly used across torrent sites, emails, and file transfers. Whi
 
 .jar - .jar is a archive written is Java. Most malware researchers know Java is not the best when it comes to security. At the sametime, .jar archives are used to spread malware, as well.
 
-That is all. With these operations, this should make Clam scans up to 20x faster. While ClamAV was only meant to be for Linux systems, 95% of their signatures are for Windows malware. While not everything on here can apply to ClamAV, such as the directory paths, which will vary on Linux and Mac systems, however, ClamAV can still use the file size limits and extenstions to benefit the Clam engine. Over 10 million people use the Clam engine, such as ClamAV, ClamTK, ClamXav, ClamWin, Clam Sentinel, GPM Clam, and amiti. 
+That is all. With these operations, this should make Clam scans up to 20x faster. While ClamAV was only meant to be for Linux systems, 95% of their signatures are for Windows malware. While not everything on here can apply to ClamAV, such as the directory paths, which will vary on Linux and Mac systems, however, ClamAV can still use the file size limits and extensions to benefit the Clam engine. Over 10 million people use the Clam engine, such as ClamAV, ClamTK, ClamXav, ClamWin, Clam Sentinel, GPM Clam, and amiti. 
 
 - Written by Alex Boehm, moderator of ClamWin

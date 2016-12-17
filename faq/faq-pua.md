@@ -24,7 +24,7 @@ lost, however, it can also be used to spy out passwords.
 Applications that can be used to sniff, filter, manipulate or scan
 network traffic or networks.  While a networkscanner - for example -
 can be a extremely helpful tool for admins, you may not want to see an
-average user playing arround with it. Same goes for tools like netcat
+average user playing around with it. Same goes for tools like netcat
 and the like.
 
 ####P2P
