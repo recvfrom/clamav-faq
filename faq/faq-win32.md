@@ -16,7 +16,7 @@ ClamWin is a free application maintained by ClamWin Pty Ltd., and has no associa
 
 * Is Immunet free for commercial use?
 
-Yup, Immunet is free for commercial use. Use it wherever you want to, home, office, servers, education facilities, non-profits, etc, etc. In fact the more places you installed it and the more systems it’s running on, the better its community-based detection will perform.
+Yup, Immunet is free for commercial use. Use it wherever you want to, home, office, servers, education facilities, non-profits, etc, etc. In fact the more places you installed it and the more systems it’s running on, the better its community-based detection will perform.  We do have a [commercial version](http://www.cisco.com/c/en/us/products/security/fireamp-endpoints/index.html) named "AMP for Endpoints" that does FAR more.  If you are interested in deploying this in a commercial environment, we highly suggest checking that out.
 
 * Will Immunet send any sensitive data from my computer to the cloud?
 
