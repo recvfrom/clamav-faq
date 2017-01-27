@@ -51,9 +51,14 @@ Options:
 Example Usage
 -------------
 
-./extras/scripts/clamavmirror.py -w ~/tmp/clamavtmp/ \
--d ~/tmp/clamavmirror/ -u andrew -g staff -a db.za.clamav.net \
--l ~/Downloads/
+mkdir /tmp/clamav/{lock,mirror,tmp}
+./clamavmirror.py \
+  -l /tmp/clamav/lock \
+  -d /tmp/clamav/mirror \
+  -w /tmp/clamav/tmp \
+  -a db.za.clamav.net \
+  -u nginx \
+  -g nginx
 """
 import os
 import pwd
@@ -66,9 +71,15 @@ import hashlib
 from shutil import move
 from optparse import OptionParser
 from subprocess import PIPE, Popen
-from urllib2 import Request, URLError, urlopen
 
 from dns.resolver import query, NXDOMAIN
+
+if sys.version_info < (3, 0):
+    from urllib2 import Request, URLError, urlopen
+else:
+    from urllib.request import Request
+    from urllib.request import urlopen
+    from urllib.error import URLError
 
 
 def get_file_md5(filename):
@@ -89,7 +100,7 @@ def get_file_md5(filename):
 def get_md5(string):
     """Get a string's MD5"""
     hasher = hashlib.md5()
-    hasher.update(string)
+    hasher.update(string.encode())
     return hasher.hexdigest()
 
 
@@ -97,16 +108,16 @@ def chunk_report(bytes_so_far, total_size):
     """Display progress"""
     percent = float(bytes_so_far) / total_size
     percent = round(percent * 100, 2)
-    sys.stdout.write("[x] Downloaded %d of %d bytes (%0.2f%%)\r" %
-                    (bytes_so_far, total_size, percent))
+    sys.stdout.write(
+        "[x] Downloaded %d of %d bytes (%0.2f%%)\r" %
+        (bytes_so_far, total_size, percent))
     if bytes_so_far >= total_size:
         sys.stdout.write('\n')
 
 
 def chunk_read(response, handle, chunk_size=8192, report_hook=None):
     """Read chunks"""
-    total_size = response.info().getheader('Content-Length').strip()
-    total_size = int(total_size)
+    total_size = int(response.info().get('Content-Length'))
     bytes_so_far = 0
     while 1:
         chunk = response.read(chunk_size)
@@ -122,18 +133,18 @@ def chunk_read(response, handle, chunk_size=8192, report_hook=None):
 
 def error(msg):
     """print to stderr"""
-    print >> sys.stderr, msg
+    sys.stderr.write(msg + "\n")
 
 
 def info(msg):
     """print to stdout"""
-    print >> sys.stdout, msg
+    print(msg)
 
 
 def deploy_signature(source, dest, user=None, group=None):
     """Deploy a signature fole"""
     move(source, dest)
-    os.chmod(dest, 0644)
+    os.chmod(dest, 0o644)
     if user and group:
         try:
             uid = pwd.getpwnam(user).pw_uid
@@ -162,7 +173,7 @@ def get_txt_record(hostname):
     """Get the text record"""
     try:
         answers = query(hostname, 'TXT')
-        return answers[0].strings[0]
+        return answers[0].strings[0].decode()
     except (IndexError, NXDOMAIN):
         return ''
 
@@ -175,11 +186,12 @@ def get_local_version(sigdir, sig):
         cmd = ['sigtool', '-i', filename]
         sigtool = Popen(cmd, stdout=PIPE, stderr=PIPE)
         while True:
-            line = sigtool.stdout.readline()
-            if line and line.startswith('Version:'):
-                version = line.split()[1]
-                break
-            if not line:
+            line = sigtool.stdout.readline().decode()
+            if line:
+                if line.startswith('Version:'):
+                    version = line.split()[1].rstrip()
+                    break
+            else:
                 break
         sigtool.wait()
     return version
@@ -212,14 +224,15 @@ def download_sig(opts, ips, sig, version=None):
             handle = open(filename, 'wb')
             chunk_read(response, handle, report_hook=chunk_report)
             if version:
-                if verify_sigfile(opts.workdir, sig) and \
-                    version == get_local_version(opts.workdir, sig):
+                if (
+                        verify_sigfile(opts.workdir, sig) and
+                        version == get_local_version(opts.workdir, sig)):
                     downloaded = True
                     break
             else:
                 downloaded = True
                 break
-        except URLError, err:
+        except URLError as err:
             if hasattr(err, 'code'):
                 code = err.code
             continue
@@ -243,8 +256,9 @@ def get_addrs(hostname):
             info("=> Resolution failed, sleeping 5 secs")
             time.sleep(5)
     if not addrs:
-        error("=> Resolving hostname: %s failed after %d tries" %
-                (hostname, count))
+        error(
+            "=> Resolving hostname: %s failed after %d tries" %
+            (hostname, count))
         sys.exit(2)
     return addrs
 
@@ -287,8 +301,7 @@ def update_sig(options, addrs, sign, vers):
     localver = get_local_version(options.mirrordir, sign)
     remotever = vers[sign]
     if localver is None or (localver and int(localver) < int(remotever)):
-        info("=> Update required local: %s => remote: %s" %
-            (localver, remotever))
+        info("=> Update required L: %s => R: %s" % (localver, remotever))
         for passno in range(1, 6):
             info("=> Downloading signature: %s pass: %d" % (sign, passno))
             status, code = download_sig(options, addrs, sign, remotever)
@@ -298,10 +311,10 @@ def update_sig(options, addrs, sign, vers):
                 break
             else:
                 if code == 404:
-                    error("=> Signature: %s not found, will not retry" %
-                        sign)
+                    error("=> Signature: %s not found, will not retry" % sign)
                     break
-                error("=> Download failed: %s pass: %d, sleeping 5sec" %
+                error(
+                    "=> Download failed: %s pass: %d, sleeping 5sec" %
                     (sign, passno))
                 time.sleep(5)
     else:
@@ -321,7 +334,8 @@ def update_diff(opts, addrs, sig):
             if code == 404:
                 error("=> Signature: %s not found, will not retry" % sig)
                 break
-            error("=> Download failed: %s pass: %d, sleeping 5sec" %
+            error(
+                "=> Download failed: %s pass: %d, sleeping 5sec" %
                 (sig, passno))
             time.sleep(5)
 
@@ -343,21 +357,23 @@ def main(options):
     """The main functions"""
     addrs = get_addrs(options.hostname)
     record = get_record(options)
-    # pylint: disable-msg=W0621
-    _, mainv, dailyv, _, _, _, safebrowsingv, bytecodev = record.split(':')
-    versions = {'main': mainv, 'daily': dailyv,
-                'safebrowsing': safebrowsingv,
-                'bytecode': bytecodev}
-    for signature_type in ['main', 'daily', 'bytecode', 'safebrowsing']:
-        if signature_type in ['daily', 'bytecode', 'safebrowsing']:
+    record_list = record.split(':')
+    versions = {
+        'main': record_list[1],
+        'daily': record_list[2],
+        'safebrowsing': record_list[6],
+        'bytecode': record_list[7]
+    }
+    for signature_type in versions.keys():
+        if signature_type in [i for i in versions.keys() if i != 'main']:
             # download diffs
             localver = get_local_version(options.mirrordir, signature_type)
-            remotever = locals()['%sv' % signature_type]
+            remotever = versions[signature_type]
             if localver is not None:
                 for num in range(int(localver), int(remotever) + 1):
                     sig_diff = '%s-%d' % (signature_type, num)
-                    filename = os.path.join(options.mirrordir,
-                                        '%s.cdiff' % sig_diff)
+                    filename = os.path.join(
+                        options.mirrordir, '%s.cdiff' % sig_diff)
                     if not os.path.exists(filename):
                         update_diff(options, addrs, sig_diff)
         update_sig(options, addrs, signature_type, versions)
@@ -367,37 +383,44 @@ def main(options):
 
 if __name__ == '__main__':
     PARSER = OptionParser()
-    PARSER.add_option('-a', '--hostname',
+    PARSER.add_option(
+        '-a', '--hostname',
         help='ClamAV source server hostname',
         dest='hostname',
         type='str',
         default='database.clamav.net')
-    PARSER.add_option('-r', '--text-record',
+    PARSER.add_option(
+        '-r', '--text-record',
         help='ClamAV Updates TXT record',
         dest='txtrecord',
         type='str',
         default='current.cvd.clamav.net')
-    PARSER.add_option('-w', '--work-directory',
+    PARSER.add_option(
+        '-w', '--work-directory',
         help='Working directory',
         dest='workdir',
         type='str',
         default='/var/spool/clamav-mirror')
-    PARSER.add_option('-d', '--mirror-directory',
+    PARSER.add_option(
+        '-d', '--mirror-directory',
         help='The mirror directory',
         dest='mirrordir',
         type='str',
         default='/srv/www/datafeeds.baruwa.com/clamav')
-    PARSER.add_option('-u', '--user',
+    PARSER.add_option(
+        '-u', '--user',
         help='Change file owner to this user',
         dest='user',
         type='str',
         default='nginx')
-    PARSER.add_option('-g', '--group',
+    PARSER.add_option(
+        '-g', '--group',
         help='Change file group to this group',
         dest='group',
         type='str',
         default='nginx')
-    PARSER.add_option('-l', '--locks-directory',
+    PARSER.add_option(
+        '-l', '--locks-directory',
         help='Lock files directory',
         dest='lockdir',
         type='str',
@@ -411,4 +434,3 @@ if __name__ == '__main__':
     except IOError:
         info("=> Another instance is already running")
         sys.exit(254)
-
