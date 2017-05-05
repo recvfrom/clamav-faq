@@ -4,17 +4,17 @@
 
 command line scanner
 
-##clamd
+## clamd
 
 multi threaded daemon
 
-##freshclam
+## freshclam
 
 cvd updating tool
 
-##libclamav
+## libclamav
 
 clamav library
 
-##sigtool
+## sigtool
 cvd manipulation tool
