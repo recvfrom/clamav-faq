@@ -291,3 +291,4 @@ to change ip_list_tot "on-the-fly"
 If you use ipt_recent instead of xt_recent, be sure to modify the filenames and path.
 
 Credits: [Valentijn Sessink](http://valentijn.sessink.nl/?p=322)
+Credits: [Florian Schaal](https://blog.schaal-24.de/firewall/block-outdated-clients/?lang=en)
