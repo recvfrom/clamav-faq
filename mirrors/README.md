@@ -1,11 +1,5 @@
 # Introduction
 
-## This doc
-
-The latest version of this document is always available at [MirrorHowTo](MirrorHowto.md). Before going any further, please check that you are reading the latest version.
-
-Japanese sysadmins can find a translated version of this doc at http://www.orange.co.jp/~masaki/clamav/mirror-howto-jp.html (not necessarily up to date)
-
 ## The need for mirrors
 
 To prevent the spread of worms it is essential to check for updates frequently. ClamAV users often configure freshclam with a check interval of 30 minutes. With an exponentially growing number of ClamAV users, the servers hosting the virus database files get easily overloaded. For this reason we must continuously add more mirrors to our pool.
@@ -18,7 +12,7 @@ To prevent the spread of worms it is essential to check for updates frequently. 
 We need fast reliable mirrors. Servers eligible to become mirrors have to meet the following requirements:
 
    * At least a 100Mbit/s link to the Internet. Traffic is bursty, that's why we request such a large pipe
-   * Unlimited traffic (from 500GB to 2TB/month as of 2015, expect more if you're in US clamav dns zone - up to 8TB/month)
+   * Unlimited traffic (from 500GB to 2TB/month as of 2017, expect more if you're in US clamav dns zone - up to 8TB/month)
    * At least 200MB of web space
    * sshd listening on port 22 (see [Update Firewall](#update-firewall) for an alternative solution)
    * All the tools and protocols required for our push-mirroring system: rsync, ssh, bash, lockfile. See below for the details.
@@ -37,7 +31,7 @@ Here is a step-by-step guide to become a mirror
 
 ### Request a rsync account
 
-Before starting the setup, [contact Joel Esler](http://www.clamav.net/about/team) to verify that there is a need for another mirror in your country.
+Before starting the setup, [contact Joel Esler](jesler@cisco.com) to verify that there is a need for another mirror in your country.
 
 ### Configure your web server
 
@@ -49,7 +43,7 @@ wget -O - --header="Host: db.test.clamav.net" 1.2.3.4/local_test
 
 If the output is "Success", then your Apache is configured correctly.
 
-More information on name-based vhosts under Apache is available at http://httpd.apache.org/docs/mod/core.html#serveralias .
+More information on name-based vhosts under Apache is available at [http://httpd.apache.org/docs/mod/core.html#serveralias](http://httpd.apache.org/docs/mod/core.html#serveralias) .
 
 Here is an example for a typical setup:
 <pre>&lt;VirtualHost 1.2.3.4:80&gt;
@@ -128,7 +122,7 @@ Verify the signature using:
 <pre>$ gpg --verify authorized_keys_noshell.sig authorized_keys_noshell
 $ gpg --verify authorized_keys_shell.sig authorized_keys_shell</pre>
 
-The VRT PGP public key is available on [the VRT Labs website](https://labs.snort.org/contact.html) and on most keyservers like this one http://pgp.mit.edu:11371/pks/lookup?search=Sourcefire+VRT&op=index. It can eventually be verified by telephone. Contact us by email first.
+The VRT PGP public key is available on [the VRT Labs website](https://talosintelligence.com/about) and on most keyservers like this one http://pgp.mit.edu:11371/pks/lookup?search=Sourcefire+VRT&op=index. It can eventually be verified by telephone. Contact us by email first.
 
 If you don't want to give us shell access, copy authorized_keys_noshell to ~/clamavdb/.ssh/authorized_keys:
 <pre>$ cp authorized_keys_noshell ~/.ssh/authorized_keys
@@ -221,7 +215,7 @@ You are welcome to put your company logo on the mirror home page. Just copy it t
 
 ### Subscribe to the mirrors mailing lists
 
-Subscribe to clamav-mirrors at lists.clamav.net: http://lists.clamav.net/mailman/listinfo/clamav-mirrors
+Subscribe to clamav-mirrors at lists.clamav.net: [http://lists.clamav.net/mailman/listinfo/clamav-mirrors](http://lists.clamav.net/mailman/listinfo/clamav-mirrors)
 
 Subscribe requests have to be approved. We will approve your subscription request only after reviewing your server's info.
 
@@ -229,23 +223,23 @@ When everything is done, your server's IP address will be added either to your c
 
 ## Statistics
 
-Although it's not required, we really appreciate if you can make access statistics of your mirror available to us. They should be available at http://your-mirror-host-name/local_stats/ and they must be protected with login and password. You should use the same login and password you are using in your ~clamavdb/etc/clam-clientsync.conf file.
+Although it's not required, we really appreciate if you can make access statistics of your mirror available to us. They should be available at http://your-mirror-host-name/local_stats/ and they must be protected with login and password. You should use the same login and password you are using in your `~clamavdb/etc/clam-clientsync.conf` file.
 
 If possible, please tell your statistics generator to ignore requests made by the "ClamAV-MirrorCheck" agent.
 
 If you are using Webalizer, you can add the following directive to your conf. file:
 
-HideAgent ClamAV-MirrorCheck
+`HideAgent ClamAV-MirrorCheck`
 
 If you are using AWStats, you can add this one instead:
 
-SkipUserAgents="ClamAV-MirrorCheck"
+`SkipUserAgents="ClamAV-MirrorCheck"`
 
 Refer to your stats generator's manual for more info.
 
 Important note for Apache2 users:
 
-As stated in the Apache documentation at http://httpd.apache.org/docs/2.0/mod/mod_log_config.html please note that in httpd 2.0, unlike 1.3, the %b and %B format strings do not represent the number of bytes sent to the client, but simply the size in bytes of the HTTP response (which will differ, for instance, if the connection is aborted, or if SSL is used).
+As stated in the Apache documentation at [http://httpd.apache.org/docs/2.0/mod/mod_log_config.html](http://httpd.apache.org/docs/2.0/mod/mod_log_config.html) please note that in httpd 2.0, unlike 1.3, the %b and %B format strings do not represent the number of bytes sent to the client, but simply the size in bytes of the HTTP response (which will differ, for instance, if the connection is aborted, or if SSL is used).
 
 The %O format provided by mod_logio will log the actual number of bytes sent over the network.
 
@@ -253,8 +247,8 @@ The %O format provided by mod_logio will log the actual number of bytes sent ove
 
 Scheduled downtimes should be announced on the clamav-mirrors mailing-list in advance.
 
-   * IP address changes should be notified in advance too.</p>
-   * Changes in the ssh host public key of the mirror host should be announced on the clamav-mirrors mailing-list.</p>
+   * IP address changes should be notified in advance too.
+   * Changes in the ssh host public key of the mirror host should be announced on the clamav-mirrors mailing-list.
    * It is essential to be able to contact the sysadmin responsible for the mirror server and get a quick response. Whenever a problem with a mirror occurs we need to immediately find out its cause and act consequently.
 
 ## Mirror status
@@ -267,7 +261,7 @@ Every three hours we upload a file called timestamp on every mirror. Every hour 
 
 ## Who is responsible for the virus database
 
-The virusdb team, aka [Sourcefire VRT](http://www.clamav.net/about/team) take care of reviewing virus signatures, checking for new viruses in the wild and committing changes to the virus database file.
+The virusdb team, aka [Talos](http://www.clamav.net/about/team) take care of reviewing virus signatures, checking for new viruses in the wild and committing changes to the virus database file.
 
 The updates are released quite often (usually a few times per day). If you want to be notified whenever the virus database is updated subscribe to [clamav-virusdb at lists.clamav.net](http://lists.clamav.net/mailman/listinfo/clamav-virusdb) =.=
 
@@ -275,25 +269,25 @@ Every time the virusdb team updates the database, an email with all the details 
 
 ## Virus submission
 
-Whenever you find a new virus which is not detected by ClamAV you should send it to the virusdb team by filling the form at http://www.clamav.net/sendvirus.
+Whenever you find a new virus which is not detected by ClamAV you should send it to the virusdb team by filling [this form](http://www.clamav.net/contact#reports).
 
 They will review your submission and update the database so that the whole ClamAV user community can take benefit from it. Never send virus samples to ClamAV mailing-lists or developers addresses.
 
 ## Redirecting users to the closest mirror
 
-Our users are encouraged to add the following directives to their freshclam.conf :
-
+Our users are encouraged to add the following directives to their `freshclam.conf` :
+<pre>
    * DatabaseMirror db.XY.clamav.net
    * DatabaseMirror db.local.clamav.net
-
+</pre>
 where XY stands for the country the server lives in a full list is available at http://www.iana.org/cctld/cctld-whois.htm. Each db.XY.clamav.net DNS record points to the mirrors available in the corresponding country. For a complete list of the mirrors available in each country visit http://www.clamav.net/mirrors.html.
 
 If freshclam can't connect to db.XY.clamav.net, it will fallback on db.local.clamav.net, which attempts to redirect the user to the closest pool of mirrors by looking up its ip source address in the [GeoIP database](http://www.maxmind.com/app/geoip_country). See:
 
-   * http://www.iana.org/assignments/ipv4-address-space
-   * http://ip-to-country.webhosting.info/
-   * http://ftp.apnic.net/stats/apnic/
-   * http://www.ripe.net/db/erx/erx-ip/
+   * [http://www.iana.org/assignments/ipv4-address-space](http://www.iana.org/assignments/ipv4-address-space)
+   * [http://ip-to-country.webhosting.info/](http://ip-to-country.webhosting.info/)
+   * [http://ftp.apnic.net/stats/apnic/](http://ftp.apnic.net/stats/apnic/)
+   * [http://www.ripe.net/db/erx/erx-ip/](http://ftp.apnic.net/stats/apnic/)
 
 We are aware that looking up the IP source address is not an accurate method to find the user location from a network topology point of view. However we believe it is a good approximation.
 
