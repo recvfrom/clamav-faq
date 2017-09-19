@@ -15,7 +15,7 @@
 
 * I sent a message to one of ClamAV's mailing-lists, but the mail was rejected/held for approval. Why?
 
->Only subscribers are allowed to post to the mailing-list. This is done to avoid spammers. Please check that your outgoing messages start with a line like the following: <code>Return-Path: me@mydomain.com</code> where <code>me@mydomain.com</code> is the mail account which you used to subscribe to the mailing-list. You can subscribe multiple times, with different mail addresses, and  disable mail delivery. You will be able to post to the mailing-lists by putting any of those addresses in <code>Return-Path</code>.
+>Only subscribers are allowed to post to the mailing-list. This is done to avoid spammers.  
 
 * I read the mailing-list from the Gmane news gateway. Can I post to the mailing-list?
 
