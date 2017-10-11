@@ -37,7 +37,7 @@ On ClamAV.net
 
 * Are there 64 bit versions of ClamAV for Windows as well as 32 bit?
 
-Yes.  You can find both versions at [Sourceforge]
+Yes.  You can find both versions at [Clamav/downloads]
 
 [privacy policy]: http://www.cisco.com/web/siteassets/legal/privacy.html
-[Sourceforge]: http://sourceforge.net/projects/clamav/files/clamav/win32/
+[Clamav/downloads]: https://www.clamav.net/downloads#otherversions
