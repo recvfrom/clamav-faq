@@ -1,6 +1,6 @@
 # Official Mirror FAQ
 
-## Why did freshclam failed to fetch the latest updates?:
+## Why did freshclam fail to fetch the latest updates?:
 
 * Invalid DNS reply. Falling back to HTTP mode or ERROR: Can't query current.cvd.clamav.net  
 
