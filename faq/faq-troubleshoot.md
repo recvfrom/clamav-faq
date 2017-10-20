@@ -60,4 +60,4 @@
 
 * After ClamAV is installed, then what?
 
-> You will need to edit the FreshClam.conf.example file located in /usr/local/etc. Once that is done, you will need to run a 'Sudo Freshclam' to download the signatures. You will need to run the command to update signatures so that ClamAV often.
+> You will need to edit the FreshClam.conf.example file located in /usr/local/etc. Once that is done, you will need to run a 'Sudo Freshclam' to download the signatures. You will need to run the command to update signatures often so that ClamAV has the most up to date signatures.
