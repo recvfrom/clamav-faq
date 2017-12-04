@@ -31,7 +31,7 @@ Here is a step-by-step guide to become a mirror
 
 ### Request a rsync account
 
-Before starting the setup, Please enter a ticket at [http://bugzilla.clamav.net/](http://bugzilla.clamav.net/) to verify that there is a need for another mirror in your country.
+Before starting the setup, Please enter a ticket at [http://bugzilla.clamav.net/](https://bugzilla.clamav.net/enter_bug.cgi?product=Mirror%20Issues) to verify that there is a need for another mirror in your country.
 
 ### Configure your web server
 
