@@ -58,6 +58,6 @@
 
 >current.cvd.clamav.net has got only a TXT record, not a type A record! Try this command: `$ host -t txt current.cvd.clamav.net`. Please note that some not RFC compliant DNS servers (namely the one shipped with the Alcatel (now Thomson) SpeedTouch 510 modem) can't resolve TXT record. If that's the case, please recompile ClamAV with the flag `--enable-dns-fix` .
 
-* After ClamAV is installed, then what?
+* After ClamAV is installed, then what? How do I update / refresh the virus database?
 
 > You will need to edit the FreshClam.conf.example file located in /usr/local/etc. Once that is done, you will need to run a 'Sudo Freshclam' to download the signatures. You will need to run the command to update signatures often so that ClamAV has the most up to date signatures.
