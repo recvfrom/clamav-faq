@@ -119,10 +119,10 @@ Download the following files:
 from [github mirror files](https://github.com/vrtadmin/clamav-faq/blob/master/mirrors/files/).
 
 Verify the signature using:
-<pre>$ gpg --verify authorized_keys_noshell.sig authorized_keys_noshell
-$ gpg --verify authorized_keys_shell.sig authorized_keys_shell</pre>
+<pre>$ gpg --verify authorized_keys_noshell.sig.txt authorized_keys_noshell.txt
+$ gpg --verify authorized_keys_shell.sig.txt authorized_keys_shell.txt</pre>
 
-The VRT PGP public key is available on the [Talos website](http://www.talosintelligence.com/contact/). It can eventually be verified by telephone. Contact us by email first.
+The Talos PGP public key is available on the [Talos website](http://www.talosintelligence.com/contact/). It can eventually be verified by telephone. Contact us by email first.
 
 If you don't want to give us shell access, copy authorized_keys_noshell to ~clamavdb/.ssh/authorized_keys:
 <pre>$ cp authorized_keys_noshell ~/.ssh/authorized_keys
