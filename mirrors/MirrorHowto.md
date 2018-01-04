@@ -178,7 +178,6 @@ Reconfigure your packet filter to allow incoming connections on port 22/tcp and 
 You can furtherly restrict access to these ports by only allowing connections from/to the following IP addresses:
 
    * 64.18.103.6
-   * 128.177.8.249
    * 198.148.79.65
    * 172.110.204.69
 
