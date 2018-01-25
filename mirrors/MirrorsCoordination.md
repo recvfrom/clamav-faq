@@ -202,7 +202,7 @@ You will need to include local_blacklist_lighttpd into main.conf, like this.
 
 ### Manually blackList old versions of ClamAV
 
-We kindly ask our mirrors to support as many old versions of ClamAV as possible. However we understand that this can eat a lot of resources and not every mirror can afford it. Hereby we provide some config. examples for various web servers.
+We kindly ask our mirrors to support as many old versions of ClamAV as possible. However we understand that this can eat a lot of resources and not every mirror can afford it. If you use regex to block versions of ClamAV, please verify that you are not blocking newer versions of ClamAV. ClamAV will start using versions that follow x.y.z (major.minor.patch). Hereby we provide some config. examples for various web servers.
 
 
 #### Apache HTTP Server 
