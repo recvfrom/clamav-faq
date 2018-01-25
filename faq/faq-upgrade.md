@@ -48,43 +48,43 @@ Also make sure that you haven't got old libraries (`libclamav.so*`) lying around
 
 * What does _Malformed hexstring: This ClamAV version has reached End of Life_ mean?
 
-Please refer to: [eol-clamav-096]
+Please refer to: [eol-clamav]
 
 * How do I verify the integrity of ClamAV sources?
 
-Using [GnuPG] you can easily verify the authenticity of your stable release downloads by using the following method: Download the [Sourcefire VRT key] from the VRT labs site. Import the key into your local public keyring: `$ gpg --import vrt.gpg`.  
+Using [GnuPG] you can easily verify the authenticity of your stable release downloads by using the following method: Download the [Talos PGP public key] from the VRT labs site. Import the key into your local public keyring: `$ gpg --import vrt.gpg`.  
  
-Download the stable release AND the corresponding `.sig` file to the same directory. Verify that the stable release download is signed with the [Sourcefire VRT key]: `$ gpg --verify clamav-X.XX.tar.gz.sig`  
+Download the stable release AND the corresponding `.sig` file to the same directory. Verify that the stable release download is signed with the [Talos PGP public key]: `$ gpg --verify clamav-X.XX.tar.gz.sig`  
 
 Please note that the resulting output should look like the following:
 
-`gpg: Signature made <some date> using DSA key ID 15497F03`    
-`gpg: Good signature from Sourcefire VRT <email address>`  
+`gpg: Signature made Wed Jan 24 19:31:26 2018 EST`    
+`gpg:                using RSA key F13F9E16BCA5BFAD`    
+`gpg: Good signature from "Talos (Talos, Cisco Systems Inc.) <email address>" [unknown]`  
 
 For other PGP implementation, please refer to their manual.
 
-* Where can I get the latest GIT snapshot of ClamAV?
+* Where can I get the latest release, beta, or release candidate of ClamAV?
 
 Visit the [source download page].
 
 * Is my compiler/hardware/operating system supported by ClamAV?
 
-ClamAV supports a wide variety of compilers, hardware and operating systems. Our core compiler is gcc with Linux on 32 and 64 bit Intel platforms, though we also test using other compilers, including Sun's C compiler, Microsoft's Visual Studio, Intel's C compiler, LLVM-GCC, and others. To date we have only found one compiler that we do not support, GCC version 4.0.0 to 4.0.1 inclusive. We have found that version of the compiler produces incorrect code on all of the platforms and operating systems on which we have tested it. ClamAV will not work using that compiler and you MUST switch to an alternative, such as GCC3.4 or GCC4.1.   
+ClamAV supports a wide variety of compilers, hardware and operating systems. Our core compiler is gcc with Linux on 32 and 64 bit Intel platforms, though we also test using other compilers, including Sun's C compiler, Microsoft's Visual Studio, Intel's C compiler, LLVM/Clang, and others. To date we have only found one compiler that we do not support, GCC version 4.0.0 to 4.0.1 inclusive. We have found that version of the compiler produces incorrect code on all of the platforms and operating systems on which we have tested it. ClamAV will not work using that compiler and you MUST switch to an alternative, such as GCC3.4 or GCC4.1.   
 
 Please contact your vendor for further information. Please refer to [gcc's bugzilla] for further information. More information about this bug is also available in [our bugzilla].   
 
-Our configure scripts will detect if your compiler is affected by this bug and refuse to generate a non working binary with the following error message: _your compiler has gcc PR26763-2 bug, use a different compiler_ . If you are on MacOS X, you can try an alternative compiler, LLVM-GCC4.2-2.2, which has [official binaries available]
+Our configure scripts will detect if your compiler is affected by this bug and refuse to generate a non working binary with the following error message: _your compiler has gcc PR26763-2 bug, use a different compiler_ . 
 
 
-[eol-clamav-096]: http://blog.clamav.net/2014/07/clamav-096-engine-end-of-life.html 
+[eol-clamav]: http://www.clamav.net/documents/end-of-life-policy-eol
 [GnuPG]:http://www.gnupg.org/
-[sources]: http://sourceforge.net/projects/clamav/files/
-[Wiki]: https://github.com/vrtadmin/clamav-faq/blob/master/faq/Upgrading.md
+[sources]: https://github.com/Cisco-Talos/clamav-devel
+[Wiki]: https://github.com/Cisco-Talos/clamav-faq/blob/master/faq/Upgrading.md
 [precompiled packages]: http://www.clamav.net/download.html#otherversions 
-[Sourcefire VRT key]: http://labs.snort.org/contact.html
-[source download page]: http://www.clamav.net/download.html 
+[Talos PGP public key]: http://www.clamav.net/downloads
+[source download page]: http://www.clamav.net/downloads
 [gcc's bugzilla]: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=26763
 [gcc's Options That Control Optimization]: https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html
-[our bugzilla]: https://bugzilla.clamav.net/show_bug.cgi?id=613 
-[official binaries available]: http://llvm.org/releases/download.html#2.2
-[Installing ClamAV]: https://github.com/vrtadmin/clamav-faq/blob/master/faq/Installing.md
+[our bugzilla]: https://bugzilla.clamav.net/
+[Installing ClamAV]: http://www.clamav.net/documents/installing-clamav
