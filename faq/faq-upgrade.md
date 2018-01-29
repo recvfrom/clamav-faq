@@ -81,7 +81,7 @@ Our configure scripts will detect if your compiler is affected by this bug and r
 [sources]: http://sourceforge.net/projects/clamav/files/
 [Wiki]: https://github.com/vrtadmin/clamav-faq/blob/master/faq/Upgrading.md
 [precompiled packages]: http://www.clamav.net/download.html#otherversions 
-[Sourcefire VRT key]: http://labs.snort.org/contact.html
+[Sourcefire VRT key]: https://talosintelligence.com/about
 [source download page]: http://www.clamav.net/download.html 
 [gcc's bugzilla]: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=26763
 [gcc's Options That Control Optimization]: https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html
