@@ -2,7 +2,7 @@
 
 ### ClamAV from Packages
 
-If you installed from a package, we suggest you find the approve package from your distro provider and install that. The ClamAV team does not maintain individual packages for every distribution build.
+If you installed from a package, we suggest you find the approved package from your distro provider and install that. The ClamAV team does not maintain individual packages for every distribution build.
 If there are no new packages, you have three options:
 
 * Wait
