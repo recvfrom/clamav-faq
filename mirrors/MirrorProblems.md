@@ -57,3 +57,8 @@
 >>7. sigtool --info daily.cvd will show a version number of 16681 and a functionality level of 73  
 >
 >If you are experiencing the problem, please do the following:  Stop the freshclam daemon if it's running, delete both mirrors.dat and daily.cvd, then restart the freshclam daemon. Freshclam will then download a new daily.cvd and will be up-to-date.
+
+*  Mirrors are failing and or out of date.
+
+>Please report all mirror failures or issues to [Bugzilla](https://bugzilla.clamav.net/buglist.cgi?component=Mirror&product=Mirror%20Issues&resolution=---).
+
