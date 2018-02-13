@@ -2,7 +2,7 @@
 
 ### ClamAV from Packages
 
-If you installed from a package, we suggest you find the approve package from your distro provider and install that. The ClamAV team does not maintain individual packages for every distribution build.
+If you installed from a package, we suggest you find the approved package from your distro provider and install that. The ClamAV team does not maintain individual packages for every distribution build.
 If there are no new packages, you have three options:
 
 * Wait
@@ -88,3 +88,4 @@ Our configure scripts will detect if your compiler is affected by this bug and r
 [gcc's Options That Control Optimization]: https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html
 [our bugzilla]: https://bugzilla.clamav.net/
 [Installing ClamAV]: http://www.clamav.net/documents/installing-clamav
+
