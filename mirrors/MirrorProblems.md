@@ -60,5 +60,5 @@
 
 *  Mirrors are failing and or out of date.
 
->Please report all mirror failures or issues to [Bugzilla](https://bugzilla.clamav.net/buglist.cgi?component=Mirror&product=Mirror%20Issues&resolution=---).
+>Please report all mirror failures or issues to [Bugzilla](https://bugzilla.clamav.net/buglist.cgi?component=Mirror&product=Mirror%20Issues).
 
