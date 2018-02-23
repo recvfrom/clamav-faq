@@ -25,7 +25,7 @@ Add the following line to freshclam.conf on machine1.mylan.
 
 First the database will be downloaded to the local webserver and then the other clients on the network will update their copy of the database from it. For this to work you have to change _freshclam.conf_ on each client so that it reads
 
-`DatabaseMirror machine1.mylan`
+`PrivateMirror machine1.mylan`
 `ScriptedUpdates no`
 
 ## 3. Serve CVD and CDIFF files from a local web server ##
