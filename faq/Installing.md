@@ -19,17 +19,25 @@
 * restart any relevant services.
 * Run freshclam manually, to ensure your AV definitions are up to date.
 
-
-### Requirements <a id="requirements" class="anchor">&nbsp;</a>###
+### Requirements <a id="requirements" class="anchor">&nbsp;</a> ###
 
 Mandatory:
 
-* C compiler
+* gcc or clang C compiler
+* openssl
 * zlib library
 
 >__Note:__ you must compile with a shared library, use:
 >_make clean ; ./configure -s_ __before__ _make_ when building zlib
 
+### Known Library Compatibility Issues ###
+
+* zlib
+  * Certain versions on certain OSes will cause failures loading virus database. 
+    * CentOS 6 32bit: zlib 1.2.3-29
+      * Solution: Update to newer version.
+    * AIX 5.3: zlib 1.2.11-1
+      * Solution: Try different version, downgrade may be required.
 
 ## Installing From Packages ##
 
