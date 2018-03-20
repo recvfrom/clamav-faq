@@ -1,5 +1,6 @@
 Installation guide: ClamAV 0.99.+
 _*Note: some of the packages used for installation are for 99.3+ versions of ClamAV._
+_*Note: In the below commands, SUDO or SU is used- this will depend on the permissions of your operating system and directories if needed._
 
 ### Introduction:
 
@@ -14,13 +15,13 @@ As of right now, you can install ClamAV on Linux, Mac OSX and Windows.
 
 ### Packages needed for installation:
 
-Below are the steps for installing ClamAV from source Mac OS X systems.
+Below are the steps for installing ClamAV from source on MacOS X systems.
 ```
 Required Packages:
 ```
 - Zlib and zlib-devel packages
 - Openssl version 0.9.8 or higher and libssl-devel packages
-- GCC compiler suite. (tested with 2.9x, 3.x and 4.x series)
+- XCode command line tools. (GCC or Clang compiler suite. Tested with 2.9x, 3.x and 4.x series)
 
 If you are compiling with higher optimization levels than the default one (-O2
 for gcc), be aware that there have been reports of misoptimizations. The
@@ -35,7 +36,10 @@ Recommended Packages:
 ```
 - Bzip2 and bzip2-devel library
 - Libxml2 and libxml2-dev library
-- Check unit testing framework
+- 'Check' unit testing framework
+- Libjson-c-devel
+- Ncurses-devel
+- Libcurl-devel
 
 ### Pre-requisite install steps for MAC OS X:
 
@@ -56,7 +60,6 @@ brew doctor
 brew update
 brew upgrade
 brew install openssl
-cd /usr/local/include
 ls –s /opt/openssl/include/openssl
 ```
 
@@ -85,7 +88,7 @@ You will want to look for the “Download” button in the upper left hand corne
 **Step 3:**
 Once you are on the download section, you will see something similar to “The latest stable
 release is 0.99.2.” Underneath that, you will see tar.gz files. You will want to locate the one for
-your operating system. For Linux, we will use the Clamav-0.99.2.tar.gz file.
+your operating system.
 Please download the file:
 ![mac-3](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/Mac/mac-3.jpg)
 

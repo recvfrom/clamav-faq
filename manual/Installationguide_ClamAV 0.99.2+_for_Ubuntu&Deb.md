@@ -28,7 +28,7 @@ build system of ClamAV only checks for bugs affecting the default settings,
 it is your responsibility to check that your compiler version doesn’t have any
 bugs.
 
-- GNU make (gmake)
+- GNU make (gmake) / make
 
 ```
 Recommended Packages:

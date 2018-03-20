@@ -30,7 +30,7 @@ build system of ClamAV only checks for bugs affecting the default settings,
 it is your responsibility to check that your compiler version doesn’t have any
 bugs.
 
-- GNU make (gmake)
+- GNU make (gmake) / Make
 
 ```
 Recommended Packages:
@@ -145,7 +145,7 @@ I will start this step with a common error that might pop up when doing a freshc
 
 How do you fix that you ask? Simple:
 Run the following:
-Sudo ldconfig
+sudo ldconfig
 
 **Step 9:**
 You will need to edit the freshclam.conf file. At minimum, you have to uncomment the Example

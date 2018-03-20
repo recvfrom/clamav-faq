@@ -1,5 +1,6 @@
-Installation guide: ClamAV 0.99. 3 +
-_*Note: some of the packages used for installation are for 99.3+ versions of ClamAV._
+Installation guide: ClamAV 0.99.3 +
+_*Note: some of the packages used for installation are for 0.100.0+ versions of ClamAV._
+_*Note: ClamAV-x64 directory name was changed in 0.100.0 to ClamAV._
 
 ### Introduction:
 
@@ -73,7 +74,7 @@ Assuming everything went smoothly, you will be prompted with an “installation 
 From here, you will need to navigate to C:\Program Files\ClamAV\conf_examples.
 You will need to copy the freshclam.conf.sample and save it as “freshclam.conf” in the
 C:\Program Files\ClamAV
-_*NOTE You will want to edit it with a text editor to comment out the word “example”_
+_*NOTE You will want to edit it with a text editor with Admin rights to comment out the word “example”_
 ![win-13](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/Windows/win-13.jpg)
 
 Step 9:
@@ -81,7 +82,7 @@ Run Freshclam.exe from command line:
 ![win-14](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/Windows/win-14.jpg)
 
 OR you can click on freshclam.exe in the ClamAV directory. Once that is done, you should be set for the
-installation.
+installation. You might want to use 'run as administrator' for the freshclam.exe if you get a permissions error.
 
 
 
