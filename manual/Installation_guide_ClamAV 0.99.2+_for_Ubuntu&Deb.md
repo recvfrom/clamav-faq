@@ -89,17 +89,20 @@ At this point, all of the pre-req͛s should be installed for ClamAV.
 Navigate to [http://www.Clamav.net](http://www.Clamav.net)
 
 The page should look similar to:
+
 ![deb-1](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/deb/deb-1.jpg)
 
 **Step 2:**
-You will want to look for the ͞Download͟ button in the upper left hand corner and click it.
+You will want to look for the Download button in the upper left hand corner and click it.
+
 ![deb-2](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/deb/deb-2.jpg)
 
 **Step 3:**
-Once you are on the download section, you will see something similar to ͞The latest stable
-release is 0.99.2. Underneath that, you will see tar.gz files. You will want to locate the one for
+Once you are on the download section, you will see something similar to "The latest stable
+release is 0.99.2". Underneath that, you will see tar.gz files. You will want to locate the one for
 your operating system. For Linux, we will use the Clamav-0.99.2.tar.gz file.
 Please download the file:
+
 ![deb-3](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/deb/deb-3.jpg)
 
 **Step 4:**
@@ -111,37 +114,45 @@ To move the file from Downloads run:
 `cp Downloads/clamav-0.99.2.tar.gz /opt`
 
 Depending on your user rights, you might need to use sudo.
+
 ![deb-4](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/deb/deb-4.jpg)
 
 **Step 5:**
 Now, you will want to navigate to /opt by doing a CD. After that, you need to untar that
-monster file by running the following: tar –xvf clamav-0.99.2-tar.gz
+monster file by running the following: `tar –xvf clamav-0.99.2-tar.gz`
+
 ![deb-5](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/deb/deb-5.jpg)
 
 **Step 6:**
-When you do a 'ls' you will see the tar.gz file, and a folder for clamav-0.99.2.
+When you do a `ls` you will see the tar.gz file, and a folder for clamav-0.99.2.
+
 ![deb-6](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/deb/deb-6.jpg)
 
-You will want to CD into clamav-0.99.2:
+You will want to `cd` into clamav-0.99.2:
+
 ![deb-7](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/deb/deb-7.jpg)
 
 **Step 7** :
-Assuming you want to install the configuration files in /etc, configure and build the software
+Assuming you want to install the configuration files in `/etc`, configure and build the software
 with the following:
 `./configure –sysconfdir=/etc`
+
 ![deb-8](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/deb/deb-8.jpg)
 
 _NOTE* at the end of the `./configure` command, you will see a print out of the summary to make sure everything is
 being detected. You should verify that the packages you installed are in fact being detected:_
+
 ![deb-9](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/deb/deb-9.jpg)
 
-After the `./configure` command finishes, you want to run make
+After the `./configure` command finishes, you want to run `make`
+
 ![deb-10](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/deb/deb-10.jpg)
 
 Once that finishes, run make install
 
 **Step 8:**
 I will start this step with a common error that might pop up when doing a freshclam
+
 ![deb-11](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/deb/deb-11.jpg)
 
 How do you fix that you ask? Simple:
@@ -151,6 +162,7 @@ Run the following:
 **Step 9:**
 You will need to edit the freshclam.conf file. At minimum, you have to uncomment the Example
 line as seen below:
+
 ![deb-12](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/deb/deb-12.jpg)
 
 As you can see I added a # before Example.
@@ -175,6 +187,7 @@ useradd -g clamav -s /bin/false -c "Clam Antivirus" clamav
 **Step 11:**
 Lets create the directory needed for freshclam:
 `/usr/local/share/clamav`
+
 ![deb-14](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/deb/deb-14.jpg)
 
 `mkdir /usr/local/share/clamav`
@@ -182,11 +195,13 @@ Lets create the directory needed for freshclam:
 **Step 12:**
 Making the database directory writeable with the following:
 `chmod 777 /usr/local/share/clamav`
+
 ![deb-15](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/deb/deb-15.jpg)
 
 **Step 13:**
 Run a freshclam to download the latest updates.
 Just type `freshclam`
+
 ![deb-16](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/deb/deb-16.jpg)
 
 Once that is done, you should be set for the installation.
@@ -197,6 +212,7 @@ But how do I test out that the ͞unit tests͟ are passing?
 
 **Step 1:**
 Navigate back to where ClamAV is installed. 
+
 `cd /opt/clamav-0.99.`
 
 **Step 2:**
@@ -207,6 +223,7 @@ Preform the following:
 `make check VG=1`
 
 IF done correctly, you will see something like this:
+
 ![deb-17](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/deb/deb-17.jpg)
 
 The `check7_clamd.hg.sh` will skip, and that is fine for now.
