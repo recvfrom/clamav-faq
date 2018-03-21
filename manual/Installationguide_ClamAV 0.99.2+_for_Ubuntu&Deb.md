@@ -1,5 +1,5 @@
 Installation guide: ClamAV 0.99.2+ for Ubuntu / Debian from source.
-_*Note: some of t he packages used for i nstallation are for 99.3+ versions of ClamAV._
+_*Note: some of t he packages used for installation are for 99.3+ versions of ClamAV._
 
 ### Introduction:
 
