@@ -91,10 +91,12 @@ At this point, all of the pre-reqs should be installed for ClamAV.
 Navigate to [http://www.Clamav.net](http://www.Clamav.net)
 
 The page should look similar to:
+
 ![rhel-1](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/rhel/rhel-1.jpg)
 
 **Step 2:**
 You will want to look for the Download button in the upper left hand corner and click it.
+
 ![rhel-2](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/rhel/rhel-2.jpg)
 
 **Step 3:**
@@ -102,6 +104,7 @@ Once you are on the download section, you will see something similar to the late
 release is 0.99.2. Underneath that, you will see tar.gz files. You will want to locate the one for
 your operating system. For Linux, we will use the Clamav-0.99.2.tar.gz file.
 Please download the file:
+
 ![rhel-3](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/rhel/rhel-3.jpg)
 
 **Step 4:**
@@ -114,22 +117,26 @@ To move the file from Downloads run:
 `cp Downloads/clamav-0.99.2.tar.gz /opt`
 
 Depending on your user rights, you might need to use sudo.
+
 ![rhel-4](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/rhel/rhel-4.jpg)
 
 **Step 5:**
-Now, you will want to navigate to /opt by doing a CD. After that, you need to untar that
-monster file by running the following: tar –xvf clamav-0.99.2-tar.gz
+Now, you will want to navigate to `/opt` by doing a CD. After that, you need to untar that
+monster file by running the following: `tar –xvf clamav-0.99.2-tar.gz`
+
 ![rhel-5](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/rhel/rhel-5.jpg)
 
 **Step 6:**
 When you do a ls you will see the tar.gz file, and a folder for clamav-0.99.2.
+
 ![rhel-6](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/rhel/rhel-6.jpg)
 
-You will want to CD into clamav-0.99.2:
+You will want to `cd` into clamav-0.99.2:
+
 ![rhel-7](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/rhel/rhel-7.jpg)
 
 **Step 7** :
-Assuming you want to install the configuration files in /etc, configure and build the software
+Assuming you want to install the configuration files in `/etc`, configure and build the software
 with the following:
 
 `./configure –sysconfdir=/etc`
@@ -141,13 +148,15 @@ being detected. You should verify that the packages you installed are in fact be
 
 ![rhel-9](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/rhel/rhel-9.jpg)
 
-After the `./configure` command finishes, you want to run make
+After the `./configure` command finishes, you want to run `make`
+
 ![rhel-10](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/rhel/rhel-10.jpg)
 
 Once that finishes, run `make install`
 
 **Step 8:**
 I will start this step with a common error that might pop up when doing a freshclam
+
 ![rhel-11](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/rhel/rhel-11.jpg)
 
 How do you fix that you ask? Simple:
@@ -158,6 +167,7 @@ Run the following:
 **Step 9:**
 You will need to edit the freshclam.conf file. At minimum, you have to uncomment the Example
 line as seen below:
+
 ![rhel-12](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/rhel/rhel-12.jpg)
 
 As you can see I added a # before Example.
@@ -219,6 +229,7 @@ Preform the following:
 `make check VG=1`
 
 IF done correctly, you will see something like this:
+
 ![rhel-17](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/rhel/rhel-17.jpg)
 
 The `check7_clamd.hg.sh` will skip, and that is fine for now.
