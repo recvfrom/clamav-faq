@@ -209,7 +209,7 @@ Preform the following:
 IF done correctly, you will see something like this:
 ![deb-17](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/deb/deb-17.jpg)
 
-The check7_clamd.hg.sh will skip, and that is fine for now.
+The `check7_clamd.hg.sh` will skip, and that is fine for now.
 
 If you have a failure or an error in the unit tests:
 1) Could be that you do not have installed all the packages mentioned above.
