@@ -83,11 +83,13 @@ At this point, all of the pre-req’s should be installed for ClamAV.
 Navigate to [http://www.Clamav.net](http://www.Clamav.net)
 
 The page should look similar to:
+
 ![mac-1](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/Mac/mac-1.jpg)
 
 
 **Step 2:**
 You will want to look for the "Download" button in the upper left hand corner and click it.
+
 ![mac-2](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/Mac/mac-2.jpg)
 
 **Step 3:**
@@ -95,6 +97,7 @@ Once you are on the download section, you will see something similar to "The lat
 release is 0.99.2." Underneath that, you will see tar.gz files. You will want to locate the one for
 your operating system.
 Please download the file:
+
 ![mac-3](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/Mac/mac-3.jpg)
 
 **Step 4:**
@@ -106,24 +109,30 @@ To move the file from Downloads run:
 `cp Downloads/clamav-0.99.2.tar.gz /Desktop`
 
 Depending on your user rights, you might need to use sudo.
+
 ![mac-4](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/Mac/mac-4.jpg)
 
 **Step 5:**
 Now, you will want to navigate to "clamav" folder by doing a CD. After that, you need to untar
 that monster file by running the following: `tar –xvf clamav-0.99.2-tar.gz`
+
 ![mac-5](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/Mac/mac-5.jpg)
 
 **Step 6:**
 When you do a `ls` you will see the tar.gz file, and a folder for clamav-0.99.2.
+
 ![mac-6](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/Mac/mac-6.jpg)
 
 You will want to `cd` into clamav-0.99.2:
+
 ![mac-7](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/Mac/mac-7.jpg)
 
 **Step 7** :
 Assuming you want to install the configuration files in `/etc`, configure and build the software
 with the following:
-./configure –sysconfdir=/etc
+
+`./configure –sysconfdir=/etc`
+
 ![mac-8](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/Mac/mac-8.jpg)
 
 _NOTE* at the end of the `./configure` command, you will see a print out of the summary to make sure everything is
@@ -132,6 +141,7 @@ being detected. You should verify that the packages you installed are in fact be
 ![mac-9](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/Mac/mac-9.jpg)
 
 After the `./configure` command finishes, you want to run `make`
+
 ![mac-10](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/Mac/mac-10.jpg)
 
 Once that finishes, run `make install`
@@ -139,6 +149,7 @@ Once that finishes, run `make install`
 **Step 9:**
 You will need to edit the freshclam.conf file in `/etc/freshclam.conf`. At minimum, you have to
 uncomment the Example line as seen below:
+
 ![mac-11](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/pictures_4_markdown/Mac/mac-11.jpg)
 
 As you can see I added a # before Example.
