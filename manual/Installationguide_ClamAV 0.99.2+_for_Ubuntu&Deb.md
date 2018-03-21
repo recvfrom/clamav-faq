@@ -79,7 +79,7 @@ Example: `apt-get install check`
 **Step 11** : Install LLVM (versions between 3.0 – 3.6)
 Example: Navigate to the LLVM webpage:
 [http://releases.llvm.org](http://releases.llvm.org) to download the version. Keep in mind you will also need to
-untar this file, and run the `./configure`, make, make install on this software.
+untar this file, and run the `./configure`, `make`, `make install` on this software.
 
 At this point, all of the pre-req͛s should be installed for ClamAV.
 
