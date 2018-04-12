@@ -1,4 +1,4 @@
-# Which Version of ClamAV should I use? #
+# Which Version of ClamAV should I use?
 
 ## Stable
 
