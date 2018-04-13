@@ -2,22 +2,60 @@
 
 ## If you installed from source
 
-* _./configure_
-* _sudo make uninstall_
+```bash
+./configure
+sudo make uninstall
+```
 
-##If you installed from packages
+## If you installed from packages
 
-* Debian: _dpkg --remove clamav*_
-* Redhat/Fedora: _yum remove clamav*_
-* Mandriva: _urpme clamav_
-* Gentoo: _emerge -C clamav_
-* FreeBSD?: _pkg_deinstall -f security/clamav*_
-* Slackware: _/etc/rc.d/rc.clamav stop; removepkg clamav_
+* Debian: 
 
-##Caveats
+  ```bash
+  dpkg --remove clamav*
+  ```
 
-Make sure that you haven’t got old libraries (_libclamav.so_) lying around your filesystem. You can verify it using: _$ ldd `which freshclam`_
+* Redhat/Fedora: 
+
+  ```bash
+  yum remove clamav*
+  ```
+
+* Mandriva: 
+
+  ```bash
+  urpme clamav
+  ```
+
+* Gentoo: 
+
+  ```bash
+  emerge -C clamav
+  ```
+
+* FreeBSD?: 
+
+  ```bash
+  pkg_deinstall -f security/clamav*
+  ```
+
+* Slackware: 
+
+  ```bash
+  /etc/rc.d/rc.clamav stop; removepkg clamav
+  ```
+
+## Caveats
+
+Make sure that you haven’t got old libraries (_libclamav.so_) lying around your filesystem. You can verify it using: _
+
+```bash
+$ ldd `which freshclam`
+```
+
 Also make sure there is really only one version of ClamAV installed on your system:
 
-* _$ whereis freshclam_
-* _$ whereis clamscan_
+```bash
+$ whereis freshclam
+$ whereis clamscan
+```

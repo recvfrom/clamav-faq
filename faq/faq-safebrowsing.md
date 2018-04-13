@@ -1,10 +1,10 @@
-# Safebrowsing  #
+# Safebrowsing
 
 __ClamAV 0.95__ introduced support for __Google Safe Browsing database__.
 The database is packed inside a CVD file and distributed through our mirror network. 
 This feature is disabled by default on all installations and should be enabled with extreme care.
 
-All signatures provided by Google Safe Browsing Database will be prefixed with the _Safebrowsing_ tag. If ClamAV reports <code>Safebrowsing.&lt;something&gt; FOUND</code>, it means that the advisory was provided by Google and not by ClamAV Virus database.
+All signatures provided by Google Safe Browsing Database will be prefixed with the _Safebrowsing_ tag. If ClamAV reports `Safebrowsing.&lt;something&gt; FOUND`, it means that the advisory was provided by Google and not by ClamAV Virus database.
 
 Please note that such reports DO NOT necessarily mean that the data scanned contains some malware. You should treat such data as a _potential_ risk, that is a _suspicious_ source of malware.
 

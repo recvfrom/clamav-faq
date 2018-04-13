@@ -1,4 +1,4 @@
-# End of Life Policy (EOL) #
+# End of Life Policy (EOL)
 
 The naming convention for ClamAV releases uses three numbers (X.Y.Z) where the first two (X.Y) identify a major release and the last one (Z) a minor release.
 
