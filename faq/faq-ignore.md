@@ -4,9 +4,7 @@
 
 Change Directory into the location where your ClamAV databases are stored.  Create a file called "whitelist.ign2", for example, like this:
 
-```bash
-touch whitelist.ign2
-```
+`touch whitelist.ign2`
 
 ### Ignore individual signatures
 
@@ -14,7 +12,6 @@ Place the signatures you'd like to ignore, each in it's own line, within the fil
 
 For example:
 
-```
-Signature.Ignore-1
-Signature.Ignore-2
-```
+`Signature.Ignore-1`
+
+`Signature.Ignore-2`
