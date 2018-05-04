@@ -1,5 +1,7 @@
 # ClamAV Community Threat Tracking System
 
+# The Community Threat Tracking System is currently being re-done. This data is inaccurate.
+
 ## Official FAQ
 
 ### What is the CCTTS?
@@ -17,7 +19,7 @@ Yes! The amount of analysis that we can publish depends on the amount of data th
 
 ### How do I enable Anonymous Statistics?
 
-Look in your freshclam.conf (usually located in /usr/local/etc/freshclam.conf) for the entry “SubmitDetectionStats” and ensure it is enabled and points to your clamd.conf, for example “SubmitDetectionStats /usr/local/etc/clamd.conf”. When you enable SubmitDetectionStats freshclam will fetch the latest statistics from clamd and submit them to our server.
+Look in your freshclam.conf (usually located in `/usr/local/etc/freshclam.conf`) for the entry “`SubmitDetectionStats`” and ensure it is enabled and points to your clamd.conf, for example “`SubmitDetectionStats /usr/local/etc/clamd.conf`”. When you enable SubmitDetectionStats freshclam will fetch the latest statistics from clamd and submit them to our server.
 
 ### How can I see statistics regarding the malware detected by my own ClamAV installation?
 
