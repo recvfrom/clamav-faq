@@ -14,6 +14,7 @@ If there are no new packages, you have three options:
 If you installed from sources, first uninstall the old version:
 
 `./configure`
+
 `sudo make uninstall`
 
 Compile and install the new one: see [Installing ClamAV]
@@ -26,10 +27,9 @@ Backup your database signature (located in _/usr/local/share/clamav_ by default)
 
 To obtain a new version:
 
-```
-yum list clamav
-yum update clamav
-```
+`yum list clamav`
+
+`yum update clamav`
 
 If everything updated properly, run freshclam to update your signature database.
 
