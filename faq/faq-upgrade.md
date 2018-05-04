@@ -19,9 +19,9 @@ If you installed from sources, first uninstall the old version:
 
 Compile and install the new one: see [Installing ClamAV]
 
-Depending on your installation method, you might want to backup configuration (located in _/usr/local/etc_ by default) and signature database (located in _/usr/local/share/clamav_ by default). Don't forget to restore backups before starting up updated ClamAV.
+Depending on your installation method, you might want to backup configuration (located in `/usr/local/etc` by default) and signature database (located in `/usr/local/share/clamav` by default). Don't forget to restore backups before starting up updated ClamAV.
 
-Backup your database signature (located in _/usr/local/share/clamav_ by default) before upgrading to newer ClamAV version. Restore the backed up database signature before running the updated version. This is to avoid getting the _/usr/local/share/clamav not locked_ error message when doing _freshclam_.
+Backup your database signature (located in `/usr/local/share/clamav` by default) before upgrading to newer ClamAV version. Restore the backed up database signature before running the updated version. This is to avoid getting the `/usr/local/share/clamav not locked` error message when doing `freshclam`.
 
 ## Webmin and yum
 
@@ -35,28 +35,25 @@ If everything updated properly, run freshclam to update your signature database.
 
 ### What does _WARNING:	Current functionality level = 1, required = 2_ mean?
 
-The _functionality level_ of the database determines which scanner engine version is required to use all of its signatures. If you don't upgrade immediately you will be missing the latest viruses.
+The *functionality level* of the database determines which scanner engine version is required to use all of its signatures. If you don't upgrade immediately you will be missing the latest viruses.
 
-### What does _Your ClamAV installation is OUTDATED_ mean?
+### What does "Your ClamAV installation is OUTDATED" mean?
 
 You'll get this message whenever a new version of ClamAV is released.  In order to detect all the latest viruses, it's not enough to keep your database up to date. You also need to run the latest version of the scanner. You can download the [sources] of the latest release from our website. If you are afraid to break something while upgrading, use  the [precompiled packages] for your operating system/distribution.  Remember: running the latest stable release also improves stability.
 
-### I upgraded to the latest stable version but I still get the message _Your ClamAV installation is OUTDATED_, why?
+### I upgraded to the latest stable version but I still get the message "Your ClamAV installation is OUTDATED", why?
 
 Make sure there is really only one version of ClamAV installed on your system:
 
-```bash
-$ whereis freshclam
-$ whereis clamscam
-```
+`$ whereis freshclam`
+
+`$ whereis clamscam`
 
 Also make sure that you haven't got old libraries (`libclamav.so*`) lying around your filesystem. You can verify it using: 
 
-```bash
-$ ldd $(which freshclam)
-```
+`$ ldd $(which freshclam)`
 
-### What does _Malformed hexstring: This ClamAV version has reached End of Life_ mean?
+### What does "Malformed hexstring: This ClamAV version has reached End of Life" mean?
 
 Please refer to: [eol-clamav]
 
@@ -66,17 +63,14 @@ Using [GnuPG] you can easily verify the authenticity of your stable release down
  
 Download the stable release AND the corresponding `.sig` file to the same directory. Verify that the stable release download is signed with the [Talos PGP public key]: 
 
-```bash
-$ gpg --verify clamav-X.XX.tar.gz.sig
-```  
+`$ gpg --verify clamav-X.XX.tar.gz.sig`
 
 Please note that the resulting output should look like the following:
 
-```
-gpg: Signature made Wed Jan 24 19:31:26 2018 EST
-gpg:                using RSA key F13F9E16BCA5BFAD
-gpg: Good signature from "Talos (Talos, Cisco Systems Inc.) <email address>" [unknown]
-```  
+
+> `gpg: Signature made Wed Jan 24 19:31:26 2018 EST`
+> `gpg:                using RSA key F13F9E16BCA5BFAD`
+> `gpg: Good signature from "Talos (Talos, Cisco Systems Inc.) <email address>" [unknown]`
 
 For other PGP implementation, please refer to their manual.
 
@@ -90,7 +84,7 @@ ClamAV supports a wide variety of compilers, hardware and operating systems. Our
 
 Please contact your vendor for further information. Please refer to [gcc's bugzilla] for further information. More information about this bug is also available in [our bugzilla].   
 
-Our configure scripts will detect if your compiler is affected by this bug and refuse to generate a non working binary with the following error message: _your compiler has gcc PR26763-2 bug, use a different compiler_ . 
+Our configure scripts will detect if your compiler is affected by this bug and refuse to generate a non working binary with the following error message: "your compiler has gcc PR26763-2 bug, use a different compiler" . 
 
 
 [eol-clamav]: http://www.clamav.net/documents/end-of-life-policy-eol
@@ -104,4 +98,3 @@ Our configure scripts will detect if your compiler is affected by this bug and r
 [gcc's Options That Control Optimization]: https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html
 [our bugzilla]: https://bugzilla.clamav.net/
 [Installing ClamAV]: http://www.clamav.net/documents/installing-clamav
-
