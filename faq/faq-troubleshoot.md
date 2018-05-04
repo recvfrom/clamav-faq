@@ -6,12 +6,13 @@ If you are running ClamAV 0.7x please __upgrade now__.
 
 If you are running ClamAV 0.8x or later, you can check for database update as often as 4 times per hour provided that you have the following options in freshclam.conf:
 
-```
-DNSDatabaseInfo  
-current.cvd.clamav.net   
-DatabaseMirror db.XY.clamav.net   
-DatabaseMirror database.clamav.net  
-```
+`DNSDatabaseInfo  `
+
+`current.cvd.clamav.net   `
+
+`DatabaseMirror db.XY.clamav.net   `
+
+`DatabaseMirror database.clamav.net  `
 
 _Replace XY with your "country code":iana.  If you don't have that option, then you must stick with 1 check per hour._
 
@@ -57,10 +58,9 @@ Sure, you can find more details on our [Mirror page].
 
   * Finally, change freshclam.conf on your clients so that it includes:
     
-    ```
-    DatabaseMirror machine1.mylan
-    ScriptedUpdates off
-    ```
+    `DatabaseMirror machine1.mylan`
+    
+    `ScriptedUpdates off`
     
     First the database will be downloaded to the local webserver and then the other clients on the network will update their copy of the database from it. 
     
@@ -68,7 +68,7 @@ Sure, you can find more details on our [Mirror page].
 
 ### I can't wait for you to update the database! I need to use the new signature NOW!
 
-No problem, save your own signatures in a text file with the appropriate extension (see "signatures.pdf":/doc/latest/signatures.pdf for more information). Put it in the same dir where the .cvd files are located. ClamAV will load it after the official .cvd files. You need not to sign the .db file.
+No problem, save your own signatures in a text file with the appropriate extension (see [signatures.pdf](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/signatures.pdf) for more information). Put it in the same dir where the .cvd files are located. ClamAV will load it after the official .cvd files. You need not to sign the .db file.
 
 ### Can I download the virusdb manually?
 
@@ -80,4 +80,4 @@ current.cvd.clamav.net has got only a TXT record, not a type A record! Try this 
 
 ### After ClamAV is installed, then what? How do I update / refresh the virus database?
 
-You will need to edit the freshclam.conf.example file located in /usr/local/etc. Once that is done, you will need to run a 'sudo sreshclam' to download the signatures. You will need to run the command to update signatures often so that ClamAV has the most up to date signatures.
+You will need to edit the `freshclam.conf.example` file located in `/usr/local/etc`. Once that is done, you will need to run a 'sudo freshclam' to download the signatures. You will need to run the command to update signatures often so that ClamAV has the most up to date signatures.
