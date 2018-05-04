@@ -33,15 +33,15 @@ To obtain a new version:
 
 If everything updated properly, run freshclam to update your signature database.
 
-### What does _WARNING:	Current functionality level = 1, required = 2_ mean?
+### What does "*WARNING:	Current functionality level = 1, required = 2*" mean?
 
 The *functionality level* of the database determines which scanner engine version is required to use all of its signatures. If you don't upgrade immediately you will be missing the latest viruses.
 
-### What does "Your ClamAV installation is OUTDATED" mean?
+### What does "*Your ClamAV installation is OUTDATED*" mean?
 
 You'll get this message whenever a new version of ClamAV is released.  In order to detect all the latest viruses, it's not enough to keep your database up to date. You also need to run the latest version of the scanner. You can download the [sources] of the latest release from our website. If you are afraid to break something while upgrading, use  the [precompiled packages] for your operating system/distribution.  Remember: running the latest stable release also improves stability.
 
-### I upgraded to the latest stable version but I still get the message "Your ClamAV installation is OUTDATED", why?
+### I upgraded to the latest stable version but I still get the message "*Your ClamAV installation is OUTDATED*", why?
 
 Make sure there is really only one version of ClamAV installed on your system:
 
@@ -53,7 +53,7 @@ Also make sure that you haven't got old libraries (`libclamav.so*`) lying around
 
 `$ ldd $(which freshclam)`
 
-### What does "Malformed hexstring: This ClamAV version has reached End of Life" mean?
+### What does "*Malformed hexstring: This ClamAV version has reached End of Life*" mean?
 
 Please refer to: [eol-clamav]
 
