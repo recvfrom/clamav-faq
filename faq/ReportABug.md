@@ -44,37 +44,36 @@ Backtrace of clamscan: If possible, please send us the backtrace obtained from g
 Here are step by step instructions which will guide you through the process.
 __Assuming you get something like:__
 
-```bash
-$ clamscan --some-options some_file
-Segmentation fault
-```
+`$ clamscan --some-options some_file`
+
+`Segmentation fault`
 
 1. Have the kernel write a core dump. 
   For bourne-like shells (e.g. bash): 
   
-  ```
-  $ ulimit -c unlimited
-  ```
+
+  `$ ulimit -c unlimited`
+
   
   For C-like shells (e.g. tcsh): 
   
-  ```tsch
-  limit coredumpsize unlimited
-  ```
+
+  `limit coredumpsize unlimited`
 
 2. Now you should see the core dumped message:
-  ```bash
-  $ clamscan --some-options some_file
-  Segmentation fault (core dumped)
+
+  `$ clamscan --some-options some_file`
+  
+  `Segmentation fault (core dumped)`
   
   Looking at your current working directory should reveal a file named core.
 
 3. Load the core file into gdb:
 
-  ```bash
-  $ gdb -core=core --args clamscan --some-options some_file
-  (gdb)
-  ```
+
+  `$ gdb -core=core --args clamscan --some-options some_file`
+  
+  `(gdb)`
   
   You should now see the gdb prompt.
   
@@ -84,24 +83,22 @@ Segmentation fault
 
 Use `ps` to get the PID of clamd (first number from the left):
 
-```bash
-$ ps -aux (or ps -elf on SysV)
-clamav 24897 0.0 1.9 38032 10068 ? S Jan13 0:00 clamd  
-```
+
+`$ ps -aux (or ps -elf on SysV)`
+
+`clamav 24897 0.0 1.9 38032 10068 ? S Jan13 0:00 clamd  `
   
 Attach gdb to the running process:
 
-```bash
-$ gdb /usr/sbin/clamd 24897
-```
+
+`$ gdb /usr/sbin/clamd 24897`
 
 Replace 24897 with the pid of clamd and adjust the path of clamd.
 
 You should now get the gdb prompt, as:  
 
-```
-(gdb)
-```
+
+`(gdb)`
 
 If you want clamd to continue running (i.e. until a segmentation fault occurs), issue the `continue gdb` command, and __wait for an error__, at which point gdb will return to its prompt.  
 
