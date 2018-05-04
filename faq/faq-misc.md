@@ -16,9 +16,7 @@ Please [submit a sample](http://www.clamav.net/report/report-malware.html), mark
 
 Yes, install a recent version of sigtool and run:
 
-```bash
-sigtool --unpack-current daily.cvd; sigtool --unpack-current main.cvd
-```
+`sigtool --unpack-current daily.cvd; sigtool --unpack-current main.cvd`
 
 ### How do I read inside the CVD files?
 
