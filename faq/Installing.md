@@ -64,9 +64,9 @@ You don't necessarily need all packages. Please read [ClamOverview] carefully to
 
 ### Debian <a id="debian" class="anchor">&nbsp;</a>
 
-`# apt-get update`
-
-`# apt-get install clamav`
+<pre># apt-get update
+# apt-get install clamav
+</pre>
 
 ### RHEL/CentOS <a id="rhel" class="anchor">&nbsp;</a>
 
