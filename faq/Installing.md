@@ -64,20 +64,17 @@ You don't necessarily need all packages. Please read [ClamOverview] carefully to
 
 ### Debian <a id="debian" class="anchor">&nbsp;</a>
 
+`# apt-get update`
 
-```bash
-# apt-get update
-# apt-get install clamav
-```
+`# apt-get install clamav`
 
 ### RHEL/CentOS <a id="rhel" class="anchor">&nbsp;</a>
 
 On CentOS:
 
-```bash
-# yum install -y epel-release
-# yum install -y clamav
-```
+`# yum install -y epel-release`
+
+`# yum install -y clamav`
 
 On [Community Enterprise Operating System (CentOS)] the clamav package requires the [Extra Packages for Enterprise Linux (EPEL) repository].
 
@@ -85,29 +82,21 @@ On [RedHat Enterprise Linux (RHEL)] the EPEL release package has to be installed
 
 ### Fedora <a id="fedora" class="anchor">&nbsp;</a>
 
-```bash
-# yum install -y clamav clamav-update
-```
+`# yum install -y clamav clamav-update`
 
 ### Mandriva <a id="mandriva" class="anchor">&nbsp;</a>
 
-```bash
-# urpmi clamav clamd
-```
+`# urpmi clamav clamd`
 
 ### Gentoo <a id="gentoo" class="anchor">&nbsp;</a>
 
-```bash
-# emerge clamav
-```
+`# emerge clamav`
 
 See package entry on [Portage].
 
 ### openSUSE <a id="opensuse" class="anchor">&nbsp;</a>
 
-```bash
-# zypper install -y clamav
-```
+`# zypper install -y clamav`
 
 ### FreeBSD, OpenBSD, NetBSD <a id="bsd" class="anchor">&nbsp;</a>
 
@@ -120,9 +109,7 @@ Use the ports Luke.
 
 OpenCSW is a community software project for Solaris 8+ on both Sparc and x86. It packages more than 2000 popular open source titles and they can all easily be installed with dependency handling via _pkgutil_ which is modeled after Debian's _apt-get_.
 
-```bash
-# pkgutil -i clamav
-```
+`# pkgutil -i clamav`
 
 More info on [OpenCSW]
 
@@ -142,22 +129,17 @@ Various Installation Guides for OSX can be found on the Internet, two that we ha
 
 Download the package, and as root, install it like so (substituting the appropriate filename):
 
-```bash
-# installpkg clamav-0.91.2-i486-1McD.tgz
-```
+`# installpkg clamav-0.91.2-i486-1McD.tgz`
 
-To activate Sendmail integration, after installing the package, copy the ‘/usr/share/sendmail/sendmail-slackware-clamav.cf’ file into ‘/etc/mail/sendmail.cf’:
+To activate Sendmail integration, after installing the package, copy the `/usr/share/sendmail/sendmail-slackware-clamav.cf` file into `/etc/mail/sendmail.cf`:
 
-```bash
-# cp /usr/share/sendmail/sendmail-slackware-clamav.cf /etc/mail/sendmail.cf
-```
+`# cp /usr/share/sendmail/sendmail-slackware-clamav.cf /etc/mail/sendmail.cf`
 
 Then start ClamAV and restart Sendmail:
 
-```bash
-# /etc/rc.d/rc.clamav start
-# /etc/rc.d/rc.sendmail restart
-```
+`# /etc/rc.d/rc.clamav start`
+
+`# /etc/rc.d/rc.sendmail restart`
 
 #### Building Your Own Package
 
@@ -165,9 +147,7 @@ You may wish to build your own package if I haven't uploaded one with the most r
 
 This script can be used to build a ClamAV package for Slackware 10.0 or higher with Sendmail installed (as Sendmail milter support was introduced as of 10.0). To choose a version of ClamAV to build, you can ‘cd’ to the script's directory and invoke the script like so:
 
-```bash
-$ VERSION=1.23.4 ./clamav.SlackBuild
-```
+`$ VERSION=1.23.4 ./clamav.SlackBuild`
 
 …substituting, of course, the appropriate ClamAV version for ‘1.23.4’. Note: there is no need to be root to use this build script; it will ask for your root password after building the binaries and just before creating the package (and if you have fakeroot installed, even that isn't necessary).
 
@@ -198,13 +178,11 @@ Please visit ClamAV [OpenVMS project site]
 
 First, you should download latest clamav sources and bzip2 library (if you need bz2 archives support) from the site above. Install process is very similar to one in unix:
 
-```
-@configure
+`@configure`
 
-@build
+`@build`
 
-@clamav$startup
-```
+`@clamav$startup`
 
 This process provides for you:
 
