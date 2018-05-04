@@ -26,9 +26,11 @@ Backup your database signature (located in _/usr/local/share/clamav_ by default)
 
 To obtain a new version:
 
-```bash
+```
+
 yum list clamav
 yum update clamav
+
 ```
 
 If everything updated properly, run freshclam to update your signature database.
