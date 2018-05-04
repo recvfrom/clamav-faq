@@ -68,9 +68,9 @@ Download the stable release AND the corresponding `.sig` file to the same direct
 Please note that the resulting output should look like the following:
 
 
-> `gpg: Signature made Wed Jan 24 19:31:26 2018 EST`
-> `gpg:                using RSA key F13F9E16BCA5BFAD`
-> `gpg: Good signature from "Talos (Talos, Cisco Systems Inc.) <email address>" [unknown]`
+> gpg: Signature made Wed Jan 24 19:31:26 2018 EST
+> gpg:                using RSA key F13F9E16BCA5BFAD
+> gpg: Good signature from "Talos (Talos, Cisco Systems Inc.) <email address>" [unknown]
 
 For other PGP implementation, please refer to their manual.
 
