@@ -47,7 +47,7 @@ Make sure there is really only one version of ClamAV installed on your system:
 
 `$ whereis freshclam`
 
-`$ whereis clamscam`
+`$ whereis clamscan`
 
 Also make sure that you haven't got old libraries (`libclamav.so*`) lying around your filesystem. You can verify it using: 
 
