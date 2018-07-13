@@ -2,7 +2,7 @@
 
 This is the official ClamAV FAQ repository. To checkout all the files:
 
- `git clone https://github.com/vrtadmin/clamav-faq.git`
+ `git clone https://github.com/Cisco-Talos/clamav-faq.git`
 
 ### Manual ###
 
@@ -18,9 +18,7 @@ This is the official ClamAV FAQ repository. To checkout all the files:
 
 [FAQ - CVD](faq/faq-cvd.md)
 
-[FAQ - CCTTS](faq/faq-cctts.md)
-
-[FAQ - MISC](faq/faq-misc.md)
+[FAQ - Misc](faq/faq-misc.md)
 
 [FAQ - Mailing Lists](faq/faq-ml.md)
 
