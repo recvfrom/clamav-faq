@@ -91,7 +91,7 @@ You may want to disable password authentication for this account and change the 
 
 The "clamavdb" user's shell must be /bin/sh or /bin/bash . Otherwise the user won't be able to run the command associated with the ssh public key.
 
-Take a look at the content of "authorized_keys_noshell":
+Take a look at the content of `authorized_keys_noshell`:
 <pre>no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty,command="bash ~/bin/clam-clientsync rsync1.clamav.net &" ssh-rsa xxxxxxxxxxxxxxxxxxxxxxxxx clamavdb@morgana
 no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty,command="bash ~/bin/clam-clientsync rsync2.clamav.net &" ssh-rsa xxxxxxxxxxxxxxxxxxxxxxxxx clamavdb@morgana
 </pre>

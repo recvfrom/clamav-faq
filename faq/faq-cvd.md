@@ -14,8 +14,7 @@ The virus database is usually updated many times per week. Sign up for our [Viru
 
 ### How many times per hour shall I run freshclam?
 
-You can check for database update as often as 4 times per hour provided that you have the following options in freshclam.conf: 
-
+You can check for database update as often as 4 times per hour provided that you have the following options in `freshclam.conf`:
 
 `DNSDatabaseInfo current.cvd.clamav.net`
 
@@ -39,7 +38,7 @@ Please run clamscan with the `--detect-broken` option. Also  check that freshcla
 
 ### I found an infected file in my HD/floppy/mailbox, but ClamAV doesn't recognize it yet. Can you help me? 
 
-Our virus database is kept up to date with the help of the community. Whenever you find a new virus which is not detected by ClamAV you should  "complete this form":submit. The virusdb team will review your submission and update the database if necessary. Before submitting a new sample: - check that the value of DatabaseDirectory, in both clamd.conf and freshclam.conf, is the same - update your database by running freshclam
+Our virus database is kept up to date with the help of the community. Whenever you find a new virus which is not detected by ClamAV you should [complete this form](submit). The virusdb team will review your submission and update the database if necessary. Before submitting a new sample: - check that the value of `DatabaseDirectory`, in both `clamd.conf` and `freshclam.conf`, is the same - update your database by running freshclam
 
 ### How do I keep my virus database up to date?
 
@@ -47,7 +46,10 @@ ClamAV comes with _freshclam_, a tool which periodically checks for new database
 
 ### I get this error when running freshclam: _Invalid DNS reply. Falling back to HTTP mode_ or _ERROR: Can't query current.cvd.clamav.net_ . What does it mean?
 
-There is a problem with your DNS server. Please check the entries in /etc/resolv.conf and verify that you can resolve the TXT record manually: `$ host -t txt current.cvd.clamav.net`  
+There is a problem with your DNS server. Please check the entries in /etc/resolv.conf and verify that you can resolve the TXT record manually:
+
+`$ host -t txt current.cvd.clamav.net`
+
 If you can't, it means your network is broken. You'll be still able to download the updates, but you'll waste a lot of bandwidth checking for updates.
 
 ### I get this error when running freshclam: _ERROR: Connection with ??? failed_ . What shall I do?
@@ -56,7 +58,7 @@ Either your dns servers are not working or you are blocking port 53/tcp. You sho
 
 `$ host database.clamav.net`
  
-If it doesn't work, check your dns settings in /etc/resolv.conf. If it works, check that you can receive dns answers longer than 512 bytes, e.g. check that your firewall is not blocking packets which originate from port 53/tcp.
+If it doesn't work, check your dns settings in `/etc/resolv.conf`. If it works, check that you can receive dns answers longer than 512 bytes, e.g. check that your firewall is not blocking packets which originate from `port 53/tcp`.
 
 An easy way to find it out is:
 
@@ -78,15 +80,15 @@ Sure, you can find more details on our [Mirror page].
 
 2. The second possible solution is to:
 
-  * Configure a local webserver on one of your machines (say machine1.mylan) 
+  * Configure a local webserver on one of your machines (say `machine1.mylan`) 
   
-  * Let freshclam download the \*.cvd files from http://database.clamav.net to the webserver's DocumentRoot. 
+  * Let freshclam download the `*.cvd` files from http://database.clamav.net to the webserver's *DocumentRoot*.
 
   * Finally, change `freshclam.conf` on your clients so that it includes:
     
 
     `DatabaseMirror machine1.mylan`
-    
+
     `ScriptedUpdates off`
     
     First the database will be downloaded to the local webserver and then the other clients on the network will update their copy of the database from it. 
@@ -104,11 +106,13 @@ Yes, the virusdb can be downloaded from the _Latest releases_ section on our hom
 ### I can't resolve current.cvd.clamav.net! Is there a problem with your/my DNS servers?
 
 current.cvd.clamav.net has got only a TXT record, not a type A record! Try this command:   
+
 `$ host -t txt current.cvd.clamav.net`
    
-Please note that some not RFC compliant DNS servers (namely the one shipped with the Alcatel (now Thomson) SpeedTouch 510 modem) can't resolve TXT record. If that's the case, please recompile ClamAV with the flag   `--enable-dns-fix` 
+Please note that some not RFC compliant DNS servers (namely the one shipped with the *Alcatel* (now *Thomson*) **SpeedTouch 510 modem**) can't resolve `TXT` record. If that's the case, please recompile ClamAV with the flag   `--enable-dns-fix`.
 
 [VirusDB mailing list]: http://lists.clamav.net/cgi-bin/mailman/listinfo/clamav-virusdb
 [country code]: http://www.iana.org/domains/root/db
 [Mirror page]: http://www.clamav.net/doc/mirrors-private.html
 [Contact]: http://www.clamav.net/contact
+[submit]: https://www.clamav.net/reports/fp

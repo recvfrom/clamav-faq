@@ -8,8 +8,8 @@ Many mirror sysadmins running the [Apache HTTP Server](http://httpd.apache.org/)
 
 Here is an example config that will do the following:
 
-  * Limit .cvd downloads to 40KB/s
-  * Limit .cdiff downloads to 400KB/s
+  * Limit `.cvd` downloads to 40KB/s
+  * Limit `.cdiff` downloads to 400KB/s
   * Allow max 50 simultaneous connections
   * Minimum download speed 20KB/s
 
@@ -25,19 +25,21 @@ Here is an example config that will do the following:
 &lt;/IfModule&gt;
 </pre>
 
-_Note_ You can also use mod_cband to limit the download-speed.
-The Source is available at [http://sourceforge.net/projects/cband/](http://sourceforge.net/projects/cband/)
-Just run
-<pre>./configure
+*Note:* You can also use `mod_cband` to limit the download-speed.
+The Source is available at [http://sourceforge.net/projects/cband/](http://sourceforge.net/projects/cband/).
+Just run:
+
+<pre>
+./configure
 make
 make install
 </pre>
 
-Add the module to your apache-config by manually adding it to _/etc/apache2/httpd.conf_
+Add the module to your apache-config by manually adding it to `/etc/apache2/httpd.conf`:
 
-<pre>LoadModule cband_module  /usr/lib/apache2/modules/mod_cband.so
-</pre>
-Edit the config for the vhost and add
+`LoadModule cband_module  /usr/lib/apache2/modules/mod_cband.so`
+
+Edit the config for the vhost and add:
 
 <pre>&lt;IfModule mod_cband.c&gt;
   CBandSpeed 20kb/s 100 300
@@ -46,10 +48,12 @@ Edit the config for the vhost and add
 
 This limits the download speed to 20kb/s, allows 100 requests/second and a maximum of 300 connections.
 
-To improve mod_cband's performance add.
+To improve `mod_cband`'s performance add:
 
-<pre>CBandScoreFlushPeriod 1
-CBandRandomPulse On</pre>
+<pre>
+CBandScoreFlushPeriod 1
+CBandRandomPulse On
+</pre>
 
 to _/etc/httpd/conf/httpd.conf_
 
@@ -65,7 +69,7 @@ If you would like a scoreboard, set something like.
   &lt;/Location&gt;
 &lt;/IfModule&gt;</pre>
 
-Create the directory for CBandScoreboard and make it writeable by the apache-user.
+Create the directory for *CBandScoreboard* and make it writeable by the apache-user:
 
 <pre>
  $ chown wwwrun.www /srv/www/scoreboard/
@@ -73,7 +77,7 @@ Create the directory for CBandScoreboard and make it writeable by the apache-use
 
 The status page can be found on _http://your-domain/cband-status_.
 
-With mod_cband you can also limit the download speed based on monthly traffic or the source-ip. For more information see http://codee.pl/cband_documentation.html
+With `mod_cband` you can also limit the download speed based on monthly traffic or the source-ip. For more information see [http://codee.pl/cband_documentation.html](http://codee.pl/cband_documentation.html)
 
 _Thanks to Florian Schaal_
 
@@ -107,7 +111,8 @@ location / {
 
 #### A customer example for Nginx ####
 
-<pre>limit_conn_zone $server_port zone=cvds:1m;  
+<pre>
+limit_conn_zone $server_port zone=cvds:1m;  
 limit_conn_zone $server_port zone=cdiffs:1m;  
 limit_conn_log_level info;  
 
@@ -167,12 +172,12 @@ We provide a configuration file for Apache and Lighttpd which lists.
   * IP addresses that are reported by our mirrors as abusers
   * obsolete ClamAV installations
 
-The names of the files are.
+The names of the files are:
 
-  * local_blacklist_apache - written following Apache mod_access syntax, it can be used as an .htaccess file
-  * local_blacklist_lighttpd - meant to be included into lighttpd config.
+  * `local_blacklist_apache` - written following Apache mod_access syntax, it can be used as an `.htaccess` file
+  * `local_blacklist_lighttpd` - meant to be included into lighttpd config.
 
-Our script (clam-clientsync) by default excludes all files with a local_* prefix, so you won't see this file on your mirror.
+Our script (`clam-clientsync`) by default excludes all files with a `local_*` prefix, so you won't see this file on your mirror.
 
 You can write your own script to regularly download this file and use it on your webserver.
 
@@ -191,9 +196,10 @@ rsync $RSYNC_USER@rsync.clamav.net::$MODULE/local_blacklist_apache $TO/.htaccess
 export RSYNC_PASSWORD
 rsync $RSYNC_USER@rsync.clamav.net::$MODULE/local_blacklist_lighttpd /path/local_blacklist_lighttpd</pre>
 
-You will need to include local_blacklist_lighttpd into main.conf, like this.
+You will need to include `local_blacklist_lighttpd` into `main.conf`, like this:
 
-<pre>$HTTP["host"] =~ "^(clamav\.yourhostname\.tld|.*\.clamav\.net)$" {                     
+<pre>
+$HTTP["host"] =~ "^(clamav\.yourhostname\.tld|.*\.clamav\.net)$" {                     
     include "/path/local_blacklist_lighttpd"
 </pre>
 
@@ -207,7 +213,8 @@ We kindly ask our mirrors to support as many old versions of ClamAV as possible.
 
 #### Apache HTTP Server 
 
-<pre>SetEnvIfNoCase User-Agent "^clamav/0.6" bad_clamav 
+<pre>
+SetEnvIfNoCase User-Agent "^clamav/0.6" bad_clamav 
 SetEnvIfNoCase User-Agent "^clamav/devel-2008" bad_clamav
 SetEnvIfNoCase User-Agent "^ClamWin/0.6" bad_clamav
 </pre>
@@ -253,42 +260,76 @@ Requirements.
 
 The Access Log of apache must send to syslog-ng:
 
-<pre>$ mknod /var/log/apache/access.log p</pre>
+`$ mknod /var/log/apache/access.log p`
+
 
 ### Apache HTTP Server (httpd.conf or vhost.conf) 
 
 The logformat and the accesslog must be defined like.
 
-<pre>LogFormat "%h %v %l %u %t \"%r\" %&gt;s \"%{Referer}i\" \"%{User-Agent}i\"" syslog<br />CustomLog= =/var/log/apache2/access.log syslog
+<pre>
+LogFormat "%h %v %l %u %t \"%r\" %&gt;s \"%{Referer}i\" \"%{User-Agent}i\"" syslog<br />CustomLog= =/var/log/apache2/access.log syslog
 </pre>
 
 As long as the log file runs only through the pipe, no entries are stored. The configuration used here evaluates merely the log file. To receive an Access Log as a file, you must extend either syslog-ng by a destination or the apache-config by a CustomLog.
 
 ### Configure syslog-ng 
 
-<pre>source s_apache_access { <br /> pipe("/var/log/apache2/access.log"); <br /> };<br /><br />destination d_clamav-403 { <br /> file("/proc/net/xt_recent/clamav-403"<br /> template("+${APACHE.SRC-IP}\n")); <br /> };<br /><br />filter f_clamav_403 { <br /> message('clamav.net') <br /> and message(' 403 '); <br /> };<br /><br />parser p_apache_src_ip { <br /> csv-parser(columns("APACHE.SRC-IP")<br /> delimiters(': ') <br /> flags(escape-none,greedy) <br /> template("${MSGHDR}") ); <br /> };<br /><br />log { <br /> source(s_apache_access);<br /> filter(f_clamav_403);<br /> parser(p_apache_src_ip);<br /> destination(d_clamav-403); <br /> };</pre>
+<pre>
+source s_apache_access {
+  pipe("/var/log/apache2/access.log");
+};
+
+destination d_clamav-403 {
+  file("/proc/net/xt_recent/clamav-403"
+  template("+${APACHE.SRC-IP}\n"));
+};
+
+filter f_clamav_403 {
+  message('clamav.net')
+  and message(' 403 ');
+};
+
+parser p_apache_src_ip {
+  csv-parser(columns("APACHE.SRC-IP")
+    delimiters(': ')
+    flags(escape-none,greedy)
+    template("${MSGHDR}")
+  );
+};
+
+log {
+  source(s_apache_access);
+  filter(f_clamav_403);
+  parser(p_apache_src_ip);
+  destination(d_clamav-403);
+};
+</pre>
+
 
 ### Iptables 
 
-<pre>iptables -A INPUT -p tcp --dport 80 -m recent --rcheck --name clamav-403 --seconds 3600 --hitcount 5 -j DROP</pre>
+`iptables -A INPUT -p tcp --dport 80 -m recent --rcheck --name clamav-403 --seconds 3600 --hitcount 5 -j DROP`
+
 
 ### how it works 
 
-Syslog-ng filters apache messages with the contents clamav.net and 403. As destination /proc/net/xt_recent/clamav-403 is defined. The template adds the IP to the firewall. With reach from "hitcount" the IP is blocked "seconds".
+Syslog-ng filters apache messages with the contents clamav.net and 403. As destination `/proc/net/xt_recent/clamav-403` is defined. The template adds the IP to the firewall. With reach from "hitcount" the IP is blocked "seconds".
 
 If you replace the _rcheck_ here with an _update_ statement, the block will last even longer. The _rcheck_ option means: we will block you for the next hour. While _update_ means: we don't want to see you for an hour, but if we see you again during this time, we'll block you again. It means that you actually need to be quiet for 60 minutes to be able to log in again.
 
-By default xt_recent stores 100 IP addresses. You can change the limit with "modprobe ipt_recent ip_list_tot=10000" (here 10000). This is only possible before the first iptables rule is put on.
+By default `xt_recent` stores *100* IP addresses. You can change the limit with `modprobe ipt_recent ip_list_tot=10000` (here *10000*). This is only possible before the first iptables rule is added.
 
-Use.
-<pre>$ chmod 600 /sys/module/xt_recent/parameters/ip_list_tot
-$ echo 10000 &gt; /sys/module/xt_recent/parameters/ip_list_tot
+To change `ip_list_tot` "on-the-fly", use:
+
+<pre>
+$ chmod 600 /sys/module/xt_recent/parameters/ip_list_tot
+$ echo 10000 > /sys/module/xt_recent/parameters/ip_list_tot
 $ chmod 400 /sys/module/xt_recent/parameters/ip_list_tot
 </pre>
 
-to change ip_list_tot "on-the-fly"
-
-If you use ipt_recent instead of xt_recent, be sure to modify the filenames and path.
+If you use `ipt_recent` instead of `xt_recent`, be sure to modify the filenames and path.
 
 Credits: [Valentijn Sessink](http://valentijn.sessink.nl/?p=322)
+
 Credits: [Florian Schaal](https://blog.schaal-24.de/firewall/block-outdated-clients/?lang=en)

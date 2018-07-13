@@ -6,11 +6,11 @@ Starting from release 0.90, ClamAV allows you to choose whether to detect phish 
 
 ### Why is my legitimate HTML newsletter/email detected by ClamAV as Phishing.Heuristics.Email.SpoofedDomain?
 
-If it contains links in the form of href="http://yourdomain.example.tld"&gt; otherdomain.tld, where ProtectedDomain doesn't belong to you and is listed in ClamAV database (like amazon.com, ebay.com, ...) then ClamAV detects it as a phishing attempt.
+If it contains links in the form of `href="http://yourdomain.example.tld"&gt; otherdomain.tld`, where `otherdomain.tld` (ProtectedDomain) doesn't belong to you and is listed in ClamAV database (like amazon.com, ebay.com, ...) then ClamAV detects it as a phishing attempt.
 
 ### My legitimate emails from yourdomain.tld are detected as Phishing.Heuristics.Email.SpoofedDomain
 
-Please [submit a sample](https://www.clamav.net/reports/fp), marking it as a false positive, phishing. If it's really a false positive, we will add a whitelist entry for it.
+Please [submit a sample](submit), marking it as a false positive, phishing. If it's really a false positive, we will add a whitelist entry for it.
 
 ### Can I convert the new database format to the old one? 
 
@@ -24,7 +24,8 @@ See previous FAQ.
 
 ### I'm using ClamAV in a production environment and a brand new virus is not being recognized by ClamAV. How long do I have to wait before ClamAV can start filtering the virus?
 
-No time at all! Find a signature for that virus and modify your  virus database accordingly (see signatures.pdf in the _doc/_ dir). Remember to "submit":submit the sample to the virusdb team. 
+No time at all! Find a signature for that virus and modify your virus database accordingly (see `signatures.pdf` in the _doc/_ dir).
+Remember to [submit] the sample to the virusdb team. 
 
 ### Why is ClamAV calling the XXX virus with another name?
 
@@ -32,7 +33,7 @@ This usually happens when we add a signature _before_ other  AV vendors. No well
 
 ### I get many false positives of Oversized.zip
 
-Whenever a file exceeds ArchiveMaxCompressionRatio (see clamd.conf man page), it's considered a logic bomb and marked as Oversized.zip . Try increasing your ArchiveMaxCompressionRatio setting.
+Whenever a file exceeds ArchiveMaxCompressionRatio (see clamd.conf man page), it's considered a logic bomb and marked as `Oversized.zip`. Try increasing your ArchiveMaxCompressionRatio setting.
 
 ### What is PUA? I get a lot of false positives named PUA.
 
@@ -56,4 +57,8 @@ Clam AntiVirus works with Linux&reg;, Solaris, FreeBSD, OpenBSD, NetBSD, AIX, Ma
 
 ### Where can I find more information about ClamAV?
 
-Please read the complete documentation in pdf/ps format. You will find it inside the package or in the "documentation":doc section of this website. You can also try searching the "mailing list archives":ml.  If you can't find the answer, you can ask for support on the clamav-users mailing-list, but  _please_ before doing it, search the archives! Also, make sure that you don't send HTML messages and that you don't top post: these violate the netiquette and lessen your chances of being answered.
+Please read the complete documentation in pdf/ps format. You will find it inside the package or in the [documentation](doc) section of this website. You can also try searching the [mailing list archives](ml).  If you can't find the answer, you can ask for support on the clamav-users mailing-list, but  _please_ before doing it, search the archives! Also, make sure that you don't send HTML messages and that you don't top post: these violate the netiquette and lessen your chances of being answered.
+
+[doc]: https://www.clamav.net/documents/installing-clamav
+[submit]: https://www.clamav.net/reports/fp
+[ml]: https://www.clamav.net/contact#ml

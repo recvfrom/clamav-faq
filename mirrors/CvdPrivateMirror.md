@@ -18,14 +18,16 @@ Install a proxy server (e.g. squid) and then tell your freshclam clients to use 
 
 This solution is really simple to implement but it's only effective if your clients are all on the same local network and bandwidth is not an issue for you.
 
-Configure a local webserver on one of your machines (say machine1.mylan) and let freshclam download the \_\*.cvd\_ files from http://database.clamav.net to the webserver’s \_DocumentRoot\_.
+Configure a local webserver on one of your machines (say `machine1.mylan`) and let freshclam download the `*.cvd` files from http://database.clamav.net to the webserver’s *DocumentRoot*.
 
-Add the following line to freshclam.conf on machine1.mylan.
+Add the following line to `freshclam.conf` on `machine1.mylan`:
+
 `ScriptedUpdates no`
 
 First the database will be downloaded to the local webserver and then the other clients on the network will update their copy of the database from it. For this to work you have to change _freshclam.conf_ on each client so that it reads
 
 `PrivateMirror machine1.mylan`
+
 `ScriptedUpdates no`
 
 ## 3. Serve CVD and CDIFF files from a local web server ##
@@ -34,9 +36,9 @@ This solution is bandwidth efficient but it's a little bit trickier to set up an
 
 Because of this, the scripts might need to be updated from time to time to cope with the corresponding changes in freshclam.
 
-Configure a local webserver on one of your machines (say machine1.mylan) and use this script developed by Frederic Vanden Poel to download the cvd and cdiff files into the DocumentRoot.
+Configure a local webserver on one of your machines (say `machine1.mylan`) and use this script developed by Frederic Vanden Poel to download the `cvd` and `cdiff` files into the *DocumentRoot*.
 
-clamdownloader.pl by Frederic Vanden Poel
+`clamdownloader.pl` by *Frederic Vanden Poel*:
 
 
     #!/usr/bin/env perl
@@ -147,6 +149,7 @@ clamdownloader.pl by Frederic Vanden Poel
     __END__
 
 
-First the cvd+cdiff files will be downloaded to the local webserver and then the other clients on the network will update their copy of the database from it. For this to work you have to change freshclam.conf on your clients so that it reads.
+First the `cvd` and `cdiff` files will be downloaded to the local webserver and then the other clients on the network will update their copy of the database from it. For this to work you have to change `freshclam.conf` on your clients so that it reads:
+
 <pre>DatabaseMirror machine1.mylan</pre>
 
