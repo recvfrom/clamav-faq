@@ -100,7 +100,7 @@ See package entry on [Portage].
 
 ### FreeBSD, OpenBSD, NetBSD <a id="bsd" class="anchor">&nbsp;</a>
 
-Use the ports Luke.
+*Use the ports Luke*.
 
 ### Solaris <a id="solaris" class="anchor">&nbsp;</a>
 
@@ -145,11 +145,11 @@ Then start ClamAV and restart Sendmail:
 
 You may wish to build your own package if I haven't uploaded one with the most recent version yet, if you use a pre-11.0 Slackware version (at the time of this writing, I build on 11.0, 12.0 and 12.1, and my binaries may not work on earlier versions), if you don't trust third-party binaries, or simply because you're a complete geek ;-) . You can download my easy-to-use Slackbuild script, from which the fully-integrated ClamAV packages at Linuxpackages.net are generated.
 
-This script can be used to build a ClamAV package for Slackware 10.0 or higher with Sendmail installed (as Sendmail milter support was introduced as of 10.0). To choose a version of ClamAV to build, you can ‘cd’ to the script's directory and invoke the script like so:
+This script can be used to build a ClamAV package for Slackware 10.0 or higher with Sendmail installed (as Sendmail milter support was introduced as of 10.0). To choose a version of ClamAV to build, you can `cd` to the script's directory and invoke the script like so:
 
 `$ VERSION=1.23.4 ./clamav.SlackBuild`
 
-…substituting, of course, the appropriate ClamAV version for ‘1.23.4’. Note: there is no need to be root to use this build script; it will ask for your root password after building the binaries and just before creating the package (and if you have fakeroot installed, even that isn't necessary).
+…substituting, of course, the appropriate ClamAV version for `1.23.4`. Note: there is no need to be root to use this build script; it will ask for your root password after building the binaries and just before creating the package (and if you have fakeroot installed, even that isn't necessary).
 
 ### Windows <a id="windows" class="anchor">&nbsp;</a>
 
@@ -159,16 +159,12 @@ This script can be used to build a ClamAV package for Slackware 10.0 or higher w
 
 #### Available Packages
 
-ClamAV.msi - base package for clamav, an anti-virus utility for Windows
+* `ClamAV.msi` - base package for clamav, an anti-virus utility for Windows
 
 #### How to Install
 
 * simple mode: doubleclick the MSI installer package
-* command line (displays only a confirmation dialog at the end): msiexec /i clamAV.msi /qr
-
-#### Requirements
-
-Microsoft .net version 2.0 is required starting with ClamAV 0.92.1
+* command line (displays only a confirmation dialog at the end): `msiexec /i clamAV.msi /qr`
 
 ### OpenVMS <a id="openvms" class="anchor">&nbsp;</a>
 
@@ -200,7 +196,7 @@ This process provides for you:
 [for OpenVMS]: http://www.openvms.org/    
 [UninstallClamAV]: https://www.clamav.net/documents/uninstalling-clamav
 [Which Version]: https://www.clamav.net/documents/which-version-of-clamav-should-i-use
-[ClamOverview]: https://github.com/vrtadmin/clamav-faq/blob/master/faq/faq-overview.md
+[ClamOverview]: faq-overview.md
 [Community Enterprise Operating System (CentOS)]: https://centos.org/
 [Extra Packages for Enterprise Linux (EPEL) repository]: https://fedoraproject.org/wiki/EPEL
 [RedHat Enterprise Linux (RHEL)]: https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux
