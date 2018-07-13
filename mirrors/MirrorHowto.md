@@ -180,6 +180,8 @@ You can furtherly restrict access to these ports by only allowing connections fr
    * 64.18.103.6
    * 198.148.79.65
    * 172.110.204.69
+   * 2620:28:c000:23::65
+   * 2620:121:0:23::69
 
 Any changes to this IP address list will be announced on the clamav-mirrors mailing-list.
 
