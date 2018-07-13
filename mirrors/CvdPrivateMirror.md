@@ -150,3 +150,6 @@ clamdownloader.pl by Frederic Vanden Poel
 First the cvd+cdiff files will be downloaded to the local webserver and then the other clients on the network will update their copy of the database from it. For this to work you have to change freshclam.conf on your clients so that it reads.
 <pre>DatabaseMirror machine1.mylan</pre>
 
+## 4. Serving a private mirror from Cloud Foundry
+
+This solution isn't necessarily bandwidth efficient, but very easy to deploy with pre-existing Cloud Foundry deployments. In a nutshell, it downloads the CVDs and stores them in-memory to serve them as an uber-fast mirror. While it is storing definitions in-memory, if the app is restarted/rebooted, it will reach out and re-download the CVDs. You can find the app [here on Github](https://github.com/mxplusb/clamav), as well as instructions on how to push it to Cloud Foundry. The URL the app is configured with is where the ClamAV daemons can listen from.
