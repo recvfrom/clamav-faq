@@ -86,7 +86,10 @@ def get_file_md5(filename):
     """Get a file's MD5"""
     if os.path.exists(filename):
         blocksize = 65536
-        hasher = hashlib.md5()
+        try:
+            hasher = hashlib.md5()
+        except ValueError:
+            hasher = hashlib.new('md5', usedforsecurity=False)
         with open(filename, 'rb') as afile:
             buf = afile.read(blocksize)
             while len(buf) > 0:
@@ -99,7 +102,10 @@ def get_file_md5(filename):
 
 def get_md5(string):
     """Get a string's MD5"""
-    hasher = hashlib.md5()
+    try:
+        hasher = hashlib.md5()
+    except ValueError:
+        hasher = hashlib.new('md5', usedforsecurity=False)
     hasher.update(string.encode())
     return hasher.hexdigest()
 
