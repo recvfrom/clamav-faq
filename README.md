@@ -28,6 +28,8 @@ This is the official ClamAV FAQ repository. To checkout all the files:
 
 [FAQ - Troubleshooting](faq/faq-troubleshoot.md)
 
+[FAQ - Interpreting Scan Alerts](faq/faq-scan-alerts.md)
+
 [FAQ - Upgrading](faq/faq-upgrade.md)
 
 [FAQ - Win32](faq/faq-win32.md)
