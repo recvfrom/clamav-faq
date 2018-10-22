@@ -57,3 +57,5 @@ This is the official ClamAV FAQ repository. To checkout all the files:
 [Speeding up ClamWin](additional/faq-speed.md)
 
 [Authenticode Signature Verification](additional/authenticode.md)
+
+[ClamAV Development](additional/development.md)

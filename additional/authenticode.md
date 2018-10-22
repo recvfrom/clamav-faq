@@ -308,3 +308,6 @@ in-depth.  All samples are available via VirusTotal.
     - 8ca912e397a9e1b0cc54c216144ff550da9d43610392208193c0781b1aa5d695
 - *Unexpected contentType for embedded mode signature (copied from a .cat?)*
     - 6ed9b5f6d32f94b3d06456b176c8536be123e1047763cc0a31c6e8fd6a0242b1
+## Additional References
+- [What are x509 certificates?](https://www.cryptologie.net/article/262/what-are-x509-certificates-rfc-asn1-der/) (Provides an overview of the ASN1 structure of x509 certificates)
+- [Signed Malware](http://signedmalware.org/) (Research papers on signed malware with interactive tables of malicious code signing certs)
