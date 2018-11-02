@@ -75,31 +75,34 @@ another.
 
 On Linux, osslsigncode can be used to verify a signature:
 
+<pre>
 
-`$ osslsigncode verify /path/to/signed/file`
-`Current PE checksum   : 00092934`
-`Calculated PE checksum: 00092934`
-``
-`Message digest algorithm  : SHA256`
-`Current message digest    : 56924EB391B1B04572B1841ED5D5C10927CE7D6E9553A69F994B9BA855A73933`
-`Calculated message digest : 56924EB391B1B04572B1841ED5D5C10927CE7D6E9553A69F994B9BA855A73933`
-``
-`Signature verification: ok`
-``
-`Number of signers: 1`
-`	Signer #0:`
-`		Subject: /C=US/ST=California/L=Mountain View/O=Google Inc/CN=Google Inc`
-`		Issuer : /C=US/O=Symantec Corporation/OU=Symantec Trust Network/CN=Symantec Class 3 SHA256 Code Signing CA`
-``
-`Number of certificates: 2`
-`	Cert #0:`
-`		Subject: /C=US/ST=California/L=Mountain View/O=Google Inc/CN=Google Inc`
-`		Issuer : /C=US/O=Symantec Corporation/OU=Symantec Trust Network/CN=Symantec Class 3 SHA256 Code Signing CA`
-`	Cert #1:`
-`		Subject: /C=US/O=Symantec Corporation/OU=Symantec Trust Network/CN=Symantec Class 3 SHA256 Code Signing CA`
-`		Issuer : /C=US/O=VeriSign, Inc./OU=VeriSign Trust Network/OU=(c) 2006 VeriSign, Inc. - For authorized use only/CN=VeriSign Class 3 Public Primary Certification Authority - G5`
-``
-`Succeeded`
+$ osslsigncode verify /path/to/signed/file
+Current PE checksum   : 00092934
+Calculated PE checksum: 00092934
+
+Message digest algorithm  : SHA256
+Current message digest    : 56924EB391B1B04572B1841ED5D5C10927CE7D6E9553A69F994B9BA855A73933
+Calculated message digest : 56924EB391B1B04572B1841ED5D5C10927CE7D6E9553A69F994B9BA855A73933
+
+Signature verification: ok
+
+Number of signers: 1
+	Signer #0:
+		Subject: /C=US/ST=California/L=Mountain View/O=Google Inc/CN=Google Inc
+		Issuer : /C=US/O=Symantec Corporation/OU=Symantec Trust Network/CN=Symantec Class 3 SHA256 Code Signing CA
+
+Number of certificates: 2
+	Cert #0:
+		Subject: /C=US/ST=California/L=Mountain View/O=Google Inc/CN=Google Inc
+		Issuer : /C=US/O=Symantec Corporation/OU=Symantec Trust Network/CN=Symantec Class 3 SHA256 Code Signing CA
+	Cert #1:
+		Subject: /C=US/O=Symantec Corporation/OU=Symantec Trust Network/CN=Symantec Class 3 SHA256 Code Signing CA
+		Issuer : /C=US/O=VeriSign, Inc./OU=VeriSign Trust Network/OU=(c) 2006 VeriSign, Inc. - For authorized use only/CN=VeriSign Class 3 Public Primary Certification Authority - G5
+
+Succeeded
+
+</pre>
 
 On Windows,
 
