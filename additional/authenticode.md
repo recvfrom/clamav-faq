@@ -75,7 +75,7 @@ another.
 
 On Linux, osslsigncode can be used to verify a signature:
 
-```
+<pre>
 $ osslsigncode verify /path/to/signed/file
 Current PE checksum   : 00092934
 Calculated PE checksum: 00092934
@@ -100,7 +100,7 @@ Number of certificates: 2
 		Issuer : /C=US/O=VeriSign, Inc./OU=VeriSign Trust Network/OU=(c) 2006 VeriSign, Inc. - For authorized use only/CN=VeriSign Class 3 Public Primary Certification Authority - G5
 
 Succeeded
-```
+</pre>
 
 On Windows,
 
@@ -121,24 +121,24 @@ script that performs verification, but this script is no longer maintained.
 On Linux, the osslsigncode command can be used to extract the contents of the
 PE security section:
 
-```
+<pre>
 osslsigncode extract-signature -in /path/to/exe -out /path/to/extracted
-```
+</pre>
 
 Note: This will also extract the 8-byte
 [WIN_CERTIFICATE](https://docs.microsoft.com/en-us/windows/desktop/api/wintrust/ns-wintrust-_win_certificate)
 structure data. To skip this data, use:
 
-```
+<pre>
 dd if=/path/to/extracted of=/path/to/extracted.p7b bs=1 skip=8
-```
+</pre>
 
 ## Inspecting the Signature
 
 On Linux, openssl has some useful functions for printing the certificate
 information and parsing the PKCS7 ASN1:
 
-```
+<pre>
 $ openssl pkcs7 -inform der -print_certs -in extracted.p7b -noout -text
 Certificate:
     Data:
@@ -220,9 +220,9 @@ Certificate:
          5f:17:fb:40:36:c1:3a:89:63:03:1c:3f:66:a0:3d:8f:a1:4c:
          4e:5c:ac:bf
 ...
-```
+</pre>
 
-```
+<pre>
 $ openssl asn1parse -inform der -i -in extracted.p7b
     0:d=0  hl=4 l=6984 cons: SEQUENCE          
     4:d=1  hl=2 l=   9 prim:  OBJECT            :pkcs7-signedData
@@ -250,10 +250,11 @@ $ openssl asn1parse -inform der -i -in extracted.p7b
   101:d=8  hl=2 l=   0 prim:         NULL              
   103:d=7  hl=2 l=  32 prim:        OCTET STRING      [HEX DUMP]:56924EB391B1B04572B1841ED5D5C10927CE7D6E9553A69F994B9BA855A73933
 ...
-```
+</pre>
 
 On Windows, the certutil executable has a great ASN parser:
-```
+
+<pre>
 C:\>certutil -asn extracted.p7b
 0000: 30 82 1b 48                               ; SEQUENCE (1b48 Bytes)
 0004: |  06 09                                  ; OBJECT_ID (9 Bytes)
@@ -281,7 +282,7 @@ C:\>certutil -asn extracted.p7b
       |        |        |  |     ; 1.3.6.1.4.1.311.2.1.15 SPC_PE_IMAGE_DATA_OBJID
 004b: |        |        |  30 09                ; SEQUENCE (9 Bytes)
 ...
-```
+</pre>
 
 There is also a website that offers ASN1 parser and allows you to interactively
 hide/view parts of the structure:
@@ -308,6 +309,7 @@ Below are some PE files with interesting Authenticode signatures.  These are
 probably only interesting to other researchers who are looking at Authenticode
 in-depth.  All samples are available via VirusTotal.
 
+<pre>
 - *SHA256-based code-signing signature without a countersignature*
     - 8886d96e9ed475e4686ffba3d242e97836de8a56b75cc915e21bb324cc89de03
 - *SHA256-based code-signing sig and SHA1-based timestamping countersig*
@@ -344,7 +346,8 @@ in-depth.  All samples are available via VirusTotal.
     - 8ca912e397a9e1b0cc54c216144ff550da9d43610392208193c0781b1aa5d695
 - *Unexpected contentType for embedded mode signature (copied from a .cat?)*
     - 6ed9b5f6d32f94b3d06456b176c8536be123e1047763cc0a31c6e8fd6a0242b1
-    
+</pre>
+
 ## Additional References
 
 - [What are x509 certificates?](https://www.cryptologie.net/article/262/what-are-x509-certificates-rfc-asn1-der/) (Provides an overview of the ASN1 structure of x509 certificates)
