@@ -16,6 +16,7 @@ service that allows signature verification to succeed even if the code-signing
 certificate expires or gets revoked.
 
 For more information, check-out the following resources:
+
 - [Everything you need to know about Authenticode code-signing](https://blogs.msdn.microsoft.com/ieinternals/2011/03/22/everything-you-need-to-know-about-authenticode-code-signing/)
 
 - [Authenticode Digital Signatures](https://docs.microsoft.com/en-us/windows-hardware/drivers/install/authenticode)
