@@ -6,19 +6,22 @@ Authenticode is Microsoft's system for using digital signatures to ensure that
 programs to be run/installed on Windows systems come from a verified source
 and has not been modified by anyone else.  At a high level, it works by having
 software developers:
-1. obtain a code-signing certificate from a certificate authority trusted by
-   the Windows OS
-2. compute digital signatures for executables and related software
-   installation files using that certificate
-3. include the signatures as part of the software execution/installation
-   process so that Windows can use them in the verification process
+
+1. obtain a code-signing certificate from a certificate authority trusted by the Windows OS
+2. compute digital signatures for executables and related software installation files using that certificate
+3. include the signatures as part of the software execution/installation process so that Windows can use them in the verification process
+
 In addition, Authenticode signatures can be countersigned by a time-stamping
 service that allows signature verification to succeed even if the code-signing
 certificate expires or gets revoked.
+
 For more information, check-out the following resources:
 - [Everything you need to know about Authenticode code-signing](https://blogs.msdn.microsoft.com/ieinternals/2011/03/22/everything-you-need-to-know-about-authenticode-code-signing/)
+
 - [Authenticode Digital Signatures](https://docs.microsoft.com/en-us/windows-hardware/drivers/install/authenticode)
+
 - [Time Stamping Authenticode Signatures](https://docs.microsoft.com/en-us/windows/desktop/seccrypto/time-stamping-authenticode-signatures)
+
 - [Caveats for Authenticode Code Signing](https://blogs.msdn.microsoft.com/ieinternals/2014/09/04/caveats-for-authenticode-code-signing/)
 
 ## Authenticode and ClamAV
@@ -32,17 +35,21 @@ add new whitelist entries, is explained in the
 ClamAV blog post.
 
 There are a few things not covered in the blog post that are worth mentioning:
+
 - Leaf certificates (the ones actually issued to the entity signing the binary)
   cannot currently be used for whitelisting.  Instead, only certificates that
   issued the leaf certificate (and certificates higher up in the chain) can be
   used.
+  
 - The .crb format supports blacklist rule entries, but these cannot currently
   be used as a basis for malware detection.  Instead, as currently implemented,
   these entries just override .crb rules which would otherwise whitelist a
   given sample.
+  
 - sigtool offers the '--print-certs' flag, which can be used to show
   information about embedded Authenticode signatures without having to first
   match on a signature (which is currently a requirement for clamscan)
+  
 - External Authenticode signatures contained in .cat files can be loaded in
   to ClamAV by passing a '-d' flag and indicating the path to the .cat file
   from which to load signatures.  Note, however, that at least one certificate
@@ -61,6 +68,7 @@ below.  Note, however, that it is not 100% accurate.  For instance, the
 documented steps for computing the Authenticode hash are not correct in the
 case where you have sections that overlap with the PE header or with one
 another.
+
 - [Windows Authenticode PE Signature Format](http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/Authenticode_PE.docx)
 
 ## Verifying the Signature
@@ -95,6 +103,7 @@ Succeeded
 ```
 
 On Windows,
+
 [AnalyzePESig](https://blog.didierstevens.com/programs/authenticode-tools/)
  is a great tool for displaying signature information.  In addition,
 [signtool](https://docs.microsoft.com/en-us/dotnet/framework/tools/signtool-exe#examples)
@@ -276,17 +285,21 @@ C:\>certutil -asn extracted.p7b
 
 There is also a website that offers ASN1 parser and allows you to interactively
 hide/view parts of the structure:
+
 - [ASN1 JavaScript Parser](https://lapo.it/asn1js/)
 
 ## Creating Signed Executables
 
 For Linux, Didier Stevens has a great post about how to create signed binaries
 using self-signed certificates:
+
 - [Signing Windows Executables on Kali](https://blog.didierstevens.com/2018/09/24/quickpost-signing-windows-executables-on-kali/)
 
 On Windows, a program called signtool ships with the Windows SDK and can be
 used.  See the following for tutorials/examples:
+
 - [Authenticode Code Signing with Microsoft SignTool](https://www.digicert.com/code-signing/signcode-signtool-command-line.htm)
+
 - [Signtool Examples](https://docs.microsoft.com/en-us/dotnet/framework/tools/signtool-exe#examples)
 
 ## Samples with Interesting Authenticode Signatures
@@ -335,4 +348,5 @@ in-depth.  All samples are available via VirusTotal.
 ## Additional References
 
 - [What are x509 certificates?](https://www.cryptologie.net/article/262/what-are-x509-certificates-rfc-asn1-der/) (Provides an overview of the ASN1 structure of x509 certificates)
+
 - [Signed Malware](http://signedmalware.org/) (Research papers on signed malware with interactive tables of malicious code signing certs)
