@@ -1,5 +1,7 @@
-# Microsoft Authenticode Signature Verification
-## About Microsoft Authenticode
+# Microsoft Authenticode Signature Verification #
+
+## About Microsoft Authenticode ##
+
 Authenticode is Microsoft's system for using digital signatures to ensure that
 programs to be run/installed on Windows systems come from a verified source
 and has not been modified by anyone else.  At a high level, it works by having
@@ -18,7 +20,9 @@ For more information, check-out the following resources:
 - [Authenticode Digital Signatures](https://docs.microsoft.com/en-us/windows-hardware/drivers/install/authenticode)
 - [Time Stamping Authenticode Signatures](https://docs.microsoft.com/en-us/windows/desktop/seccrypto/time-stamping-authenticode-signatures)
 - [Caveats for Authenticode Code Signing](https://blogs.msdn.microsoft.com/ieinternals/2014/09/04/caveats-for-authenticode-code-signing/)
+
 ## Authenticode and ClamAV
+
 ClamAV supports parsing the Authenticode section and performing signature
 verification on a given executable to determine whether it should be
 whitelisted (based on rules loaded in from ClamAV .crb files).  An overview
@@ -46,17 +50,23 @@ There are a few things not covered in the blog post that are worth mentioning:
   have a backing .crb file whitelist rule.)
 
 # Helpful Info for Working with Authenticode Signatures
+
 Below is some useful information collected when improving ClamAV support for
 Authenticode signatures.
+
 ## Format Specifications
+
 The Windows Authenticode 2008 specification document can be found at the link
 below.  Note, however, that it is not 100% accurate.  For instance, the
 documented steps for computing the Authenticode hash are not correct in the
 case where you have sections that overlap with the PE header or with one
 another.
 - [Windows Authenticode PE Signature Format](http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/Authenticode_PE.docx)
+
 ## Verifying the Signature
+
 On Linux, osslsigncode can be used to verify a signature:
+
 ```
 $ osslsigncode verify /path/to/signed/file
 Current PE checksum   : 00092934
@@ -83,6 +93,7 @@ Number of certificates: 2
 
 Succeeded
 ```
+
 On Windows,
 [AnalyzePESig](https://blog.didierstevens.com/programs/authenticode-tools/)
  is a great tool for displaying signature information.  In addition,
@@ -95,22 +106,29 @@ may default to assuming that none of the certificates are revoked.
 
 There is also the [verify-sigs](http://code.google.com/p/verify-sigs) python
 script that performs verification, but this script is no longer maintained.
+
 ## Extracting the Signature
+
 On Linux, the osslsigncode command can be used to extract the contents of the
 PE security section:
+
 ```
 osslsigncode extract-signature -in /path/to/exe -out /path/to/extracted
 ```
+
 Note: This will also extract the 8-byte
 [WIN_CERTIFICATE](https://docs.microsoft.com/en-us/windows/desktop/api/wintrust/ns-wintrust-_win_certificate)
 structure data. To skip this data, use:
+
 ```
 dd if=/path/to/extracted of=/path/to/extracted.p7b bs=1 skip=8
 ```
 
 ## Inspecting the Signature
+
 On Linux, openssl has some useful functions for printing the certificate
 information and parsing the PKCS7 ASN1:
+
 ```
 $ openssl pkcs7 -inform der -print_certs -in extracted.p7b -noout -text
 Certificate:
@@ -194,6 +212,7 @@ Certificate:
          4e:5c:ac:bf
 ...
 ```
+
 ```
 $ openssl asn1parse -inform der -i -in extracted.p7b
     0:d=0  hl=4 l=6984 cons: SEQUENCE          
@@ -254,11 +273,13 @@ C:\>certutil -asn extracted.p7b
 004b: |        |        |  30 09                ; SEQUENCE (9 Bytes)
 ...
 ```
+
 There is also a website that offers ASN1 parser and allows you to interactively
 hide/view parts of the structure:
 - [ASN1 JavaScript Parser](https://lapo.it/asn1js/)
 
 ## Creating Signed Executables
+
 For Linux, Didier Stevens has a great post about how to create signed binaries
 using self-signed certificates:
 - [Signing Windows Executables on Kali](https://blog.didierstevens.com/2018/09/24/quickpost-signing-windows-executables-on-kali/)
@@ -267,7 +288,9 @@ On Windows, a program called signtool ships with the Windows SDK and can be
 used.  See the following for tutorials/examples:
 - [Authenticode Code Signing with Microsoft SignTool](https://www.digicert.com/code-signing/signcode-signtool-command-line.htm)
 - [Signtool Examples](https://docs.microsoft.com/en-us/dotnet/framework/tools/signtool-exe#examples)
+
 ## Samples with Interesting Authenticode Signatures
+
 Below are some PE files with interesting Authenticode signatures.  These are
 probably only interesting to other researchers who are looking at Authenticode
 in-depth.  All samples are available via VirusTotal.
@@ -308,6 +331,8 @@ in-depth.  All samples are available via VirusTotal.
     - 8ca912e397a9e1b0cc54c216144ff550da9d43610392208193c0781b1aa5d695
 - *Unexpected contentType for embedded mode signature (copied from a .cat?)*
     - 6ed9b5f6d32f94b3d06456b176c8536be123e1047763cc0a31c6e8fd6a0242b1
+    
 ## Additional References
+
 - [What are x509 certificates?](https://www.cryptologie.net/article/262/what-are-x509-certificates-rfc-asn1-der/) (Provides an overview of the ASN1 structure of x509 certificates)
 - [Signed Malware](http://signedmalware.org/) (Research papers on signed malware with interactive tables of malicious code signing certs)
