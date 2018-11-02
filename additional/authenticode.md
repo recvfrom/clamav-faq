@@ -75,32 +75,31 @@ another.
 
 On Linux, osslsigncode can be used to verify a signature:
 
-<pre>
-$ osslsigncode verify /path/to/signed/file
-Current PE checksum   : 00092934
-Calculated PE checksum: 00092934
 
-Message digest algorithm  : SHA256
-Current message digest    : 56924EB391B1B04572B1841ED5D5C10927CE7D6E9553A69F994B9BA855A73933
-Calculated message digest : 56924EB391B1B04572B1841ED5D5C10927CE7D6E9553A69F994B9BA855A73933
-
-Signature verification: ok
-
-Number of signers: 1
-	Signer #0:
-		Subject: /C=US/ST=California/L=Mountain View/O=Google Inc/CN=Google Inc
-		Issuer : /C=US/O=Symantec Corporation/OU=Symantec Trust Network/CN=Symantec Class 3 SHA256 Code Signing CA
-
-Number of certificates: 2
-	Cert #0:
-		Subject: /C=US/ST=California/L=Mountain View/O=Google Inc/CN=Google Inc
-		Issuer : /C=US/O=Symantec Corporation/OU=Symantec Trust Network/CN=Symantec Class 3 SHA256 Code Signing CA
-	Cert #1:
-		Subject: /C=US/O=Symantec Corporation/OU=Symantec Trust Network/CN=Symantec Class 3 SHA256 Code Signing CA
-		Issuer : /C=US/O=VeriSign, Inc./OU=VeriSign Trust Network/OU=(c) 2006 VeriSign, Inc. - For authorized use only/CN=VeriSign Class 3 Public Primary Certification Authority - G5
-
-Succeeded
-</pre>
+`$ osslsigncode verify /path/to/signed/file`
+`Current PE checksum   : 00092934`
+`Calculated PE checksum: 00092934`
+``
+`Message digest algorithm  : SHA256`
+`Current message digest    : 56924EB391B1B04572B1841ED5D5C10927CE7D6E9553A69F994B9BA855A73933`
+`Calculated message digest : 56924EB391B1B04572B1841ED5D5C10927CE7D6E9553A69F994B9BA855A73933`
+``
+`Signature verification: ok`
+``
+`Number of signers: 1`
+`	Signer #0:`
+`		Subject: /C=US/ST=California/L=Mountain View/O=Google Inc/CN=Google Inc`
+`		Issuer : /C=US/O=Symantec Corporation/OU=Symantec Trust Network/CN=Symantec Class 3 SHA256 Code Signing CA`
+``
+`Number of certificates: 2`
+`	Cert #0:`
+`		Subject: /C=US/ST=California/L=Mountain View/O=Google Inc/CN=Google Inc`
+`		Issuer : /C=US/O=Symantec Corporation/OU=Symantec Trust Network/CN=Symantec Class 3 SHA256 Code Signing CA`
+`	Cert #1:`
+`		Subject: /C=US/O=Symantec Corporation/OU=Symantec Trust Network/CN=Symantec Class 3 SHA256 Code Signing CA`
+`		Issuer : /C=US/O=VeriSign, Inc./OU=VeriSign Trust Network/OU=(c) 2006 VeriSign, Inc. - For authorized use only/CN=VeriSign Class 3 Public Primary Certification Authority - G5`
+``
+`Succeeded`
 
 On Windows,
 
@@ -121,108 +120,104 @@ script that performs verification, but this script is no longer maintained.
 On Linux, the osslsigncode command can be used to extract the contents of the
 PE security section:
 
-<pre>
-osslsigncode extract-signature -in /path/to/exe -out /path/to/extracted
-</pre>
+`osslsigncode extract-signature -in /path/to/exe -out /path/to/extracted`
+
 
 Note: This will also extract the 8-byte
 [WIN_CERTIFICATE](https://docs.microsoft.com/en-us/windows/desktop/api/wintrust/ns-wintrust-_win_certificate)
 structure data. To skip this data, use:
 
-<pre>
-dd if=/path/to/extracted of=/path/to/extracted.p7b bs=1 skip=8
-</pre>
+`dd if=/path/to/extracted of=/path/to/extracted.p7b bs=1 skip=8`
 
 ## Inspecting the Signature
 
 On Linux, openssl has some useful functions for printing the certificate
 information and parsing the PKCS7 ASN1:
 
-<pre>
-$ openssl pkcs7 -inform der -print_certs -in extracted.p7b -noout -text
-Certificate:
-    Data:
-        Version: 3 (0x2)
-        Serial Number:
-            2a:9c:21:ac:aa:a6:3a:3c:58:a7:b9:32:2b:ee:94:8d
-    Signature Algorithm: sha256WithRSAEncryption
-        Issuer: C=US, O=Symantec Corporation, OU=Symantec Trust Network, CN=Symantec Class 3 SHA256 Code Signing CA
-        Validity
-            Not Before: Dec 16 00:00:00 2015 GMT
-            Not After : Dec 16 23:59:59 2018 GMT
-        Subject: C=US, ST=California, L=Mountain View, O=Google Inc, CN=Google Inc
-        Subject Public Key Info:
-            Public Key Algorithm: rsaEncryption
-                Public-Key: (2048 bit)
-                Modulus:
-                    00:c4:0d:82:c4:41:29:28:e5:fd:0c:3f:a5:c7:0e:
-                    66:bd:a5:c4:8b:b3:8a:ac:84:03:9f:84:2e:38:df:
-                    06:b1:4e:fd:33:60:58:38:36:dd:22:cf:df:f1:50:
-                    1f:47:f1:55:05:c1:81:01:e7:28:3e:ff:5f:89:12:
-                    09:ea:df:aa:17:49:2c:71:ab:48:d1:9d:2e:f4:51:
-                    e0:03:e0:f7:16:6c:7b:0c:22:75:6d:7e:1f:49:c4:
-                    43:28:88:41:dc:6c:ed:13:2a:03:99:eb:62:14:f9:
-                    35:26:6e:12:2c:03:e2:f7:81:b9:1a:05:67:06:7c:
-                    a6:1a:5b:ed:20:15:e5:2d:83:de:8e:36:fa:1e:08:
-                    41:1c:1a:48:9f:b6:f1:c3:2f:02:13:4b:a7:ca:ba:
-                    ef:1c:58:6f:8e:d3:0f:14:a4:0b:2b:5d:ba:f4:5a:
-                    a3:0d:64:34:a5:8a:d7:8f:4d:22:66:4d:a4:ae:e1:
-                    f9:cd:c6:58:e6:c6:11:77:32:df:ba:df:39:48:8a:
-                    d1:27:d7:33:77:a8:c9:e4:5e:ed:fa:12:cf:f3:fd:
-                    fa:ee:ab:80:86:13:34:eb:5a:7e:6f:6c:1b:ee:d8:
-                    4b:b2:cc:77:98:87:ac:ca:f5:bb:64:6f:49:1e:5b:
-                    91:63:50:1f:63:2d:83:27:73:07:9f:2b:16:f4:7b:
-                    71:29
-                Exponent: 65537 (0x10001)
-        X509v3 extensions:
-            X509v3 Basic Constraints: 
-                CA:FALSE
-            X509v3 Key Usage: critical
-                Digital Signature
-            X509v3 Extended Key Usage: 
-                Code Signing
-            X509v3 Certificate Policies: 
-                Policy: 2.16.840.1.113733.1.7.23.3
-                  CPS: https://d.symcb.com/cps
-                  User Notice:
-                    Explicit Text: https://d.symcb.com/rpa
-
-            X509v3 Authority Key Identifier: 
-                keyid:96:3B:53:F0:79:33:97:AF:7D:83:EF:2E:2B:CC:CA:B7:86:1E:72:66
-
-            X509v3 CRL Distribution Points: 
-
-                Full Name:
-                  URI:http://sv.symcb.com/sv.crl
-
-            Authority Information Access: 
-                OCSP - URI:http://sv.symcd.com
-                CA Issuers - URI:http://sv.symcb.com/sv.crt
-
-            Netscape Cert Type: 
-                Object Signing
-            1.3.6.1.4.1.311.2.1.27: 
-                0.......
-    Signature Algorithm: sha256WithRSAEncryption
-         23:e7:93:93:af:db:a8:4d:af:af:54:e8:d8:26:95:80:cd:23:
-         91:70:ed:0b:5b:b1:e9:d8:dd:1e:40:37:78:97:18:ed:9f:e5:
-         84:67:85:06:50:b5:f1:ab:e6:83:5a:17:7b:51:be:7f:18:c6:
-         47:5e:2b:aa:f4:a0:1f:35:3e:05:9f:43:40:f7:9f:d1:f4:e1:
-         a7:02:f3:8e:c9:71:fe:18:37:48:42:d7:e4:36:73:10:92:d4:
-         d8:d9:1c:c4:26:58:18:67:b6:24:22:69:63:02:f7:49:51:6b:
-         75:f6:b4:7d:56:ff:2c:f4:88:f7:67:6f:08:86:f3:8b:0b:30:
-         02:7f:6d:92:d9:4e:bd:99:f7:7b:74:86:0c:cb:b9:ad:2c:bf:
-         44:79:a8:00:82:9c:62:f4:aa:11:df:d2:bf:f0:e1:92:28:11:
-         90:bb:5e:33:88:86:96:4d:dd:0b:af:c3:67:a1:95:2d:44:32:
-         c6:fa:f7:b8:80:c1:4e:38:be:1f:b6:84:f7:f1:21:31:67:49:
-         a8:9f:8a:75:07:df:3b:3a:c3:ea:72:cd:40:7f:a7:da:7c:c9:
-         2e:7c:a9:0c:f1:5d:5c:82:42:62:b9:49:94:8f:70:e6:a5:c0:
-         5f:17:fb:40:36:c1:3a:89:63:03:1c:3f:66:a0:3d:8f:a1:4c:
-         4e:5c:ac:bf
-...
-</pre>
+`$ openssl pkcs7 -inform der -print_certs -in extracted.p7b -noout -text`
+`Certificate:`
+`    Data:`
+`        Version: 3 (0x2)`
+`        Serial Number:`
+`            2a:9c:21:ac:aa:a6:3a:3c:58:a7:b9:32:2b:ee:94:8d`
+`    Signature Algorithm: sha256WithRSAEncryption`
+`        Issuer: C=US, O=Symantec Corporation, OU=Symantec Trust Network, CN=Symantec Class 3 SHA256 Code Signing CA`
+`        Validity`
+`            Not Before: Dec 16 00:00:00 2015 GMT`
+`            Not After : Dec 16 23:59:59 2018 GMT`
+`        Subject: C=US, ST=California, L=Mountain View, O=Google Inc, CN=Google Inc`
+`        Subject Public Key Info:`
+`            Public Key Algorithm: rsaEncryption`
+`                Public-Key: (2048 bit)`
+`                Modulus:`
+`                    00:c4:0d:82:c4:41:29:28:e5:fd:0c:3f:a5:c7:0e:`
+`                    66:bd:a5:c4:8b:b3:8a:ac:84:03:9f:84:2e:38:df:`
+`                    06:b1:4e:fd:33:60:58:38:36:dd:22:cf:df:f1:50:`
+`                    1f:47:f1:55:05:c1:81:01:e7:28:3e:ff:5f:89:12:`
+`                    09:ea:df:aa:17:49:2c:71:ab:48:d1:9d:2e:f4:51:`
+`                    e0:03:e0:f7:16:6c:7b:0c:22:75:6d:7e:1f:49:c4:`
+`                    43:28:88:41:dc:6c:ed:13:2a:03:99:eb:62:14:f9:`
+`                    35:26:6e:12:2c:03:e2:f7:81:b9:1a:05:67:06:7c:`
+`                    a6:1a:5b:ed:20:15:e5:2d:83:de:8e:36:fa:1e:08:`
+`                    41:1c:1a:48:9f:b6:f1:c3:2f:02:13:4b:a7:ca:ba:`
+`                    ef:1c:58:6f:8e:d3:0f:14:a4:0b:2b:5d:ba:f4:5a:`
+`                    a3:0d:64:34:a5:8a:d7:8f:4d:22:66:4d:a4:ae:e1:`
+`                    f9:cd:c6:58:e6:c6:11:77:32:df:ba:df:39:48:8a:`
+`                    d1:27:d7:33:77:a8:c9:e4:5e:ed:fa:12:cf:f3:fd:`
+`                    fa:ee:ab:80:86:13:34:eb:5a:7e:6f:6c:1b:ee:d8:`
+`                    4b:b2:cc:77:98:87:ac:ca:f5:bb:64:6f:49:1e:5b:`
+`                    91:63:50:1f:63:2d:83:27:73:07:9f:2b:16:f4:7b:`
+`                    71:29`
+`                Exponent: 65537 (0x10001)`
+`        X509v3 extensions:`
+`            X509v3 Basic Constraints: `
+`                CA:FALSE`
+`            X509v3 Key Usage: critical`
+`                Digital Signature`
+`            X509v3 Extended Key Usage: `
+`                Code Signing`
+`            X509v3 Certificate Policies: `
+`                Policy: 2.16.840.1.113733.1.7.23.3`
+`                  CPS: https://d.symcb.com/cps`
+`                  User Notice:`
+`                    Explicit Text: https://d.symcb.com/rpa`
+``
+`            X509v3 Authority Key Identifier: `
+`                keyid:96:3B:53:F0:79:33:97:AF:7D:83:EF:2E:2B:CC:CA:B7:86:1E:72:66`
+``
+`            X509v3 CRL Distribution Points: `
+``
+`                Full Name:`
+`                  URI:http://sv.symcb.com/sv.crl`
+``
+`            Authority Information Access: `
+`                OCSP - URI:http://sv.symcd.com`
+`                CA Issuers - URI:http://sv.symcb.com/sv.crt`
+``
+`            Netscape Cert Type: `
+`                Object Signing`
+`            1.3.6.1.4.1.311.2.1.27: `
+`                0.......`
+`    Signature Algorithm: sha256WithRSAEncryption`
+`         23:e7:93:93:af:db:a8:4d:af:af:54:e8:d8:26:95:80:cd:23:`
+`         91:70:ed:0b:5b:b1:e9:d8:dd:1e:40:37:78:97:18:ed:9f:e5:`
+`         84:67:85:06:50:b5:f1:ab:e6:83:5a:17:7b:51:be:7f:18:c6:`
+`         47:5e:2b:aa:f4:a0:1f:35:3e:05:9f:43:40:f7:9f:d1:f4:e1:`
+`         a7:02:f3:8e:c9:71:fe:18:37:48:42:d7:e4:36:73:10:92:d4:`
+`         d8:d9:1c:c4:26:58:18:67:b6:24:22:69:63:02:f7:49:51:6b:`
+`         75:f6:b4:7d:56:ff:2c:f4:88:f7:67:6f:08:86:f3:8b:0b:30:`
+`         02:7f:6d:92:d9:4e:bd:99:f7:7b:74:86:0c:cb:b9:ad:2c:bf:`
+`         44:79:a8:00:82:9c:62:f4:aa:11:df:d2:bf:f0:e1:92:28:11:`
+`         90:bb:5e:33:88:86:96:4d:dd:0b:af:c3:67:a1:95:2d:44:32:`
+`         c6:fa:f7:b8:80:c1:4e:38:be:1f:b6:84:f7:f1:21:31:67:49:`
+`         a8:9f:8a:75:07:df:3b:3a:c3:ea:72:cd:40:7f:a7:da:7c:c9:`
+`         2e:7c:a9:0c:f1:5d:5c:82:42:62:b9:49:94:8f:70:e6:a5:c0:`
+`         5f:17:fb:40:36:c1:3a:89:63:03:1c:3f:66:a0:3d:8f:a1:4c:`
+`         4e:5c:ac:bf`
+`...`
 
 <pre>
+
 $ openssl asn1parse -inform der -i -in extracted.p7b
     0:d=0  hl=4 l=6984 cons: SEQUENCE          
     4:d=1  hl=2 l=   9 prim:  OBJECT            :pkcs7-signedData
@@ -250,6 +245,7 @@ $ openssl asn1parse -inform der -i -in extracted.p7b
   101:d=8  hl=2 l=   0 prim:         NULL              
   103:d=7  hl=2 l=  32 prim:        OCTET STRING      [HEX DUMP]:56924EB391B1B04572B1841ED5D5C10927CE7D6E9553A69F994B9BA855A73933
 ...
+
 </pre>
 
 On Windows, the certutil executable has a great ASN parser:
