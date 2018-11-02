@@ -44,15 +44,15 @@ There are a few things not covered in the blog post that are worth mentioning:
   
 - The .crb format supports blacklist rule entries, but these cannot currently
   be used as a basis for malware detection.  Instead, as currently implemented,
-  these entries just override .crb rules which would otherwise whitelist a
+  these entries just override `.crb` rules which would otherwise whitelist a
   given sample.
   
-- sigtool offers the '--print-certs' flag, which can be used to show
+- sigtool offers the `--print-certs` flag, which can be used to show
   information about embedded Authenticode signatures without having to first
   match on a signature (which is currently a requirement for clamscan)
   
 - External Authenticode signatures contained in .cat files can be loaded in
-  to ClamAV by passing a '-d' flag and indicating the path to the .cat file
+  to ClamAV by passing a `-d` flag and indicating the path to the .cat file
   from which to load signatures.  Note, however, that at least one certificate
   in the .cat file's certificate chain must be trusted (in other words, it must
   have a backing .crb file whitelist rule.)
