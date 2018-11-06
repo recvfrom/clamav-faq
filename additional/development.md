@@ -184,12 +184,15 @@ The following are useful flags to include when debugging clamscan:
   of just continuing on.  NOTE: This will be renamed to `--alert-broken`
   starting in ClamAV 0.101.
 
-- <pre>--max-filesize=2000M --max-scansize=2000M --max-files=2000000
+<pre>
+- --max-filesize=2000M --max-scansize=2000M --max-files=2000000
    --max-recursion=2000000 --max-embeddedpe=2000M --max-htmlnormalize=2000000
    --max-htmlnotags=2000000 --max-scriptnormalize=2000000
    --max-ziptypercg=2000000 --max-partitions=2000000 --max-iconspe=2000000
    --max-rechwp3=2000000 --pcre-match-limit=2000000
-   --pcre-recmatch-limit=2000000 --pcre-max-filesize=2000M</pre>:
+   --pcre-recmatch-limit=2000000 --pcre-max-filesize=2000M:
+   </pre>
+   
   Effectively disables all file limits and maximums for scanning.  This is
   useful if you'd like to ensure that all files in a set get scanned, and would
   prefer clam to just run slowly or crash rather than skip a file because it
