@@ -1,56 +1,63 @@
 # ClamAV Development
+
 This page aims to provide information useful when developing, debugging, or
 profiling ClamAV.
 
 ## Building ClamAV for Development
+
 Below are some recommendations for building ClamAV so that it's easy to debug.
 
 ### Satisfying Build Dependencies
+
 To satisify all build dependencies:
 
 #### Debian/Ubuntu:
-```
-sudo apt-get install libxml2-dev libxml2 libbz2-dev bzip2 check make libssl-dev openssl zlib1g zlib1g-dev gcc gettext autoconf automake libtool cmake autoconf-archive pkg-config g++-multilib libmilter1.0.1 libmilter-dev valgrind libcurl4-openssl-dev libjson-c-dev ncurses-dev libpcre3-dev
-```
+
+`sudo apt-get install libxml2-dev libxml2 libbz2-dev bzip2 check make libssl-dev openssl zlib1g zlib1g-dev gcc gettext autoconf automake libtool cmake autoconf-archive pkg-config g++-multilib libmilter1.0.1 libmilter-dev valgrind libcurl4-openssl-dev libjson-c-dev ncurses-dev libpcre3-dev`
 
 #### CentOS/RHEL/Fedora
-```
-sudo yum install libxml2-devel libxml2 bzip2-devel bzip2 check make openssl-devel openssl zlib zlib-devel gcc gettext autoconf automake libtool cmake autoreconf pkg-config g++-multilib sendmail sendmail-devel libtool-ltdl-devel valgrind
 
-sudo yum groupinstall "Development Tools"
-```
+`sudo yum install libxml2-devel libxml2 bzip2-devel bzip2 check make openssl-devel openssl zlib zlib-devel gcc gettext autoconf automake libtool cmake autoreconf pkg-config g++-multilib sendmail sendmail-devel libtool-ltdl-devel valgrind`
+
+`sudo yum groupinstall "Development Tools"`
+
 
 #### Solaris (using OpenCSW)
-```
-sudo /opt/csw/bin/pkgutil -y -i common coreutils automake autoconf libxml2_2 libxml2_dev bzip2 libbz2_dev libcheck0 libcheck_dev gmake cmake libssl1_0_0 libssl_dev openssl_utilslibgcc_s1 libiconv2 zlib1 libstdc++6 libpcre1 libltdl7 lzlib_stub zlib_stub libmilter libtool ggrep gsed pkgconfig ggettext gcc4core gcc4g++ libgcc_s1 libgccpp1
 
-sudo pkg install system/header
+`sudo /opt/csw/bin/pkgutil -y -i common coreutils automake autoconf libxml2_2 libxml2_dev bzip2 libbz2_dev libcheck0 libcheck_dev gmake cmake libssl1_0_0 libssl_dev openssl_utilslibgcc_s1 libiconv2 zlib1 libstdc++6 libpcre1 libltdl7 lzlib_stub zlib_stub libmilter libtool ggrep gsed pkgconfig ggettext gcc4core gcc4g++ libgcc_s1 libgccpp1`
 
-sudo ln -sf /opt/csw/bin/gnm /usr/bin/nm
+`sudo pkg install system/header`
+
+<pre>sudo ln -sf /opt/csw/bin/gnm /usr/bin/nm
 sudo ln -sf /opt/csw/bin/gsed /usr/bin/sed
 sudo ln -sf /opt/csw/bin/gmake /usr/bin/make
-```
+</pre>
+
 If you receive an error message like
 `gcc: error: /opt/csw/lib/libstdc++.so: No such file or directory`,
 change versions with `/opt/csw/sbin/alternatives --config automake`
 
 #### FreeBSD
+
 The easiest way to install dependencies for FreeBSD is to just rely on ports:
-```
+
+<pre>
 cd /usr/ports/security/clamav
 make
-```
+</pre>
 
 ### Download the Source
-```
+
+<pre>
 git clone https://github.com/Cisco-Talos/clamav-devel.git
 cd clamav-devel
-```
+</pre>
 
 If you intend to make changes and submit a pull request, fork the clamav-devel
 repo first and then clone your fork of the repository.
 
 ### Running ./configure
+
 Suggestions:
 
 - Modify the CFLAGS variable as follows (assuming you're build with gcc):
@@ -105,9 +112,9 @@ Suggestions:
 
 Altogether, the following configure command can be used:
 
-```
+<pre>
 CFLAGS="-ggdb -O0" ./configure --prefix=`pwd`/installed --enable-debug --enable-check --enable-coverage --enable-libjson --with-systemdsystemunitdir=no --enable-experimental --enable-clamdtop --enable-libjson --enable-xml --enable-pcre --disable-llvm
-```
+</pre>
 
 NOTE: It is possible to build libclamav as a static library and have it
 statically linked into clamscan/clamd (to do this, run `./configure` with
@@ -128,16 +135,20 @@ drawbacks to doing this:
    when libclamav.a changes (TODO, fix this).
 
 ### Running make
+
 Run the following to finishing building.  `-j2` in the code below is used to
 indicate that the build process should use 2 cores.  Increase this if your
 machine is more powerful.
-```
+
+<pre>
 make -j2
 make install
-```
-Also, you can run 'make check' to run the unit tests
+</pre>
+
+Also, you can run `make check` to run the unit tests
 
 ### Downloading the Official Ruleset
+
 If you plan to use custom rules for testing, you can invoke clamscan via
 `./installed/bin/clamscan`, specifying your custom rule files via `-d` parameters.
 
@@ -148,10 +159,12 @@ following:
 3. Run `./installed/bin/freshclam --config-file etc/freshclam.conf.sample`
 
 ## General Debugging
+
 NOTE: Some of the debugging/profiling tools mentioned in the sections below are
 specific to Linux
 
 ### Useful clamscan Flags
+
 The following are useful flags to include when debugging clamscan:
 
 - `--debug --verbose`: Print lots of helpful debug information
@@ -171,12 +184,12 @@ The following are useful flags to include when debugging clamscan:
   of just continuing on.  NOTE: This will be renamed to `--alert-broken`
   starting in ClamAV 0.101.
 
-- `--max-filesize=2000M --max-scansize=2000M --max-files=2000000
+- <pre>--max-filesize=2000M --max-scansize=2000M --max-files=2000000
    --max-recursion=2000000 --max-embeddedpe=2000M --max-htmlnormalize=2000000
    --max-htmlnotags=2000000 --max-scriptnormalize=2000000
    --max-ziptypercg=2000000 --max-partitions=2000000 --max-iconspe=2000000
    --max-rechwp3=2000000 --pcre-match-limit=2000000
-   --pcre-recmatch-limit=2000000 --pcre-max-filesize=2000M`:
+   --pcre-recmatch-limit=2000000 --pcre-max-filesize=2000M</pre>:
   Effectively disables all file limits and maximums for scanning.  This is
   useful if you'd like to ensure that all files in a set get scanned, and would
   prefer clam to just run slowly or crash rather than skip a file because it
@@ -205,11 +218,13 @@ writing:
   functionality as well and doesn't require a rule match to view the cert data
 
 ### Using gdb
+
 Given that you might want to pass a lot of arguments to gdb, consider taking
 advantage of the `--args` parameter.  For example:
-```
+
+<pre>
 gdb --args ./installed/bin/clamscan -d /tmp/test.ldb -d /tmp/blacklist.crb -d --dumpcerts --debug --verbose --max-filesize=2000M --max-scansize=2000M --max-files=2000000 --max-recursion=2000000 --max-embeddedpe=2000M --max-iconspe=2000000 f8f101166fec5785b4e240e4b9e748fb6c14fdc3cd7815d74205fc59ce121515
-```
+</pre>
 
 When using ClamAV without libclamav statically linked, if you set breakpoints
 on libclamav functions by name, you'll need to make sure to indicate that
@@ -217,76 +232,89 @@ the breakpoints should be resolved after libraries have been loaded.
 
 For other documentation about how to use gdb, check out the following
 resources:
+
  - [A Guide to gdb](http://www.cabrillo.edu/~shodges/cs19/progs/guide_to_gdb_1.1.pdf)
+ 
  - [gdb Quick Reference](http://users.ece.utexas.edu/~adnan/gdb-refcard.pdf)
 
 ## Hunting for Memory Leaks
+
 You can easily hunt for memory leaks with valgrind.  Check out this guide to
 get started:
- - [Valgrind Quick Start](http://valgrind.org/docs/manual/quick-start.html)
+
+- [Valgrind Quick Start](http://valgrind.org/docs/manual/quick-start.html)
 If checking for leaks, be sure to run clamscan with samples that will hit as
 many of the unique code paths in the code you are testing.  An example
 invocation is as follows:
-```
+
+<pre>
 valgrind --leak-check=full ./installed/bin/clamscan -d /tmp/test.ldb --leave-temps --tempdir /tmp/test --debug --verbose /tmp/upx-samples/ > /tmp/upx-results-2.txt 2>&1
-```
+</pre>
+
 Alternatively, on Linux, you can use glibc's built-in leak checking
 functionality:
-```
-MALLOC_CHECK_=7 ./installed/bin/clamscan
-```
+
+
+`MALLOC_CHECK_=7 ./installed/bin/clamscan`
+
 See the [mallopt man page](http://manpages.ubuntu.com/manpages/trusty/man3/mallopt.3.html) for more details
 
 ## Computing Code Coverage
+
 gcov/lcov can be used to produce a code coverage report indicating which lines
 of code were executed on a single run or by multiple runs of clamscan.  NOTE:
 for these metrics to be collected, ClamAV needs to have been configured with
 the `--enable-coverage` option.
 
 First, run the following to zero out all of the performance metrics:
-```
-lcov -z --directory . --output-file coverage.lcov.data
-```
+
+`lcov -z --directory . --output-file coverage.lcov.data`
+
 Next, run ClamAV through whatever test cases you have.  Then, run lcov again
 to collect the coverage data as follows:
-```
-lcov -c --directory . --output-file coverage.lcov.data
-```
+
+`lcov -c --directory . --output-file coverage.lcov.data`
+
 Finally, run the genhtml tool that ships with lcov to produce the code coverage
 report:
-```
-genhtml coverage.lcov.data --output-directory report
-```
+
+`genhtml coverage.lcov.data --output-directory report`
+
 The report directory will have an index.html page which can be loaded into any
 web browser.
 
 For more information, visit the [lcov webpage](http://ltp.sourceforge.net/coverage/lcov.php)
 
 ## Profiling - Flame Graphs
+
 [FlameGraph](https://github.com/brendangregg/FlameGraph) is a great tool for
 generating interactive flame graphs based collected profiling data.  The github
 page has thorough documentation on how to use the tool, but an overview is
 presented below:
 
 First, install perf, which on Linux can be done via:
-```
+
+<pre>
 apt-get install linux-tools-common linux-tools-generic linux-tools-`uname -r`
-```
+</pre>
 
 Modify the system settings to allow perf record to be run by a standard user:
-```
+
+<pre>
 $ sudo su
 # cat /proc/sys/kernel/perf_event_paranoid 
 # echo "1" > /proc/sys/kernel/perf_event_paranoid 
 # exit
-```
+</pre>
 
 Invoke clamscan via perf record as follows, and run perf script to collect the
 profiling data:
-```
+
+<pre>
 perf record -F 100 -g -- ./installed/bin/clamscan -d /tmp/test.ldb /tmp/2aa6b18d509090c60c3e4ecdd8aeb16e5f149807e3404c86892112710eab576d
 perf script > out.perf
-```
+</pre>
+
 The '-F' parameter indicates how many samples should be collected during
 program execution.  If your scan will take a long time to run, a lower value
 should be sufficient.  Otherwise, consider choosing a higher value (on Ubuntu
@@ -295,10 +323,11 @@ should be sufficient.  Otherwise, consider choosing a higher value (on Ubuntu
 
 Check out the FlameGraph project and run the following commands to generate
 the flame graph:
-```
+
+<pre>
 perl stackcollapse-perf.pl ../clamav-devel/out.perf > /tmp/out.folded
 perl flamegraph.pl /tmp/out.folded > /tmp/test.svg
-```
+</pre>
 
 The SVG that is generated is interactive, but some viewers don't support this.
 Be sure to open it in a web browser like Chrome to be able to take full
@@ -317,7 +346,8 @@ strace can be used to track the system calls that are performed and provide the
 number of calls / time spent in each system call.  This can be done by
 prepending `strace -c ` to a clamscan command.  Results will look something
 like this:
-```
+
+<pre>
 % time     seconds  usecs/call     calls    errors syscall
 ------ ----------- ----------- --------- --------- ----------------
  95.04    0.831430          13     62518           read
@@ -355,14 +385,15 @@ like this:
   0.00    0.000000           0         1           getcwd
 ------ ----------- ----------- --------- --------- ----------------
 100.00    0.874790                 69970        31 total
-```
+</pre>
 
 strace can also be used for cool things like system call fault injection.  For
 instance, I was curious whether the 'read' bytecode API call was implemented
 in such a way that the underlying read system call could handle EINTR being
 returned (which can happen periodically).  To test this, I wrote the following
 bytecode rule:
-```
+
+<pre>
 VIRUSNAME_PREFIX("BC.Heuristic.Test.Read.Passed")
 VIRUSNAMES("")
 TARGET(0)
@@ -397,25 +428,30 @@ int entrypoint(void)
     foundVirus("");
     return 0;
 }
-```
+</pre>
+
 I compiled the rule, made a test file to match against, and ran it under
 strace to determine what underlying read system call was used for the bytecode
 read function:
-```
+
+<pre>
 clambc-compiler read_test.bc
 dd if=/dev/zero of=/tmp/zeroes bs=65535 count=256
 strace clamscan -d read_test.cbc --bytecode-unsigned /tmp/zeroes
-```
+</pre>
+
 It uses pread64 under the hood, so the following command could be used for fault
 injection:
-```
-strace -e fault=pread64:error=EINTR:when=20+10 clamscan -d read_test.cbc --bytecode-unsigned /tmp/zeroes 
-```
+
+
+`strace -e fault=pread64:error=EINTR:when=20+10 clamscan -d read_test.cbc --bytecode-unsigned /tmp/zeroes`
+
 This command tells strace to skip the first 20 pread64 calls (these appear to
 be used by the loader, which didn't seem to handle EINTR correctly) but to
 inject EINTR for every 10th call afterward.  We can see the injection in action
 and that the system call is retried successfully:
-```
+
+<pre>
 pread64(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 65536, 15007744) = 65536
 pread64(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 65536, 15073280) = 65536
 pread64(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 65536, 15138816) = 65536
@@ -427,7 +463,8 @@ pread64(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 65536, 15466496) = 65536
 pread64(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 65536, 15532032) = 65536
 pread64(3, 0x7f6a7ff43000, 65536, 15597568) = -1 EINTR (Interrupted system call) (INJECTED)
 pread64(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 65536, 15597568) = 65536
-```
+</pre>
+
 More documentation on this feature can be found in
 [this presentation](https://archive.fosdem.org/2017/schedule/event/failing_strace/attachments/slides/1630/export/events/attachments/failing_strace/slides/1630/strace_fosdem2017_ta_slides.pdf)
 from FOSDEM 2017.
