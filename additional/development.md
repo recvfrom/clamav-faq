@@ -112,9 +112,7 @@ Suggestions:
 
 Altogether, the following configure command can be used:
 
-<pre>
-CFLAGS="-ggdb -O0" ./configure --prefix=`pwd`/installed --enable-debug --enable-check --enable-coverage --enable-libjson --with-systemdsystemunitdir=no --enable-experimental --enable-clamdtop --enable-libjson --enable-xml --enable-pcre --disable-llvm
-</pre>
+`CFLAGS="-ggdb -O0" ./configure --prefix=`pwd`/installed --enable-debug --enable-check --enable-coverage --enable-libjson --with-systemdsystemunitdir=no --enable-experimental --enable-clamdtop --enable-libjson --enable-xml --enable-pcre --disable-llvm`
 
 NOTE: It is possible to build libclamav as a static library and have it
 statically linked into clamscan/clamd (to do this, run `./configure` with
@@ -225,9 +223,7 @@ writing:
 Given that you might want to pass a lot of arguments to gdb, consider taking
 advantage of the `--args` parameter.  For example:
 
-<pre>
-gdb --args ./installed/bin/clamscan -d /tmp/test.ldb -d /tmp/blacklist.crb -d --dumpcerts --debug --verbose --max-filesize=2000M --max-scansize=2000M --max-files=2000000 --max-recursion=2000000 --max-embeddedpe=2000M --max-iconspe=2000000 f8f101166fec5785b4e240e4b9e748fb6c14fdc3cd7815d74205fc59ce121515
-</pre>
+`gdb --args ./installed/bin/clamscan -d /tmp/test.ldb -d /tmp/blacklist.crb -d --dumpcerts --debug --verbose --max-filesize=2000M --max-scansize=2000M --max-files=2000000 --max-recursion=2000000 --max-embeddedpe=2000M --max-iconspe=2000000 f8f101166fec5785b4e240e4b9e748fb6c14fdc3cd7815d74205fc59ce121515`
 
 When using ClamAV without libclamav statically linked, if you set breakpoints
 on libclamav functions by name, you'll need to make sure to indicate that
@@ -250,13 +246,10 @@ If checking for leaks, be sure to run clamscan with samples that will hit as
 many of the unique code paths in the code you are testing.  An example
 invocation is as follows:
 
-<pre>
-valgrind --leak-check=full ./installed/bin/clamscan -d /tmp/test.ldb --leave-temps --tempdir /tmp/test --debug --verbose /tmp/upx-samples/ > /tmp/upx-results-2.txt 2>&1
-</pre>
+`valgrind --leak-check=full ./installed/bin/clamscan -d /tmp/test.ldb --leave-temps --tempdir /tmp/test --debug --verbose /tmp/upx-samples/ > /tmp/upx-results-2.txt 2>&1`
 
 Alternatively, on Linux, you can use glibc's built-in leak checking
 functionality:
-
 
 `MALLOC_CHECK_=7 ./installed/bin/clamscan`
 
@@ -297,9 +290,7 @@ presented below:
 
 First, install perf, which on Linux can be done via:
 
-<pre>
-apt-get install linux-tools-common linux-tools-generic linux-tools-`uname -r`
-</pre>
+<pre>apt-get install linux-tools-common linux-tools-generic linux-tools-`uname -r`</pre>
 
 Modify the system settings to allow perf record to be run by a standard user:
 
@@ -337,6 +328,7 @@ Be sure to open it in a web browser like Chrome to be able to take full
 advantage of it.
 
 ## Profiling - Callgrind
+
 Callgrind is a profiling tool included with valgrind.  This can be done by
 prepending `valgrind --tool=callgrind ` to the clamscan command.
 [kcachegrind](https://kcachegrind.github.io/html/Home.html)
@@ -345,6 +337,7 @@ profiling data and allow you to explore it visually, although if you don't
 already use KDE you'll have to install lots of extra packages to use it.
 
 ## System Call Tracing / Fault Injection
+
 strace can be used to track the system calls that are performed and provide the
 number of calls / time spent in each system call.  This can be done by
 prepending `strace -c ` to a clamscan command.  Results will look something
