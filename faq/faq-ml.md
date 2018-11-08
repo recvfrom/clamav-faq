@@ -3,15 +3,15 @@
 
 ### Where can I ask questions about using ClamAV?
 
-Subscribe to our [clamav-users](http://lists.clamav.net/cgi-bin/mailman/listinfo/clamav-users) mailing-list.
+Subscribe to our [clamav-users] mailing-list.
 
 ### I want to take part to the development of ClamAV. Where can I get more info?
 
-Subscribe to the [clamav-devel](http://lists.clamav.net/cgi-bin/mailman/listinfo/clamav-devel) mailing-list.
+Subscribe to the [clamav-devel] mailing-list.
 
 ### The mailing-lists generate too many messages per day. I can't handle them. What shall I do?
 
-There are two possible solutions: 	- Go to the [mailing-list](http://lists.clamav.net/cgi-bin/mailman/listinfo) mailman interface, click on __Unsubscribe or edit options__, and turn _digest mode_ on 	- access the mailing-lists using a "news reader"
+There are two possible solutions: 	- Go to the [mailing-list] mailman interface, click on __Unsubscribe or edit options__, and turn _digest mode_ on 	- access the mailing-lists using a "news reader"
 
 ### I sent a message to one of ClamAV's mailing-lists, but the mail was rejected/held for approval. Why?
 
@@ -27,4 +27,8 @@ There are two possible reasons: If your account generates too many bounces you'l
 
 ### How do I disable mail delivery from the mailing-list I'm subscribed to?
 
-Suppose you are subscribed to clamav-users. Go to http://lists.clamav.net/cgi-bin/mailman/listinfo/clamav-users and enter your mail address at the bottom of the page. Click on __Unsubscribe or edit options__. At the next page enter your password and press _Log in_. Under _Your clamav-users Subscription Options_ choose _Disabled_ opposite _Mail delivery_ and press _Submit My Changes_ at the bottom of the page.
+Suppose you are subscribed to [clamav-users]. Go to [clamav-users] and enter your mail address at the bottom of the page. Click on __Unsubscribe or edit options__. At the next page enter your password and press _Log in_. Under _Your clamav-users Subscription Options_ choose _Disabled_ opposite _Mail delivery_ and press _Submit My Changes_ at the bottom of the page.
+
+[clamav-users]: http://lists.clamav.net/cgi-bin/mailman/listinfo/clamav-users
+[clamav-devel]: http://lists.clamav.net/cgi-bin/mailman/listinfo/clamav-devel
+[mailing-list]: http://lists.clamav.net/cgi-bin/mailman/listinfo

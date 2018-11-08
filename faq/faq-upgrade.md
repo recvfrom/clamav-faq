@@ -59,14 +59,15 @@ Please refer to: [eol-clamav]
 
 ### How do I verify the integrity of ClamAV sources?
 
-Using [GnuPG] you can easily verify the authenticity of your stable release downloads by using the following method: Download the [Talos PGP public key] from the VRT labs site. Import the key into your local public keyring: `$ gpg --import vrt.gpg`.  
+Using [GnuPG] you can easily verify the authenticity of your stable release downloads by using the following method: Download the [Talos PGP public key] from the VRT labs site. Import the key into your local public keyring:
+
+`$ gpg --import vrt.gpg`
  
 Download the stable release AND the corresponding `.sig` file to the same directory. Verify that the stable release download is signed with the [Talos PGP public key]: 
 
 `$ gpg --verify clamav-X.XX.tar.gz.sig`
 
 Please note that the resulting output should look like the following:
-
 
 `gpg: Signature made Wed Jan 24 19:31:26 2018 EST`
 
@@ -86,7 +87,9 @@ ClamAV supports a wide variety of compilers, hardware and operating systems. Our
 
 Please contact your vendor for further information. Please refer to [gcc's bugzilla] for further information. More information about this bug is also available in [our bugzilla].   
 
-Our configure scripts will detect if your compiler is affected by this bug and refuse to generate a non working binary with the following error message: "your compiler has gcc PR26763-2 bug, use a different compiler" . 
+Our configure scripts will detect if your compiler is affected by this bug and refuse to generate a non working binary with the following error message:
+
+`your compiler has gcc PR26763-2 bug, use a different compiler`
 
 
 [eol-clamav]: http://www.clamav.net/documents/end-of-life-policy-eol
@@ -94,7 +97,7 @@ Our configure scripts will detect if your compiler is affected by this bug and r
 [sources]: https://github.com/Cisco-Talos/clamav-devel
 [Wiki]: https://github.com/Cisco-Talos/clamav-faq/blob/master/faq/Upgrading.md
 [precompiled packages]: http://www.clamav.net/download.html#otherversions 
-[Talos PGP public key]: http://www.clamav.net/downloads
+[Talos PGP public key]: http://www.clamav.net/downloads#collapsePGP
 [source download page]: http://www.clamav.net/downloads
 [gcc's bugzilla]: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=26763
 [gcc's Options That Control Optimization]: https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html

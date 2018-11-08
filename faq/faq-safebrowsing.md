@@ -10,7 +10,7 @@ Please note that such reports DO NOT necessarily mean that the data scanned cont
 
 If you want to know more about the potentially dangerous data matched by the signature, you should visit [http://www.antiphishing.org](http://www.antiphishing.org/) (for phishing warnings) or [http://www.stopbadware.org](http://www.stopbadware.org/) (for malware warnings). 
 
-In order to enable this feature, you must add `SafeBrowsing Yes` to freshclam.conf . 
-There is no option in clamd.conf. If the engine finds Google Safe Browsing files in the database directory, ClamAV will enable safe browsing. To turn it off you need to update freshclam.conf and remove the safebrowsing files from the database directory before restarting clamd.                                                    
+In order to enable this feature, you must add `SafeBrowsing Yes` to `freshclam.conf`. 
+There is no option in `clamd.conf`. If the engine finds Google Safe Browsing files in the database directory, ClamAV will enable safe browsing. To turn it off you need to update freshclam.conf and remove the safebrowsing files from the database directory before restarting clamd.                                                    
 
 

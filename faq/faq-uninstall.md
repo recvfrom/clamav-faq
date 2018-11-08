@@ -34,7 +34,7 @@
 
 ## Caveats
 
-Make sure that you haven’t got old libraries (_libclamav.so_) lying around your filesystem. You can verify it using: _
+Make sure that you haven’t got old libraries (_libclamav.so_) lying around your filesystem. You can verify it using:
 
 > $ ldd `which freshclam`
 

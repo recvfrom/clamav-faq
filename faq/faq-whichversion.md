@@ -2,7 +2,7 @@
 
 ## Stable
 
-For critical systems, download from [ClamAV.org](http://www.clamav.net/downloads)
+For critical systems, download from [ClamAV.net](http://www.clamav.net/downloads)
 
 ## Release candidate
 

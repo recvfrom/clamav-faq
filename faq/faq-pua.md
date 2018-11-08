@@ -52,4 +52,4 @@ Keyloggers, spying tools
 Server based badware like DistributedNet
 
 #### Script
-Known "problem" scripts written in Javascript, ActiveX or similar.
+Known "problem" scripts written in JavaScript, ActiveX or similar.

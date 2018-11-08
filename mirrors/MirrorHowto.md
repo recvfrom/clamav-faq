@@ -14,7 +14,7 @@ We need fast reliable mirrors. Servers eligible to become mirrors have to meet t
    * Unlimited traffic (between 500GB and 750GB/month as of 2010, 3-4PB/month for busy regions as of 2017)
    * At least 1.5GB of web space
    * sshd listening on port 22 (see [Update Firewall](#update-firewall) for an alternative solution)
-   * All the tools and protocols required for our push-mirroring system: rsync, ssh, bash, lockfile. See below for the details.
+   * All the tools and protocols required for our push-mirroring system: `rsync`, `ssh`, `bash`, `lockfile`. See below for the details.
    * The mirror has to be available to all ClamAV users. We DO NOT support private mirrors!
 
 We also appreciate (but do not require) having shell access to the server hosting the mirror. FTP access is not accepted.
@@ -23,7 +23,7 @@ The virusdb team will use the account only to update the virus database.
 
 #### Public Mirror vs Private Mirror
 
-If you cannot make your mirror available to all ClamAV users, and you would like to serve the CVD update to your network from a local cache, you should read CvdPrivateMirror
+If you cannot make your mirror available to all ClamAV users, and you would like to serve the CVD update to your network from a local cache, you should read [CvdPrivateMirror](CvdPrivateMirror.md).
 
 # Instructions for Becoming a Mirror
 
@@ -33,7 +33,8 @@ Before starting the setup, [contact the mirror maintainers](http://lists.clamav.
 
 ### 2. Configure your web server
 
-Set up a virtual host for http://database.clamav.net, http://db.\*.clamav.net and http://clamav.your-domain.tld. Note there is an asterisk in the second hostname. A literal asterisk. Do not replace it with your country code. If you are using name based virtual hosts, you can check whether the mirror setup is correct or not, with the following commands (replace 1.2.3.4 with the actual ip address of your web server):
+Set up a virtual host for http://database.clamav.net, http://db.\*.clamav.net and http://clamav.your-domain.tld. Note there is an asterisk in the second hostname. A literal asterisk. Do not replace it with your country code. If you are using name based virtual hosts, you can check whether the mirror setup is correct or not, with the following commands (replace `1.2.3.4` with the actual ip address of your web server):
+
 <pre>echo Success &gt;~clamavdb/public_html/local_test
 chmod 644 ~clamavdb/public_html/local_test
 wget -O - --header="Host: db.test.clamav.net" 1.2.3.4/local_test
@@ -79,26 +80,26 @@ If you are using lighttpd:
 }
 </pre>
 
-If you cannot create wildcard vhosts, you must use IP based virtual hosts! Please note that an http redirect (e.g. RedirectPermanent) is not enough! freshclam can't handle redirects yet.
+If you cannot create wildcard vhosts, you must use IP based virtual hosts! Please note that an http redirect (e.g. `RedirectPermanent`) is not enough! `freshclam` can't handle redirects yet.
 
 ### 3. Create a system account
 
-Create an account with login "clamavdb" and give it write access to the virtual host's DocumentRoot.
+Create an account with login `clamavdb` and give it write access to the virtual host's *DocumentRoot*.
 
 You may want to disable password authentication for this account and change the password to something obscure.
 
-The "clamavdb" user's shell must be /bin/sh or /bin/bash . Otherwise the user won't be able to run the command associated with the ssh public key.
+The `clamavdb` user's shell must be `/bin/sh` or `/bin/bash`. Otherwise the user won't be able to run the command associated with the ssh public key.
 
-Take a look at the content of "authorized_keys_noshell":
+Take a look at the content of `authorized_keys_noshell`:
 
-```
+<pre>
 no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty,command="bash ~/bin/clam-clientsync rsync1.clamav.net &" ssh-rsa xxxxxxxxxxxxxxxxxxxxxxxxx clamavdb@morgana  
 no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty,command="bash ~/bin/clam-clientsync rsync2.clamav.net &" ssh-rsa xxxxxxxxxxxxxxxxxxxxxxxxx clamavdb@morgana
-```
+</pre>
 
 The only command which can be executed by the owner of the corresponding ssh private key is ~/bin/clam-clientsync. We will only be able to trigger the execution of that script and nothing else!
 
-If you would like to grant us shell access, use authorized_keys_shell instead.
+If you would like to grant us shell access, use `authorized_keys_shell` instead.
 
 ### 4. Download scripts and config. files
 
@@ -124,36 +125,45 @@ $ gpg --verify authorized_keys_shell.sig.txt authorized_keys_shell.txt</pre>
 
 The Talos PGP public key is available on the [Talos website](http://www.talosintelligence.com/contact/). It can eventually be verified by telephone. Contact us by email first.
 
-If you don't want to give us shell access, copy authorized_keys_noshell to ~clamavdb/.ssh/authorized_keys:
-<pre>$ cp authorized_keys_noshell ~/.ssh/authorized_keys
-</pre>
+If you don't want to give us shell access, copy `authorized_keys_noshell` to `~clamavdb/.ssh/authorized_keys`:
 
-If you want to give us shell access, use authorized_keys_shell instead:
-<pre>$ cp authorized_keys_shell ~clamavdb/.ssh/authorized_keys</pre>
+`$ cp authorized_keys_noshell ~/.ssh/authorized_keys`
+
+If you want to give us shell access, use `authorized_keys_shell` instead:
+
+`$ cp authorized_keys_shell ~clamavdb/.ssh/authorized_keys`
 
 In both cases you have to make sure that files and directories have proper permissions:
+
 <pre>$ chmod 755 ~clamavdb
 $ chmod 700 ~clamavdb/.ssh
 $ chmod 600 ~clamavdb/.ssh/authorized_keys
 </pre>
 
-Copy clam-clientsync to ~clamavdb/bin/ and clam-clientsync.conf to ~clamavdb/etc/:
-<pre>chmod 755 ~clamavdb/bin/clam-clientsync
-chmod 600 ~clamavdb/etc/clam-clientsync.conf</pre>
+Copy `clam-clientsync` to `~clamavdb/bin/` and `clam-clientsync.conf` to `~clamavdb/etc/`:
 
-Everything must be owned by user clamavdb.
-<pre>chown clamavdb ~clamavdb/bin/clam-clientsync
+<pre>
+chmod 755 ~clamavdb/bin/clam-clientsync
+chmod 600 ~clamavdb/etc/clam-clientsync.conf
+</pre>
+
+Everything must be owned by user `clamavdb`.
+
+<pre>
+chown clamavdb ~clamavdb/bin/clam-clientsync
 chown clamavdb ~clamavdb/etc/clam-clientsync.conf
 chown -R clamavdb ~clamavdb/.ssh
 chown clamavdb ~clamavdb/etc
 </pre>
 
-The clam-clientsync requires the "lockfile" program, which is part of the procmail package. Before going any further, please check that "lockfile" is available.
+The `clam-clientsync` requires the `lockfile` program, which is part of the procmail package. Before going any further, please check that `lockfile` is available.
 
 ### 5. Submit the mirror details
 
 Send an email with the server's details to mirror-admin -at- clamav.net following this template:
-<pre>clamav.foo.com  
+
+<pre>
+clamav.foo.com  
 ip address: 1.2.3.4  
 country: Poland 
 admin: John Doe &lt;john.doe@foo.com&gt;
@@ -163,8 +173,10 @@ The admin contact is purely for our informational need.  The ClamAV Mirrors list
 
 ### 6. Modify configuration file
 
-Edit ~clamavdb/etc/clam-clientsync.conf . If your DocumentRoot is /home/users/clamavdb/public_html, your login is foo and your password guessme, then your clam-clientsync.conf will look like this:
-<pre>TO=/home/users/clamavdb/public_html
+Edit `~clamavdb/etc/clam-clientsync.conf`. If your *DocumentRoot* is `/home/users/clamavdb/public_html`, your login is `foo` and your password `guessme`, then your `clam-clientsync.conf` will look like this:
+
+<pre>
+TO=/home/users/clamavdb/public_html
 RSYNC_USER=foo
 RSYNC_PASSWORD=guessme
 MODULE="clamavdb"
@@ -187,13 +199,15 @@ Any changes to this IP address list will be announced on the clamav-mirrors mail
 
 Please note that we do NOT support mirrors running ssh on a non standard port. If you are running ssh on a non standard port, you must add a redirect for packets with the above source addresses and destination port 22 to the port where ssh is listening to.
 
-Here is an example for a Linux box running ssh on port 2222 and without any firewall blocking packets on port 22:
+Here is an example for a Linux box running ssh on port `2222` and without any firewall blocking packets on port `22`:
+
 <pre>
 iptables -t nat -I PREROUTING -s 64.18.103.6 -m tcp -p tcp --dport 22 -j REDIRECT --to-port 2222
 iptables -t nat -I PREROUTING -s 128.177.8.249 -m tcp -p tcp --dport 22 -j REDIRECT --to-port 2222
 iptables -t nat -I PREROUTING -s 198.148.79.65 -m tcp -p tcp --dport 22 -j REDIRECT --to-port 2222
 iptables -t nat -I PREROUTING -s 172.110.204.69 -m tcp -p tcp --dport 22 -j REDIRECT --to-port 2222
 </pre>
+
 YMMV.
 
 Make sure to save these rules so that they are executed everytime you reboot the system
@@ -204,7 +218,7 @@ You should check out the [MirrorsCoordination](https://github.com/vrtadmin/clama
 
 ### 9. Add your logo
 
-You are welcome to put your company logo on the mirror home page. Just copy it to the DocumentRoot and rename it to "local_logo.png". The index.html is unique for every mirror. Please note that any file in the DocumentRoot whose name doesn't match "local\_\*" will be deleted at every mirror sync.
+You are welcome to put your company logo on the mirror home page. Just copy it to the *DocumentRoot* and rename it to `local_logo.png`. The `index.html` is unique for every mirror. Please note that any file in the DocumentRoot whose name doesn't match `local_*` will be deleted at every mirror sync.
 
 ### 10. Subscribe to the mirrors mailing lists
 
@@ -216,25 +230,25 @@ When everything is done, your server's IP address will be added either to your c
 
 ### 11. Statistics
 
-Although it's not required, we really appreciate if you can make access statistics of your mirror available to us. They should be available at http://your-mirror-host-name/local_stats/ and they must be protected with login and password. You should use the same login and password you are using in your ~clamavdb/etc/clam-clientsync.conf file.
+Although it's not required, we really appreciate if you can make access statistics of your mirror available to us. They should be available at http://your-mirror-host-name/local_stats/ and they must be protected with login and password. You should use the same login and password you are using in your `~clamavdb/etc/clam-clientsync.conf` file.
 
 If possible, please tell your statistics generator to ignore requests made by the "ClamAV-MirrorCheck" agent.
 
 If you are using Webalizer, you can add the following directive to your conf. file:
 
-HideAgent ClamAV-MirrorCheck
+`HideAgent ClamAV-MirrorCheck`
 
 If you are using AWStats, you can add this one instead:
 
-SkipUserAgents="ClamAV-MirrorCheck"
+`SkipUserAgents="ClamAV-MirrorCheck"`
 
 Refer to your stats generator's manual for more info.
 
 Important note for Apache2 users:
 
-As stated in the Apache documentation at http://httpd.apache.org/docs/2.0/mod/mod_log_config.html please note that in httpd 2.0, unlike 1.3, the %b and %B format strings do not represent the number of bytes sent to the client, but simply the size in bytes of the HTTP response (which will differ, for instance, if the connection is aborted, or if SSL is used).
+As stated in the Apache documentation at http://httpd.apache.org/docs/2.0/mod/mod_log_config.html please note that in httpd 2.0, unlike 1.3, the `%b` and `%B` format strings do not represent the number of bytes sent to the client, but simply the size in bytes of the HTTP response (which will differ, for instance, if the connection is aborted, or if SSL is used).
 
-The %O format provided by mod_logio will log the actual number of bytes sent over the network.
+The `%O` format provided by `mod_logio` will log the actual number of bytes sent over the network.
 
 ## Admin's duty
 
@@ -270,14 +284,14 @@ They will review your submission and update the database so that the whole ClamA
 
 ## Redirecting users to the closest mirror
 
-Our users are encouraged to add the following directives to their freshclam.conf :
+Our users are encouraged to add the following directives to their `freshclam.conf`:
 
-   * DatabaseMirror db.XY.clamav.net
-   * DatabaseMirror db.local.clamav.net
+   * `DatabaseMirror db.XY.clamav.net`
+   * `DatabaseMirror db.local.clamav.net`
 
-where XY stands for the country the server lives in a full list is available at http://www.iana.org/cctld/cctld-whois.htm. Each db.XY.clamav.net DNS record points to the mirrors available in the corresponding country. 
+where *XY* stands for the country the server lives in a full list is available at [http://www.iana.org/cctld/cctld-whois.htm](http://www.iana.org/cctld/cctld-whois.htm). Each db.XY.clamav.net DNS record points to the mirrors available in the corresponding country. 
 
-If freshclam can't connect to db.XY.clamav.net, it will fallback on db.local.clamav.net, which attempts to redirect the user to the closest pool of mirrors by looking up its ip source address in the [GeoIP database](http://www.maxmind.com/app/geoip_country). See:
+If *freshclam* can't connect to `db.XY.clamav.net`, it will fallback on `db.local.clamav.net`, which attempts to redirect the user to the closest pool of mirrors by looking up its ip source address in the [GeoIP database](http://www.maxmind.com/app/geoip_country). See:
 
    * http://www.iana.org/assignments/ipv4-address-space
    * http://ftp.apnic.net/stats/apnic/
@@ -289,7 +303,7 @@ We are aware that looking up the IP source address is not an accurate method to 
 
 The most important factor for an antivirus's efficiency is to be up to date. ClamAV comes with a tool to update the virus database automatically: its name is freshclam.
 
-freshclam looks up the TXT record associated with current.cvd.clamav.net and extracts the latest database version available from the string returned. If the local database is outdated, freshclam tries to connect to the hostnames listed in freshclam.conf (DatabaseMirror directive). If the first server in the list fails or the latest database is not available on that mirror (e.g. in case there has been a problem sync'ing the mirror), freshclam will sleep for 10 secs and then try again with the next one, and so on.
+freshclam looks up the TXT record associated with `current.cvd.clamav.net` and extracts the latest database version available from the string returned. If the local database is outdated, freshclam tries to connect to the hostnames listed in `freshclam.conf` (`DatabaseMirror` directive). If the first server in the list fails or the latest database is not available on that mirror (e.g. in case there has been a problem sync'ing the mirror), freshclam will sleep for 10 secs and then try again with the next one, and so on.
 
 After freshclam downloads the new database, it sends a notify to clamd (if active) to reload the database.
 
