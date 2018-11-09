@@ -61,7 +61,7 @@ Second, if you're technically inclined, you may want to try to read the signatur
 
    The output will look something like this:
 
-    ```
+    <pre>
         VIRUS NAME: ./daily.ldb:Win.Downloader.DDECmdExec-6683887-5
         TDB: Engine:81-255,Target:0
         LOGICAL EXPRESSION: 4
@@ -92,7 +92,7 @@ Second, if you're technically inclined, you may want to try to read the signatur
              +-> TRIGGER: (0=0&1=0&2=0)&3
              +-> REGEX: (?<!\x20)[=+\-@]\s*?(\w+\s*?\x28)?.{0,50}(certutil|cmd|cmstp|cscript|dnscmd|msiexec|netsh|regsvr32|rpcping|rundll32|schtasks|telnet|tscon|`tsdiscon|wmic|wscript).{0,50}\|\s*?\x27[^\x27]{5,255}\x27\s*?\x21
              +-> CFLAGS: i
-    ```
+    </pre>
 
 6. Interpet the results. ClamAV signatures can be as simple as a hash-based signature of a known-malicious file, but they can also be a complex logical test. You may not learn enough to make an educated decision. The above example is a pretty complicated one, so I will try to walk you through it.
 
