@@ -1,10 +1,12 @@
-# Uninstalling ClamAV #
+# Uninstalling ClamAV
 
 ## If you installed from source
 
-`./configure`
+    `./configure`
 
-`sudo make uninstall`
+    `sudo make uninstall`
+
+---
 
 ## If you installed from packages
 
@@ -32,14 +34,18 @@
 
   `/etc/rc.d/rc.clamav stop; removepkg clamav`
 
+---
+
 ## Caveats
 
 Make sure that you haven’t got old libraries (_libclamav.so_) lying around your filesystem. You can verify it using:
 
-> $ ldd `which freshclam`
+<pre>
+    $ ldd `which freshclam`
+</pre>
 
 Also make sure there is really only one version of ClamAV installed on your system:
 
-`$ whereis freshclam`
+    `$ whereis freshclam`
 
-`$ whereis clamscan`
+    `$ whereis clamscan`

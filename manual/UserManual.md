@@ -1,22 +1,19 @@
-# ClamAV Documentation
+# Clam AntiVirus 0.101.0 *User Manual*
 
-![image](manual/UserManual/images/demon.png)
-
----
-
-This is the official ClamAV Documentation repository. Contributions via GitHub pull-request are welcome and appreciated.
+![image](UserManual/images/demon.png)
 
 ---
 
-[ClamAV User Manual](manual/UserManual.md)
+Table Of Contents
 
-[Frequently Asked Questions](faq/faq.md)
-
-Additional:
-
-* [Authenticode Signature Verification](additional/authenticode.md)
-
-* [How to Host a Private Database Mirror](additional/CvdPrivateMirror.md)
+1. [Introduction to ClamAV](UserManual/Introduction.md)
+2. Installing ClamAV
+    * [Unix/Linux/macOS](UserManual/Installation-Unix.md)
+    * [Windows](UserManual/Installation-Windows.md)
+3. [Using ClamAV](UserManual/Usage.md)
+4. [ClamAV Developer Tips and Tricks](UserManual/development.md)
+5. [Build \[lib\]ClamAV Into Your Programs](UserManual/libclamav.md)
+6. [Writing ClamAV Signatures](UserManual/Signatures.md)
 
 ---
 

@@ -1,14 +1,18 @@
 # Interpreting Scan Alerts FAQ
 
-### ClamAV alerted on a file during a scan.  What do I do?
+## ClamAV alerted on a file during a scan.  What do I do?
 
 ClamAV may have found a malicious or suspicious file. However, you're probably asking yourself if the alert is a False Positive (FP). It may well be, so don't just delete the file out-of-hand.
 
-#### Online Research
+---
+
+### Online Research
 
 First, consider the file itself and whether or not the alert makes sense. If you're concerned, start by searching the name of the signature on Google. If FP's are being reported, you may see others complaining about the same thing, or you may be able to get an understanding of what the signature is trying to find.
 
-#### Technical Investigation
+---
+
+### Technical Investigation
 
 Second, if you're technically inclined, you may want to try to read the signature details to understand how it works and what, specifically, it's alerting on. Take heed, this investigation might leave you more confused than when you started. ClamAV doesn't post write-ups on how each signature in-part because a good number of our signatures these days are generated automatically and not by a human mind.
 
@@ -18,7 +22,7 @@ Second, if you're technically inclined, you may want to try to read the signatur
 
     `user@laptop:~$  cd /tmp/sigdump`
 
-2. Use the `sigtool` program to unpack the clamav databases into their separate components.  Sigtool should be installed alongside clamscan, probably in `/usr/local/bin/sigtool`.  The clamav databases are traditionally installed in `/usr/local/share/clamav` although if you installed from a package manager, your paths may vary:
+2. Use the `sigtool` program to unpack the ClamAV databases into their separate components.  Sigtool should be installed alongside clamscan, probably in `/usr/local/bin/sigtool`.  The ClamAV databases are traditionally installed in `/usr/local/share/clamav` although if you installed from a package manager, your paths may vary:
 
     `user@laptop:/tmp/sigdump$  sigtool -u /usr/local/share/clamav/main.cvd`
 
@@ -100,7 +104,9 @@ Second, if you're technically inclined, you may want to try to read the signatur
 
    If you look at `SUBSIG ID 4`, you'll see that has a has a `TRIGGER` which acts in much the same way as the above `LOGICAL EXPRESSION`.  If the subsignatures in the logical expression are satisfied, then the regular expression `REGEX` will be tested. If the regular expression matches, then the SUBSIG ID 4 will trigger and the overall signature will alert.
 
-#### Reporting
+---
+
+### Reporting
 
 If you believe that the signature alerted on a benign file, please report the False Positive so our analysts can refine or remove the faulty signature. You can report false positives [on our website](https://www.clamav.net/reports/fp) or you can submit the report using the `clamsubmit` command-line program.
 
