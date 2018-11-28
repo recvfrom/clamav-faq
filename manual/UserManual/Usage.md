@@ -39,7 +39,7 @@ The ClamAV Daemon, or [`clamd`](Usage/Scanning.md#clamd), is a multi-threaded da
 
 ---
 
-ClamAV also provides a command-line tool for [simple scanning](Usage/Scanning.md) tasks with *libclamav* called [`clamscan`](Usage/Scanning,md#clamscan). Unlike the daemon, `clamscan` is not a persistent process and is best suited for use cases where one-time scanning with minimal setup is needed.
+ClamAV also provides a command-line tool for [simple scanning](Usage/Scanning.md) tasks with *libclamav* called [`clamscan`](Usage/Scanning.md#clamscan). Unlike the daemon, `clamscan` is not a persistent process and is best suited for use cases where one-time scanning with minimal setup is needed.
 
 ---
 
