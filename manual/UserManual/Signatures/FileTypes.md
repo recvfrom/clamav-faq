@@ -49,6 +49,7 @@ This is the current list of available Targe Types:
 
 ClamAV Types are prefixed with `CL_TYPE_`.  The following is an exhaustive list of all current CL_TYPE's.
 
+<pre>
 | CL_TYPE                | Description                                                  |
 |------------------------|--------------------------------------------------------------|
 | `CL_TYPE_7Z`           | 7-Zip Archive                                                |
@@ -122,3 +123,4 @@ ClamAV Types are prefixed with `CL_TYPE_`.  The following is an exhaustive list 
 | `CL_TYPE_XZ`           | XZ Archive                                                   |
 | `CL_TYPE_ZIP`          | Zip Archive                                                  |
 | `CL_TYPE_ZIPSFX`       | Self-Extracting Zip Archive                                  |
+</pre>
