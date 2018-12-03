@@ -1,26 +1,27 @@
-# ClamAV Documentation
+# Clam AntiVirus *Frequently Asked Questions*
 
-![image](manual/UserManual/images/demon.png)
+Table Of Contents
+
+1. [Overview](faq-overview.md)
+2. [Selecting the Right Version of ClamAV for You](faq-whichversion.md)
+3. [Installation](Installing.md)
+4. [Freshclam (Signature Updater)](faq-freshclam.md)
+5. [Signature Database (CVD)](faq-cvd.md)
+6. [Misc](faq-misc.md)
+7. [Mailing Lists](faq-ml.md)
+8. [Safe Browsing](faq-safebrowsing.md)
+9. [Troubleshooting](faq-troubleshoot.md)
+10. [Interpreting Scan Alerts](faq-scan-alerts.md)
+11. [Upgrading](faq-upgrade.md)
+12. [Win32](faq-win32.md)
+13. [ClamAV EOL Policy](faq-eol.md)
+14. [PUA (Potentially Unwanted Application)](faq-pua.md)
+15. [Ignore](faq-ignore.md)
+16. [Uninstall](faq-uninstall.md)
 
 ---
 
-This is the official ClamAV Documentation repository. Contributions via GitHub pull-request are welcome and appreciated.
-
----
-
-[ClamAV User Manual](manual/UserManual.md)
-
-[Frequently Asked Questions](faq/faq.md)
-
-Additional:
-
-* [Authenticode Signature Verification](additional/authenticode.md)
-
-* [How to Host a Private Database Mirror](additional/CvdPrivateMirror.md)
-
----
-
-ClamAV User Manual © 2018 Cisco Systems, Inc.
+ClamAV FAQ © 2018 Cisco Systems, Inc.
 
 This document is distributed under the terms of the GNU General Public License v2.
 

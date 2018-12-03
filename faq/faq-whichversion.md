@@ -1,9 +1,13 @@
 # Which Version of ClamAV should I use?
 
-## Stable
+Official ClamAV releases are available for download from [ClamAV.net](http://www.clamav.net/downloads).
 
-For critical systems, download from [ClamAV.net](http://www.clamav.net/downloads)
+## Stable release
 
-## Release candidate
+For critical systems, please install using the latest stable release.
 
-If your system is not critical, we occasionally release beta or release candidate (RC) versions of the next version of ClamAV: [http://www.clamav.net](http://www.clamav.net/downloads)
+---
+
+## Beta and Release candidates Programs
+
+If your system is not critical, we occasionally release beta and release candidate (RC) versions of the next feature release. Your participation in our beta and release candidate programs is always appreciated.

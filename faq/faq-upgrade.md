@@ -1,4 +1,4 @@
-# Upgrading ClamAV #
+# Upgrading ClamAV
 
 ## ClamAV from Packages
 
@@ -8,6 +8,8 @@ If there are no new packages, you have three options:
 * Wait
 * Build ClamAV Package
 * Install ClamAV From Source
+
+---
 
 ## Install ClamAV From Source
 
@@ -23,7 +25,9 @@ Depending on your installation method, you might want to backup configuration (l
 
 Backup your database signature (located in `/usr/local/share/clamav` by default) before upgrading to newer ClamAV version. Restore the backed up database signature before running the updated version. This is to avoid getting the `/usr/local/share/clamav not locked` error message when doing `freshclam`.
 
-## Webmin and yum
+---
+
+## Webmin and Yum
 
 To obtain a new version:
 
@@ -31,15 +35,21 @@ To obtain a new version:
 
 `yum update clamav`
 
-If everything updated properly, run freshclam to update your signature database.
+If everything updated properly, run `freshclam` to update your signature database.
+
+---
 
 ### What does "*WARNING:	Current functionality level = 1, required = 2*" mean?
 
 The *functionality level* of the database determines which scanner engine version is required to use all of its signatures. If you don't upgrade immediately you will be missing the latest viruses.
 
+---
+
 ### What does "*Your ClamAV installation is OUTDATED*" mean?
 
 You'll get this message whenever a new version of ClamAV is released.  In order to detect all the latest viruses, it's not enough to keep your database up to date. You also need to run the latest version of the scanner. You can download the [sources] of the latest release from our website. If you are afraid to break something while upgrading, use  the [precompiled packages] for your operating system/distribution.  Remember: running the latest stable release also improves stability.
+
+---
 
 ### I upgraded to the latest stable version but I still get the message "*Your ClamAV installation is OUTDATED*", why?
 
@@ -49,48 +59,57 @@ Make sure there is really only one version of ClamAV installed on your system:
 
 `$ whereis clamscan`
 
-Also make sure that you haven't got old libraries (`libclamav.so*`) lying around your filesystem. You can verify it using: 
+Also make sure that you haven't got old libraries (`libclamav.so*`) lying around your filesystem. You can verify it using:
 
 `$ ldd $(which freshclam)`
+
+---
 
 ### What does "*Malformed hexstring: This ClamAV version has reached End of Life*" mean?
 
 Please refer to: [eol-clamav]
+
+---
 
 ### How do I verify the integrity of ClamAV sources?
 
 Using [GnuPG] you can easily verify the authenticity of your stable release downloads by using the following method: Download the [Talos PGP public key] from the VRT labs site. Import the key into your local public keyring:
 
 `$ gpg --import vrt.gpg`
- 
-Download the stable release AND the corresponding `.sig` file to the same directory. Verify that the stable release download is signed with the [Talos PGP public key]: 
+
+Download the stable release AND the corresponding `.sig` file to the same directory. Verify that the stable release download is signed with the [Talos PGP public key]:
 
 `$ gpg --verify clamav-X.XX.tar.gz.sig`
 
 Please note that the resulting output should look like the following:
 
-`gpg: Signature made Wed Jan 24 19:31:26 2018 EST`
-
-`gpg:                using RSA key F13F9E16BCA5BFAD`
-
-`gpg: Good signature from "Talos (Talos, Cisco Systems Inc.) <email address>" [unknown]`
+<pre>
+    gpg: Signature made Wed Jan 24 19:31:26 2018 EST
+    gpg:                using RSA key F13F9E16BCA5BFAD
+    gpg: Good signature from "Talos (Talos, Cisco Systems Inc.) <email address>" [unknown]
+</pre>
 
 For other PGP implementation, please refer to their manual.
+
+---
 
 ### Where can I get the latest release, beta, or release candidate of ClamAV?
 
 Visit the [source download page].
 
+---
+
 ### Is my compiler/hardware/operating system supported by ClamAV?
 
-ClamAV supports a wide variety of compilers, hardware and operating systems. Our core compiler is gcc with Linux on 32 and 64 bit Intel platforms, though we also test using other compilers, including Sun's C compiler, Microsoft's Visual Studio, Intel's C compiler, LLVM/Clang, and others. To date we have only found one compiler that we do not support, GCC version 4.0.0 to 4.0.1 inclusive. We have found that version of the compiler produces incorrect code on all of the platforms and operating systems on which we have tested it. ClamAV will not work using that compiler and you MUST switch to an alternative, such as GCC3.4 or GCC4.1.   
+ClamAV supports a wide variety of compilers, hardware and operating systems. Our core compiler is gcc with Linux on 32 and 64 bit Intel platforms, though we also test using other compilers, including Sun's C compiler, Microsoft's Visual Studio, Intel's C compiler, LLVM/Clang, and others. To date we have only found one compiler that we do not support, GCC version 4.0.0 to 4.0.1 inclusive. We have found that version of the compiler produces incorrect code on all of the platforms and operating systems on which we have tested it. ClamAV will not work using that compiler and you MUST switch to an alternative, such as GCC3.4 or GCC4.1.
 
-Please contact your vendor for further information. Please refer to [gcc's bugzilla] for further information. More information about this bug is also available in [our bugzilla].   
+Please contact your vendor for further information. Please refer to [gcc's bugzilla] for further information. More information about this bug is also available in [our bugzilla].
 
 Our configure scripts will detect if your compiler is affected by this bug and refuse to generate a non working binary with the following error message:
 
-`your compiler has gcc PR26763-2 bug, use a different compiler`
-
+<pre>
+    your compiler has gcc PR26763-2 bug, use a different compiler
+</pre>
 
 [eol-clamav]: http://www.clamav.net/documents/end-of-life-policy-eol
 [GnuPG]: http://www.gnupg.org/

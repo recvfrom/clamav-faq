@@ -2,6 +2,8 @@
 
 If you find a bug in ClamAV, please check it against the latest git code. Read the instructions below, then visit our [bug tracker](https://bugzilla.clamav.net/) to submit your bug report. Please do not submit bugs for third party software.
 
+---
+
 ## Required Information
 
 Please be sure to include all of the following information so that we can effectively address your bug:
@@ -34,9 +36,11 @@ Please be sure to include all of the following information so that we can effect
 
   The content of the file will be kept confidential.
 
-#### Large Files
+### Large Files
 
 If the file is too big to mail it, you can upload it to a password protected website and send us the URL and the credentials to access it.
+
+---
 
 ## Backtrace Instructions
 
@@ -50,14 +54,11 @@ __Assuming you get something like:__
 
 1. Have the kernel write a core dump. 
   For bourne-like shells (e.g. bash): 
-  
 
   `$ ulimit -c unlimited`
 
-  
   For C-like shells (e.g. tcsh): 
   
-
   `limit coredumpsize unlimited`
 
 2. Now you should see the core dumped message:
@@ -70,7 +71,6 @@ __Assuming you get something like:__
 
 3. Load the core file into gdb:
 
-
   `$ gdb -core=core --args clamscan --some-options some_file`
   
   `(gdb)`
@@ -79,10 +79,11 @@ __Assuming you get something like:__
   
 4. Just use the `bt` command at the prompt to make gdb print a full backtrace.  Copy and paste it into the bug report. You can use the `q` command to leave gdb.
 
+---
+
 ## Obtain a Backtrace of clamd
 
 Use `ps` to get the PID of clamd (first number from the left):
-
 
 `$ ps -aux (or ps -elf on SysV)`
 
@@ -90,19 +91,19 @@ Use `ps` to get the PID of clamd (first number from the left):
   
 Attach gdb to the running process:
 
-
 `$ gdb /usr/sbin/clamd 24897`
 
 Replace 24897 with the pid of clamd and adjust the path of clamd.
 
 You should now get the gdb prompt, as:  
 
-
 `(gdb)`
 
 If you want clamd to continue running (i.e. until a segmentation fault occurs), issue the `continue gdb` command, and __wait for an error__, at which point gdb will return to its prompt.  
 
-#### Commands
+---
+
+### Commands
 
 + `bt`
 
@@ -118,6 +119,8 @@ If you want clamd to continue running (i.e. until a segmentation fault occurs), 
 
 So, you basically want to use `info threads` to get the number of threads and their id numbers; and for each thread do `thread id_number`; then `bt`. Exit from gdb with the `quit` command. Reply `y` to the question about the program still running.
 
-#### Strace
+---
+
+### Strace
 
 Optionally, if you think it can help, the output from `strace` can be included in the report (not covered here).
