@@ -1,19 +1,19 @@
 # Clam AntiVirus 0.101.0 *User Manual*
 
-![image](UserManual/images/demon.png)
+![image](/manual/UserManual/images/demon.png)
 
 ---
 
 Table Of Contents
 
-1. [Introduction to ClamAV](UserManual/Introduction.md)
+1. [Introduction to ClamAV](/UserManual/Introduction.md)
 2. Installing ClamAV
-    * [Unix/Linux/macOS](UserManual/Installation-Unix.md)
-    * [Windows](UserManual/Installation-Windows.md)
-3. [Using ClamAV](UserManual/Usage.md)
-4. [ClamAV Developer Tips and Tricks](UserManual/development.md)
-5. [Build \[lib\]ClamAV Into Your Programs](UserManual/libclamav.md)
-6. [Writing ClamAV Signatures](UserManual/Signatures.md)
+    * [Unix/Linux/macOS](/UserManual/Installation-Unix.md)
+    * [Windows](/UserManual/Installation-Windows.md)
+3. [Using ClamAV](/UserManual/Usage.md)
+4. [ClamAV Developer Tips and Tricks](/UserManual/development.md)
+5. [Build \[lib\]ClamAV Into Your Programs](/UserManual/libclamav.md)
+6. [Writing ClamAV Signatures](/UserManual/Signatures.md)
 
 ---
 
