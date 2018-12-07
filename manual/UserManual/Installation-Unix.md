@@ -3,8 +3,8 @@
 ## Step-by-Step Instructions
 
 - [Debian & Ubuntu](/manual/UserManual/Installation-Unix/Steps-Debian-Ubuntu.md)
-- [Redhat & CentOS](/Installation-Unix/Steps-Redhat-CentOS.md)
-- [macOS](/Installation-Unix/Steps-macOS.md)
+- [Redhat & CentOS](/manual/UserManual/Installation-Unix/Steps-Redhat-CentOS.md)
+- [macOS](/manual/UserManual/Installation-Unix/Steps-macOS.md)
 
 ---
 
