@@ -2,9 +2,9 @@
 
 ## Step-by-Step Instructions
 
-- [Debian & Ubuntu](Installation-Unix/Steps-Debian-Ubuntu.md)
-- [Redhat & CentOS](Installation-Unix/Steps-REdhat-CentOS.md)
-- [macOS](Installation-Unix/Steps-macOS.md)
+- [Debian & Ubuntu](clamav-faq/manual/UserManual/Installation-Unix/Steps-Debian-Ubuntu.md)
+- [Redhat & CentOS](clamav-faq/manual/UserManual/Installation-Unix/Steps-REdhat-CentOS.md)
+- [macOS](clamav-faq/manual/UserManual/Installation-Unix/Steps-macOS.md)
 
 ---
 
