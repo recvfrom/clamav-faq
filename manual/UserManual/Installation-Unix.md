@@ -2,7 +2,7 @@
 
 ## Step-by-Step Instructions
 
-- [Debian & Ubuntu](/Installation-Unix/Steps-Debian-Ubuntu.md)
+- [Debian & Ubuntu](/manual/UserManual/Installation-Unix/Steps-Debian-Ubuntu.md)
 - [Redhat & CentOS](/Installation-Unix/Steps-Redhat-CentOS.md)
 - [macOS](/Installation-Unix/Steps-macOS.md)
 
