@@ -2,9 +2,9 @@
 
 ## Step-by-Step Instructions
 
-- [Debian & Ubuntu](UserManual/Installation-Unix/Steps-Debian-Ubuntu.md)
-- [Redhat & CentOS](UserManual/Installation-Unix/Steps-Redhat-CentOS.md)
-- [macOS](UserManual/Installation-Unix/Steps-macOS.md)
+- [Debian & Ubuntu](Installation-Unix/Steps-Debian-Ubuntu.md)
+- [Redhat & CentOS](Installation-Unix/Steps-Redhat-CentOS.md)
+- [macOS](Installation-Unix/Steps-macOS.md)
 
 ---
 
