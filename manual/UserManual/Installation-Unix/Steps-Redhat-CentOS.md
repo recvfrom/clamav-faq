@@ -31,7 +31,7 @@ _Note_: LLVM is also an optional dependency. LLVM will not provide any additiona
 
 ## Download the latest stable release
 
-1. Open a browser and navigate to [the ClamAV downloads page](http://www.clamav.net/downloads)
+1. Open a browser and navigate to [the ClamAV downloads page](https://www.clamav.net/downloads)
 2. Click `clamav-<version>.tar.gz` link to download the latest stable release.
 
 ---
@@ -191,7 +191,7 @@ Example:
     less check4_clamd.sh.log`
 </pre>
 
-To submit a bug report regarding unit text failures, please follow these [bug reporting steps](../Installation-Unix.md#Reporting-a-unit-test-failure-bug).
+To submit a bug report regarding unit text failures, please follow these [bug reporting steps](https://clamav.net/documents/Installation-Unix.md#Reporting-a-unit-test-failure-bug).
 
 ---
 
