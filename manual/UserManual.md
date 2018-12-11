@@ -6,14 +6,14 @@
 
 Table Of Contents
 
-1. [Introduction to ClamAV](https://clamav.net/documents/introduction)
+1. [Introduction to ClamAV](https://www.clamav.net/documents/introduction)
 2. Installing ClamAV
-    * [Unix/Linux/macOS](https://clamav.net/documents/installing-clamav-on-unix-linux-macos-from-source)
-    * [Windows](https://clamav.net/documents/installing-clamav-on-windows)
-3. [Using ClamAV](https://clamav.net/documents/usage)
-4. [ClamAV Developer Tips and Tricks](https://clamav.net/documents/clamav-development)
-5. [Build \[lib\]ClamAV Into Your Programs](https://clamav.net/documents/libclamav)
-6. [Writing ClamAV Signatures](https://clamav.net/documents/creating-signatures-for-clamav)
+    * [Unix/Linux/macOS](https://www.clamav.net/documents/installing-clamav-on-unix-linux-macos-from-source)
+    * [Windows](https://www.clamav.net/documents/installing-clamav-on-windows)
+3. [Using ClamAV](https://www.clamav.net/documents/usage)
+4. [ClamAV Developer Tips and Tricks](https://www.clamav.net/documents/clamav-development)
+5. [Build \[lib\]ClamAV Into Your Programs](https://www.clamav.net/documents/libclamav)
+6. [Writing ClamAV Signatures](https://www.clamav.net/documents/creating-signatures-for-clamav)
 
 ---
 

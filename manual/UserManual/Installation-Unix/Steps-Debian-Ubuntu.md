@@ -187,7 +187,7 @@ Example:
     less check4_clamd.sh.log`
 </pre>
 
-To submit a bug report regarding unit text failures, please follow these [bug reporting steps](https://clamav.net/documents/Installation-Unix.md#Reporting-a-unit-test-failure-bug).
+To submit a bug report regarding unit text failures, please follow these [bug reporting steps](https://www.clamav.net/documents/Installation-Unix.md#Reporting-a-unit-test-failure-bug).
 
 ---
 
