@@ -2,9 +2,9 @@
 
 ## Step-by-Step Instructions
 
-- [Debian & Ubuntu](/manual/UserManual/Installation-Unix/Steps-Debian-Ubuntu.md)
-- [Redhat & CentOS](/manual/UserManual/Installation-Unix/Steps-Redhat-CentOS.md)
-- [macOS](/manual/UserManual/Installation-Unix/Steps-macOS.md)
+- [Debian & Ubuntu](https://clamav.net/documents/installation-on-debian-and-ubuntu-linux-distributions)
+- [Redhat & CentOS](https://clamav.net/documents/installation-on-debian-and-ubuntu-linux-distributions)
+- [macOS](https://clamav.net/documents/installation-on-macos-mac-os-x)
 
 ---
 
@@ -97,9 +97,9 @@ If installing to the system, it is recommended to set up at least one special us
 
 These are instructions specific to some popular operating systems:
 
-- [Debian, Ubuntu, etc](Installation-Unix/Steps-Debian-Ubuntu.md#Users-and-on-user-privileges)
-- [Redhat, CentOS, etc](Installation-Unix/Steps-Redhat-CentOS.md#Users-and-on-user-privileges)
-- [macOS](Installation-Unix/Steps-macOS.md#Users-and-on-user-privileges)
+- [Debian, Ubuntu, etc](https://clamav.net/documents/installation-on-debian-and-ubuntu-linux-distributions#Users-and-on-user-privileges)
+- [Redhat, CentOS, etc](https://clamav.net/documents/installation-on-debian-and-ubuntu-linux-distributions#Users-and-on-user-privileges)
+- [macOS](https://clamav.net/documents/installation-on-macos-mac-os-x#Users-and-on-user-privileges)
 
 If your operating system isn't specified above, and your OS does not have the `groupadd` and `useradd` utilities, consult a system manual. **Don’t forget to lock access to the account!**
 
@@ -142,9 +142,9 @@ At a minimum, you will need to edit each file and remove or comment-out the `Exa
 
 For additional recommendations, please read:
 
-- [Debian, Ubuntu, etc](Installation-Unix/Steps-Debian-Ubuntu.md#First-time-set-up)
-- [Redhat, CentOS, etc](Installation-Unix/Steps-Redhat-CentOS.md#First-time-set-up)
-- [macOS](Installation-Unix/Steps-macOS.md#First-time-set-up)
+- [Debian, Ubuntu, etc](https://clamav.net/documents/installation-on-debian-and-ubuntu-linux-distributions#First-time-set-up)
+- [Redhat, CentOS, etc](https://clamav.net/documents/installation-on-debian-and-ubuntu-linux-distributions#First-time-set-up)
+- [macOS](https://clamav.net/documents/installation-on-macos-mac-os-x#First-time-set-up)
 
 ---
 
