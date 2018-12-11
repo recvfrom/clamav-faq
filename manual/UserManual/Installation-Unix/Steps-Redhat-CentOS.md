@@ -1,6 +1,6 @@
-# Installation on Debian and Ubuntu Linux Distributions
+# Installation on Redhat and CentOS Linux Distributions
 
-Below are the steps for installing ClamAV from source on Debian and Ubuntu Linux.
+Below are the steps for installing ClamAV from source on Redhat and CentOS Linux.
 
 ---
 
@@ -9,16 +9,20 @@ Below are the steps for installing ClamAV from source on Debian and Ubuntu Linux
 1. Install ClamAV dependencies
     1. Install the developer tools
         <pre>
-            sudo apt-get install build-essential
+            sudo yum groupinstall "Development Tools"
         </pre>
     2. Install library dependencies
         <pre>
-            sudo apt-get install openssl libssl-dev zlib-devel libpng-devel libxml2-devel json-c-devel bzip2-devel pcre2-devel
+            sudo yum install openssl openssl-devel libcurl-devel zlib-devel libpng-devel libxml2-devel json-c-devel bzip2-devel pcre2-devel ncurses-devel
+        </pre>
+    3. (very optional) Those wishing to use clamav-milter may wish to install the following
+        <pre>
+            sudo yum install sendmail sendmail-devel
         </pre>
 
 2. Install the unit testing dependencies
     <pre>
-        sudo apt-get valgrind check
+        sudo yum valgrind check
     </pre>
 
 _Note_: LLVM is also an optional dependency. LLVM will not provide any additional features, but is an alternative method for executing bytecode signatures versus using the built-in bytecode interpreter. Limited performance testing between LLVM and the bytecode interpreter did not yield conclusive evidence that one is "better" than the other. For the sake of simplicity, it is not recommended to install LLVM.
@@ -27,7 +31,7 @@ _Note_: LLVM is also an optional dependency. LLVM will not provide any additiona
 
 ## Download the latest stable release
 
-1. Open a browser and navigate to [the ClamAV downloads page](http://www.clamav.net/downloads)
+1. Open a browser and navigate to [the ClamAV downloads page](https://www.clamav.net/downloads)
 2. Click `clamav-<version>.tar.gz` link to download the latest stable release.
 
 ---
@@ -187,7 +191,7 @@ Example:
     less check4_clamd.sh.log`
 </pre>
 
-To submit a bug report regarding unit text failures, please follow these [bug reporting steps](../Installation-Unix.md#Reporting-a-unit-test-failure-bug).
+To submit a bug report regarding unit text failures, please follow these [bug reporting steps](https://clamav.net/documents/Installation-Unix.md#Reporting-a-unit-test-failure-bug).
 
 ---
 
@@ -298,17 +302,6 @@ If you installed to another location:
 <pre>
     /{path}/{to}/{clamav}/bin/freshclam
 </pre>
-
-  _Important_: It is common on Ubuntu after a fresh install to see the following error the first time you use ClamAV:
-  <pre>
-    $ freshclam
-    freshclam: error while loading shared libraries: libclamav.so.7: cannot open shared object   file: No such file or directory
-  </pre>
-
-  You can fix this error by using ldconfig to rebuild the library search path.
-  <pre>
-    sudo ldconfig
-  </pre>
 
 ---
 
