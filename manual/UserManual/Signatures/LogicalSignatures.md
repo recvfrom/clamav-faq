@@ -243,7 +243,7 @@ Examples:
 
     Find.All.Encompassed.ClamAV;Engine:81-255,Target:0;3;7768796172656e2774;796f757573696e67;79617261;200,300:0&1&2/clamav/ge
 
-    Named.CapGroup.Pcre;Engine:81-255,Target:0;3;636f75727479617264;616c62756d;74657272696572;50:0&1&2/variable=(?<nilshell>.{16})end/gr
+    Named.CapGroup.Pcre;Engine:81-255,Target:0;3;636f75727479617264;616c62756d;74657272696572;50:0&1&2/variable=(?&lt;nilshell&gt;.{16})end/gr
 
     Firefox.TreeRange.UseAfterFree;Engine:81-255,Target:0,Engine:81-255;0&1&2;2e766965772e73656c656374696f6e;2e696e76616c696461746553656c656374696f6e;0&1/\x2Eview\x2Eselection.*?\x2Etree\s*\x3D\s*null.*?\x2Einvalidate/smi
 

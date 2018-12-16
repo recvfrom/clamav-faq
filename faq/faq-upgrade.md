@@ -86,7 +86,7 @@ Please note that the resulting output should look like the following:
 <pre>
     gpg: Signature made Wed Jan 24 19:31:26 2018 EST
     gpg:                using RSA key F13F9E16BCA5BFAD
-    gpg: Good signature from "Talos (Talos, Cisco Systems Inc.) <email address>" [unknown]
+    gpg: Good signature from "Talos (Talos, Cisco Systems Inc.) [email address]" [unknown]
 </pre>
 
 For other PGP implementation, please refer to their manual.

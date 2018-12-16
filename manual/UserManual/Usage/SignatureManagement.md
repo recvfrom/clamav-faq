@@ -4,9 +4,10 @@ Table Of Contents
 
 <!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
-- [freshclam](#freshclam)
-- [sigtool](#sigtool)
-- [clambc](#clambc)
+- [Signature Testing and Management](#signature-testing-and-management)
+  - [freshclam](#freshclam)
+  - [sigtool](#sigtool)
+  - [clambc](#clambc)
 
 <!-- /TOC -->
 
@@ -18,7 +19,7 @@ The tool `freshclam` is used to download and update ClamAV’s official virus si
 
 Once you have a valid configuration file, you can invoke freshclam with the following command:
 
-> $ freshclam
+> `$ freshclam`
 
 By default, `freshclam` will then attempt to connect to ClamAV's virus signature database distribution network. If no databases exist in the directory specified, `freshclam` will do a fresh download of the requested databases. Otherwise, `freshclam` will attempt to update existing databases, pairing them against downloaded cdiffs. If a database is found to be corrupted, it is not updated and instead replaced with a fresh download.
 

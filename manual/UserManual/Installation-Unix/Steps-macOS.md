@@ -45,8 +45,8 @@ _Note_: LLVM is also an optional dependency. LLVM will not provide any additiona
 
 <pre>
     cd ~/Downloads
-    tar xzf clamav-<ver>.tar.gz
-    cd clamav-<ver>.tar.gz
+    tar xzf clamav-[ver].tar.gz
+    cd clamav-[ver].tar.gz
 </pre>
 
 ---

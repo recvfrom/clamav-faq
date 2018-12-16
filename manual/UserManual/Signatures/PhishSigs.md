@@ -2,35 +2,35 @@
 
 Table of Contents
 - [PhishSigs](#phishsigs)
-    - [Database file format](#database-file-format)
-        - [PDB format](#pdb-format)
-        - [GDB format](#gdb-format)
-        - [WDB format](#wdb-format)
-        - [Hints](#hints)
-        - [Examples of PDB signatures](#examples-of-pdb-signatures)
-        - [Examples of WDB signatures](#examples-of-wdb-signatures)
-        - [Example for how the URL extractor works](#example-for-how-the-url-extractor-works)
-        - [How matching works](#how-matching-works)
-            - [RealURL, displayedURL concatenation](#realurl-displayedurl-concatenation)
-            - [What happens when a match is found](#what-happens-when-a-match-is-found)
-            - [Extraction of realURL, displayedURL from HTML tags](#extraction-of-realurl-displayedurl-from-html-tags)
-            - [Example](#example)
-        - [Simple patterns](#simple-patterns)
-        - [Regular expressions](#regular-expressions)
-        - [Flags](#flags)
-    - [Introduction to regular expressions](#introduction-to-regular-expressions)
-        - [Special characters](#special-characters)
-        - [Character classes](#character-classes)
-        - [Escaping](#escaping)
-        - [Alternation](#alternation)
-        - [Optional matching, and repetition](#optional-matching-and-repetition)
-        - [Groups](#groups)
-    - [How to create database files](#how-to-create-database-files)
-        - [How to create and maintain the whitelist (daily.wdb)](#how-to-create-and-maintain-the-whitelist-dailywdb)
-        - [How to create and maintain the domainlist (daily.pdb)](#how-to-create-and-maintain-the-domainlist-dailypdb)
-        - [Dealing with false positives, and undetected phishing mails](#dealing-with-false-positives-and-undetected-phishing-mails)
-            - [False positives](#false-positives)
-            - [Undetected phish mails](#undetected-phish-mails)
+  - [Database file format](#database-file-format)
+    - [PDB format](#pdb-format)
+    - [GDB format](#gdb-format)
+    - [WDB format](#wdb-format)
+    - [Hints](#hints)
+    - [Examples of PDB signatures](#examples-of-pdb-signatures)
+    - [Examples of WDB signatures](#examples-of-wdb-signatures)
+    - [Example for how the URL extractor works](#example-for-how-the-url-extractor-works)
+    - [How matching works](#how-matching-works)
+      - [RealURL, displayedURL concatenation](#realurl-displayedurl-concatenation)
+      - [What happens when a match is found](#what-happens-when-a-match-is-found)
+      - [Extraction of realURL, displayedURL from HTML tags](#extraction-of-realurl-displayedurl-from-html-tags)
+      - [Example](#example)
+    - [Simple patterns](#simple-patterns)
+    - [Regular expressions](#regular-expressions)
+    - [Flags](#flags)
+  - [Introduction to regular expressions](#introduction-to-regular-expressions)
+    - [Special characters](#special-characters)
+    - [Character classes](#character-classes)
+    - [Escaping](#escaping)
+    - [Alternation](#alternation)
+    - [Optional matching, and repetition](#optional-matching-and-repetition)
+    - [Groups](#groups)
+  - [How to create database files](#how-to-create-database-files)
+    - [How to create and maintain the whitelist (daily.wdb)](#how-to-create-and-maintain-the-whitelist-dailywdb)
+    - [How to create and maintain the domainlist (daily.pdb)](#how-to-create-and-maintain-the-domainlist-dailypdb)
+    - [Dealing with false positives, and undetected phishing mails](#dealing-with-false-positives-and-undetected-phishing-mails)
+      - [False positives](#false-positives)
+      - [Undetected phish mails](#undetected-phish-mails)
 
 ---
 
@@ -268,38 +268,34 @@ When you whitelist an entry make sure you check that both domains are owned by t
 
 Consider the following HTML file:
 
-```
-<pre>
-    <html>
-    <a href="http://1.realurl.example.com/">
-      1.displayedurl.example.com
-    </a>
-    <a href="http://2.realurl.example.com">
-      2 d<b>i<p>splayedurl.e</b>xa<i>mple.com
-    </a>
-    <a href="http://3.realurl.example.com"> 
-      3.nested.example.com
-      <a href="http://4.realurl.example.com">
-        4.displayedurl.example.com
-      </a>
-    </a>
-    <form action="http://5.realurl.example.com">
-      sometext
-      <img src="http://5.displayedurl.example.com/img0.gif"/>
-      <a href="http://5.form.nested.displayedurl.example.com">
-        5.form.nested.link-displayedurl.example.com
-      </a>
-    </form>
-    <a href="http://6.realurl.example.com">
-      6.displ
-      <img src="6.displayedurl.example.com/img1.gif"/>
-      ayedurl.example.com
-    </a>
-    <a href="http://7.realurl.example.com">
-      <iframe src="http://7.displayedurl.example.com">
-    </a>
-</pre>
-```
+`    <html>`
+`    <a href="http://1.realurl.example.com/">`
+`      1.displayedurl.example.com`
+`    </a>`
+`    <a href="http://2.realurl.example.com">`
+`      2 d<b>i<p>splayedurl.e</b>xa<i>mple.com`
+`    </a>`
+`    <a href="http://3.realurl.example.com">`
+`      3.nested.example.com`
+`      <a href="http://4.realurl.example.com">`
+`        4.displayedurl.example.com`
+`      </a>`
+`    </a>`
+`    <form action="http://5.realurl.example.com">`
+`      sometext`
+`      <img src="http://5.displayedurl.example.com/img0.gif"/>`
+`      <a href="http://5.form.nested.displayedurl.example.com">`
+`        5.form.nested.link-displayedurl.example.com`
+`      </a>`
+`    </form>`
+`    <a href="http://6.realurl.example.com">`
+`      6.displ`
+`      <img src="6.displayedurl.example.com/img1.gif"/>`
+`      ayedurl.example.com`
+`    </a>`
+`    <a href="http://7.realurl.example.com">`
+`      <iframe src="http://7.displayedurl.example.com">`
+`    </a>`
 
 The phishing engine extract the following
 RealURL/DisplayedURL pairs from it:
@@ -400,27 +396,23 @@ In version 0.93: After URLs have been extracted, they are normalized, and cut af
 
 Consider this html file:
 
-```
-<pre>
-    <a href=”evilurl”\>www.paypal.com\</a\>*
-
-    <a href=”evilurl2” title=”www.ebay.com”\>click here to sign
-    in\</a\>*
-
-    <form action=”evilurl_form”\>*
-
-    *Please sign in to \<a href=”cgi.ebay.com”\>Ebay\</a\using this
-    form*
-
-    <input type=’text’ name=’username’\>Username\</input\>*
-
-    *....*
-
-    </form\>*
-
-    <a href=”evilurl”\>\<img src=”images.paypal.com/secure.jpg”\>\</a\>*
-</pre>
-```
+`    <a href=”evilurl”\>www.paypal.com\</a\>*`
+``
+`    <a href=”evilurl2” title=”www.ebay.com”\>click here to sign`
+`    in\</a\>*`
+``
+`    <form action=”evilurl_form”\>*`
+``
+`    *Please sign in to \<a href=”cgi.ebay.com”\>Ebay\</a\using this`
+`    form*`
+``
+`    <input type=’text’ name=’username’\>Username\</input\>*`
+``
+`    *....*`
+``
+`    </form\>*`
+``
+`    <a href=”evilurl”\>\<img src=”images.paypal.com/secure.jpg”\>\</a\>*`
 
 The resulting realURL/displayedURL pairs will be (note that one tag can generate multiple pairs):
 
@@ -649,13 +641,9 @@ If the phishing code claims that a certain mail is phishing, but its not, you ha
 
 Lets assume you are having problems because of links like this in a mail:
 
-```
-<pre>
-    <a href=''http://69.0.241.57/bCentral/L.asp?L=XXXXXXXX''>
-      http://www.bcentral.it/
-    </a>
-</pre>
-```
+`    <a href=''http://69.0.241.57/bCentral/L.asp?L=XXXXXXXX''>`
+`      http://www.bcentral.it/`
+`    </a>`
 
 After investigating those sites further, you decide they are no threat, and create a line like this in daily.wdb:
 
@@ -721,3 +709,4 @@ If the mail is not detected, then try using:
 </pre>
 
 Then see what urls are being checked, see if any of them is in a whitelist, see if all urls are detected, etc.
+`
