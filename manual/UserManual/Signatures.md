@@ -65,7 +65,7 @@ _Note_: Signature databases with an extension ending in `u` are only loaded when
 
 Body-based signature content is a definition that matches not based on a hash but based on the specific sequences of bytes exhibited by the target file.
 
-ClamAV body-based signature content has a [special format](BodySignatureFormat.md) to allow regex-like matching of data that is not entirely known. This format is used extensively in both Extended Signatures and Logical Signatures.
+ClamAV body-based signature content has a [special format](Signatures/BodySignatureFormat.md) to allow regex-like matching of data that is not entirely known. This format is used extensively in both Extended Signatures and Logical Signatures.
 
 `*.ndb` `*.ndu`: [Extended signatures](Signatures/ExtendedSignatures.md)
 
