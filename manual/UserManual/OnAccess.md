@@ -22,7 +22,7 @@ To use ClamAV's On-Access Scanner, simply open `clamd.conf`, set the `ScanOnAcce
 
 Some OS distributors have disabled fanotify, despite kernel support. You can check for fanotify support on your kernel by running the command:
 
-> $ cat /boot/config-<kernel_version> | grep FANOTIFY
+> `$ cat /boot/config-<kernel_version> | grep FANOTIFY`
 
 You should see the following:
 
@@ -43,7 +43,7 @@ Then ClamAV's On-Access Scanner will still function, scanning and alerting on fi
 
 ClamAV's On-Access Scanning system uses a scheme called Dynamic Directory Determination (DDD for short) which is a shorthand way of saying that it tracks the layout of every directory specified with `OnAccessIncludePath` dynamically, and recursively, in real time. It does this by leveraging [inotify](http://man7.org/linux/man-pages/man7/inotify.7.html) which by default has a limited number of watchpoints available for use by a process at any given time. Given the complexity of some directory hierarchies, ClamAV may warn you that it has exhausted its supply of inotify watchpoints (8192 by default). To increase the number of inotify watchpoints available for use by ClamAV (to 524288), run the following command:
 
-> $ echo 524288 | sudo tee -a /proc/sys/fs/inotify/max_user_watches
+> `$ echo 524288 | sudo tee -a /proc/sys/fs/inotify/max_user_watches`
 
 ---
 
@@ -67,40 +67,40 @@ Below are examples of common use cases, recipes for the correct minimal configur
 
 ### Use Case 0x0
 
-  - User needs to watch the entire file system, but blocking malicious access attempts isn't a concern
-  <pre>
-      ScanOnAccess yes
-      OnAccessMountPath /
-      OnAccessExcludeRootUID yes
-  </pre>
+- User needs to watch the entire file system, but blocking malicious access attempts isn't a concern
+<pre>
+    ScanOnAccess yes
+    OnAccessMountPath /
+    OnAccessExcludeRootUID yes
+</pre>
 
-  This configuration will put the On-Access Scanner into `notify-only` mode. It will also ensure only non-root, non-clam, user processes will trigger scans against the filesystem.
+This configuration will put the On-Access Scanner into `notify-only` mode. It will also ensure only non-root, non-clam, user processes will trigger scans against the filesystem.
 
 ---
 
 ### Use Case 0x1
 
-  - System Adminis
-  - trator needs to watch the home directory of multiple Users, but not all users. Blocking access attempts is un-needed.
-  <pre>
-      ScanOnAccess yes
-      OnAccessIncludePath /home
-      OnAccessExcludePath /home/user2
-      OnAccessExcludePath /home/user4
-  </pre>
+- System Adminis
+- trator needs to watch the home directory of multiple Users, but not all users. Blocking access attempts is un-needed.
+<pre>
+    ScanOnAccess yes
+    OnAccessIncludePath /home
+    OnAccessExcludePath /home/user2
+    OnAccessExcludePath /home/user4
+</pre>
 
-  With this configuration, the On-Access Scanner will watch the entirety of the `/home` directory recursively in `notify-only` mode. However, it will recursively exclude the `/home/user2` and `/home/user4` directories.
+With this configuration, the On-Access Scanner will watch the entirety of the `/home` directory recursively in `notify-only` mode. However, it will recursively exclude the `/home/user2` and `/home/user4` directories.
 
 ---
 
 ### Use Case 0x2
 
-  - The user needs to protect a single directory non-recursively and ensure all access attempts on malicious files are blocked.
-  <pre>
-      ScanOnAccess yes
-      OnAccessIncludePath /home/user/Downloads
-      OnAccessPrevention yes
-      OnAccessDisableDDD yes
-  </pre>
+- The user needs to protect a single directory non-recursively and ensure all access attempts on malicious files are blocked.
+<pre>
+    ScanOnAccess yes
+    OnAccessIncludePath /home/user/Downloads
+    OnAccessPrevention yes
+    OnAccessDisableDDD yes
+</pre>
 
-  The configuration above will result in non-recursive real-time protection of the `/home/user/Downloads` directory by ClamAV's On-Access Scanner. Any access attempts that ClamAV detects on malicious files within the top level of the directory hierarchy will be blocked by fanotify at the kernel level.
+The configuration above will result in non-recursive real-time protection of the `/home/user/Downloads` directory by ClamAV's On-Access Scanner. Any access attempts that ClamAV detects on malicious files within the top level of the directory hierarchy will be blocked by fanotify at the kernel level.

@@ -113,7 +113,7 @@ Libclamav can handle various obfuscators, encoders, files vulnerable to security
 Every program using libclamav must include the header file `clamav.h`:
 
 <pre>
-    #include <clamav.h>
+    #include "clamav.h"
 </pre>
 
 ---

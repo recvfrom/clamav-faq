@@ -108,8 +108,8 @@ If your operating system isn't specified above, and your OS does not have the `g
 Once you have created the clamav user and group, please extract the archive:
 
 <pre>
-    tar xzf clamav-<ver>.tar.gz
-    cd clamav-<ver>
+    tar xzf clamav-[ver].tar.gz
+    cd clamav-[ver]
 </pre>
 
 Assuming you want to install the configuration files in `/etc`, configure and build the software as follows:
@@ -196,9 +196,9 @@ Recommended versions of LLVM are 3.2 - 3.6. Some installations have reported pro
 
 ClamAV includes unit tests that allow you to test that the compiled binaries work correctly on your platform.
 
-The first step is to use your OS’s package manager to install the `check` package. If your OS doesn’t have that package, you can download it from <http://check.sourceforge.net/>, build it and install it.
+The first step is to use your OS’s package manager to install the `check` package. If your OS doesn’t have that package, you can download it from [SourceForge](http://check.sourceforge.net/), build it and install it.
 
-To help clamav’s configure script locate `check`, it is recommended that you install `pkg-config`, preferably using your OS’s package manager, or from <http://pkg-config.freedesktop.org>.
+To help clamav’s configure script locate `check`, it is recommended that you install `pkg-config`, preferably using your OS’s package manager, or from [FreeDesktop.org](http://pkg-config.freedesktop.org).
 
 The recommended way to run unit-tests is the following, which ensures you will get an error if unit tests cannot be built:
 
