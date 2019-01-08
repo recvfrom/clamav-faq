@@ -8,7 +8,7 @@ Starting from release 0.90, ClamAV allows you to choose whether to detect phish 
 
 ## Why is my legitimate HTML newsletter/email detected by ClamAV as Phishing.Heuristics.Email.SpoofedDomain?
 
-If it contains links in the form of `href="http://yourdomain.example.tld"&gt; otherdomain.tld`, where `otherdomain.tld` (ProtectedDomain) doesn't belong to you and is listed in ClamAV database (like amazon.com, ebay.com, ...) then ClamAV detects it as a phishing attempt.
+If it contains links in the form of `href="http://yourdomain.example.tld"> otherdomain.tld`, where `otherdomain.tld` (ProtectedDomain) doesn't belong to you and is listed in ClamAV database (like amazon.com, ebay.com, ...) then ClamAV detects it as a phishing attempt.
 
 ---
 
