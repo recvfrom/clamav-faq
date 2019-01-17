@@ -97,7 +97,7 @@ or
 
 The ClamAV daemon can be configured to perform On-Access Scanning under Linux. ClamAV's On-Access Scanning runs *alongside* the `clamd` instance, and shares the same engine and virus signature database with the daemon used to kick it off. The On-Access Scanner is capable of blocking access to/from any malicious files it discovers, but by default it is configured to only alert the user if it detects a malicious file.
 
-You can can set-up On-Access Scanning [through `clamd.conf`](Configuration.md#on-access-scanning) and learn more about the options available to you by reading the [On-Access Scanning User Guide](../OnAccess.md).
+You can can set-up On-Access Scanning [through `clamd.conf`](https://www.clamav.net/documents/configuration#on-access-scanning) and learn more about the options available to you by reading the [On-Access Scanning User Guide](https://www.clamav.net/documents/on-access-scanning).
 
 Once you have set up the On-Access Scanner (and `clamd`) to your liking, you will need to run `clamd` as *root* (or another user with elevated permissions) to start it:
 

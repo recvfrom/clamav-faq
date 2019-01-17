@@ -5,11 +5,11 @@ Table Of Contents
 <!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
 - [Configuration](#configuration)
-	- [clamconf](#clamconf)
-	- [clamd.conf](#clamdconf)
-		- [On-Access Scanning](#on-access-scanning)
-	- [freshclam.conf](#freshclamconf)
-	- [clamav-milter](#clamav-milter)
+  - [clamconf](#clamconf)
+  - [clamd.conf](#clamdconf)
+    - [On-Access Scanning](#on-access-scanning)
+  - [freshclam.conf](#freshclamconf)
+  - [clamav-milter](#clamav-milter)
 
 <!-- /TOC -->
 
@@ -48,7 +48,7 @@ You will also need to rename `clamd.conf.example` to `clamd.conf` via:
 
 > `$ mv ./clamd.conf.example ./clamd.conf`
 
-If you are setting up a simple, local [`clamd` instance](Scanning.md#clamd) then some other configuration options of interests to you will be as follows:
+If you are setting up a simple, local [`clamd` instance](https://www.clamav.net/documents/scanning#clamd) then some other configuration options of interests to you will be as follows:
 
 <pre>
     91 # Path to a local socket file the daemon will listen on.
@@ -74,7 +74,7 @@ If needed, you can find out even more about the formatting and options available
 
 You can configure On-Access Scanning through `clamd.conf`.  Configuration for On-Access Scanning starts at *line 613* in `clamd.conf.example`.
 
-Please read the [on-access](Usage.md#On-access-Scanning) section of the Usage manual for further details on using On-Access Scanning.
+Please read the [on-access](https://www.clamav.net/documents/on-access-scanning) section of the Usage manual for further details on using On-Access Scanning.
 
 ---
 
@@ -124,7 +124,7 @@ to check for a new database every hour. **N should be a number between 3 and 57 
 
 ## clamav-milter
 
-ClamAV includes a mail filtering tool called `clamav-milter`. This tool interfaces directly with `clamd`, and thus requires a working [`clamd` instance](Scanning.md#clamd) to run. However, `clamav-milter`'s configuration and log files are separate from that of `clamd`.
+ClamAV includes a mail filtering tool called `clamav-milter`. This tool interfaces directly with `clamd`, and thus requires a working [`clamd` instance](https://www.clamav.net/documents/scanning#clamd) to run. However, `clamav-milter`'s configuration and log files are separate from that of `clamd`.
 
 Ensuring ClamAV compiles with `clamav-milter` must be done at configure time with the command:
 

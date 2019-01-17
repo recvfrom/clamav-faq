@@ -2,7 +2,7 @@
 
 ClamAV maintains it's own file typing format and assigns these types using either:
 
-- Evaluation of a unique sequence of bytes at the start of a file ([File Type Magic](Signatures/FileTypeMagic.md)).
+- Evaluation of a unique sequence of bytes at the start of a file ([File Type Magic](https://www.clamav.net/documents/file-type-magic)).
 - File type indicators when parsing container files.
   - For example:
     CL_TYPE_SCRIPT may be assigned to data contained in a PDF when the PDF indicates that a stream of bytes is "Javascript"

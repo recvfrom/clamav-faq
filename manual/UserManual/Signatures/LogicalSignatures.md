@@ -17,9 +17,9 @@ where:
 
 Keywords used in `TargetDescriptionBlock`:
 
-- `Target:X`: A number specifying the type of the target file: [Target Types](FileTypes.md#Target-Types).
+- `Target:X`: A number specifying the type of the target file: [Target Types](https://www.clamav.net/documents/clamav-file-types#Target-Types).
 
-- `Engine:X-Y`: Required engine functionality level (range; 0.96). Note that if the `Engine` keyword is used, it must be the first one in the `TargetDescriptionBlock` for backwards compatibility. See the [FLEVEL reference](FunctionalityLevels.md) for details.
+- `Engine:X-Y`: Required engine functionality level (range; 0.96). Note that if the `Engine` keyword is used, it must be the first one in the `TargetDescriptionBlock` for backwards compatibility. See the [FLEVEL reference](https://www.clamav.net/documents/functionality-levels-flevels) for details.
 
 - `FileSize:X-Y`: Required file size (range in bytes; 0.96)
 
@@ -31,13 +31,13 @@ Keywords used in `TargetDescriptionBlock`:
 
   Specifying `CL_TYPE_ANY` matches on root objects only (i.e. the target file is explicitely _not_ in a container). Chances slim that you would want to use `CL_TYPE_ANY` in a signature, because placing the malicious file in an archive will then prevent it from alerting.
 
-  Every ClamAV file type has the potential to be a container for additional files, although some are more likely than others. When a file is parsed and data in the file is identified to be scanned as a unique type, that parent file becomes a container the moment the embedded content is scanned. For a list of possible CL_TYPEs, refer to the [File Types Reference](ClamAVFileTypes.md).
+  Every ClamAV file type has the potential to be a container for additional files, although some are more likely than others. When a file is parsed and data in the file is identified to be scanned as a unique type, that parent file becomes a container the moment the embedded content is scanned. For a list of possible CL_TYPEs, refer to the [File Types Reference](https://www.clamav.net/documents/clamav-file-types).
 
 - `Intermediates:CL_TYPE_*>CL_TYPE_*`: Specify one or more layers of file types containing the scanned file. _This is an alternative to using `Container`._
 
   You may specify up to 16 layers of file types separated by ’`>`’ in top-down order. Note that the ’`>`’ separator is not needed if you only specify a single container. The last type should be the immediate container containing the malicious file. Unlike with the `Container` option, `CL_TYPE_ANY` can be used as a wildcard file type. (expr; 0.100.0)
 
-  For a list of possible CL_TYPEs, refer to the [File Types Reference](ClamAVFileTypes.md).
+  For a list of possible CL_TYPEs, refer to the [File Types Reference](https://www.clamav.net/documents/clamav-file-types).
 
 - `IconGroup1`: Icon group name 1 from .idb signature Required engine functionality (range; 0.96)
 

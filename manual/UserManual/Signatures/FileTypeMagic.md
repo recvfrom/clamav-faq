@@ -17,7 +17,7 @@ Where:
 `magictype`: Supported magic types include:
 
 * 0 - direct memory comparison of `magicbytes` for file types
-* 1 - The `magicbytes` use the body-based content matching [format](BodySignatureFormat.md).
+* 1 - The `magicbytes` use the body-based content matching [format](https://www.clamav.net/documents/body-based-signature-content-format).
 * 4 - direct memory comparison of `magicbytes` for partition types (HFS+, HFSX)
 
 `offset`: The offset from start of the file to match against.  May be `*` if `magictype` is 1.
@@ -26,8 +26,8 @@ Where:
 
 `rtype`: Usually CL_TYPE_ANY.
 
-`type`: The CL_TYPE corresponding with the file type signature. See the [CL_TYPE reference](ClamAVFileTypes.md) for details.
+`type`: The CL_TYPE corresponding with the file type signature. See the [CL_TYPE reference](https://www.clamav.net/documents/clamav-file-types) for details.
 
-`min_flevel`: (optional) The minimum ClamAV engine that the file type signature works with. See the [FLEVEL reference](FunctionalityLevels.md) for details. To be used in the event that file type support has been recently added.
+`min_flevel`: (optional) The minimum ClamAV engine that the file type signature works with. See the [FLEVEL reference](https://www.clamav.net/documents/functionality-levels-flevels) for details. To be used in the event that file type support has been recently added.
 
 `max_flevel`: (optional, requires `min_flevel`) The maximum ClamAV engine that the file type signature works with. To be used in the event that file type support has been recently removed.

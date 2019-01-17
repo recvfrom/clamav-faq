@@ -284,9 +284,7 @@ Here is a listing of currently available ClamAV Virus Database Files:
 
 These files should be downloaded using the `freshclam` utility on a periodic basis. While using HTTPS to directly download the CVDs is possible, using `freshclam` is the preferred method of keeping the ClamAV virus database files up to date. `freshclam` can download database difference files (`.cdiff`) to get the latest signature definitions without downloading whole CVD files. This saves a considerable amount of bandwidth.
 
-For more information on how to configure `freshclam` to do automatic/scheduled updates, see the [freshclam configuration section](Configuration.md#Setting-up-auto\-updating) of our Configuration guide.
-
-Please see the [freshclam usage section](Usage.md#freshclam) for additional details on freshclam).
+Please see the [freshclam usage section](https://www.clamav.net/documents/signature-testing-and-management#freshclam) for additional details on freshclam).
 
 ---
 
