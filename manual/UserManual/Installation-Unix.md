@@ -3,7 +3,7 @@
 ## Step-by-Step Instructions
 
 - [Debian & Ubuntu](https://www.clamav.net/documents/installation-on-debian-and-ubuntu-linux-distributions)
-- [Redhat & CentOS](https://www.clamav.net/documents/installation-on-debian-and-ubuntu-linux-distributions)
+- [Redhat & CentOS](https://www.clamav.net/documents/installation-on-redhat-and-centos-linux-distributions)
 - [macOS](https://www.clamav.net/documents/installation-on-macos-mac-os-x)
 
 ---
