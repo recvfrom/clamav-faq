@@ -27,11 +27,11 @@ This User Guide presents an overview of the various ways that *libclamav* can be
 
 ---
 
-The ClamAV Daemon, or [`clamd`](Usage/Scanning.md#clamd), is a multi-threaded daemon that uses *libclamav* to [scan files for viruses](Usage/Scanning.md). ClamAV provides a number of tools which interface with this daemon. They are, as follows:
+The ClamAV Daemon, or [`clamd`](https://www.clamav.net/documents/scanning#clamd), is a multi-threaded daemon that uses *libclamav* to [scan files for viruses](https://www.clamav.net/documents/scanning). ClamAV provides a number of tools which interface with this daemon. They are, as follows:
 
-  - [`clamdscan`](Usage/Scanning.md#clamdscan) - a simple scanning client
-  - [`on-access scanning`](Usage/Scanning.md#On-access-scanning) - provides real-time protection via a `clamd` instance
-  - [`clamdtop`](Usage/Scanning.md#clamdtop) - a resource monitoring interface for `clamd`
+  - [`clamdscan`](https://www.clamav.net/documents/scanning#clamdscan) - a simple scanning client
+  - [`on-access scanning`](https://www.clamav.net/documents/scanning#On-access-scanning) - provides real-time protection via a `clamd` instance
+  - [`clamdtop`](https://www.clamav.net/documents/scanning#clamdtop) - a resource monitoring interface for `clamd`
 
 ---
 
@@ -39,7 +39,7 @@ The ClamAV Daemon, or [`clamd`](Usage/Scanning.md#clamd), is a multi-threaded da
 
 ---
 
-ClamAV also provides a command-line tool for [simple scanning](Usage/Scanning.md) tasks with *libclamav* called [`clamscan`](Usage/Scanning.md#clamscan). Unlike the daemon, `clamscan` is not a persistent process and is best suited for use cases where one-time scanning with minimal setup is needed.
+ClamAV also provides a command-line tool for [simple scanning](https://www.clamav.net/documents/scanning) tasks with *libclamav* called [`clamscan`](https://www.clamav.net/documents/scanning#clamscan). Unlike the daemon, `clamscan` is not a persistent process and is best suited for use cases where one-time scanning with minimal setup is needed.
 
 ---
 
@@ -47,11 +47,11 @@ ClamAV also provides a command-line tool for [simple scanning](Usage/Scanning.md
 
 ---
 
-A number of tools allow for [testing and management of signatures](Usage/SignatureManagement.md). Of note are the following:
+A number of tools allow for [testing and management of signatures](https://www.clamav.net/documents/signature-testing-and-management). Of note are the following:
 
-  - [`clambc`](Usage/SignatureManagement.md#clambc) - specifically for testing bytecode
-  - [`sigtool`](Usage/SignatureManagement.md#sigtool) - for general signature testing and analysis
-  - [`freshclam`](Usage/SignatureManagement.md#freshclam) - used to update signature database sets to the latest version
+  - [`clambc`](https://www.clamav.net/documents/signature-testing-and-management#clambc) - specifically for testing bytecode
+  - [`sigtool`](https://www.clamav.net/documents/signature-testing-and-management#sigtool) - for general signature testing and analysis
+  - [`freshclam`](https://www.clamav.net/documents/signature-testing-and-management#freshclam) - used to update signature database sets to the latest version
 
 ---
 
@@ -59,11 +59,11 @@ A number of tools allow for [testing and management of signatures](Usage/Signatu
 
 ---
 
-The more complex tools ClamAV provides each require some degree of [configuration](Usage/Configuration.md). ClamAV supplies two example configuration files:
+The more complex tools ClamAV provides each require some degree of [configuration](https://www.clamav.net/documents/configuration). ClamAV supplies two example configuration files:
 
-  - [`clamd.conf`](Usage/Configuration.md#clamdconf) - for configuring the behaviour of the ClamAV Daemon `clamd` and associated tools
-  - [`freschclam.conf`](Usage/Configuration.md#freshclamconf) - for configuring the behaviour of the signature database update tool, `freshclam`
+  - [`clamd.conf`](https://www.clamav.net/documents/configuration#clamdconf) - for configuring the behaviour of the ClamAV Daemon `clamd` and associated tools
+  - [`freschclam.conf`](https://www.clamav.net/documents/configuration#freshclamconf) - for configuring the behaviour of the signature database update tool, `freshclam`
 
-ClamAV also provides a mail filtering tool called [`clamav-milter`](Usage/Configuration.md#clamav-milter) which can be attached to a `clamd` instance for mail scanning purposes.
+ClamAV also provides a mail filtering tool called [`clamav-milter`](https://www.clamav.net/documents/configuration#clamav-milter) which can be attached to a `clamd` instance for mail scanning purposes.
 
-Additionally, a tool called [`clamconf`](Usage/Configuration.md#clamconf) allows users to check the configurations used by each other tool, pulling information from the configuration files listed above, alongside other relevant information.
+Additionally, a tool called [`clamconf`](https://www.clamav.net/documents/configuration#clamconf) allows users to check the configurations used by each other tool, pulling information from the configuration files listed above, alongside other relevant information.

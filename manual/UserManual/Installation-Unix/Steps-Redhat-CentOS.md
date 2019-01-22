@@ -191,7 +191,7 @@ Example:
     less check4_clamd.sh.log`
 </pre>
 
-To submit a bug report regarding unit text failures, please follow these [bug reporting steps](https://www.clamav.net/documents/Installation-Unix.md#Reporting-a-unit-test-failure-bug).
+To submit a bug report regarding unit text failures, please follow these [bug reporting steps](https://www.clamav.net/documents/installing-clamav-on-unix-linux-macos-from-source#Reporting-a-unit-test-failure-bug).
 
 ---
 
@@ -330,4 +330,4 @@ For example:
 
 You should be all set up to run scans.
 
-Take a look at our [usage documentation](../Usage.md) to learn about how to use ClamAV each of the utilities.
+Take a look at our [usage documentation](https://www.clamav.net/documents/usage) to learn about how to use ClamAV each of the utilities.

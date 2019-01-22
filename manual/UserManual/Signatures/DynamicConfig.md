@@ -41,11 +41,11 @@ The macros listed in `libclamav/dconf.h` will help you identify which bits to se
 
 `StartFlevel`:
 
-This is the [FLEVEL](FunctionalityLevels.md) of the minimum ClamAV engine for which you want the settings to be in effect.
+This is the [FLEVEL](https://www.clamav.net/documents/functionality-levels-flevels) of the minimum ClamAV engine for which you want the settings to be in effect.
 
 `EndFlevel`:
 
-This is the [FLEVEL](FunctionalityLevels.md) of the maximum ClamAV engine for which you want the settings to be in effect.  You may wish to select `255` to override the defaults of future releases.
+This is the [FLEVEL](https://www.clamav.net/documents/functionality-levels-flevels) of the maximum ClamAV engine for which you want the settings to be in effect.  You may wish to select `255` to override the defaults of future releases.
 
 ---
 

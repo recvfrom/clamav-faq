@@ -29,4 +29,4 @@ Setting appropriate FLEVELs in signatures is particularly crucial when using fea
 |        |         |         | Substring wildcard (*) fix: order matters, substrings can't overlap.   |
 | 100    | 0.101   | 12/2018 | "Byte-Compare" Logical subsignature. Windows Shortcut (LNK) type.      |
 
-For more inforamtion on ClamAV file type support, see the [File Types Reference](FileTypes.md).
+For more inforamtion on ClamAV file type support, see the [File Types Reference](https://www.clamav.net/documents/clamav-file-types).

@@ -23,7 +23,7 @@ where the corresponding fields are:
   - `CL_TYPE_CPIO_(OLD|ODC|NEWC|CRC)`
 
   Use `*` as a wild card to indicate that container type may be any file type.
-  For a full list of ClamAV file types, see the [ClamAV File Types Reference](ClamAVFileTypes.md).
+  For a full list of ClamAV file types, see the [ClamAV File Types Reference](https://www.clamav.net/documents/clamav-file-types).
 
 - `ContainerSize:` size of the container file itself (eg. size of the zip archive) specified in bytes as absolute value or range `x-y`.
 

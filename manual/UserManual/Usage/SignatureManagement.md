@@ -15,7 +15,7 @@ Table Of Contents
 
 ## freshclam
 
-The tool `freshclam` is used to download and update ClamAV’s official virus signature databases. While easy to use in its base configuration, `freshclam` does require a working [`freshclam.conf` configuration file](Configuration.md#freshclam) to run (the location of which can be passed in via command line if the default search location does not fit your needs).
+The tool `freshclam` is used to download and update ClamAV’s official virus signature databases. While easy to use in its base configuration, `freshclam` does require a working [`freshclam.conf` configuration file](https://www.clamav.net/documents/configuration#freshclamconf) to run (the location of which can be passed in via command line if the default search location does not fit your needs).
 
 Once you have a valid configuration file, you can invoke freshclam with the following command:
 
@@ -23,7 +23,7 @@ Once you have a valid configuration file, you can invoke freshclam with the foll
 
 By default, `freshclam` will then attempt to connect to ClamAV's virus signature database distribution network. If no databases exist in the directory specified, `freshclam` will do a fresh download of the requested databases. Otherwise, `freshclam` will attempt to update existing databases, pairing them against downloaded cdiffs. If a database is found to be corrupted, it is not updated and instead replaced with a fresh download.
 
-Of course, all this behaviour--and more--can be changed to suit your needs by [modifying `freshclam.conf` and/or using various command line options](Configuration.md#freshclamconf).
+Of course, all this behaviour--and more--can be changed to suit your needs by [modifying `freshclam.conf` and/or using various command line options](https://www.clamav.net/documents/configuration#freshclamconf).
 
 You can find more information about freshclam with the commands:
 
@@ -43,7 +43,7 @@ This can be accomplished by using the command:
 
 > $ `sigtool --unpack=FILE`
 
-Where FILE points to your virus signature databases. Then, once `sigtool` has finished unpacking the database into the directory from which you ran the command, you can search for the offending signature name (provided either by [`clamscan`](./Scanning.md#clamscan) scan reports or [`clamd`](./Scanning.md#clamd) logs). As an example:
+Where FILE points to your virus signature databases. Then, once `sigtool` has finished unpacking the database into the directory from which you ran the command, you can search for the offending signature name (provided either by [`clamscan`](./https://www.clamav.net/documents/scanning#clamscan) scan reports or [`clamd`](./https://www.clamav.net/documents/scanning#clamd) logs). As an example:
 
 > $ `grep "Win.Test.EICAR" ./*`
 

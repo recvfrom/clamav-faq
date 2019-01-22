@@ -5,25 +5,25 @@ Table Of Contents
 <!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
 - [Creating signatures for ClamAV](#creating-signatures-for-clamav)
-    - [Introduction](#introduction)
-    - [Database formats](#database-formats)
-        - [Settings databases](#settings-databases)
-        - [Signature databases](#signature-databases)
-            - [Body-based Signatures](#body-based-signatures)
-            - [Hash-based Signatures](#hash-based-signatures)
-            - [Alternative signature support](#alternative-signature-support)
-        - [Other database files](#other-database-files)
-        - [Signature names](#signature-names)
-    - [Signature Writing Tips and Tricks](#signature-writing-tips-and-tricks)
-        - [Testing rules with `clamscan`](#testing-rules-with-clamscan)
-        - [Debug information from libclamav](#debug-information-from-libclamav)
-        - [Writing signatures for special files](#writing-signatures-for-special-files)
-            - [HTML](#html)
-            - [Text files](#text-files)
-            - [Compressed Portable Executable files](#compressed-portable-executable-files)
-        - [Using `sigtool`](#using-sigtool)
-        - [Inspecting signatures inside a CVD file](#inspecting-signatures-inside-a-cvd-file)
-        - [External tools](#external-tools)
+  - [Introduction](#introduction)
+  - [Database formats](#database-formats)
+    - [Settings databases](#settings-databases)
+    - [Signature databases](#signature-databases)
+      - [Body-based Signatures](#body-based-signatures)
+      - [Hash-based Signatures](#hash-based-signatures)
+      - [Alternative signature support](#alternative-signature-support)
+    - [Other database files](#other-database-files)
+    - [Signature names](#signature-names)
+  - [Signature Writing Tips and Tricks](#signature-writing-tips-and-tricks)
+    - [Testing rules with `clamscan`](#testing-rules-with-clamscan)
+    - [Debug information from libclamav](#debug-information-from-libclamav)
+    - [Writing signatures for special files](#writing-signatures-for-special-files)
+      - [HTML](#html)
+      - [Text files](#text-files)
+      - [Compressed Portable Executable files](#compressed-portable-executable-files)
+    - [Using `sigtool`](#using-sigtool)
+    - [Inspecting signatures inside a CVD file](#inspecting-signatures-inside-a-cvd-file)
+    - [External tools](#external-tools)
 
 <!-- /TOC -->
 
@@ -49,11 +49,11 @@ The CVD and CLD database archives may be supplemented with custom database files
 
 ClamAV provides a handful of configuration related databases along side the signature definitions.
 
-`*.cfg`: [Dynamic config settings](Signatures/DynamicConfig.md)
+`*.cfg`: [Dynamic config settings](https://www.clamav.net/documents/dynamic-configuration-dconf)
 
-`*.cat` `*.crb`: [Trusted and revoked PE certs](Signatures/AuthenticodeRules.md)
+`*.cat` `*.crb`: [Trusted and revoked PE certs](https://www.clamav.net/documents/trusted-and-revoked-certificates)
 
-`*.ftm`: [File Type Magic (FTM)](Signatures/FileTypeMagic.md)
+`*.ftm`: [File Type Magic (FTM)](https://www.clamav.net/documents/file-type-magic)
 
 ---
 
@@ -65,17 +65,17 @@ _Note_: Signature databases with an extension ending in `u` are only loaded when
 
 Body-based signature content is a definition that matches not based on a hash but based on the specific sequences of bytes exhibited by the target file.
 
-ClamAV body-based signature content has a [special format](Signatures/BodySignatureFormat.md) to allow regex-like matching of data that is not entirely known. This format is used extensively in both Extended Signatures and Logical Signatures.
+ClamAV body-based signature content has a [special format](https://www.clamav.net/documents/body-based-signature-content-format) to allow regex-like matching of data that is not entirely known. This format is used extensively in both Extended Signatures and Logical Signatures.
 
-`*.ndb` `*.ndu`: [Extended signatures](Signatures/ExtendedSignatures.md)
+`*.ndb` `*.ndu`: [Extended signatures](https://www.clamav.net/documents/extended-signature-format)
 
-`*.ldb` `*.ldu`; `*.idb`: [Logical Signatures](Signatures/LogicalSignatures.md)
+`*.ldb` `*.ldu`; `*.idb`: [Logical Signatures](https://www.clamav.net/documents/logical-signatures)
 
-`*.cdb`: [Container Metadata Signatures](Signatures/ContainerMetadata.md)
+`*.cdb`: [Container Metadata Signatures](https://www.clamav.net/documents/signatures-based-on-container-metadata)
 
-`*.cbc`: [Bytecode Signatures](Signatures/BytecodeSignatures.md)
+`*.cbc`: [Bytecode Signatures](https://www.clamav.net/documents/bytecode-signatures)
 
-`*.pdb` `*.gdb` `*.wdb`: [Phishing URL Signatures](Signatures/PhishSigs.md)
+`*.pdb` `*.gdb` `*.wdb`: [Phishing URL Signatures](https://www.clamav.net/documents/phishsigs)
 
 #### Hash-based Signatures
 
@@ -83,21 +83,21 @@ ClamAV body-based signature content has a [special format](Signatures/BodySignat
 
 `*.mdb` `*.msb` `*.mdu` `*.msu`: PE section hash signatures
 
-[Hash-based Signature format](Signatures/HashSignatures.md)
+[Hash-based Signature format](https://www.clamav.net/documents/file-hash-signatures)
 
 #### Alternative signature support
 
-`*.yar` `*.yara`: [Yara rules](Signatures/YaraRules.md)
+`*.yar` `*.yara`: [Yara rules](https://www.clamav.net/documents/using-yara-rules-in-clamav)
 
 ---
 
 ### Other database files
 
-`*.fp` `*.sfp` `*.ign` `*.ign2`: [Whitelisted files, signatures](Signatures/Whitelists.md)
+`*.fp` `*.sfp` `*.ign` `*.ign2`: [Whitelisted files, signatures](https://www.clamav.net/documents/whitelist-databases)
 
-`*.pwdb`: [Encrypted archive passwords](Signatures/EncryptedArchives.md)
+`*.pwdb`: [Encrypted archive passwords](https://www.clamav.net/documents/passwords-for-archive-files-experimental)
 
-`*.info`: [Database information](Signatures/DatabaseInfo.md)`
+`*.info`: [Database information](https://www.clamav.net/documents/database-info)`
 
 ---
 
@@ -346,11 +346,11 @@ ClamAV contains HTML normalization code which makes it easier to write signature
 
 - javascript - any script contents are normalized and the results appended to this file
 
-The code automatically decodes JScript.encode parts and char ref’s (e.g. `&#102;`). To create a successful signature for the input file type, the rule must match on the contents of one of the created files.  Signatures matching on normalized HTML should have a target type of 3.  For reference, see [Target Types](Signatures/FileTypes.md#Target-Types).
+The code automatically decodes JScript.encode parts and char ref’s (e.g. `&#102;`). To create a successful signature for the input file type, the rule must match on the contents of one of the created files.  Signatures matching on normalized HTML should have a target type of 3.  For reference, see [Target Types](https://www.clamav.net/documents/clamav-file-types).
 
 #### Text files
 
-Similarly to HTML all ASCII text files get normalized (converted to lower-case, all superfluous white space and control characters removed, etc.) before scanning. Running `sigtool --ascii-normalise` on a text file will result in a normalized version being written to the file named 'normalised\_text'.  Rules matching on normalized ASCII text should have a target type of 7.  For reference, see [Target Types](Signatures/FileTypes.md#Target-Types).
+Similarly to HTML all ASCII text files get normalized (converted to lower-case, all superfluous white space and control characters removed, etc.) before scanning. Running `sigtool --ascii-normalise` on a text file will result in a normalized version being written to the file named 'normalised\_text'.  Rules matching on normalized ASCII text should have a target type of 7.  For reference, see [Target Types](https://www.clamav.net/documents/clamav-file-types).
 
 #### Compressed Portable Executable files
 
