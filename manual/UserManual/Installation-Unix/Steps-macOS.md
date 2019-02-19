@@ -25,7 +25,7 @@ The easiest way to install prerequisites on macOS is to use [Homebrew](https://b
 
 3. Install the unit testing dependencies
     <pre>
-        sudo apt-get valgrind check
+        brew install valgrind check
     </pre>
 
     _Tip_: Valgrind may not be available in Homebrew for the latest version of macOS.
