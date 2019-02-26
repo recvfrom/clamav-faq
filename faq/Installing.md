@@ -2,7 +2,7 @@
 
 ## Installing from source
 
-For instructions on how to install ClamAV from source, take a look at our [User Manual](../manual/UserManual.md).
+For instructions on how to install ClamAV from source, take a look at our [User Manual](https://www.clamav.net/documents/installing-clamav-on-unix-linux-macos-from-source).
 
 ---
 
@@ -14,7 +14,7 @@ Installing your distribution's packages is the easiest route. It will make also 
 
 ### Understand which packages you need
 
-You don't necessarily need all packages. Please read [ClamOverview] carefully to understand which ones you need.
+Some distributions parcel up ClamAV components into separate packages. You don't necessarily need all of the packages. If you wish to install the bare minimum, then read the [ClamAV Overview](clamav-overview) carefully to understand which ones you will need.
 
 ---
 
