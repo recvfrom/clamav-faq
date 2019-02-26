@@ -8,11 +8,7 @@ If you are running ClamAV 0.8x or later, you can check for database update as of
 
 `DNSDatabaseInfo current.cvd.clamav.net`
 
-`DatabaseMirror db.XY.clamav.net`
-
 `DatabaseMirror database.clamav.net`
-
-_Replace XY with your [country code].  If you don't have that option, then you must stick with 1 check per hour._
 
 ---
 
@@ -22,9 +18,9 @@ Please run clamscan with the `--detect-broken` option. Also  check that freshcla
 
 ---
 
-## I found an infected file in my HD/floppy/mailbox, but ClamAV doesn't recognize it yet. Can you help me?
+## I found an infected file in my HD/floppy/mailbox, but ClamAV doesn't recognize it yet. How can I help?
 
-Our virus database is kept up to date with the help of the community. Whenever you find a new virus which is not detected by ClamAV you should [complete this form](submit). The virusdb team will review your submission and update the database if necessary. Before submitting a new sample: - check that the value of DatabaseDirectory, in both clamd.conf and freshclam.conf, is the same - update your database by running freshclam
+Our virus database is kept up to date with the help of the community. Whenever you find a new virus which is not detected by ClamAV you should [complete this form](https://www.clamav.net/reports/malware). The virusdb team will review your submission and update the database if necessary. Before submitting a new sample: - check that the value of DatabaseDirectory, in both clamd.conf and freshclam.conf, is the same - and update your database by running freshclam to ensure you've scanned it with the latest virus database.
 
 ---
 
@@ -70,7 +66,7 @@ Try to download `daily.cvd` with *curl*, *wget*, or *lynx* from the same machine
 
 ## I'm running ClamAV on a lot of clients on my local network. Can I serve the cvd files from a local server so that each client doesn't have to download them from your servers?
 
-Sure, you can find more details on our [Mirror page].
+Sure, you can find more details on our [Private Local Mirror page](private-local-mirrors).
 
 1. If you want to take advantage of incremental updates, install a proxy server and then configure your freshclam clients to use it (watch for the HTTPProxyServer parameter in man freshclam.conf).
 
@@ -94,7 +90,7 @@ Sure, you can find more details on our [Mirror page].
 
 ## I can't wait for you to update the database! I need to use the new signature NOW!
 
-No problem, save your own signatures in a text file with the appropriate extension (see [signatures.pdf](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/signatures.pdf) for more information). Put it in the same dir where the `.cvd` files are located. ClamAV will load it after the official `.cvd` files. You do not need to sign the `.db` file.
+No problem, save your own signatures in a text file with the appropriate extension (see [our signature writing documentation](https://www.clamav.net/documents/creating-signatures-for-clamav) for more information). Put the signature file in the same directory where the `.cvd` files are located. ClamAV will load it after the official `.cvd` files. You do not need to sign the `.db` file.
 
 ---
 
@@ -117,6 +113,3 @@ Please note that some not RFC compliant DNS servers (namely the one shipped with
 ## After ClamAV is installed, then what? How do I update / refresh the virus database?
 
 You will need to edit the `freshclam.conf.example` file located in `/usr/local/etc`. Once that is done, you will need to run a `sudo freshclam` to download the signatures. You will need to run the command to update signatures often so that ClamAV has the most up to date signatures.
-
-[country code]: http://www.iana.org/domains/root/db
-[submit]: https://www.clamav.net/reports/fp
