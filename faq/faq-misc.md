@@ -14,7 +14,7 @@ If it contains links in the form of `href="http://yourdomain.example.tld"> other
 
 ## My legitimate emails from yourdomain.tld are detected as Phishing.Heuristics.Email.SpoofedDomain
 
-Please [submit a sample](submit), marking it as a false positive, phishing. If it's really a false positive, we will add a whitelist entry for it.
+Please [submit a sample][submit], marking it as a false positive, phishing. If it's really a false positive, we will add a whitelist entry for it.
 
 ---
 
@@ -81,7 +81,7 @@ Clam AntiVirus works with Linux&reg;, Solaris, FreeBSD, OpenBSD, NetBSD, AIX, Ma
 
 ## Where can I find more information about ClamAV?
 
-Please read the complete documentation in pdf/ps format. You will find it inside the package or in the [documentation](doc) section of this website. You can also try searching the [mailing list archives](ml).  If you can't find the answer, you can ask for support on the clamav-users mailing-list, but  _please_ before doing it, search the archives! Also, make sure that you don't send HTML messages and that you don't top post: these violate the netiquette and lessen your chances of being answered.
+Please read the complete documentation in pdf/ps format. You will find it inside the package or in the [documentation][doc] section of this website. You can also try searching the [mailing list archives][ml].  If you can't find the answer, you can ask for support on the clamav-users mailing-list, but  _please_ before doing it, search the archives! Also, make sure that you don't send HTML messages and that you don't top post: these violate the netiquette and lessen your chances of being answered.
 
 [doc]: https://www.clamav.net/documents/installing-clamav
 [submit]: https://www.clamav.net/reports/fp
