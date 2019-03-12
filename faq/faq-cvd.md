@@ -141,8 +141,8 @@ current.cvd.clamav.net has got only a TXT record, not a type A record! Try this 
    
 Please note that some not RFC compliant DNS servers (namely the one shipped with the *Alcatel* (now *Thomson*) **SpeedTouch 510 modem**) can't resolve `TXT` record. If that's the case, please recompile ClamAV with the flag   `--enable-dns-fix`.
 
-[VirusDB mailing list]: http://lists.clamav.net/cgi-bin/mailman/listinfo/clamav-virusdb
+[VirusDB mailing list]: https://lists.clamav.net/mailman/listinfo/clamav-virusdb
 [country code]: http://www.iana.org/domains/root/db
 [Mirror page]: http://www.clamav.net/doc/mirrors-private.html
 [Contact]: http://www.clamav.net/contact
-[submit]: https://www.clamav.net/reports/fp
+[submit]: http://www.clamav.net/reports/fp
