@@ -144,5 +144,5 @@ Please note that some not RFC compliant DNS servers (namely the one shipped with
 [VirusDB mailing list]: https://lists.clamav.net/mailman/listinfo/clamav-virusdb
 [country code]: http://www.iana.org/domains/root/db
 [Mirror page]: http://www.clamav.net/doc/mirrors-private.html
-[Contact]: http://www.clamav.net/contact
-[submit]: http://www.clamav.net/reports/fp
+[Contact]: https://www.clamav.net/contact
+[submit]: https://www.clamav.net/reports/fp
