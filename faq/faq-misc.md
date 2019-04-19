@@ -18,7 +18,7 @@ Please [submit a sample][submit], marking it as a false positive, phishing. If i
 
 ---
 
-## Can I convert the new database format to the old one? 
+## Can I convert the new database format to the old one?
 
 Yes, install a recent version of sigtool and run:
 
@@ -34,7 +34,7 @@ See previous FAQ.
 
 ## I'm using ClamAV in a production environment and a brand new virus is not being recognized by ClamAV. How long do I have to wait before ClamAV can start filtering the virus?
 
-No time at all! Find a signature for that virus and modify your virus database accordingly (see `signatures.pdf` in the _doc/_ dir).
+No time at all! Find a signature for that virus and modify your virus database accordingly (see our [signature writing documentation][signatures] for details).
 Remember to [submit] the sample to the virusdb team.
 
 ---
@@ -86,3 +86,4 @@ Please read the complete documentation in pdf/ps format. You will find it inside
 [doc]: https://www.clamav.net/documents/installing-clamav
 [submit]: https://www.clamav.net/reports/fp
 [ml]: https://www.clamav.net/contact#ml
+[signatures]: https://www.clamav.net/documents/creating-signatures-for-clamav
