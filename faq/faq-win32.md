@@ -10,7 +10,7 @@ We provide both two install packages for Windows:
 * Install Program
     * Traditional executable installer that will install ClamAV in the "Program Files" directory.
 
-In addition to the above ClamAV versions that run on Windows, Cisco offers two more enbdpoint security products powered in-part by ClamAV. These are:
+In addition to the above ClamAV versions that run on Windows, Cisco offers two more endpoint security products powered in-part by ClamAV. These are:
 
 * Immunet
     * Immunet is a malware and antivirus protection system that utilizes cloud computing to provide enhanced community-based security.
