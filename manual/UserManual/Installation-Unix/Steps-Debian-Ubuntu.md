@@ -22,7 +22,7 @@ Below are the steps for installing ClamAV from source on Debian and Ubuntu Linux
 
 2. Install the unit testing dependencies
     <pre>
-        sudo apt-get valgrind check
+        sudo apt-get install valgrind check
     </pre>
 
 _Note_: LLVM is also an optional dependency. LLVM will not provide any additional features, but is an alternative method for executing bytecode signatures versus using the built-in bytecode interpreter. Limited performance testing between LLVM and the bytecode interpreter did not yield conclusive evidence that one is "better" than the other. For the sake of simplicity, it is not recommended to install LLVM.
