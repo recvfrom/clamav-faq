@@ -110,4 +110,4 @@ Second, if you're technically inclined, you may want to try to read the signatur
 
 If you believe that the signature alerted on a benign file, please report the False Positive so our analysts can refine or remove the faulty signature. You can report false positives [on our website](https://www.clamav.net/reports/fp) or you can submit the report using the `clamsubmit` command-line program.
 
-If you're concerned that the file may be malicious, and aren't comfortable quarantining and/or deleting the file, feel free to ask in the user mailing lists for advice. Please subscribe to [clamav-users](http://lists.clamav.net/cgi-bin/mailman/listinfo/clamav-users) and then post a message to all the list members by sending an email to clamav-users -at- lists -dot- clamav -dot- net.
+If you're concerned that the file may be malicious, and aren't comfortable quarantining and/or deleting the file, feel free to ask in the user mailing lists for advice. Please subscribe to [clamav-users](https://lists.clamav.net/mailman/listinfo/) and then post a message to all the list members by sending an email to clamav-users -at- lists -dot- clamav -dot- net.

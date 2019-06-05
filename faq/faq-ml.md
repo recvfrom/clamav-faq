@@ -43,6 +43,6 @@ There are two possible reasons: If your account generates too many bounces you'l
 
 Suppose you are subscribed to [clamav-users]. Go to [clamav-users] and enter your mail address at the bottom of the page. Click on __Unsubscribe or edit options__. At the next page enter your password and press _Log in_. Under _Your clamav-users Subscription Options_ choose _Disabled_ opposite _Mail delivery_ and press _Submit My Changes_ at the bottom of the page.
 
-[clamav-users]: http://lists.clamav.net/cgi-bin/mailman/listinfo/clamav-users
-[clamav-devel]: http://lists.clamav.net/cgi-bin/mailman/listinfo/clamav-devel
-[mailing-list]: http://lists.clamav.net/cgi-bin/mailman/listinfo
+[clamav-users]: https://lists.clamav.net/mailman/listinfo/clamav-users
+[clamav-devel]: https://lists.clamav.net/mailman/listinfo/clamav-devel
+[mailing-list]: https://lists.clamav.net/mailman/listinfo/
