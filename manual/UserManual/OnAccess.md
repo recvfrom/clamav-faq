@@ -53,7 +53,11 @@ This restriction was made to prevent users from "shooting themselves in the foot
 
 ---
 
-The `OnAccessMountPath` option uses a different fanotify api configuration which makes it incompatible with `OnAccessIncludePath` and the DDD System. Therefore, inotify will not be a concern when using this option. Unfortunately, this also means `OnAccessExtraScanning` (which is built around catching inotify events), and `OnAccessExcludePath` (which is built upon the DDD System) cannot be used in conjunction with `OnAccessMountPath`.
+The `OnAccessMountPath` option uses a different fanotify api configuration which makes it incompatible with `OnAccessIncludePath` and the DDD System. Therefore, inotify will not be a concern when using this option. Unfortunately, this also means that the following options cannot be used in conjunction with `OnAccessMountPath`:
+
+- `OnAccessExtraScanning` - is built around catching inotify events.
+- `OnAccessExcludePath` - is built upon the DDD System.
+- `OnAccessPrevention` - would lock up the system if `/` was selected for `OnAccessMountPath`. If you need `OnAccessPrevention`, you should use `OnAccessIncludePath` instead of `OnAccessMountPath`.
 
 ---
 

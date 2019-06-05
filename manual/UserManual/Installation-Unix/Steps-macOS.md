@@ -20,7 +20,7 @@ The easiest way to install prerequisites on macOS is to use [Homebrew](https://b
         </pre>
     2. Install library dependencies
         <pre>
-            brew install pcre2 openssl json-c
+            brew install openssl zlib pcre2 json-c
         </pre>
 
 3. Install the unit testing dependencies
@@ -64,7 +64,7 @@ To configure the ClamAV build using our homebrew-installed dependencies, you may
 *_Note_: Your Homebrew-installed package version directories may differ slightly.
 
 <pre>
-    ./configure --with-openssl=/usr/local/Cellar/openssl/1.0.2l --with-libjson=yes --enable-check
+    ./configure --with-openssl=/usr/local/Cellar/openssl/1.0.2l --with-zlib=/usr/local/Cellar/zlib/1.2.11/ --with-libjson=yes --enable-check
 </pre>
 
 Once `./configure` completes, it will print a summary. Verify that the packages you installed are in fact being detected.
