@@ -93,15 +93,21 @@ or
 
 ---
 
-### On-Access Scanning
+### On-Access Scanning (clamonacc)
 
-The ClamAV daemon can be configured to perform On-Access Scanning under Linux. ClamAV's On-Access Scanning runs *alongside* the `clamd` instance, and shares the same engine and virus signature database with the daemon used to kick it off. The On-Access Scanner is capable of blocking access to/from any malicious files it discovers, but by default it is configured to only alert the user if it detects a malicious file.
+ClamAV's On-Access Scanning (`clamonacc`) is a client that runs in its own application alongside, but separately from the `clamd` instance. The On-Access Scanner is capable of blocking access to/from any malicious files it discovers--based on the verdict it receives from `clamd`--but by default it is configured to run in `notify-only` mode, which means it will simply alert the user if a malicious file is detected, then take any additional actions that the user may have specified at the command line, but it will not actively prevent processes from reading or writing to that file.
 
-You can can set-up On-Access Scanning [through `clamd.conf`](https://www.clamav.net/documents/configuration#on-access-scanning) and learn more about the options available to you by reading the [On-Access Scanning User Guide](https://www.clamav.net/documents/on-access-scanning).
+On-Access Scanning is primarily set up [through `clamd.conf`](https://www.clamav.net/documents/configuration#on-access-scanning). However, you can learn more about all the configuration and command line options available to you by reading the [On-Access Scanning User Guide](https://www.clamav.net/documents/on-access-scanning).
 
-Once you have set up the On-Access Scanner (and `clamd`) to your liking, you will need to run `clamd` as *root* (or another user with elevated permissions) to start it:
+Once you have set up the On-Access Scanner (and `clamd`) to your liking, you will first need to run `clamd` before you can start it. If your `clamd` instance is local, it is required you run clamd as a user that is excluded (via `OnAccessExcludeUname` or `OnAccessExcludeUID`) from On-Access scanning events (e.g.) to prevent `clamonacc` from triggering events endlessly as it sends scan requests to `clamd`:
 
-> `$ sudo clamd`
+> `$ su - clamuser -c "/usr/local/bin/clamd`
+
+After the daemon is running, you can start the On-Access Scanner. `clamonacc` must be run as root in order to utilize its kernel event detection and intervention features:
+
+> `$ sudo clamonacc`
+
+It will run a number of startup checks to test for a sane configuration, and ensure it can connect to `clamd`, and if everything checks out `clamonacc` will automatically fork to the background and begin monitoring your system for events.
 
 ---
 
