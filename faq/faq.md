@@ -21,7 +21,7 @@ Table Of Contents
 
 ---
 
-ClamAV FAQ © 2018 Cisco Systems, Inc.
+ClamAV FAQ © 2019 Cisco Systems, Inc.
 
 This document is distributed under the terms of the GNU General Public License v2.
 
