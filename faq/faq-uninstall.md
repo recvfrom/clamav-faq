@@ -26,11 +26,19 @@
 
   `emerge -C clamav`
 
-* FreeBSD?: 
+* FreeBSD:
 
-  `pkg_deinstall -f security/clamav*`
+  `pkg delete clamav`
 
-* Slackware: 
+* OpenBSD:
+
+  `pkg_delete clamav`
+
+* NetBSD:
+
+  `pkgin remove clamav`
+
+* Slackware:
 
   `/etc/rc.d/rc.clamav stop; removepkg clamav`
 

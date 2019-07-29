@@ -91,7 +91,25 @@ See package entry on [Portage].
   
 ### FreeBSD, OpenBSD, NetBSD <a id="bsd" class="anchor">&nbsp;</a>
 
-*Use the ports Luke*.
+Althought all these systems offer the possibility to use ports or pkgsrc, you can install the pre-built package:
+
+* FreeBSD
+
+<pre>
+  pkg install clamav
+</pre>
+
+* OpenBSD
+
+<pre>
+  pkg_add clamav
+</pre>
+
+* NetBSD
+
+<pre>
+  pkgin install clamav
+</pre>
 
 ---
 

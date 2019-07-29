@@ -91,8 +91,8 @@ Clam AntiVirus is highly cross-platform.  The development team cannot test every
   - Solaris
     - 11
   - FreeBSD
-    - 10
     - 11
+    - 12
   - macOS
     - 10.13 (High Sierra)
     - 10.14 (Mojave)
