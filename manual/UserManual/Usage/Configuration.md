@@ -72,9 +72,9 @@ If needed, you can find out even more about the formatting and options available
 
 ### On-Access Scanning
 
-You can configure On-Access Scanning through `clamd.conf`.  Configuration for On-Access Scanning starts at *line 613* in `clamd.conf.example`.
+You can configure On-Access Scanning through `clamd.conf`.  Configuration for On-Access Scanning starts at *line 613* in `clamd.conf.sample". All options are grouped acording to use and roughly ordered by importance in those groupings. Please carefully read the explanation of each option to see if it might be of use to you.
 
-Please read the [on-access](https://www.clamav.net/documents/on-access-scanning) section of the Usage manual for further details on using On-Access Scanning.
+Also read the [on-access](https://www.clamav.net/documents/on-access-scanning) section of the Usage manual for further details on using On-Access Scanning.
 
 ---
 
