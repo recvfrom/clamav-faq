@@ -93,7 +93,9 @@ or
 
 ---
 
-### On-Access Scanning (clamonacc)
+### On-Access Scanning
+
+#### For versions >= 0.102.0
 
 ClamAV's On-Access Scanning (`clamonacc`) is a client that runs in its own application alongside, but separately from the `clamd` instance. The On-Access Scanner is capable of blocking access to/from any malicious files it discovers--based on the verdict it receives from `clamd`--but by default it is configured to run in `notify-only` mode, which means it will simply alert the user if a malicious file is detected, then take any additional actions that the user may have specified at the command line, but it will not actively prevent processes from reading or writing to that file.
 
@@ -108,6 +110,16 @@ After the daemon is running, you can start the On-Access Scanner. `clamonacc` mu
 > `$ sudo clamonacc`
 
 It will run a number of startup checks to test for a sane configuration, and ensure it can connect to `clamd`, and if everything checks out `clamonacc` will automatically fork to the background and begin monitoring your system for events.
+
+### For versions <= 0.101.x
+
+In older versions, ClamAV's On-Access Scanner is a thread that runs within a `clamd` instance. The On-Access Scanner is capable of blocking access to/from any malicious files it discovers--based on the verdict it finds using the engine it shares with `clamd`--but by default it is configured to run in `notify-only` mode, which means it will simply alert the user if a malicious file is detected, but it will not actively prevent processes from reading or writing to that file.
+
+On-Access Scanning is primarily set up [through `clamd.conf`](https://www.clamav.net/documents/configuration#on-access-scanning). However, you can learn more about all the configuration and command line options available to you by reading the [On-Access Scanning User Guide](https://www.clamav.net/documents/on-access-scanning).
+
+Once you have set up the On-Access Scanner to your liking, you will need to run `clamd` will elevated permissions to start it. 
+
+> `$ sudo clamd`
 
 ---
 
