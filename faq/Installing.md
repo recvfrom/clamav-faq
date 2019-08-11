@@ -50,7 +50,7 @@ Some distributions parcel up ClamAV components into separate packages. You don't
   yum install -y epel-release
   yum install -y clamav
 </pre>
-  
+
 On [Community Enterprise Operating System (CentOS)] the ClamAV package requires the [Extra Packages for Enterprise Linux (EPEL) repository].
 
 On [RedHat Enterprise Linux (RHEL)] the EPEL release package has to be installed either manually or through RHN.
@@ -64,7 +64,7 @@ On [RedHat Enterprise Linux (RHEL)] the EPEL release package has to be installed
 </pre>
 
 ---
-  
+
 ### Mandriva <a id="mandriva" class="anchor">&nbsp;</a>
 
 <pre>
@@ -72,13 +72,13 @@ On [RedHat Enterprise Linux (RHEL)] the EPEL release package has to be installed
 </pre>
 
 ---
-  
+
 ### Gentoo <a id="gentoo" class="anchor">&nbsp;</a>
 
 <pre>
   emerge clamav
 </pre>
-  
+
 See package entry on [Portage].
 
 ---
@@ -88,7 +88,7 @@ See package entry on [Portage].
 <pre>
   zypper install -y clamav
 </pre>
-  
+
 ### FreeBSD, OpenBSD, NetBSD <a id="bsd" class="anchor">&nbsp;</a>
 
 Althought all these systems offer the possibility to use ports or pkgsrc, you can install the pre-built package:
@@ -122,7 +122,7 @@ OpenCSW is a community software project for Solaris 8+ on both Sparc and x86. It
 <pre>
   pkgutil -i clamav
 </pre>
-  
+
 More info on [OpenCSW]
 
 ---
@@ -147,20 +147,20 @@ Download the package, and as root, install it like so (substituting the appropri
 <pre>
   installpkg clamav-0.91.2-i486-1McD.tgz
 </pre>
-  
+
 To activate Sendmail integration, after installing the package, copy the `/usr/share/sendmail/sendmail-slackware-clamav.cf` file into `/etc/mail/sendmail.cf`:
 
 <pre>
   cp /usr/share/sendmail/sendmail-slackware-clamav.cf /etc/mail/sendmail.cf
 </pre>
-  
+
 Then start ClamAV and restart Sendmail:
 
 <pre>
   /etc/rc.d/rc.clamav start
   /etc/rc.d/rc.sendmail restart
 </pre>
-  
+
 #### Building Your Own Package
 
 You may wish to build your own package if I haven't uploaded one with the most recent version yet, if you use a pre-11.0 Slackware version (at the time of this writing, I build on 11.0, 12.0 and 12.1, and my binaries may not work on earlier versions), if you don't trust third-party binaries, or simply because you're a complete geek ;-) . You can download my easy-to-use Slackbuild script, from which the fully-integrated ClamAV packages at Linuxpackages.net are generated.
@@ -170,7 +170,7 @@ This script can be used to build a ClamAV package for Slackware 10.0 or higher w
 <pre>
   VERSION=1.23.4 ./clamav.SlackBuild
 </pre>
-  
+
 …substituting, of course, the appropriate ClamAV version for `1.23.4`. Note: there is no need to be root to use this build script; it will ask for your root password after building the binaries and just before creating the package (and if you have fakeroot installed, even that isn't necessary).
 
 ---
@@ -185,9 +185,9 @@ This script can be used to build a ClamAV package for Slackware 10.0 or higher w
 
 ClamAV builds for Windows users are available [here](https://www.clamav.net/downloads#otherversions)
 
-* `ClamAV-0.101.0.exe` - Traditional executable installer that will install ClamAV in the "Program Files" directory.
-* `clamav-0.101.0-rc-win-x64-portable.zip` - Portable install package for 64-bit Windows systems.
-* `clamav-0.101.0-rc-win-x86-portable.zip` - Portable install package for 32-bit Windows systems.
+* `ClamAV-0.101.3.exe` - Traditional executable installer that will install ClamAV in the "Program Files" directory.
+* `clamav-0.101.3-rc-win-x64-portable.zip` - Portable install package for 64-bit Windows systems.
+* `clamav-0.101.3-rc-win-x86-portable.zip` - Portable install package for 32-bit Windows systems.
 
 #### How to Install
 
@@ -209,7 +209,7 @@ First, you should download latest clamav sources and bzip2 library (if you need 
   @build
   @clamav$startup
 </pre>
-  
+
 This process provides for you:
 
 * ClamAV library
