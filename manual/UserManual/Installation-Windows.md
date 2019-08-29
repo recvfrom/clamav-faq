@@ -48,12 +48,20 @@ In the PowerShell window, perform the following tasks:
 * Run:
   <pre>
       copy .\conf_examples\freshclam.conf.sample .\freshclam.conf
+      copy .\conf_examples\clamd.conf.sample .\clamd.conf
   </pre>
 * Run:
   <pre>
       write.exe .\freshclam.conf
   </pre>
-* WordPad will pop up. Delete the line that says "Example". Save the file and close WordPad.
+
+  WordPad will pop up. Delete the line that says "Example". You may also wish to set additional options to enable features or alter default behavior, such as the receive-timeout. Save the file and close WordPad.
+* Run:
+  <pre>
+      write.exe .\clamd.conf
+  </pre>
+
+  WordPad will pop up. Delete the line that says "Example". You may also wish to set additional options to enable features or alter default behavior, such as enabling logging. Save the file and close WordPad.
 
 ---
 
