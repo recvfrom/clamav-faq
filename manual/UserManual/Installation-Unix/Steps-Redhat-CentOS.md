@@ -20,6 +20,14 @@ Below are the steps for installing ClamAV from source on Redhat and CentOS Linux
             sudo yum install sendmail sendmail-devel
         </pre>
 
+    _CentOS 8 Tip_:  Some of the above packages such as `json-c-devel` and `sendmail-devel` may not be available for CentOS 8 unless you install the EPEL repository and enable PowerTools. To enable EPEL and PowerTools, run the following:
+    <pre>
+        sudo yum install epel-release
+        sudo yum config-manager --set-enabled PowerTools
+        sudo yum update
+        sudo yum repolist
+    </pre>
+
 2. Install the unit testing dependencies
     <pre>
         sudo yum install valgrind check-devel
