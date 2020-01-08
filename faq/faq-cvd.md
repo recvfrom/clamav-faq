@@ -22,11 +22,7 @@ You can check for database update as often as 4 times per hour provided that you
 
 `DNSDatabaseInfo current.cvd.clamav.net`
 
-`DatabaseMirror db.XY.clamav.net`
-
 `DatabaseMirror database.clamav.net`
-
-Replace XY with your [country code].  If you don't have that option, then you must stick with 1 check per hour.
 
 ---
 
