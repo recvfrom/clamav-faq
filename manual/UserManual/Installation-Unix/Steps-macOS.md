@@ -25,7 +25,7 @@ The easiest way to install prerequisites on macOS is to use [Homebrew](https://b
 
 3. Install the unit testing dependencies
     <pre>
-        brew install valgrind check
+        brew install valgrind check check-devel
     </pre>
 
     _Tip_: Valgrind may not be available in Homebrew for the latest version of macOS.
@@ -46,7 +46,7 @@ _Note_: LLVM is also an optional dependency. LLVM will not provide any additiona
 <pre>
     cd ~/Downloads
     tar xzf clamav-[ver].tar.gz
-    cd clamav-[ver].tar.gz
+    cd clamav-[ver]
 </pre>
 
 ---
