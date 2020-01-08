@@ -8,6 +8,9 @@ Setting appropriate FLEVELs in signatures is particularly crucial when using fea
 
 ## ClamAV Version to FLEVEL chart
 
+The following is an abridged list of FLEVELS for each version. Only major versions and FLEVELs relevant to new/changed/fixed signature features are listed.
+
+<pre>
 | flevel | version | release | new signature features                                                 |
 |--------|---------|---------|------------------------------------------------------------------------|
 | 41     | 0.95.0  | 3/2009  | Ignores use ign format (including line number).                        |
@@ -28,5 +31,7 @@ Setting appropriate FLEVELs in signatures is particularly crucial when using fea
 |        |         |         | MHTML and PostScript types.                                            |
 |        |         |         | Substring wildcard (*) fix: order matters, substrings can't overlap.   |
 | 100    | 0.101   | 12/2018 | "Byte-Compare" Logical subsignature. Windows Shortcut (LNK) type.      |
+| 110    | 0.102   | 10/2019 | "Adds BC_ELF_UNPACKER, BC_MACHO_UNPACKER. CL_TYPE_EGG (egg archive).   |
+</pre>
 
 For more inforamtion on ClamAV file type support, see the [File Types Reference](https://www.clamav.net/documents/clamav-file-types).
