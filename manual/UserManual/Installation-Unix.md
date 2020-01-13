@@ -98,7 +98,7 @@ If installing to the system, it is recommended to set up at least one special us
 These are instructions specific to some popular operating systems:
 
 - [Debian, Ubuntu, etc](https://www.clamav.net/documents/installation-on-debian-and-ubuntu-linux-distributions#Users-and-on-user-privileges)
-- [Redhat, CentOS, etc](https://www.clamav.net/documents/installation-on-debian-and-ubuntu-linux-distributions#Users-and-on-user-privileges)
+- [Redhat, CentOS, etc](https://www.clamav.net/documents/installation-on-redhat-and-centos-linux-distributions)
 - [macOS](https://www.clamav.net/documents/installation-on-macos-mac-os-x#Users-and-on-user-privileges)
 
 If your operating system isn't specified above, and your OS does not have the `groupadd` and `useradd` utilities, consult a system manual. **Don’t forget to lock access to the account!**
@@ -143,7 +143,7 @@ At a minimum, you will need to edit each file and remove or comment-out the `Exa
 For additional recommendations, please read:
 
 - [Debian, Ubuntu, etc](https://www.clamav.net/documents/installation-on-debian-and-ubuntu-linux-distributions#First-time-set-up)
-- [Redhat, CentOS, etc](https://www.clamav.net/documents/installation-on-debian-and-ubuntu-linux-distributions#First-time-set-up)
+- [Redhat, CentOS, etc](https://www.clamav.net/documents/installation-on-redhat-and-centos-linux-distributions)
 - [macOS](https://www.clamav.net/documents/installation-on-macos-mac-os-x#First-time-set-up)
 
 ---
