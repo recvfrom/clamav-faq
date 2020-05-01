@@ -75,7 +75,7 @@ There are two solutions: Run `clamscan --debug`, look for _Deal with email numbe
 
 ## What platforms does it support?
 
-Clam AntiVirus works with Linux&reg;, Solaris, FreeBSD, OpenBSD, NetBSD, AIX, Mac OS X, Cygwin B20 on  multiple architectures such as Intel, Alpha, Sparc, Cobalt MIPS boxes, PowerPC, RISC 6000.
+Clam AntiVirus works with Linux&reg;, Solaris, FreeBSD, OpenBSD, NetBSD, Mac OS X, Cygwin B20 on  multiple architectures such as Intel, Alpha, Sparc, Cobalt MIPS boxes, PowerPC, RISC 6000.
 
 ---
 

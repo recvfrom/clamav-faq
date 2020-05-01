@@ -67,8 +67,6 @@ Certain versions on certain OSes will cause failures loading virus database:
 
 - CentOS 6 32bit: zlib 1.2.3-29
   - Solution: Update to newer version.
-- AIX 5.3: zlib 1.2.11-1
-  - Solution: Try different version, downgrade may be required.
 
 ---
 
