@@ -185,9 +185,9 @@ This script can be used to build a ClamAV package for Slackware 10.0 or higher w
 
 ClamAV builds for Windows users are available [here](https://www.clamav.net/downloads#otherversions)
 
-* `ClamAV-0.102.2.exe` - Traditional executable installer that will install ClamAV in the "Program Files" directory.
-* `clamav-0.102.2-rc-win-x64-portable.zip` - Portable install package for 64-bit Windows systems.
-* `clamav-0.102.2-rc-win-x86-portable.zip` - Portable install package for 32-bit Windows systems.
+* `ClamAV-0.102.3.exe` - Traditional executable installer that will install ClamAV in the "Program Files" directory.
+* `clamav-0.102.3-rc-win-x64-portable.zip` - Portable install package for 64-bit Windows systems.
+* `clamav-0.102.3-rc-win-x86-portable.zip` - Portable install package for 32-bit Windows systems.
 
 #### How to Install
 
