@@ -2,7 +2,7 @@
 
 The naming convention for ClamAV releases uses three numbers (X.Y.Z) where the first two (X.Y) identify a feature release and the last one (Z) a patch release.
 
-As of August, 2018, the latest feature release is 0.100 and the latest patch release is 0.100.2.
+As of June, 2020, the latest feature release is 0.102 and the latest patch release is 0.102.3.
 
 Before releasing a CVD update, we verify that it can be correctly loaded by the latest two feature releases of ClamAV and all the patch versions released after each of them.
 
