@@ -1,16 +1,16 @@
-# How do I ignore/whitelist a ClamAV signature?
+# How do I ignore a ClamAV signature?
 
-## Creating a ignore/whitelist file
+## Creating an ignore file
 
-Change Directory into the location where your ClamAV databases are stored.  Create a file called `whitelist.ign2`, for example, like this:
+Change Directory into the location where your ClamAV databases are stored.  Create a file called `ignore_list.ign2`, for example, like this:
 
-`touch whitelist.ign2`
+`touch ignore_list.ign2`
 
 ---
 
 ## Ignore individual signatures
 
-Place the signatures you'd like to ignore, each on it's own line, within the file `whitelist.ign2`.  
+Place the signatures you'd like to ignore, each on it's own line, within the file `ignore_list.ign2`.
 
 For example:
 

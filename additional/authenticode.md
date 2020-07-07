@@ -33,33 +33,32 @@ For more information, check-out the following resources:
 
 ClamAV supports parsing the Authenticode section and performing signature
 verification on a given executable to determine whether it should be
-whitelisted (based on rules loaded in from ClamAV .crb files).  An overview
+trusted (based on rules loaded in from ClamAV .crb files).  An overview
 of this process, including information on the .crb file format and on how to
-add new whitelist entries, is explained in the
+add new trusted certificate entries, is explained in the
 [Authenticode Certificate Chain Verification](https://blog.clamav.net/2013/02/authenticode-certificate-chain.html)
 ClamAV blog post.
 
 There are a few things not covered in the blog post that are worth mentioning:
 
-- Leaf certificates (the ones actually issued to the entity signing the binary)
-  cannot currently be used for whitelisting.  Instead, only certificates that
-  issued the leaf certificate (and certificates higher up in the chain) can be
-  used.
-  
-- The .crb format supports blacklist rule entries, but these cannot currently
-  be used as a basis for malware detection.  Instead, as currently implemented,
-  these entries just override `.crb` rules which would otherwise whitelist a
-  given sample.
-  
+- As of ClamAV 0.102, leaf certificates (the ones actually issued to the entity
+  signing the binary) may be used for certificate verification in addition to
+  certificates that issued the leaf certificate (and certificates higher up in
+  the chain) can be used.
+
+- As of ClamAV 0.102, .crb rules may also be used to block malicious executables
+  where in previous versions these block list entries just override `.crb` rules
+  that would otherwise trust a given sample.
+
 - sigtool offers the `--print-certs` flag, which can be used to show
   information about embedded Authenticode signatures without having to first
   match on a signature (which is currently a requirement for clamscan)
-  
+
 - External Authenticode signatures contained in .cat files can be loaded in
   to ClamAV by passing a `-d` flag and indicating the path to the .cat file
   from which to load signatures.  Note, however, that at least one certificate
   in the .cat file's certificate chain must be trusted (in other words, it must
-  have a backing .crb file whitelist rule.)
+  have a backing .crb trusted certificate rule.)
 
 # Helpful Info for Working with Authenticode Signatures
 
@@ -185,33 +184,33 @@ information and parsing the PKCS7 ASN1:
                         71:29
                     Exponent: 65537 (0x10001)
             X509v3 extensions:
-                X509v3 Basic Constraints: 
+                X509v3 Basic Constraints:
                     CA:FALSE
                 X509v3 Key Usage: critical
                     Digital Signature
-                X509v3 Extended Key Usage: 
+                X509v3 Extended Key Usage:
                     Code Signing
-                X509v3 Certificate Policies: 
+                X509v3 Certificate Policies:
                     Policy: 2.16.840.1.113733.1.7.23.3
                     CPS: https://d.symcb.com/cps
                     User Notice:
                         Explicit Text: https://d.symcb.com/rpa
 
-                X509v3 Authority Key Identifier: 
+                X509v3 Authority Key Identifier:
                     keyid:96:3B:53:F0:79:33:97:AF:7D:83:EF:2E:2B:CC:CA:B7:86:1E:72:66
 
-                X509v3 CRL Distribution Points: 
+                X509v3 CRL Distribution Points:
 
                     Full Name:
                     URI:http://sv.symcb.com/sv.crl
 
-                Authority Information Access: 
+                Authority Information Access:
                     OCSP - URI:http://sv.symcd.com
                     CA Issuers - URI:http://sv.symcb.com/sv.crt
 
-                Netscape Cert Type: 
+                Netscape Cert Type:
                     Object Signing
-                1.3.6.1.4.1.311.2.1.27: 
+                1.3.6.1.4.1.311.2.1.27:
                     0.......
         Signature Algorithm: sha256WithRSAEncryption
             23:e7:93:93:af:db:a8:4d:af:af:54:e8:d8:26:95:80:cd:23:
@@ -234,30 +233,30 @@ information and parsing the PKCS7 ASN1:
 
 <pre>
     $ openssl asn1parse -inform der -i -in extracted.p7b
-        0:d=0  hl=4 l=6984 cons: SEQUENCE          
+        0:d=0  hl=4 l=6984 cons: SEQUENCE
         4:d=1  hl=2 l=   9 prim:  OBJECT            :pkcs7-signedData
-    15:d=1  hl=4 l=6969 cons:  cont [ 0 ]        
-    19:d=2  hl=4 l=6965 cons:   SEQUENCE          
+    15:d=1  hl=4 l=6969 cons:  cont [ 0 ]
+    19:d=2  hl=4 l=6965 cons:   SEQUENCE
     23:d=3  hl=2 l=   1 prim:    INTEGER           :01
-    26:d=3  hl=2 l=  15 cons:    SET               
-    28:d=4  hl=2 l=  13 cons:     SEQUENCE          
+    26:d=3  hl=2 l=  15 cons:    SET
+    28:d=4  hl=2 l=  13 cons:     SEQUENCE
     30:d=5  hl=2 l=   9 prim:      OBJECT            :sha256
-    41:d=5  hl=2 l=   0 prim:      NULL              
-    43:d=3  hl=2 l=  92 cons:    SEQUENCE          
+    41:d=5  hl=2 l=   0 prim:      NULL
+    43:d=3  hl=2 l=  92 cons:    SEQUENCE
     45:d=4  hl=2 l=  10 prim:     OBJECT            :1.3.6.1.4.1.311.2.1.4
-    57:d=4  hl=2 l=  78 cons:     cont [ 0 ]        
-    59:d=5  hl=2 l=  76 cons:      SEQUENCE          
-    61:d=6  hl=2 l=  23 cons:       SEQUENCE          
+    57:d=4  hl=2 l=  78 cons:     cont [ 0 ]
+    59:d=5  hl=2 l=  76 cons:      SEQUENCE
+    61:d=6  hl=2 l=  23 cons:       SEQUENCE
     63:d=7  hl=2 l=  10 prim:        OBJECT            :1.3.6.1.4.1.311.2.1.15
-    75:d=7  hl=2 l=   9 cons:        SEQUENCE          
-    77:d=8  hl=2 l=   1 prim:         BIT STRING        
-    80:d=8  hl=2 l=   4 cons:         cont [ 0 ]        
-    82:d=9  hl=2 l=   2 cons:          cont [ 2 ]        
-    84:d=10 hl=2 l=   0 prim:           cont [ 0 ]        
-    86:d=6  hl=2 l=  49 cons:       SEQUENCE          
-    88:d=7  hl=2 l=  13 cons:        SEQUENCE          
+    75:d=7  hl=2 l=   9 cons:        SEQUENCE
+    77:d=8  hl=2 l=   1 prim:         BIT STRING
+    80:d=8  hl=2 l=   4 cons:         cont [ 0 ]
+    82:d=9  hl=2 l=   2 cons:          cont [ 2 ]
+    84:d=10 hl=2 l=   0 prim:           cont [ 0 ]
+    86:d=6  hl=2 l=  49 cons:       SEQUENCE
+    88:d=7  hl=2 l=  13 cons:        SEQUENCE
     90:d=8  hl=2 l=   9 prim:         OBJECT            :sha256
-    101:d=8  hl=2 l=   0 prim:         NULL              
+    101:d=8  hl=2 l=   0 prim:         NULL
     103:d=7  hl=2 l=  32 prim:        OCTET STRING      [HEX DUMP]:56924EB391B1B04572B1841ED5D5C10927CE7D6E9553A69F994B9BA855A73933
     ...
 </pre>

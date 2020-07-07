@@ -109,7 +109,7 @@ Example configure summary output:
     </pre>
 * `--sysconfdir` - Install the configuration files to `/etc` instead of `/usr/local/etc`:
     <pre>
-        ./configure -–sysconfdir=/etc
+        ./configure --sysconfdir=/etc
     </pre>
 * `--prefix` - Install ClamAV to a directory other than `/usr/local/`:
     * Example 1: Install to a local `./install` directory.

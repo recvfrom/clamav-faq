@@ -2,7 +2,7 @@
 
 ## What does _WARNING: DNS record is older than 3 hours_ mean?
 
-freshclam attempts to detect potential problems with DNS caches and  switches to the old mode if something looks suspicious. If this message appears seldomly, you can safely ignore it. If you get the error everytime you run freshclam, check your system clock. If it is set correctly, check your dns settings.  If those didn't help, try putting this at the top of your cronjob:  
+freshclam attempts to detect potential problems with DNS caches and  switches to the old mode if something looks suspicious. If this message appears seldomly, you can safely ignore it. If you get the error everytime you run freshclam, check your system clock. If it is set correctly, check your dns settings.  If those didn't help, try putting this at the top of your cronjob:
 
  `host -t txt current.cvd.clamav.net; perl -e 'printf "%d\n", time;' `
 
@@ -44,7 +44,7 @@ Please run clamscan with the `--detect-broken` option. Also  check that freshcla
 
 ---
 
-## I found an infected file in my HD/floppy/mailbox, but ClamAV doesn't recognize it yet. Can you help me? 
+## I found an infected file in my HD/floppy/mailbox, but ClamAV doesn't recognize it yet. Can you help me?
 
 Our virus database is kept up to date with the help of the community. Whenever you find a new virus which is not detected by ClamAV you should [complete this form](submit). The virusdb team will review your submission and update the database if necessary. Before submitting a new sample: - check that the value of `DatabaseDirectory`, in both `clamd.conf` and `freshclam.conf`, is the same - update your database by running freshclam
 
@@ -68,10 +68,10 @@ If you can't, it means your network is broken. You'll be still able to download 
 
 ## I get this error when running freshclam: _ERROR: Connection with ??? failed_ . What shall I do?
 
-Either your dns servers are not working or you are blocking port 53/tcp. You should manually check that you can resolve hostnames with: 
+Either your dns servers are not working or you are blocking port 53/tcp. You should manually check that you can resolve hostnames with:
 
 `$ host database.clamav.net`
- 
+
 If it doesn't work, check your dns settings in `/etc/resolv.conf`. If it works, check that you can receive dns answers longer than 512 bytes, e.g. check that your firewall is not blocking packets which originate from `port 53/tcp`.
 
 An easy way to find it out is:
@@ -80,7 +80,7 @@ An easy way to find it out is:
 
 ---
 
-## How do I know if my IP address has been blacklisted?
+## How do I know if my IP address has been blocked?
 
 Try to download daily.cvd with lynx or wget from the same machine that is running freshclam. Future versions of freshclam will provide a better way to deal with this.
 
@@ -96,23 +96,23 @@ mirrors.dat is used by freshclam to keep track of broken mirrors. It avoids the 
 
 Sure, you can find more details on our [Mirror page].
 
-1. If you want to take advantage of incremental updates, install a proxy server and then configure your freshclam clients to use it (watch for the HTTPProxyServer parameter in man freshclam.conf). 
+1. If you want to take advantage of incremental updates, install a proxy server and then configure your freshclam clients to use it (watch for the HTTPProxyServer parameter in man freshclam.conf).
 
 2. The second possible solution is to:
 
-  * Configure a local webserver on one of your machines (say `machine1.mylan`) 
-  
+  * Configure a local webserver on one of your machines (say `machine1.mylan`)
+
   * Let freshclam download the `*.cvd` files from http://database.clamav.net to the webserver's *DocumentRoot*.
 
   * Finally, change `freshclam.conf` on your clients so that it includes:
-    
+
 
     `DatabaseMirror machine1.mylan`
 
     `ScriptedUpdates off`
-    
-    First the database will be downloaded to the local webserver and then the other clients on the network will update their copy of the database from it. 
-    
+
+    First the database will be downloaded to the local webserver and then the other clients on the network will update their copy of the database from it.
+
     _Important_:  For this to work, you have to add `ScriptedUpdates off` on all of your machines!
 
 ---
@@ -131,10 +131,10 @@ Yes, the virusdb can be downloaded from the _Latest releases_ section on our hom
 
 ## I can't resolve current.cvd.clamav.net! Is there a problem with your/my DNS servers?
 
-current.cvd.clamav.net has got only a TXT record, not a type A record! Try this command:   
+current.cvd.clamav.net has got only a TXT record, not a type A record! Try this command:
 
 `$ host -t txt current.cvd.clamav.net`
-   
+
 Please note that some not RFC compliant DNS servers (namely the one shipped with the *Alcatel* (now *Thomson*) **SpeedTouch 510 modem**) can't resolve `TXT` record. If that's the case, please recompile ClamAV with the flag   `--enable-dns-fix`.
 
 [VirusDB mailing list]: https://lists.clamav.net/mailman/listinfo/clamav-virusdb
