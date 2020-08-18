@@ -5,25 +5,31 @@ Table of Contents
 <!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
 - [ClamAV Development](#clamav-development)
-    - [Introduction](#introduction)
-    - [Building ClamAV for Development](#building-clamav-for-development)
-        - [Satisfying Build Dependencies](#satisfying-build-dependencies)
-            - [Debian/Ubuntu](#debianubuntu)
-            - [CentOS/RHEL/Fedora](#centosrhelfedora)
-            - [Solaris (using OpenCSW)](#solaris-using-opencsw)
-            - [FreeBSD](#freebsd)
-        - [Download the Source](#download-the-source)
-        - [Running ./configure](#running-configure)
-        - [Running make](#running-make)
-        - [Downloading the Official Ruleset](#downloading-the-official-ruleset)
-    - [General Debugging](#general-debugging)
-        - [Useful clamscan Flags](#useful-clamscan-flags)
-        - [Using gdb](#using-gdb)
-    - [Hunting for Memory Leaks](#hunting-for-memory-leaks)
-    - [Computing Code Coverage](#computing-code-coverage)
-    - [Profiling - Flame Graphs](#profiling---flame-graphs)
-    - [Profiling - Callgrind](#profiling---callgrind)
-    - [System Call Tracing / Fault Injection](#system-call-tracing--fault-injection)
+  - [Introduction](#introduction)
+  - [Building ClamAV for Development](#building-clamav-for-development)
+    - [Satisfying Build Dependencies](#satisfying-build-dependencies)
+      - [Debian](#debian)
+      - [Ubuntu](#ubuntu)
+      - [Fedora](#fedora)
+      - [CentOS/RHEL](#centosrhel)
+      - [Solaris (using OpenCSW)](#solaris-using-opencsw)
+      - [FreeBSD](#freebsd)
+      - [macOS](#macos)
+    - [Download the Source](#download-the-source)
+    - [Building ClamAV with CMake](#building-clamav-with-cmake)
+    - [Building ClamAV with Autotools](#building-clamav-with-autotools)
+      - [Running ./autogen.sh](#running-autogensh)
+      - [Running ./configure](#running-configure)
+      - [Running make](#running-make)
+    - [Downloading the Official Ruleset](#downloading-the-official-ruleset)
+  - [General Debugging](#general-debugging)
+    - [Useful clamscan Flags](#useful-clamscan-flags)
+    - [Using gdb](#using-gdb)
+  - [Hunting for Memory Leaks](#hunting-for-memory-leaks)
+  - [Computing Code Coverage](#computing-code-coverage)
+  - [Profiling - Flame Graphs](#profiling---flame-graphs)
+  - [Profiling - Callgrind](#profiling---callgrind)
+  - [System Call Tracing / Fault Injection](#system-call-tracing--fault-injection)
 
 <!-- /TOC -->
 
@@ -45,24 +51,116 @@ Below are some recommendations for building ClamAV so that it's easy to debug.
 
 To satisify all build dependencies:
 
-#### Debian/Ubuntu
+#### Debian
 
+*Install build tools:*
 <pre>
-    sudo apt-get install libxml2-dev libxml2 libbz2-dev bzip2 check make libssl-dev openssl zlib1g zlib1g-dev gcc gettext autoconf automake libtool cmake autoconf-archive pkg-config g++-multilib libmilter1.0.1 libmilter-dev valgrind libcurl4-openssl-dev libjson-c-dev ncurses-dev libpcre3-dev
+    sudo apt-get install -y \
+        autoconf automake libtool m4 \
+        bison flex gcc make man-db ninja-build pkg-config \
+        git valgrind
 </pre>
 
-#### CentOS/RHEL/Fedora
+To build with CMake you will also need to install `cmake`. CMake 3.13+ is required, so older systems may have better luck installing a modern verson via Python's `pip` package manager rather than using apt/apt-get.
 
 <pre>
-    sudo yum install libxml2-devel libxml2 bzip2-devel bzip2 check make openssl-devel openssl zlib zlib-devel gcc gettext autoconf automake libtool cmake autoreconf pkg-config g++-multilib sendmail sendmail-devel libtool-ltdl-devel valgrind
+    sudo apt-get install -y python3-pip
+    python3 -m pip install --user cmake
+    ~ or ~
+    sudo apt-get install -y cmake
+</pre>
 
-    sudo yum groupinstall "Development Tools"
+*Install ClamAV dependencies:*
+<pre>
+    sudo apt-get install -y check libbz2-dev libcurl4-openssl-dev libjson-c-dev libmilter-dev libncurses5-dev libpcre3-dev libssl-dev libxml2-dev zlib1g-dev
+</pre>
+
+#### Ubuntu
+
+**Tip**: You may wish to set `DEBIAN_FRONTEND=noninteractive` if scripting the following so that the install will not hang while prompting you to select your geographic area.
+
+<pre>
+    sudo export DEBIAN_FRONTEND=noninteractive
+</pre>
+
+*Install build tools:*
+<pre>
+    sudo apt-get install -y \
+        autoconf automake libtool m4 \
+        bison flex gcc make man-db ninja-build pkg-config \
+        git valgrind
+</pre>
+
+To build with CMake you will also need to install `cmake`. CMake 3.13+ is required, so older systems may have better luck installing a modern verson via Python's `pip` package manager rather than using apt/apt-get.
+
+<pre>
+    sudo apt-get install -y python3-pip
+    python3 -m pip install --user cmake
+    ~ or ~
+    sudo apt-get install -y cmake
+</pre>
+
+*Install ClamAV dependencies:*
+<pre>
+    sudo apt-get install -y check libbz2-dev libcurl4-openssl-dev libjson-c-dev libmilter-dev libncurses5-dev libpcre3-dev libssl-dev libxml2-dev zlib1g-dev
+</pre>
+
+#### Fedora
+
+*Install build tools:*
+<pre>
+    sudo dnf install -y \
+        autoconf automake libtool m4 \
+        bison flex gcc gcc-c++ make man-db ninja-build pkg-config \
+        git valgrind
+</pre>
+
+To build with CMake you will also need to install `cmake`. CMake 3.13+ is required, so older systems may have better luck installing a modern verson via Python's `pip` package manager rather than using dnf.
+
+<pre>
+    sudo dnf install -y python3-pip
+    python3 -m pip install --user cmake
+    ~ or ~
+    sudo dnf install -y cmake
+</pre>
+
+*Install ClamAV dependencies:*
+<pre>
+    sudo dnf install -y bzip2-devel check-devel json-c-devel libcurl-devel libtool-ltdl-devel libxml2-devel ncurses-devel openssl-devel pcre2-devel sendmail-devel zlib-devel
+</pre>
+
+#### CentOS/RHEL
+
+*Install build tools:*
+<pre>
+    sudo dnf --enablerepo=PowerTools install -y \
+        autoconf automake libtool m4 \
+        bison flex gcc gcc-c++ make man-db ninja-build pkg-config \
+        git valgrind
+</pre>
+
+To build with CMake you will also need to install `cmake`. CMake 3.13+ is required, so older systems may have better luck installing a modern verson via Python's `pip` package manager rather than using dnf.
+
+<pre>
+    sudo dnf install -y python3-pip
+    python3 -m pip install --user cmake
+    ~ or ~
+    sudo dnf --enablerepo=PowerTools install -y cmake
+</pre>
+
+*Install ClamAV dependencies:*
+<pre>
+    sudo dnf --enablerepo=PowerTools install -y bzip2-devel check-devel json-c-devel libcurl-devel libxml2-devel ncurses-devel openssl-devel pcre2-devel sendmail-devel zlib-devel
 </pre>
 
 #### Solaris (using OpenCSW)
 
+*Install build tools:*
 <pre>
-    sudo /opt/csw/bin/pkgutil -y -i common coreutils automake autoconf libxml2_2 libxml2_dev bzip2 libbz2_dev libcheck0 libcheck_dev gmake cmake libssl1_0_0 libssl_dev openssl_utilslibgcc_s1 libiconv2 zlib1 libstdc++6 libpcre1 libltdl7 lzlib_stub zlib_stub libmilter libtool ggrep gsed pkgconfig ggettext gcc4core gcc4g++ libgcc_s1 libgccpp1
+    sudo /opt/csw/bin/pkgutil -y -i \
+        common coreutils \
+        automake autoconf libtool \
+        gmake cmake libgcc_s1 libstdc++6 ggrep gsed pkgconfig ggettext gcc4core gcc4g++ libgcc_s1 libgccpp1
 
     sudo pkg install system/header
 
@@ -71,15 +169,51 @@ To satisify all build dependencies:
     sudo ln -sf /opt/csw/bin/gmake /usr/bin/make
 </pre>
 
+*Install ClamAV dependencies:*
+<pre>
+    sudo /opt/csw/bin/pkgutil -y -i libxml2_2 libxml2_dev bzip2 libbz2_dev libcheck0 libcheck_dev libssl1_0_0 libssl_dev openssl_utils libiconv2 zlib1 libpcre1 libltdl7 lzlib_stub zlib_stub libmilter
+</pre>
+
 If you receive an error message like `gcc: error: /opt/csw/lib/libstdc++.so: No such file or directory`, change versions with `/opt/csw/sbin/alternatives --config automake`
 
 #### FreeBSD
 
-The easiest way to install dependencies for FreeBSD is to just rely on ports:
-
+*Install build tools:*
 <pre>
-    cd /usr/ports/security/clamav
-    make
+    sudo pkg install -y \
+        autoconf automake libtool m4 \
+        bison flex gmake cmake pkgconf \
+        git
+</pre>
+
+*Install ClamAV dependencies:*
+<pre>
+    sudo pkg install -y bzip2 check curl json-c libmilter libxml2 ncurses pcre2
+</pre>
+
+#### macOS
+
+*Install Homebrew:*
+<pre>
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+</pre>
+
+*Install Xcode command line tools (without Xcode):*
+<pre>
+    xcode-select --install
+</pre>
+
+*Install build tools:*
+<pre>
+    brew install \
+        autoconf automake libtool m4 \
+        bison flex cmake pkg-config \
+        git
+</pre>
+
+*Install ClamAV dependencies:*
+<pre>
+    brew install bzip2 check curl-openssl json-c libxml2 ncurses openssl@1.1 pcre2 zlib
 </pre>
 
 ---
@@ -95,15 +229,39 @@ If you intend to make changes and submit a pull request, fork the clamav-devel r
 
 ---
 
-### Running ./configure
+### Building ClamAV with CMake
 
-Suggestions:
+CLamAV versions 0.103+ provide CMake build tooling. In 0.103, this is for experimental and development purposes only. Autotools should be used for production builds. In 0.104+, we expect that CMake will be the preferred build system and will deprecate the use of Autotools.
 
-- Modify the `CFLAGS` variable as follows (assuming you're build with gcc):
+For details on how to use CMake to build ClamAV, see the `INSTALL.cmake.md` file located in the `clamav-devel` repository.
+
+### Building ClamAV with Autotools
+
+#### Running ./autogen.sh
+
+ClamAV versions 0.103+ will require you to run `autogen.sh` before running `configure` when building from a git clone. The files generated by Autotools, such as `configure`, are no longer stored in the Git repo. When you run `autogen.sh` it will generate those files for you.
+
+<pre>
+    ./autogen.sh
+</pre>
+
+#### Running ./configure
+
+For a basic build, just run `./configure`. If you've installed the dependencies with your platforms respective package manager, it should detect the dependencies automatically. macOS users will need to use this option to properly detect openssl `--with-openssl=/usr/local/opt/openssl@1.1`.
+
+Run `./configure --help` to see a full list of options. The following suggestions will help you get started:
+
+- Modify the `CFLAGS` and `CXXFLAGS` variables as follows (assuming you're build with `gcc`):
 
   - Include `gdb` debugging information (`-ggdb`).  This will make it easier to debug with `gdb`.
 
   - Disable optimizations (`-O0`).  This will ensure the line numbers you see in `gdb` match up with what is actually being executed.
+
+  Example:
+
+  <pre>
+        CFLAGS="-gdb -O0" CXXFLAGS="-gdb -O0" ./configure
+  </pre>
 
 - Run configure with the following options:
 
@@ -119,14 +277,14 @@ Suggestions:
 
   - `--with-systemdsystemunitdir=no`: Don't try to register `clamd` as a `systemd` service (on systems that use `systemd`). You likely don't want this development build of `clamd` to register as a service, and this eliminates the need to run `make install` with `sudo`.
 
-  - You might want to include the following flags also so that the optional functionality is enabled: `--enable-experimental --enable-clamdtop --enable-libjson --enable-milter --enable-xml --enable-pcre`. Note that this may require you to install additional development libraries.
+  - You might want to include the following flags also so that the optional functionality is enabled: `--enable-experimental --enable-clamdtop --enable-milter --enable-xml --enable-pcre`. Note that this may require you to install additional development libraries.
 
-  - `--disable-llvm`: When enabled, LLVM provides the capability to just-in-time compile ClamAV bytecode signatures. Without LLVM, ClamAV uses a built-in bytecode interpreter to execute bytecode signatures. The mechanism is different, but the results are same and the performance overall is comparable.  At present only LLVM versions up to LLVM 3.6.2 are supported by ClamAV, and LLVM 3.6.2 is old enough that newer distributions no longer provide it. Therefore, we recommend using the `--disable-llvm` configure option.
+  - `--enable-llvm --with-system-llvm=no`: When LLVM is enabled, LLVM provides the capability to just-in-time compile ClamAV bytecode signatures. Without LLVM, ClamAV uses a built-in bytecode interpreter to execute bytecode signatures. With LLVM, options, "system LLVM" and "internal LLVM". The bytecode interpreter is somewhat slower than using LLVM, though the results are the same. At present only LLVM versions up to LLVM 3.6.2 are supported by ClamAV, and LLVM 3.6.2 is old enough that newer distributions no longer provide it. Therefore, we recommend using the `--enable-llvm --with-system-llvm=no` configure option to use the "internal LLVM". It is worth noting that the internal LLVM can take a while to build, and that the JIT compilation process for loading bytecode signatures also takes a while when starting `clamd` or `clamdscan`. For compile speed and `clamscan` load speed, you may wish to instead ouse `--disable-llvm`.
 
 Altogether, the following configure command can be used:
 
 <pre>
-    CFLAGS="-ggdb -O0" ./configure --prefix=`pwd`/installed --enable-debug --enable-check --enable-coverage --enable-libjson --with-systemdsystemunitdir=no --enable-experimental --enable-clamdtop --enable-libjson --enable-xml --enable-pcre --disable-llvm
+    CFLAGS="-ggdb -O0" CXXFLAGS="-gdb -O0" ./configure --prefix=`pwd`/installed --enable-debug --enable-check --enable-coverage --enable-libjson --with-systemdsystemunitdir=no --enable-experimental --enable-clamdtop --enable-xml --enable-pcre --enable-llvm --with-system-llvm=no
 </pre>
 
 NOTE: It is possible to build libclamav as a static library and have it statically linked into clamscan/clamd (to do this, run `./configure` with `--enable-static --disable-shared`).  This is useful for using tools like `gprof` that do not support profiling code in shared objects.  However, there are two drawbacks to doing this:
@@ -137,7 +295,7 @@ NOTE: It is possible to build libclamav as a static library and have it statical
 
 ---
 
-### Running make
+#### Running make
 
 Run the following to finishing building.  `-j2` in the code below is used to indicate that the build process should use 2 cores.  Increase this if your machine is more powerful.
 

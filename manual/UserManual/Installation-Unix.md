@@ -24,7 +24,8 @@ Recommended tools:
 ***Required*** libraries (including development sources (i.e. `...-dev` or `...-devel`)):
 
 - zlib
-- openssl version 0.9.8 or higher
+- openssl version 1.0.2 or higher
+- curl library:     _required for libfreshclam, freshclam, clamsubmit_
 
 **Recommended** libraries (including development sources (i.e. `...-dev` or `...-devel`)):
 
@@ -34,7 +35,6 @@ Recommended tools:
 
 Optional libraries (including development sources (i.e. `...-dev` or `...-devel`)):
 
-- curl library:     _required for clamsubmit_
 - json-c library:   _required for clamsubmit_
 - ncurses library:  _required for clamdtop_
 
@@ -47,15 +47,10 @@ ClamAV may execute Bytecode signatures using:
 
     *The performance difference between using LLVM and using the interpeter is negligible. If you prefer to use LLVM / JIT for bytecode signature execution, be advised that we presently only support up to LLVM version 3.6.
 
-The following are thus optional, but *required* to use LLVM in place of the bytecode interpeter:
+The following are thus optional, but *required* to use system-LLVM in place of the built-in LLVM or the bytecode interpeter:
 
 - LLVM 3.2 - 3.6
 - A supported CPU for LLVM JIT, either of: X86, X86-64, PowerPC, PowerPC64
-
-The following are optional, but needed for the LLVM JIT unit tests:
-
-- GNU Make (version 3.79, recommended 3.81 or newer)
-- Python (version 2.5.4)
 
 ---
 
