@@ -57,7 +57,7 @@ To satisify all build dependencies:
 <pre>
     sudo apt-get install -y \
         autoconf automake libtool m4 \
-        bison flex gcc make man-db ninja-build pkg-config \
+        bison flex gcc g++ make man-db ninja-build pkg-config \
         git valgrind
 </pre>
 
@@ -87,7 +87,7 @@ To build with CMake you will also need to install `cmake`. CMake 3.13+ is requir
 <pre>
     sudo apt-get install -y \
         autoconf automake libtool m4 \
-        bison flex gcc make man-db ninja-build pkg-config \
+        bison flex gcc g++ make man-db ninja-build pkg-config \
         git valgrind
 </pre>
 
