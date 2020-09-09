@@ -4,7 +4,7 @@ The following FAQ should help you understand why `freshclam` may have failed to 
 
 ---
 
-## Invalid DNS reply. Falling back to HTTP mode or ERROR: Can't query current.cvd.clamav.net  
+## Invalid DNS reply. Falling back to HTTP mode or ERROR: Can't query current.cvd.clamav.net
 
 There is a problem with your DNS server. Please check the entries in `/etc/resolv.conf` and verify that you can resolve the `TXT` record manually:
 
@@ -26,31 +26,21 @@ If it doesn't work, check your dns settings in `/etc/resolv.conf`. If it works, 
 
 ---
 
-## ERROR: getfile: daily-\*.cdiff not found on remote server
-
-For some reason, the mirror didn't fetch the cdiff file. Freshclam can recover from this situation by trying the next mirror.
-
----
-
-## WARNING: Incremental update failed, trying to download daily.cvd  
+## WARNING: Incremental update failed, trying to download daily.cvd
 
 For some reason, incremental update failed. Freshclam can recover from this situation by downloading the whole daily.cvd.
 
 ---
 
-## WARNING: Mirror &lt;IP&gt; is not synchronized
+## Database update process failed: Downloaded database had lower version than advertised
 
-For some reason, this mirror has not fetched the latest updates yet. If you experience this problem, please report the issue on [Bugzilla](https://bugzilla.clamav.net/buglist.cgi?component=Mirror&product=Mirror%20Issues).
+For some reason, the content delivery network is not serving the latest updates yet. If you experience this problem, please report the issue on [Bugzilla](https://bugzilla.clamav.net/buglist.cgi?component=Mirror&product=Mirror%20Issues).
 
 ---
 
-## Update failed. Your network may be down or none of the mirrors listed in freshclam.conf is working
+## Update failed. Your network may be down or the ClamAV database content delivery network is experiencing an outage
 
-It's not your lucky day. Freshclam tried every possible way to download the updates but failed. Usually this means that all the mirrors in your local pool are down or not synchronized, or something really nasty happened. Please wait a few minutes and try again. Remember to pass the -v option to freshclam.
-
-It is also possible that you recently had a prolonged network outage and freshclam blacklisted all the mirrors: remove mirrors.dat from the DatabaseDirectory and try again.
-
-If the problem persists, you may need to remove all files in DatabaseDirectory, and then re-run freshclam to pull a new copy of all of them.
+It's not your lucky day. Your network may be down or the ClamAV database content delivery network is experiencing an outage. Please wait a few minutes and try again. Remember to pass the `-v` option to freshclam.
 
 ---
 
@@ -58,9 +48,7 @@ If the problem persists, you may need to remove all files in DatabaseDirectory, 
 
 Starting from ClamAV 0.9x, whenever your ClamAV engine becomes outdated and the difference between the functionality level required by the CVD and the functionality level supported by your ClamAV engine is more than 3, freshclam will refuse to check for updates more often than 6 times per day.
 
-The reason for this is that there is no use to generate traffic on our mirrors if you cannot take advantage of all the signatures anyway. If you really care about catching as much malware as possible and you want to check for updates more often than 6 times per day, then you should also not run such an old version of ClamAV.
-
-This feature was introduced after our mirror sysadmins complained that really old versions of ClamAV were consuming more than 50% of their bandwidth to download some CVD updates that were almost useless to them (due to lack of support for mdb signatures).
+The reason for this is that bandwidth can be expensive. It is not helpful to generate extra traffic on our content delivery network if you cannot take advantage of all the signatures anyway. If you really care about catching as much malware as possible and you want to check for updates more often than 6 times per day, then you should also not run such an old version of ClamAV.
 
 ---
 
@@ -82,6 +70,6 @@ If you are experiencing this problem, please do the following:  Stop the `freshc
 
 ---
 
-## Mirrors are failing and or out of date
+## For all other database update related failures
 
-Please report all mirror failures or issues on [Bugzilla](https://bugzilla.clamav.net/buglist.cgi?component=Mirror&product=Mirror%20Issues).
+Please report freshclam update failures or issues on [Bugzilla](https://bugzilla.clamav.net/buglist.cgi?component=Mirror&product=Mirror%20Issues).

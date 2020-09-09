@@ -11,9 +11,9 @@ Table of Contents
     - [Examples of WDB signatures](#examples-of-wdb-signatures)
     - [Example for how the URL extractor works](#example-for-how-the-url-extractor-works)
     - [How matching works](#how-matching-works)
-      - [RealURL, displayedURL concatenation](#realurl-displayedurl-concatenation)
+      - [RealURL, DisplayedURL concatenation](#realurl-displayedurl-concatenation)
       - [What happens when a match is found](#what-happens-when-a-match-is-found)
-      - [Extraction of realURL, displayedURL from HTML tags](#extraction-of-realurl-displayedurl-from-html-tags)
+      - [Extraction of RealURL, DisplayedURL from HTML tags](#extraction-of-realurl-displayedurl-from-html-tags)
       - [Example](#example)
     - [Simple patterns](#simple-patterns)
     - [Regular expressions](#regular-expressions)
@@ -26,8 +26,8 @@ Table of Contents
     - [Optional matching, and repetition](#optional-matching-and-repetition)
     - [Groups](#groups)
   - [How to create database files](#how-to-create-database-files)
-    - [How to create and maintain the whitelist (daily.wdb)](#how-to-create-and-maintain-the-whitelist-dailywdb)
-    - [How to create and maintain the domainlist (daily.pdb)](#how-to-create-and-maintain-the-domainlist-dailypdb)
+    - [How to create and maintain the allow list (daily.wdb)](#how-to-create-and-maintain-the-allow-list-dailywdb)
+    - [How to create and maintain the domain list (daily.pdb)](#how-to-create-and-maintain-the-domain-list-dailypdb)
     - [Dealing with false positives, and undetected phishing mails](#dealing-with-false-positives-and-undetected-phishing-mails)
       - [False positives](#false-positives)
       - [Undetected phish mails](#undetected-phish-mails)
@@ -110,11 +110,11 @@ This file contains URL hashes in the following format:
 
 - `S1:`
 
-  Hashes for blacklisting phishing sites. Virus name: Phishing.URL.Blacklisted
+  Hashes for blocking phishing sites. Virus name: Phishing.URL.Blacklisted
 
 - `S:W:`
 
-  Locally whitelisted hashes.
+  Locally allowed hashes.
 
 - `HostPrefix`
 
@@ -124,13 +124,13 @@ This file contains URL hashes in the following format:
 
   sha256 hash of the canonicalized URL, or a sha256 hash of its prefix/suffix according to the Google Safe Browsing “Performing Lookups” rules. There should be a corresponding `:P:HostkeyPrefix` entry for the hash to be taken into consideration.
 
-To see which hash/URL matched, look at the `clamscan --debug` output, and look for the following strings: `Looking up hash`, `prefix matched`, and `Hash matched`. Local whitelisting of .gdb entries can be done by creating a local.gdb file, and adding a line `S:W:<HASH>`.
+To see which hash/URL matched, look at the `clamscan --debug` output, and look for the following strings: `Looking up hash`, `prefix matched`, and `Hash matched`. To ignore .gdb entries, create a local.gdb file, and adding a line `S:W:<HASH>`.
 
 ---
 
 ### WDB format
 
-This file contains whitelisted url pairs It contains lines in the following format:
+This file contains url pairs for links that may look suspicious but are safe and should be allowed. It contains lines in the following format:
 
 <pre>
     X:RealURL:DisplayedURL[:FuncLevelSpec]
@@ -163,7 +163,7 @@ This file contains whitelisted url pairs It contains lines in the following form
 
 - if any of the lines don’t conform to this format, clamav will abort with a Malformed Database Error
 
-- see section [Extraction-of-realURL](#Extraction-of-realURL,-displayedURL-from-HTML-tags) for more details on realURL/displayedURL
+- see section [Extraction-of-RealURL](#Extraction-of-RealURL,-DisplayedURL-from-HTML-tags) for more details on RealURL/DisplayedURL
 
 ---
 
@@ -230,7 +230,7 @@ Explanation of this regular expression (note that it is a single regular express
 
 - `\.amazon\.`
 
-  domain we are whitelisting (RealURL part)
+  domain we are allowing (RealURL part)
 
 - `(at|ca|co\.uk|co\.jp|de|fr)`
 
@@ -238,7 +238,7 @@ Explanation of this regular expression (note that it is a single regular express
 
 - `([/?].*)?`
 
-  recomended way to end real url part of whitelist, this protects against embedded URLs (evilurl.example.com/amazon.co.uk/)
+  recomended way to end the real url, this protects against embedded URLs (evilurl.example.com/amazon.co.uk/)
 
 - `:`
 
@@ -250,7 +250,7 @@ Explanation of this regular expression (note that it is a single regular express
 
 - `\.amazon\.com`
 
-  whitelisted DisplayedURL
+  allowed DisplayedURL
 
 - `([/?].*)?`
 
@@ -260,7 +260,7 @@ Explanation of this regular expression (note that it is a single regular express
 
   automatically added to further protect against embedded URLs
 
-When you whitelist an entry make sure you check that both domains are owned by the same entity. What this whitelist entry allows is: Links claiming to point to amazon.com (DisplayedURL), but really go to country-specific domain of amazon (RealURL).
+When you add an entry, make sure you check that both domains are owned by the same entity. This signature allows links claiming to point to amazon.com (DisplayedURL), when in fact they really go to a country-specific domain of amazon (RealURL).
 
 ---
 
@@ -335,9 +335,9 @@ RealURL/DisplayedURL pairs from it:
 
 ---
 
-#### RealURL, displayedURL concatenation
+#### RealURL, DisplayedURL concatenation
 
-The phishing detection module processes pairs of RealURL/DisplayedURL. Matching against daily.wdb is done as follows: the realURL is concatenated with a `:`, and with the DisplayedURL, then that *line* is matched against the lines in daily.wdb/daily.pdb
+The phishing detection module processes pairs of RealURL/DisplayedURL. Matching against daily.wdb is done as follows: the RealURL is concatenated with a `:`, and with the DisplayedURL, then that *line* is matched against the lines in daily.wdb/daily.pdb
 
 So if you have this line in daily.wdb:
 
@@ -345,29 +345,29 @@ So if you have this line in daily.wdb:
     M:www.google.ro:www.google.com
 </pre>
 
-and this href: `<a href='http://www.google.ro'>www.google.com</a>` then it will be whitelisted, but: `<a href='http://images.google.com'>www.google.com</a>` will not.
+This href: `<a href='http://www.google.ro'>www.google.com</a>` then it will be allowed, but: `<a href='http://images.google.com'>www.google.com</a>` will not.
 
 ---
 
 #### What happens when a match is found
 
-In the case of the whitelist, a match means that the RealURL/DisplayedURL combination is considered clean, and no further checks are performed on it.
+In the case of the allow list, a match means that the RealURL/DisplayedURL combination is considered clean, and no further checks are performed on it.
 
-In the case of the domainlist, a match means that the RealURL/displayedURL is going to be checked for phishing attempts.
+In the case of the domain list, a match means that the RealURL/DisplayedURL is going to be checked for phishing attempts.
 
 Furthermore you can restrict what checks are to be performed by specifying the 3-digit hexnumber.
 
 ---
 
-#### Extraction of realURL, displayedURL from HTML tags
+#### Extraction of RealURL, DisplayedURL from HTML tags
 
-The html parser extracts pairs of realURL/displayedURL based on the following rules.
+The html parser extracts pairs of RealURL/DisplayedURL based on the following rules.
 
 In version 0.93: After URLs have been extracted, they are normalized, and cut after the hostname. `http://test.example.com/path/somecgi?queryparameters` becomes `http://test.example.com/`
 
 - `a`
 
-  (anchor) the *href* is the realURL, its *contents* is the displayedURL
+  (anchor) the *href* is the RealURL, its *contents* is the DisplayedURL
 
   - contents
     is the tag-stripped contents of the \<a\> tags, so for example \<b\> tags are stripped (but not their contents)
@@ -376,19 +376,19 @@ In version 0.93: After URLs have been extracted, they are normalized, and cut af
 
 - `form`
 
-  the *action* attribute is the realURL, and a nested \<a\> tag is the displayedURL
+  the *action* attribute is the RealURL, and a nested \<a\> tag is the DisplayedURL
 
 - `img/area`
 
-  if nested within an *\<a\>* tag, the realURL is the *href* of the a tag, and the *src/dynsrc/area* is the displayedURL of the img
+  if nested within an *\<a\>* tag, the RealURL is the *href* of the a tag, and the *src/dynsrc/area* is the DisplayedURL of the img
 
-  if nested withing a *form* tag, then the action attribute of the *form* tag is the realURL
+  if nested withing a *form* tag, then the action attribute of the *form* tag is the RealURL
 
 - `iframe`
 
-  if nested withing an *\<a\>* tag the *src* attribute is the displayedURL, and the *href* of its parent *a* tag is the realURL
+  if nested withing an *\<a\>* tag the *src* attribute is the DisplayedURL, and the *href* of its parent *a* tag is the RealURL
 
-  if nested withing a *form* tag, then the action attribute of the *form* tag is the realURL
+  if nested withing a *form* tag, then the action attribute of the *form* tag is the RealURL
 
 ---
 
@@ -414,7 +414,7 @@ Consider this html file:
 ``
 `    <a href=”evilurl”\>\<img src=”images.paypal.com/secure.jpg”\>\</a\>*`
 
-The resulting realURL/displayedURL pairs will be (note that one tag can generate multiple pairs):
+The resulting RealURL/DisplayedURL pairs will be (note that one tag can generate multiple pairs):
 
 - evilurl / www.paypal.com
 
@@ -444,7 +444,7 @@ it is going to match *www.google.com*, and only that. The *. (dot)* character ha
 
 ### Regular expressions
 
-POSIX regular expressions are supported, and you can consider that internally it is wrapped by *^*, and *$.* In other words, this means that the regular expression has to match the entire concatenated (see section [RealURL,-displayedURL-concatenation](#RealURL,-displayedURL-concatenation) for details on concatenation) url.
+POSIX regular expressions are supported, and you can consider that internally it is wrapped by *^*, and *$.* In other words, this means that the regular expression has to match the entire concatenated (see section [RealURL,-DisplayedURL-concatenation](#RealURL,-DisplayedURL-concatenation) for details on concatenation) url.
 
 It is recomended that you read section [Introduction-to-regular](#Introduction-to-regular) to learn how to write regular expressions, and then come back and read this for hints.
 
@@ -527,7 +527,7 @@ There is a default set of flags that are enabled, these are currently:
 
 ssl checking is performed only for a tags currently.
 
-You must decide for each line in the domainlist if you want to filter any flags (that is you don’t want certain checks to be done), and then calculate the binary OR of those constants, and then convert it into a 3-digit hexnumber. For example you devide that domain_sufficient shouldn’t be used for ebay.com, and you don’t want to check images either, so you come up with this flag number: \(2|256\Rightarrow\)258\((decimal)\Rightarrow102(hexadecimal)\)
+You must decide for each line in the domain list if you want to filter any flags (that is you don’t want certain checks to be done), and then calculate the binary OR of those constants, and then convert it into a 3-digit hexnumber. For example you devide that domain_sufficient shouldn’t be used for ebay.com, and you don’t want to check images either, so you come up with this flag number: \(2|256\Rightarrow\)258\((decimal)\Rightarrow102(hexadecimal)\)
 
 So you add this line to daily.wdb:
 
@@ -631,13 +631,13 @@ Groups can also be used to extract substring, but this is not supported by the c
 
 ---
 
-### How to create and maintain the whitelist (daily.wdb)
+### How to create and maintain the allow list (daily.wdb)
 
 If the phishing code claims that a certain mail is phishing, but its not, you have 2 choices:
 
 - examine your rules daily.pdb, and fix them if necessary (see: section[How-to-create](How-to-create))
 
-- add it to the whitelist (discussed here)
+- add it to the allow list (discussed here)
 
 Lets assume you are having problems because of links like this in a mail:
 
@@ -656,9 +656,9 @@ Note: urls like the above can be used to track unique mail recipients, and thus 
 
 ---
 
-### How to create and maintain the domainlist (daily.pdb)
+### How to create and maintain the domain list (daily.pdb)
 
-When not using –phish-scan-alldomains (production environments for example), you need to decide which urls you are going to check.
+When not using `--phish-scan-alldomains` (production environments for example), you need to decide which urls you are going to check.
 
 Although at a first glance it might seem a good idea to check everything, it would produce false positives. Particularly newsletters, ads, etc. are likely to use URLs that look like phishing attempts.
 
@@ -680,7 +680,7 @@ Be carefull not to create regexes that match a too broad range of urls though.
 
 #### False positives
 
-Whenever you see a false positive (mail that is detected as phishing, but its not), you need to examine *why* clamav decided that its phishing. You can do this easily by building clamav with debugging (./configure –enable-experimental –enable-debug), and then running a tool:
+Whenever you see a false positive (mail that is detected as phishing, but its not), you need to examine *why* clamav decided that its phishing. You can do this easily by building clamav with debugging (`./configure --enable-experimental --enable-debug`), and then running a tool:
 
 <pre>
     $contrib/phishing/why.py phishing.eml
@@ -697,7 +697,7 @@ Once you know the reason, you might need to modify daily.pdb (if one of yours ru
 Using why.py doesn’t help here unfortunately (it will say: clean), so all you can do is:
 
 <pre>
-    $clamscan/clamscan –phish-scan-alldomains undetected.eml
+    $clamscan/clamscan --phish-scan-alldomains undetected.eml
 </pre>
 
 And see if the mail is detected, if yes, then you need to add an appropriate line to daily.pdb (see section [How-to-create](How-to-create)).
@@ -705,8 +705,7 @@ And see if the mail is detected, if yes, then you need to add an appropriate lin
 If the mail is not detected, then try using:
 
 <pre>
-    $clamscan/clamscan –debug undetected.eml|less
+    $clamscan/clamscan --debug undetected.eml|less
 </pre>
 
-Then see what urls are being checked, see if any of them is in a whitelist, see if all urls are detected, etc.
-`
+Then see what urls are being checked, see if any of them is in an allow list, see if all urls are detected, etc.

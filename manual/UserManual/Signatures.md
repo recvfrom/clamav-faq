@@ -93,7 +93,7 @@ ClamAV body-based signature content has a [special format](https://www.clamav.ne
 
 ### Other database files
 
-`*.fp` `*.sfp` `*.ign` `*.ign2`: [Whitelisted files, signatures](https://www.clamav.net/documents/whitelist-databases)
+`*.fp` `*.sfp` `*.ign` `*.ign2`: [allowed files, ignored signatures](https://www.clamav.net/documents/Allow-list-databases)
 
 `*.pwdb`: [Encrypted archive passwords](https://www.clamav.net/documents/passwords-for-archive-files-experimental)
 
@@ -173,7 +173,7 @@ If the rule did not match as intended:
 NOTE: If you run `clamscan` with a `-d` flag, ClamAV will not load in the signatures downloaded via `freshclam`.  This means that:
 
 - some of ClamAV's unpacking support might be disabled, since some unpackers are implemented as bytecode signatures
-- PE whitelisting based on Authenticode signatures won't work, since this functionality relies on `.crb` rules
+- PE certificate trust verification based on Authenticode signatures won't work, since this functionality relies on `.crb` rules
 
 If any of this functionality is needed, load in the CVD files manually with additional `-d` flags.
 

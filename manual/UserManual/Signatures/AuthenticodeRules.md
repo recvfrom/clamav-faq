@@ -15,7 +15,7 @@ where the corresponding fields are:
 
 - `Subject:` sha1 of the Subject field in hex
 
-- `Serial:` the serial number as clamscan –debug –verbose reports
+- `Serial:` the serial number as `clamscan --debug --verbose` reports
 
 - `Pubkey:` the public key in hex
 

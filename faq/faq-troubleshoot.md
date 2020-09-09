@@ -2,7 +2,7 @@
 
 ## How many times per hour shall I run freshclam?
 
-If you are running ClamAV 0.7x please __upgrade now__.  
+If you are running ClamAV 0.7x please __upgrade now__.
 
 If you are running ClamAV 0.8x or later, you can check for database update as often as 4 times per hour provided that you have the following options in `freshclam.conf`:
 
@@ -52,7 +52,7 @@ If it doesn't work, check your dns settings in `/etc/resolv.conf`. If it works, 
 
 ---
 
-## How do I know if my IP address has been blacklisted?
+## How do I know if my IP address has been blocked?
 
 Try to download `daily.cvd` with *curl*, *wget*, or *lynx* from the same machine that is running *freshclam*. Future versions of freshclam will provide a better way to deal with this.
 

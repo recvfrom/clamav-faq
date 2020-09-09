@@ -223,7 +223,7 @@ If a unit test fails, you get a message similar to the following. Note that in o
     ========================================
 </pre>
 
-If unit tests are disabled (and you didn’t use -–enable-check), you will get this message:
+If unit tests are disabled (and you didn’t use `--enable-check`), you will get this message:
 
 <pre>
     *** Unit tests disabled in this build
