@@ -49,6 +49,7 @@ Some distributions parcel up ClamAV components into separate packages. You don't
 <pre>
   yum install -y epel-release
   yum install -y clamav
+  yum install -y clamd
 </pre>
 
 On [Community Enterprise Operating System (CentOS)] the ClamAV package requires the [Extra Packages for Enterprise Linux (EPEL) repository].
