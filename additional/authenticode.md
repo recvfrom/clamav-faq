@@ -323,42 +323,59 @@ probably only interesting to other researchers who are looking at Authenticode
 in-depth.  All samples are available via VirusTotal.
 
 <pre>
-    - *SHA256-based code-signing signature without a countersignature*
-        - 8886d96e9ed475e4686ffba3d242e97836de8a56b75cc915e21bb324cc89de03
-    - *SHA256-based code-signing sig and SHA1-based timestamping countersig*
-        - 20367d0e3a5ad12154095d424b8d9818c33e7d6087525e6a3304ef6c22a53665
-    - *SHA384-based cert used in the code-signing chain*
-        - 2249611fef630d666f667ac9dc7b665d3b9382956e41f10704e40bd900decbb8
-    - *Uses SHA512 to compute the Authenticode hash*
-        - eeb5469a214d5aac1dcd7e8415f93eca14edc38f47d1e360d3d97d432695207a
-    - *Signed by an MS root cert that doesn't have a KU or EKU specified*
-        - 69b61b2c00323cea3686315617d0f452e205dae10c47e02cbe1ea96fea38f582
-    - *Has a v1 x509 cert and uses MD2-based hashing*
-        - 1cb16f94cebdcad7dd05c8537375a6ff6379fcdb08528fc83889f26efaa84e2a
-    - *Countersignature with version 0 instead of version 1*
-        - 145fbbf59b1071493686bf41f4eb364627d8be3c9dc8fb927bbe853e593864ec
-    - *Countersignature with contentType == timestampToken instead of pkcs7-data*
-        - 8a364e0881fd7201cd6f0a0ff747451c9b93182d5699afb28ad8466f7f726660
-    - *Countersignature with AlgoIdentifier sha1WithRSAEncryption instead of SHA1*
-        - 2aa6b18d509090c60c3e4ecdd8aeb16e5f149807e3404c86892112710eab576d
-    - *Countersignature uses v1 x509 certs*
-        - 934860a4ac2446240e4c7053ddc27ff4c2463d4ad433cc28c9fcc2ea4690fb86
-    - *Certificate chain has old certificates without a version*
-        - 374a31b20fbafdcd31d52ae11a0dcad58baba556c8942a3cdfae0bb96ae117a1
-    - *Has extra data after the PKCS7, a violation of [MS13-098](https://docs.microsoft.com/en-us/security-updates/securitybulletins/2013/ms13-098)*
-        - 0ee196bb23f0eafe4f61d30bf6c676fd7365cb12ae66a6bde278851e91901ac1
-    - *Authenticode signature covers data not in a section*
-        - 0123c163ac981e639565caff72ee3af2df7174613ee12003ac89124be461c6e6
-    - *Authenticode signature with a section that overlaps the PE header (UPX-packed)*
-        - 0059fb3f225c5784789622eeccb97197d591972851b63d59f5bd107ddfdb7a21
-    - *Authenticode signature with overlapping sections*
-        - 014b66cf2cef39620e9a985d237971b8cf272043e9ac372d5dcef44db754a1d2
-    - *Uses certs with no NULL after AlgorithmIdentifier OID*
-        - 66b797b3b4f99488f53c2b676610dfe9868984c779536891a8d8f73ee214bc4b
-    - *Uses an ASN1 indefinite length object*
-        - 8ca912e397a9e1b0cc54c216144ff550da9d43610392208193c0781b1aa5d695
-    - *Unexpected contentType for embedded mode signature (copied from a .cat?)*
-        - 6ed9b5f6d32f94b3d06456b176c8536be123e1047763cc0a31c6e8fd6a0242b1
+    - SHA256-based code-signing signature without a countersignature
+      - 8886d96e9ed475e4686ffba3d242e97836de8a56b75cc915e21bb324cc89de03
+
+    - SHA256-based code-signing sig and SHA1-based timestamping countersig
+      - 20367d0e3a5ad12154095d424b8d9818c33e7d6087525e6a3304ef6c22a53665
+
+    - SHA384-based cert used in the code-signing chain
+      - 2249611fef630d666f667ac9dc7b665d3b9382956e41f10704e40bd900decbb8
+
+    - Uses SHA512 to compute the Authenticode hash
+      - eeb5469a214d5aac1dcd7e8415f93eca14edc38f47d1e360d3d97d432695207a
+
+    - Signed by an MS root cert that doesn't have a KU or EKU specified
+      - 69b61b2c00323cea3686315617d0f452e205dae10c47e02cbe1ea96fea38f582
+
+    - Has a v1 x509 cert and uses MD2-based hashing
+      - 1cb16f94cebdcad7dd05c8537375a6ff6379fcdb08528fc83889f26efaa84e2a
+
+    - Countersignature with version 0 instead of version 1
+      - 145fbbf59b1071493686bf41f4eb364627d8be3c9dc8fb927bbe853e593864ec
+
+    - Countersignature with contentType == timestampToken instead of pkcs7-data
+      - 8a364e0881fd7201cd6f0a0ff747451c9b93182d5699afb28ad8466f7f726660
+
+    - Countersignature with AlgoIdentifier sha1WithRSAEncryption instead of SHA1
+      - 2aa6b18d509090c60c3e4ecdd8aeb16e5f149807e3404c86892112710eab576d
+
+    - Countersignature uses v1 x509 certs
+      - 934860a4ac2446240e4c7053ddc27ff4c2463d4ad433cc28c9fcc2ea4690fb86
+
+    - Certificate chain has old certificates without a version
+      - 374a31b20fbafdcd31d52ae11a0dcad58baba556c8942a3cdfae0bb96ae117a1
+
+    - Has extra data after the PKCS7, a violation of [MS13-098](https://docs.microsoft.com/en-us/security-updates/securitybulletins/2013/ms13-098)
+      - 0ee196bb23f0eafe4f61d30bf6c676fd7365cb12ae66a6bde278851e91901ac1
+
+    - Authenticode signature covers data not in a section
+      - 0123c163ac981e639565caff72ee3af2df7174613ee12003ac89124be461c6e6
+
+    - Authenticode signature with a section that overlaps the PE header (UPX-packed)
+      - 0059fb3f225c5784789622eeccb97197d591972851b63d59f5bd107ddfdb7a21
+
+    - Authenticode signature with overlapping sections
+      - 014b66cf2cef39620e9a985d237971b8cf272043e9ac372d5dcef44db754a1d2
+
+    - Uses certs with no NULL after AlgorithmIdentifier OID
+      - 66b797b3b4f99488f53c2b676610dfe9868984c779536891a8d8f73ee214bc4b
+
+    - Uses an ASN1 indefinite length object
+      - 8ca912e397a9e1b0cc54c216144ff550da9d43610392208193c0781b1aa5d695
+
+    - Unexpected contentType for embedded mode signature (copied from a .cat?)
+      - 6ed9b5f6d32f94b3d06456b176c8536be123e1047763cc0a31c6e8fd6a0242b1
 </pre>
 
 ---
