@@ -376,6 +376,18 @@ in-depth.  All samples are available via VirusTotal.
 
     - Unexpected contentType for embedded mode signature (copied from a .cat?)
       - 6ed9b5f6d32f94b3d06456b176c8536be123e1047763cc0a31c6e8fd6a0242b1
+
+    - Security directory appears to overlap with the PE header
+      - ff482f69f2183b5fd3c1b45d9006156524b8f8a5f518e33d6e92ea079787e64d
+
+    - x509 cert with a public key using exponent 3
+      - 012760e582e541c6dd34a2cbd5d053f402eebcb8b60ed4a88fecb5589bd17bb9
+
+    - x509 UTCDate is missing the seconds field
+      - 05de45fd6a406dc147a4c8040a54eee947cd6eba02f28c0279ffd1a229e17130
+
+    - x509 cert with a negative serial number
+      - 6218d50eb5c898acd3482daaea8f615b4f1f87ef0d06220cc1d7f700bc35888b
 </pre>
 
 ---

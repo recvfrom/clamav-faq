@@ -267,7 +267,7 @@ Run `../configure --help` to see a full list of options. The following suggestio
   Example:
 
   <pre>
-      CFLAGS="-gdb -O0" CXXFLAGS="-gdb -O0" OBJCFLAGS="-gdb -O0" ../configure
+      CFLAGS="-ggdb -O0" CXXFLAGS="-ggdb -O0" OBJCFLAGS="-ggdb -O0" ../configure
   </pre>
 
   NOTE: Setting `OBJCFLAGS` is needed because currently, clamsubmit gets built with the Objective-C compiler. See [this Stack Overflow post](https://stackoverflow.com/questions/61167084/automake-conditional-compilation-from-c-or-objective-c-sources) for a discussion of why this occurs.
@@ -293,7 +293,7 @@ Run `../configure --help` to see a full list of options. The following suggestio
 Altogether, the following configure command can be used:
 
 <pre>
-    CFLAGS="-ggdb -O0" CXXFLAGS="-gdb -O0" OBJCFLAGS="-gdb -O0" ../configure --prefix=`pwd`/../installed --enable-debug --enable-check --enable-coverage --enable-libjson --with-systemdsystemunitdir=no --enable-experimental --enable-clamdtop --enable-xml --enable-pcre --enable-llvm --with-system-llvm=no
+    CFLAGS="-ggdb -O0" CXXFLAGS="-ggdb -O0" OBJCFLAGS="-ggdb -O0" ../configure --prefix=`pwd`/../installed --enable-debug --enable-check --enable-coverage --enable-libjson --with-systemdsystemunitdir=no --enable-experimental --enable-clamdtop --enable-xml --enable-pcre --enable-llvm --with-system-llvm=no
 </pre>
 
 NOTE: It is possible to build libclamav as a static library and have it statically linked into clamscan/clamd (to do this, run `../configure` with `--enable-static --disable-shared`).  This is useful for using tools like `gprof` that do not support profiling code in shared objects.  However, there are two drawbacks to doing this:
